@@ -21,7 +21,7 @@ Route::post('/', 'IndexController@register')->name('index.register');
 
 Route::middleware('voter')->group(function () {
     Route::get('/vote', 'VoteController@index')->name('vote.index');
-    Route::get('/vote/{vote}', 'VoteController@show')->name('vote.show');
+    Route::get('/vote/{proposition}', 'VoteController@show')->name('vote.show');
 });
 
 /*
@@ -37,6 +37,8 @@ Route::prefix('/admin')->middleware('admin')->group(function () {
     })->name('admin.index');
 
 
-    Route::get('/tokens', 'Admin\TokenController@index')->name('admin.tokens.index');
-    Route::post('/tokens', 'Admin\TokenController@update')->name('admin.tokens.update');
+    Route::get('/voters', 'Admin\VoterController@index')->name('admin.voters.index');
+    Route::post('/voters', 'Admin\VoterController@update')->name('admin.voters.update');
+
+    Route::get('/propositions', 'Admin\PropositionController@index')->name('admin.propositions.index');
 });

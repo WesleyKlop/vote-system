@@ -8,6 +8,8 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        factory(User::class)->create();
+        factory(User::class)->create([
+            'name' => 'Wesley',
+        ]);
     }
 }

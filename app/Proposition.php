@@ -3,8 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use RuntimeException;
+use Illuminate\Database\Eloquent\Collection;
 
 class Proposition extends AbstractModel
 {
@@ -12,6 +11,7 @@ class Proposition extends AbstractModel
         'title',
         'is_open',
         'type',
+        'order',
     ];
 
     public function scopeOpen(Builder $query)
@@ -21,23 +21,26 @@ class Proposition extends AbstractModel
 
     public function options()
     {
-        switch ($this->type) {
-            case 'list':
-                return $this->listOptions();
-            case 'grid':
-                return $this->gridOptions();
-            default:
-                throw new RuntimeException('Invalid proposition type '.$this->type);
-        }
+        return $this->hasMany(PropositionOption::class);
     }
 
-    public function listOptions(): HasMany
+    public function verticalOptions(): Collection
     {
-        return $this->hasMany(ListPropositionOption::class);
+        return $this->options->where('vector', 'vertical');
     }
 
-    public function gridOptions(): HasMany
+    public function horizontalOptions(): Collection
     {
-        return $this->hasMany(GridPropositionOption::class);
+        return $this->options->where('vector', 'horizontal');
+    }
+
+    public function voters()
+    {
+        return $this->belongsToMany(Voter::class, 'voter_proposition_options');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(VoterPropositionOption::class);
     }
 }

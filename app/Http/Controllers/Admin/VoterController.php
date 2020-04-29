@@ -8,13 +8,13 @@ use App\Voter;
 use App\VoteSystem\Helpers\TokenHelper;
 use Illuminate\Support\Str;
 
-class TokenController extends Controller
+class VoterController extends Controller
 {
     public function index()
     {
-        $tokens = Voter::all();
+        $voters = Voter::all();
 
-        return view('views.admin.tokens.index', ['tokens' => $tokens]);
+        return view('views.admin.voters.index', ['voters' => $voters]);
     }
 
     public function update(TokenGenerateRequest $request)

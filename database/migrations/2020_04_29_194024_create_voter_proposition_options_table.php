@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateListPropositionOptionsTable extends Migration
+class CreateVoterPropositionOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,24 @@ class CreateListPropositionOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('list_proposition_options', function (Blueprint $table) {
+        Schema::create('voter_proposition_options', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('proposition_id');
-            $table->string('option');
+            $table->uuid('voter_id');
+            $table->uuid('proposition_option_id');
 
             $table
                 ->foreign('proposition_id')
                 ->references('id')
                 ->on('propositions');
+            $table
+                ->foreign('voter_id')
+                ->references('id')
+                ->on('voters');
+            $table
+                ->foreign('proposition_option_id')
+                ->references('id')
+                ->on('proposition_options');
         });
     }
 
@@ -32,6 +41,6 @@ class CreateListPropositionOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('list_proposition_options');
+        Schema::dropIfExists('voter_proposition_options');
     }
 }

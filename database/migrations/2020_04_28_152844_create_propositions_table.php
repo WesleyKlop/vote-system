@@ -17,6 +17,7 @@ class CreatePropositionsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('title');
             $table->boolean('is_open');
+            $table->integer('order');
             $table->enum('type', ['list', 'grid']);
         });
     }
