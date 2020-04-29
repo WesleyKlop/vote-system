@@ -3,18 +3,19 @@
 namespace App;
 
 use Eloquent;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
  * Class User
  * @package App
  * @mixin Eloquent
  */
-class User extends Authenticatable
+class User extends AbstractModel implements AuthenticatableContract, AuthorizableContract
 {
-    protected $keyType = 'uuid';
-
-    public $timestamps = false;
+    use Authenticatable, Authorizable;
 
     /**
      * The attributes that are mass assignable.

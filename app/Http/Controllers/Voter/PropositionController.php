@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Voter;
 
+use App\Http\Controllers\Controller;
 use App\Proposition;
 use Illuminate\Database\Eloquent\Builder;
 
-class VoteController extends Controller
+class PropositionController extends Controller
 {
     public function index()
     {
@@ -15,11 +16,11 @@ class VoteController extends Controller
             })
             ->orderBy('index')
             ->first();
-        return redirect()->route('vote.show', $proposition);
+        return redirect()->route('proposition.show', $proposition);
     }
 
     public function show(Proposition $proposition)
     {
-        return view('views.vote.show', ['proposition' => $proposition]);
+        return view('views.voter.show', ['proposition' => $proposition]);
     }
 }

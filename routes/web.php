@@ -16,12 +16,13 @@ use Illuminate\Support\Facades\Route;
 /*
  * Voter area
  */
-Route::get('/', 'IndexController@index')->name('index');
-Route::post('/', 'IndexController@register')->name('index.register');
+Route::get('/', 'Voter\LoginController@showLoginForm')->name('voter.index');
+Route::post('/', 'Voter\LoginController@login')->name('voter.login');
+Route::get('/exit', 'Voter\LoginController@logout')->name('voter.logout');
 
 Route::middleware('voter')->group(function () {
-    Route::get('/vote', 'VoteController@index')->name('vote.index');
-    Route::get('/vote/{proposition}', 'VoteController@show')->name('vote.show');
+    Route::get('/vote', 'Voter\PropositionController@index')->name('proposition.index');
+    Route::get('/vote/{proposition}', 'Voter\PropositionController@show')->name('proposition.show');
 });
 
 /*

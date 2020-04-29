@@ -2,7 +2,8 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\AuthenticateAdmin;
+use App\Http\Middleware\AuthenticateVoter;
 use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -11,7 +12,6 @@ use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\VerifyCsrfToken;
 use Fruitcake\Cors\HandleCors;
-use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Auth\Middleware\RequirePassword;
@@ -66,11 +66,11 @@ class Kernel extends HttpKernel
         ],
 
         'voter' => [
-            TokenValid::class,
+            AuthenticateVoter::class,
         ],
 
         'admin' => [
-            Authenticate::class,
+            AuthenticateAdmin::class,
         ],
     ];
 
@@ -82,8 +82,6 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => Authenticate::class,
-        'auth.basic' => AuthenticateWithBasicAuth::class,
         'bindings' => SubstituteBindings::class,
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,

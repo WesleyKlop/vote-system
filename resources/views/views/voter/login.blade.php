@@ -1,7 +1,7 @@
 @extends('layouts.basic')
 
 @section('content')
-    <form action="{{ route('index.register') }}" method="POST">
+    <form action="{{ route('voter.login') }}" method="POST">
         @csrf
 
         <input
