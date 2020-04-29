@@ -1,16 +1,20 @@
 @extends('layouts.basic')
 
 @section('content')
-    <div class="border-b my-2 p-2">
+    <form class="border-b my-2 p-2" method="POST" action="{{ route('proposition.update') }}">
+        @csrf
+        <input type="hidden" name="proposition" value="{{ $proposition->id }}"/>
         <h2>{{ $proposition->order }}. {{ $proposition->title }}</h2>
-        <span>Is open: {{ $proposition->is_open ? 'yes' : 'no' }}</span>
         <div class="font-bold">Options</div>
         @if($proposition->type === 'list')
-            <ul>
+            <div>
                 @foreach($proposition->options as $option)
-                    <li>{{ $option->option }}</li>
+                    <label class="block">
+                        <input type="radio" name="answer" value="{{ $option->id }}"/>
+                        {{ $option->option }}
+                    </label>
                 @endforeach
-            </ul>
+            </div>
         @elseif($proposition->type === 'grid')
             <table>
                 <thead>
@@ -20,17 +24,20 @@
                 @endforeach
                 </thead>
                 <tbody>
-                @php($columns = $proposition->horizontalOptions()->count())
-                @foreach($proposition->verticalOptions() as $option)
+                @foreach($proposition->verticalOptions() as $rowOption)
                     <tr>
-                        <td class="border">{{ $option->option }}</td>
-                        @for($i = 0; $i < $columns; $i++)
-                            <td class="border"></td>
-                        @endfor
+                        <td class="border">{{ $rowOption->option }}</td>
+                        @foreach($proposition->horizontalOptions() as $horOption)
+                            <td class="border">
+                                <input type="radio" name="answer[{{ $rowOption->id }}]" value="{{ $horOption->option }}"/>
+                            </td>
+                        @endforeach
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         @endif
-    </div>
+
+        <input type="submit"/>
+    </form>
 @endsection

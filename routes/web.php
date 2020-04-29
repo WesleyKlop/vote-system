@@ -22,7 +22,7 @@ Route::get('/exit', 'Voter\LoginController@logout')->name('voter.logout');
 
 Route::middleware('voter')->group(function () {
     Route::get('/vote', 'Voter\PropositionController@index')->name('proposition.index');
-    Route::get('/vote/{proposition}', 'Voter\PropositionController@show')->name('proposition.show');
+    Route::post('/vote', 'Voter\PropositionController@update')->name('proposition.update');
 });
 
 /*
