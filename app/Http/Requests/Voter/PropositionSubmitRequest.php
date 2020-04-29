@@ -24,8 +24,17 @@ class PropositionSubmitRequest extends FormRequest
     public function rules()
     {
         return [
-            'proposition' => ['exists:propositions,id'],
-            'answer' => 'exists:proposition_options,id',
+            'proposition' => ['required', 'exists:propositions,id'],
+            'answer' => ['required', 'array'],
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        if (! is_array($this->get('answer', null))) {
+            $this->merge([
+                'answer' => [$this->get('answer', null)],
+            ]);
+        }
     }
 }

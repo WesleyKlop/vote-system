@@ -9,6 +9,7 @@ use App\PropositionOption;
 use App\Voter;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PropositionController extends Controller
@@ -31,30 +32,40 @@ class PropositionController extends Controller
         return view('views.voter.show', ['proposition' => $proposition]);
     }
 
+    /**
+     * @param  PropositionSubmitRequest  $request
+     * @return RedirectResponse
+     * @throws Exception
+     */
     public function update(PropositionSubmitRequest $request)
     {
         /** @var Voter $user */
         $user = $request->user();
         $proposition = Proposition::findOrFail($request->get('proposition'));
 
-        // Validate that the given option is a valid option for the current proposition
-        $selectedAnswer = PropositionOption
+        // Get the answers and verify that they all belong to a given proposition
+        $submittedAnswers = $request->get('answer');
+        $validAnswers = PropositionOption
             ::where('proposition_id', $proposition->id)
-            ->where('id', $request->get('answer'))
-            ->first();
+            ->whereIn('id', $submittedAnswers)
+            ->get();
 
-        if (is_null($selectedAnswer)) {
+        if ($validAnswers->count() === 0 || $validAnswers->count() !== count($submittedAnswers)) {
             throw new Exception(
-                'Proposition id and answer id do not relate to each other. Did you just try to cheat?'
+                'Could not find any selected answers. Did you try to cheat?'
             );
         }
 
         $user
             ->answers()
-            ->create([
-                'proposition_id' => $proposition->id,
-                'proposition_option_id' => $selectedAnswer->id,
-            ]);
+            ->createMany(
+                $validAnswers->map(function (PropositionOption $option) {
+                    return [
+                        'proposition_id' => $option->proposition_id,
+                        'proposition_option_id' => $option->id,
+                    ];
+                })
+            );
 
         return redirect()->route('proposition.index');
     }
