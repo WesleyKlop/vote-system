@@ -16,10 +16,23 @@ class DashboardPage extends AbstractPage
      * @var Collection<Proposition>
      */
     private $propositions;
+    /**
+     * @var int
+     */
+    private int $voterCount;
 
-    public function __construct(Collection $propositions)
+    public function __construct(Collection $propositions, int $voterCount)
     {
         $this->propositions = $propositions;
+        $this->voterCount = $voterCount;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVoterCount(): int
+    {
+        return $this->voterCount;
     }
 
     /**

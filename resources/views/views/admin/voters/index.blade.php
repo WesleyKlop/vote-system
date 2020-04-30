@@ -1,4 +1,4 @@
-@extends('layouts.basic')
+@extends('layouts.admin')
 
 @section('content')
     <p>Genereer nieuwe tokens</p>

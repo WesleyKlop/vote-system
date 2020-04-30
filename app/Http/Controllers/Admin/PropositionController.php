@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PropositionStoreRequest;
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Models\PropositionOption;
+use Illuminate\Http\Request;
 
 class PropositionController extends Controller
 {
@@ -60,5 +61,12 @@ class PropositionController extends Controller
             ->createMany($options->toArray());
 
         return redirect()->route('admin.propositions.index');
+    }
+
+    public function toggle(Request $request, Proposition $proposition)
+    {
+        $proposition->is_open = $request->get('is_open') === '1';
+        $proposition->save();
+        return redirect()->route('admin.index');
     }
 }

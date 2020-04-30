@@ -1,4 +1,4 @@
-@extends('layouts.basic')
+@extends('layouts.admin')
 
 @section('content')
     <form method="POST" action="{{ route('admin.propositions.store') }}" class="flex flex-col">

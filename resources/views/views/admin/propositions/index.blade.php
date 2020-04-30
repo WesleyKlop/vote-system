@@ -1,4 +1,4 @@
-@extends('layouts.basic')
+@extends('layouts.admin')
 
 @section('content')
     @foreach($propositions as $proposition)
