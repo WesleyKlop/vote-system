@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Proposition;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\PropositionStoreRequest;
+use App\VoteSystem\Models\Proposition;
+use App\VoteSystem\Models\PropositionOption;
 
 class PropositionController extends Controller
 {
@@ -24,8 +25,40 @@ class PropositionController extends Controller
         return view('views.admin.propositions.create');
     }
 
-    public function store(Request $request)
+    public function store(PropositionStoreRequest $request)
     {
-        dd($request->all());
+        // Create vertical and horizontal options based on given data
+        $options = collect();
+        foreach ($request->get('options') as $axis => $items) {
+            foreach ($items as $option) {
+                if (is_null($option)) {
+                    continue;
+                }
+                $options->push(PropositionOption::make([
+                    'vector' => $axis,
+                    'option' => $option,
+                ]));
+            }
+        }
+
+        $optionCount = $options
+            ->countBy(function (PropositionOption $option) {
+                return $option->vector;
+            });
+        $hasMultipleColumns = $optionCount->get('horizontal') > 1;
+
+        $proposition = Proposition::make($request->only([
+            'title',
+            'order',
+        ]));
+        $proposition->is_open = $request->has('is_open');
+        $proposition->type = $hasMultipleColumns ? 'grid' : 'list';
+
+        $proposition->save();
+        $proposition
+            ->options()
+            ->createMany($options->toArray());
+
+        return redirect()->route('admin.propositions.index');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Proposition;
+use App\VoteSystem\Models\Proposition;
 use Illuminate\Database\Seeder;
 
 class PropositionSeeder extends Seeder

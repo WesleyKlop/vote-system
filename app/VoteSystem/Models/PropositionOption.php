@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\VoteSystem\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

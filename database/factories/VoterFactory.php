@@ -2,8 +2,8 @@
 
 /** @var Factory $factory */
 
-use App\Voter;
 use App\VoteSystem\Helpers\TokenHelper;
+use App\VoteSystem\Models\Voter;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
 

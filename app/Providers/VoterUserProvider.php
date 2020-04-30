@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Voter;
+use App\VoteSystem\Models\Voter;
 use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\UserProvider;

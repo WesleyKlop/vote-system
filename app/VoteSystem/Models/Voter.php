@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\VoteSystem\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;

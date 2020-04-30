@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\VoteSystem\Models;
 
 use App\WhiteBox\Contracts\EntityModel;
 use App\WhiteBox\Support\Helpers\EntityHelper;

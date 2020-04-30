@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TokenGenerateRequest;
-use App\Voter;
 use App\VoteSystem\Helpers\TokenHelper;
+use App\VoteSystem\Models\Voter;
 use Illuminate\Support\Str;
 
 class VoterController extends Controller

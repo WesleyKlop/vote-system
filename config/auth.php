@@ -1,5 +1,8 @@
 <?php
 
+use App\VoteSystem\Models\User;
+use App\VoteSystem\Models\Voter;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -77,12 +80,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => User::class,
         ],
 
         'voters' => [
             'driver' => 'voter',
-            'model' => App\Voter::class,
+            'model' => Voter::class,
         ],
 
         // 'users' => [

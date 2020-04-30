@@ -2,7 +2,7 @@
 
 /** @var Factory $factory */
 
-use App\User;
+use App\VoteSystem\Models\User;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Str;

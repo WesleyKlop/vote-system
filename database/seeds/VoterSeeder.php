@@ -1,6 +1,6 @@
 <?php
 
-use App\Voter;
+use App\VoteSystem\Models\Voter;
 use Illuminate\Database\Seeder;
 
 class VoterSeeder extends Seeder

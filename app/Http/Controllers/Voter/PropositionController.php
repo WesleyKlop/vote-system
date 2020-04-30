@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Voter\PropositionSubmitRequest;
-use App\Proposition;
-use App\PropositionOption;
-use App\Voter;
+use App\VoteSystem\Models\Proposition;
+use App\VoteSystem\Models\PropositionOption;
+use App\VoteSystem\Models\Voter;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
