@@ -7,12 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class Proposition extends AbstractModel
 {
-    protected $fillable = [
-        'title',
-        'is_open',
-        'type',
-        'order',
-    ];
+    protected $fillable = ['title', 'is_open', 'type', 'order'];
 
     public function scopeOpen(Builder $query)
     {

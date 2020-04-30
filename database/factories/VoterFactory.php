@@ -11,6 +11,8 @@ $factory->define(Voter::class, function (Faker $faker) {
     return [
         'id' => $faker->uuid,
         // 16 chars
-        'token' => TokenHelper::generateToken(config('vote-system.token_length')),
+        'token' => TokenHelper::generateToken(
+            config('vote-system.token_length')
+        ),
     ];
 });

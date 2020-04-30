@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PropositionOption extends AbstractModel
 {
-    protected $fillable = [
-        'vector',
-        'option',
-    ];
+    protected $fillable = ['vector', 'option'];
 
     public function proposition(): BelongsTo
     {

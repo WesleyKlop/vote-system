@@ -19,10 +19,7 @@ class PropositionSeeder extends Seeder
             'order' => 1,
         ])
             ->options()
-            ->createMany([
-                ['option' => 'Ja'],
-                ['option' => 'Nee'],
-            ]);
+            ->createMany([['option' => 'Ja'], ['option' => 'Nee']]);
 
         Proposition::create([
             'title' => 'Kies rollen voor bestuur',

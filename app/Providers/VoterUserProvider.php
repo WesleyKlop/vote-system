@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Providers;
-
 
 use App\Voter;
 use Exception;
@@ -40,7 +38,7 @@ class VoterUserProvider implements UserProvider
      */
     public function retrieveByCredentials(array $credentials)
     {
-        if (! array_key_exists('token', $credentials)) {
+        if (!array_key_exists('token', $credentials)) {
             return;
         }
         return Voter::where('token', $credentials['token'])->first();
@@ -49,8 +47,10 @@ class VoterUserProvider implements UserProvider
     /**
      * @inheritDoc
      */
-    public function validateCredentials(Authenticatable $user, array $credentials)
-    {
+    public function validateCredentials(
+        Authenticatable $user,
+        array $credentials
+    ) {
         $token = $credentials['token'];
 
         return $token === $user->token;

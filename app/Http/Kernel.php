@@ -54,24 +54,17 @@ class Kernel extends HttpKernel
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,
-//            AuthenticateSession::class,
+            //            AuthenticateSession::class,
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
         ],
 
-        'api' => [
-            'throttle:60,1',
-            SubstituteBindings::class,
-        ],
+        'api' => ['throttle:60,1', SubstituteBindings::class],
 
-        'voter' => [
-            AuthenticateVoter::class,
-        ],
+        'voter' => [AuthenticateVoter::class],
 
-        'admin' => [
-            AuthenticateAdmin::class,
-        ],
+        'admin' => [AuthenticateAdmin::class],
     ];
 
     /**

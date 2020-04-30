@@ -13,7 +13,9 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @package App
  * @mixin Eloquent
  */
-class User extends AbstractModel implements AuthenticatableContract, AuthorizableContract
+class User extends AbstractModel implements
+    AuthenticatableContract,
+    AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
@@ -22,16 +24,12 @@ class User extends AbstractModel implements AuthenticatableContract, Authorizabl
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'password',
-    ];
+    protected $fillable = ['name', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
 }

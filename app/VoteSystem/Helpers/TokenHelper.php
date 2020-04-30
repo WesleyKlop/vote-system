@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\VoteSystem\Helpers;
 
 use Exception;
@@ -45,8 +44,10 @@ final class TokenHelper
      * @return string
      * @throws Exception
      */
-    public static function generateToken(int $length, string $keySpace = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'): string
-    {
+    public static function generateToken(
+        int $length,
+        string $keySpace = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'
+    ): string {
         $pieces = [];
         $max = mb_strlen($keySpace, '8bit') - 1;
         for ($i = 0; $i < $length; $i++) {

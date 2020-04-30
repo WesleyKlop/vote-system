@@ -31,7 +31,7 @@ class PropositionSubmitRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        if (! is_array($this->get('answer', null))) {
+        if (!is_array($this->get('answer', null))) {
             $this->merge([
                 'answer' => [$this->get('answer', null)],
             ]);

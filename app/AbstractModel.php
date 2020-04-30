@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App;
-
 
 use App\WhiteBox\Contracts\EntityModel;
 use App\WhiteBox\Support\Helpers\EntityHelper;

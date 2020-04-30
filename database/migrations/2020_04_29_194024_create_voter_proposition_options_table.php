@@ -13,7 +13,9 @@ class CreateVoterPropositionOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('voter_proposition_options', function (Blueprint $table) {
+        Schema::create('voter_proposition_options', function (
+            Blueprint $table
+        ) {
             $table->uuid('id')->primary();
             $table->uuid('proposition_id');
             $table->uuid('voter_id');

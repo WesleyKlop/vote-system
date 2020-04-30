@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -84,7 +83,7 @@ return [
         'voters' => [
             'driver' => 'voter',
             'model' => App\Voter::class,
-        ]
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -128,5 +127,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

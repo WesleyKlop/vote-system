@@ -7,13 +7,13 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
-class Voter extends AbstractModel implements AuthenticatableContract, AuthorizableContract
+class Voter extends AbstractModel implements
+    AuthenticatableContract,
+    AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
-    protected $fillable = [
-        'token',
-    ];
+    protected $fillable = ['token'];
 
     public function answers()
     {
