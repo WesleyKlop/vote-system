@@ -17,26 +17,28 @@
                 @endforeach
             </div>
         @elseif($page->isType('grid'))
-            <table>
-                <thead>
-                <th class="border"></th>
-                @foreach($proposition->horizontalOptions() as $option)
-                    <th class="border">{{ $option->option }}</th>
-                @endforeach
-                </thead>
-                <tbody>
-                @foreach($proposition->verticalOptions() as $rowOption)
-                    <tr>
-                        <td class="border">{{ $rowOption->option }}</td>
-                        @foreach($proposition->horizontalOptions() as $colOption)
-                            <td class="border">
-                                <input type="radio" name="answer[{{ $rowOption->id }}]" value="{{ $colOption->id }}"/>
-                            </td>
-                        @endforeach
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+            <div class="max-w-screen overflow-x-scroll">
+                <table class="table-auto">
+                    <thead>
+                    <th class="border"></th>
+                    @foreach($proposition->horizontalOptions() as $option)
+                        <th class="border">{{ $option->option }}</th>
+                    @endforeach
+                    </thead>
+                    <tbody>
+                    @foreach($proposition->verticalOptions() as $rowOption)
+                        <tr>
+                            <td class="border">{{ $rowOption->option }}</td>
+                            @foreach($proposition->horizontalOptions() as $colOption)
+                                <td class="border">
+                                    <input type="radio" name="answer[{{ $rowOption->id }}]" value="{{ $colOption->id }}"/>
+                                </td>
+                            @endforeach
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         @endif
 
         <input type="submit"/>

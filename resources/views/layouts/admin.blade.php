@@ -9,7 +9,7 @@
 </head>
 <body>
 <div id="app" class="container mx-auto">
-    <header class="flex justify-between py-6 mb-6 border-b">
+    <header class="flex justify-between py-6 mb-6 border-b items-center">
         <a href="{{ route('admin.index') }}" class="font-bold text-lg uppercase">Vote System</a>
         <nav>
             <a href="{{ route('admin.voters.index') }}" class="mx-2 uppercase">Voters</a>
