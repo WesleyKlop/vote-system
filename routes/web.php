@@ -45,9 +45,7 @@ Route::get('/admin/logout', 'Admin\LoginController@logout')->name(
 Route::prefix('/admin')
     ->middleware('admin')
     ->group(function () {
-        Route::get('/', function () {
-            dump(Auth::user());
-        })->name('admin.index');
+        Route::get('/', 'Admin\DashboardController@index')->name('admin.index');
 
         Route::get('/voters', 'Admin\VoterController@index')->name(
             'admin.voters.index'

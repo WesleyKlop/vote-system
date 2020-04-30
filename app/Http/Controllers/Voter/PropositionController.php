@@ -5,32 +5,34 @@ namespace App\Http\Controllers\Voter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Voter\PropositionSubmitRequest;
 use App\VoteSystem\Models\Proposition;
-use App\VoteSystem\Models\PropositionOption;
 use App\VoteSystem\Models\Voter;
+use App\VoteSystem\Models\VoterPropositionOption;
+use App\VoteSystem\Pages\Voters\PropositionShowPage;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class PropositionController extends Controller
 {
     public function index(Request $request)
     {
         $user = $request->user();
-        $proposition = Proposition::whereDoesntHave('voters', function (
-            Builder $query
-        ) use ($user) {
-            $query->where('voters.id', $user->id);
-        })
-            ->where('is_open', true)
+        $proposition = Proposition
+            ::whereDoesntHave('voters', function (Builder $query) use ($user) {
+                $query->where('voters.id', $user->id);
+            })
+            ->open()
             ->orderBy('index')
+            ->with('options')
             ->first();
 
         if (is_null($proposition)) {
-            return view('views.voters.empty_state');
+            return view('views.voter.empty_state');
         }
 
-        return view('views.voter.show', ['proposition' => $proposition]);
+        return $this->page(new PropositionShowPage($proposition));
     }
 
     /**
@@ -44,32 +46,21 @@ class PropositionController extends Controller
         $user = $request->user();
         $proposition = Proposition::findOrFail($request->get('proposition'));
 
-        // Get the answers and verify that they all belong to a given proposition
-        $submittedAnswers = $request->get('answer');
-        $validAnswers = PropositionOption::where(
-            'proposition_id',
-            $proposition->id
-        )
-            ->whereIn('id', $submittedAnswers)
-            ->get();
+        $submittedAnswers = collect($request->get('answer'));
 
-        if (
-            $validAnswers->count() === 0 ||
-            $validAnswers->count() !== count($submittedAnswers)
-        ) {
-            throw new Exception(
-                'Could not find any selected answers. Did you try to cheat?'
-            );
+        // Grid option key => value is flipped so we can give an option per row
+        if ($proposition->type === 'grid') {
+            $submittedAnswers = $submittedAnswers->flip();
         }
+        $voterPropositionOptions = $submittedAnswers->map(fn(string $vertical, string $horizontal) => [
+            'id' => Str::uuid(),
+            'voter_id' => $user->id,
+            'proposition_id' => $proposition->id,
+            'horizontal_option_id' => $horizontal,
+            'vertical_option_id' => $vertical,
+        ]);
 
-        $user->answers()->createMany(
-            $validAnswers->map(function (PropositionOption $option) {
-                return [
-                    'proposition_id' => $option->proposition_id,
-                    'proposition_option_id' => $option->id,
-                ];
-            })
-        );
+        VoterPropositionOption::insert($voterPropositionOptions->toArray());
 
         return redirect()->route('proposition.index');
     }

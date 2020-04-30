@@ -28,13 +28,4 @@ class PropositionSubmitRequest extends FormRequest
             'answer' => ['required', 'array'],
         ];
     }
-
-    public function prepareForValidation()
-    {
-        if (!is_array($this->get('answer', null))) {
-            $this->merge([
-                'answer' => [$this->get('answer', null)],
-            ]);
-        }
-    }
 }

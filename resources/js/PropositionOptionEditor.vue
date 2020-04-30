@@ -4,17 +4,17 @@ export default {
         sourceOptions: {
             type: Array,
             default: () => [
-                { vector: 'horizontal', option: 'Voorzitter' },
-                { vector: 'horizontal', option: 'Vice-vo' },
-                { vector: 'horizontal', option: 'Penny' },
-                { vector: 'horizontal', option: 'Extern' },
-                { vector: 'horizontal', option: 'Secretaris' },
-                { vector: 'horizontal', option: 'Intern' },
-                { vector: 'vertical', option: 'Wesley' },
-                { vector: 'vertical', option: 'Sander' },
-                { vector: 'vertical', option: 'Niels' },
-                { vector: 'vertical', option: 'Peter' },
-                { vector: 'vertical', option: 'Jason' },
+                { axis: 'horizontal', option: 'Voorzitter' },
+                { axis: 'horizontal', option: 'Vice-vo' },
+                { axis: 'horizontal', option: 'Penny' },
+                { axis: 'horizontal', option: 'Extern' },
+                { axis: 'horizontal', option: 'Secretaris' },
+                { axis: 'horizontal', option: 'Intern' },
+                { axis: 'vertical', option: 'Wesley' },
+                { axis: 'vertical', option: 'Sander' },
+                { axis: 'vertical', option: 'Niels' },
+                { axis: 'vertical', option: 'Peter' },
+                { axis: 'vertical', option: 'Jason' },
             ],
             required: false,
         },
@@ -50,14 +50,14 @@ export default {
                     : 0
 
             this.source.push({
-                vector: axis,
+                axis: axis,
                 option: '',
                 isDirty: false,
                 id: lastOptionId,
             })
         },
         options(axis) {
-            const options = this.source.filter((e) => e.vector === axis)
+            const options = this.source.filter((e) => e.axis === axis)
             if (options.every((item) => item.option.length > 0)) {
                 this.createOption(axis)
             }

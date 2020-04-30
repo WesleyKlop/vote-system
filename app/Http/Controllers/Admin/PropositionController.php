@@ -35,7 +35,7 @@ class PropositionController extends Controller
                     continue;
                 }
                 $options->push(PropositionOption::make([
-                    'vector' => $axis,
+                    'axis' => $axis,
                     'option' => $option,
                 ]));
             }
@@ -43,7 +43,7 @@ class PropositionController extends Controller
 
         $optionCount = $options
             ->countBy(function (PropositionOption $option) {
-                return $option->vector;
+                return $option->axis;
             });
         $hasMultipleColumns = $optionCount->get('horizontal') > 1;
 

@@ -7,7 +7,8 @@ class VoterPropositionOption extends AbstractModel
     protected $fillable = [
         'voter_id',
         'proposition_id',
-        'proposition_option_id',
+        'vertical_option_id',
+        'horizontal_option_id',
     ];
 
     public function proposition()

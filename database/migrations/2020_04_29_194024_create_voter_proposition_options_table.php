@@ -19,7 +19,8 @@ class CreateVoterPropositionOptionsTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('proposition_id');
             $table->uuid('voter_id');
-            $table->uuid('proposition_option_id');
+            $table->uuid('horizontal_option_id');
+            $table->uuid('vertical_option_id');
 
             $table
                 ->foreign('proposition_id')
@@ -30,7 +31,11 @@ class CreateVoterPropositionOptionsTable extends Migration
                 ->references('id')
                 ->on('voters');
             $table
-                ->foreign('proposition_option_id')
+                ->foreign('horizontal_option_id')
+                ->references('id')
+                ->on('proposition_options');
+            $table
+                ->foreign('vertical_option_id')
                 ->references('id')
                 ->on('proposition_options');
         });

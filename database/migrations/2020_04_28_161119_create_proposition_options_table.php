@@ -17,7 +17,7 @@ class CreatePropositionOptionsTable extends Migration
             $table->uuid('id')->primary();
             $table->uuid('proposition_id');
             $table
-                ->enum('vector', ['horizontal', 'vertical'])
+                ->enum('axis', ['horizontal', 'vertical'])
                 ->default('vertical');
             $table->string('option');
 

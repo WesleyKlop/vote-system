@@ -21,12 +21,12 @@ class Proposition extends AbstractModel
 
     public function verticalOptions(): Collection
     {
-        return $this->options->where('vector', 'vertical');
+        return $this->options->where('axis', 'vertical');
     }
 
     public function horizontalOptions(): Collection
     {
-        return $this->options->where('vector', 'horizontal');
+        return $this->options->where('axis', 'horizontal');
     }
 
     public function voters()

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PropositionOption extends AbstractModel
 {
-    protected $fillable = ['vector', 'option'];
+    protected $fillable = ['axis', 'option'];
 
     public function proposition(): BelongsTo
     {
@@ -16,11 +16,11 @@ class PropositionOption extends AbstractModel
 
     public function scopeVertical(Builder $query)
     {
-        return $query->where('vector', 'vertical');
+        return $query->where('axis', 'vertical');
     }
 
     public function scopeHorizontal(Builder $query)
     {
-        return $query->where('vector', 'horizontal');
+        return $query->where('axis', 'horizontal');
     }
 }
