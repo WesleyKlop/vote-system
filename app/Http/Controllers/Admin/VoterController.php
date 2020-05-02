@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TokenGenerateRequest;
 use App\VoteSystem\Helpers\TokenHelper;
 use App\VoteSystem\Models\Voter;
+use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
 class VoterController extends Controller
@@ -17,6 +19,11 @@ class VoterController extends Controller
         return view('views.admin.voters.index', ['voters' => $voters]);
     }
 
+    /**
+     * @param  TokenGenerateRequest  $request
+     * @return RedirectResponse
+     * @throws Exception
+     */
     public function update(TokenGenerateRequest $request)
     {
         // Delete all existing tokens, which as a side effect deletes all answers given by a token

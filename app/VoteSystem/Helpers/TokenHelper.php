@@ -49,7 +49,7 @@ final class TokenHelper
         string $keySpace = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'
     ): string {
         $pieces = [];
-        $max = mb_strlen($keySpace, '8bit') - 1;
+        $max = mb_strlen($keySpace) - 1;
         for ($i = 0; $i < $length; $i++) {
             $pieces[] = $keySpace[random_int(0, $max)];
         }
