@@ -16,7 +16,7 @@ class LoginController extends Controller
      * Where to redirect users after login.
      * @var string
      */
-    protected $redirectTo = '/admin/';
+    protected string $redirectTo = '/admin/';
 
     public function username(): string
     {

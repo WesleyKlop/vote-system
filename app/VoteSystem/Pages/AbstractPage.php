@@ -4,7 +4,7 @@ namespace App\VoteSystem\Pages;
 
 abstract class AbstractPage
 {
-    protected $view;
+    protected string $view;
 
     public function view(): string
     {

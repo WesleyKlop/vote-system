@@ -9,11 +9,11 @@ use Illuminate\Support\Collection;
 
 class PropositionShowPage extends AbstractPage
 {
-    protected $view = 'views.voter.show';
+    protected string $view = 'views.voter.show';
     /**
      * @var Proposition
      */
-    private $proposition;
+    private Proposition $proposition;
 
     public function __construct(Proposition $proposition)
     {

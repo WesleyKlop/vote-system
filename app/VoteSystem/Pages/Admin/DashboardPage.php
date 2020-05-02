@@ -9,11 +9,11 @@ use Illuminate\Support\Collection;
 
 class DashboardPage extends AbstractPage
 {
-    protected $view = 'views.admin.index';
+    protected string $view = 'views.admin.index';
     /**
      * @var Collection<Proposition>
      */
-    private $propositions;
+    private Collection $propositions;
     /**
      * @var int
      */
