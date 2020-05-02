@@ -1,0 +1,28 @@
+.table-wrapper {
+    @apply border-gray-300 rounded-lg overflow-x-auto border-collapse;
+}
+
+.table {
+    @apply table-auto w-full;
+}
+
+.table > thead {
+    @apply border-b border-gray-200;
+}
+
+.table th,
+.table td {
+    @apply px-2 py-1;
+}
+
+.table th {
+    @apply text-left;
+}
+
+.table td {
+    @apply font-mono;
+}
+
+.table > tbody > tr:nth-child(even) {
+    @apply bg-gray-100;
+}

@@ -65,5 +65,16 @@ Route::prefix('/admin')
             '/propositions/create',
             'Admin\PropositionController@store'
         )->name('admin.propositions.store');
-        Route::get('/propositions/{proposition}', 'Admin\PropositionController@toggle')->name('admin.propositions.toggle');
+        Route::get(
+            '/propositions/{proposition}/toggle',
+            'Admin\PropositionController@toggle'
+        )->name('admin.propositions.toggle');
+        Route::get(
+            '/propositions/{proposition}/edit',
+            'Admin\PropositionController@edit'
+        )->name('admin.propositions.edit');
+        Route::post(
+            '/propositions/{proposition}',
+            'Admin\PropositionController@update'
+        )->name('admin.propositions.update');
     });

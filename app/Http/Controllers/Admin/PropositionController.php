@@ -12,13 +12,7 @@ class PropositionController extends Controller
 {
     public function index()
     {
-        $propositions = Proposition::with('options')
-            ->orderBy('order')
-            ->get();
-
-        return view('views.admin.propositions.index', [
-            'propositions' => $propositions,
-        ]);
+        return redirect()->route('admin.index');
     }
 
     public function create()
@@ -35,30 +29,26 @@ class PropositionController extends Controller
                 if (is_null($option)) {
                     continue;
                 }
-                $options->push(PropositionOption::make([
-                    'axis' => $axis,
-                    'option' => $option,
-                ]));
+                $options->push(
+                    PropositionOption::make([
+                        'axis' => $axis,
+                        'option' => $option,
+                    ])
+                );
             }
         }
 
-        $optionCount = $options
-            ->countBy(function (PropositionOption $option) {
-                return $option->axis;
-            });
+        $optionCount = $options->countBy(function (PropositionOption $option) {
+            return $option->axis;
+        });
         $hasMultipleColumns = $optionCount->get('horizontal') > 1;
 
-        $proposition = Proposition::make($request->only([
-            'title',
-            'order',
-        ]));
+        $proposition = Proposition::make($request->only(['title', 'order']));
         $proposition->is_open = $request->has('is_open');
         $proposition->type = $hasMultipleColumns ? 'grid' : 'list';
 
         $proposition->save();
-        $proposition
-            ->options()
-            ->createMany($options->toArray());
+        $proposition->options()->createMany($options->toArray());
 
         return redirect()->route('admin.propositions.index');
     }

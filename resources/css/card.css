@@ -1,0 +1,29 @@
+.card {
+    @apply shadow col-span-1 flex flex-col justify-between;
+}
+
+@screen sm {
+    .card {
+        @apply rounded-lg;
+    }
+}
+
+.card-header {
+    @apply flex justify-between items-center px-8 py-4;
+}
+
+.card-content {
+    @apply px-8 py-4;
+}
+
+.card-footer {
+    @apply border-t border-gray-300 flex justify-end px-8 py-4 mt-4;
+}
+
+.card-footer-link {
+    @apply uppercase font-bold text-base text-gray-900 px-4 py-1 rounded ml-4;
+}
+
+.card-footer-link:hover {
+    @apply bg-gray-100;
+}

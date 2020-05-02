@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\VoteSystem\Pages\Admin;
-
 
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Models\PropositionOption;
@@ -53,9 +51,15 @@ class DashboardPage extends AbstractPage
         return $proposition->verticalOptions();
     }
 
-    public function getOptionCount(Proposition $proposition, PropositionOption $vertical, PropositionOption $horizontal = null): int
-    {
-        $answers = $proposition->answers->where('vertical_option_id', $vertical->id);
+    public function getOptionCount(
+        Proposition $proposition,
+        PropositionOption $vertical,
+        PropositionOption $horizontal = null
+    ): int {
+        $answers = $proposition->answers->where(
+            'vertical_option_id',
+            $vertical->id
+        );
 
         if (! is_null($horizontal)) {
             $answers = $answers->where('horizontal_option_id', $horizontal->id);
@@ -63,5 +67,4 @@ class DashboardPage extends AbstractPage
 
         return $answers->count();
     }
-
 }

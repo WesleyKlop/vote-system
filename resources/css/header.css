@@ -1,0 +1,21 @@
+.header {
+    @apply flex justify-between py-6 mb-6 border-b items-center px-4;
+}
+
+@screen sm {
+    .header {
+        @apply px-0;
+    }
+}
+
+.header-title {
+    @apply font-bold text-lg uppercase;
+}
+
+.header-nav > a {
+    @apply mx-2 uppercase;
+}
+
+.header-token {
+    @apply flex bg-gray-100 rounded px-2 py-px font-mono overflow-x-auto whitespace-no-wrap w-48 max-w-full;
+}

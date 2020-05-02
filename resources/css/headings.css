@@ -1,0 +1,7 @@
+.title {
+    @apply text-2xl leading-8 font-bold;
+}
+
+.sub-title {
+    @apply text-lg text-gray-800;
+}

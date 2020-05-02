@@ -19,10 +19,11 @@ class PropositionController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $proposition = Proposition
-            ::whereDoesntHave('voters', function (Builder $query) use ($user) {
-                $query->where('voters.id', $user->id);
-            })
+        $proposition = Proposition::whereDoesntHave('voters', function (
+            Builder $query
+        ) use ($user) {
+            $query->where('voters.id', $user->id);
+        })
             ->open()
             ->orderBy('index')
             ->with('options')
@@ -46,19 +47,26 @@ class PropositionController extends Controller
         $user = $request->user();
         $proposition = Proposition::findOrFail($request->get('proposition'));
 
+        // Validate that the proposition is still open
+        if (! $proposition->is_open) {
+            throw new Exception('Proposition is already closed');
+        }
+
         $submittedAnswers = collect($request->get('answer'));
 
         // Grid option key => value is flipped so we can give an option per row
         if ($proposition->type === 'grid') {
             $submittedAnswers = $submittedAnswers->flip();
         }
-        $voterPropositionOptions = $submittedAnswers->map(fn(string $vertical, string $horizontal) => [
-            'id' => Str::uuid(),
-            'voter_id' => $user->id,
-            'proposition_id' => $proposition->id,
-            'horizontal_option_id' => $horizontal,
-            'vertical_option_id' => $vertical,
-        ]);
+        $voterPropositionOptions = $submittedAnswers->map(
+            fn(string $vertical, string $horizontal) => [
+                'id' => Str::uuid(),
+                'voter_id' => $user->id,
+                'proposition_id' => $proposition->id,
+                'horizontal_option_id' => $horizontal,
+                'vertical_option_id' => $vertical,
+            ]
+        );
 
         VoterPropositionOption::insert($voterPropositionOptions->toArray());
 

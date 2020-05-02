@@ -41,6 +41,18 @@ class LoginController extends Controller
         ]);
     }
 
+    protected function credentials(Request $request)
+    {
+        $token = $request->get($this->username());
+        $token = str_replace(' ', '', $token);
+        $token = strtoupper($token);
+
+        // Cleanup token
+        return [
+            'token' => $token,
+        ];
+    }
+
     public function username(): string
     {
         return 'token';
@@ -49,5 +61,10 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('voter');
+    }
+
+    protected function loggedOut(Request $request)
+    {
+        return redirect()->route('voter.index');
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\VoteSystem\Pages;
-
 
 abstract class AbstractPage
 {

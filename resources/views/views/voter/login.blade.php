@@ -1,21 +1,13 @@
-@extends('layouts.basic')
+@extends('layouts.voter')
 
 @section('content')
-    <form action="{{ route('voter.login') }}" method="POST">
+    <form action="{{ route('voter.login') }}" method="POST" class="">
         @csrf
+        <label class="input-label w-64">
+            Token
+            <token-input></token-input>
+        </label>
 
-        <input
-            title="Token"
-            type="text"
-            maxlength="16"
-            name="token"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            spellcheck="false"
-            placeholder="Enter token..."
-        />
-
-        <input type="submit" value="Start"/>
+        <input type="submit" value="Start" class="submit-button"/>
     </form>
 @endsection

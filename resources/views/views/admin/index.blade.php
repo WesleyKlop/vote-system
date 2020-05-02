@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 py-8">
-        <p class="bg-gray-100 col-span-1 lg:col-span-2 p-8 py-2 sm:rounded-lg text-lg">
+        <p class="banner col-span-1 lg:col-span-2">
             Total voter count: <span class="font-bold">{{ $page->getVoterCount() }}</span>
         </p>
         @foreach($page->getPropositions() as $proposition)
-            <div class="sm:rounded-lg shadow col-span-1 flex flex-col justify-between">
-                <div class="flex justify-between items-center px-8 py-4">
-                    <h2 class="text-3xl leading-8 truncate flex-1">{{ $proposition->order }}. {{ $proposition->title }}</h2>
-                    <span class="text-sm rounded-full px-4 py-1 my-1 leading-4 bg-gray-200 uppercase font-bold">{{ $proposition->is_open ? 'open' : 'closed' }}</span>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="title flex-1 truncate">{{ $proposition->order }}. {{ $proposition->title }}</h2>
+                    <span class="badge">{{ $proposition->is_open ? 'open' : 'closed' }}</span>
                 </div>
 
-                <div class="px-8 py-4">
+                <div class="card-content">
                     @if($proposition->type === 'list')
-                        <h3 class="text-xl">{{ $page->getListQuestion($proposition)->option }}</h3>
+                        <h3 class="sub-title">{{ $page->getListQuestion($proposition)->option }}</h3>
                         @foreach($page->getListOptions($proposition) as $option)
                             @php
                                 $count = $page->getOptionCount($proposition, $option);
@@ -26,22 +26,22 @@
                             </div>
                         @endforeach
                     @elseif($proposition->type === 'grid')
-                        <div class="border-gray-300 rounded-lg overflow-x-auto border-collapse">
-                            <table class="table-auto w-full">
-                                <thead class="border-b border-gray-200">
+                        <div class="table-wrapper">
+                            <table class="table">
+                                <thead>
                                 <tr>
-                                    <th class="px-2 py-1"></th>
+                                    <th></th>
                                     @foreach($proposition->horizontalOptions() as $option)
-                                        <th class="px-2 py-1">{{ $option->option }}</th>
+                                        <th>{{ $option->option }}</th>
                                     @endforeach
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($proposition->verticalOptions() as $rowOption)
-                                    <tr class="{{ $loop->even ? 'bg-gray-100' : '' }}">
-                                        <th class="px-2 py-1">{{ $rowOption->option }}</th>
+                                    <tr>
+                                        <th>{{ $rowOption->option }}</th>
                                         @foreach($proposition->horizontalOptions() as $colOption)
-                                            <td class="px-2 py-1">{{ $page->getOptionCount($proposition, $rowOption, $colOption) }}</td>
+                                            <td>{{ $page->getOptionCount($proposition, $rowOption, $colOption) }}</td>
                                         @endforeach
                                     </tr>
                                 @endforeach
@@ -51,12 +51,13 @@
                     @endif
                 </div>
 
-                <div class="border-t border-gray-300 flex justify-end px-8 py-4 mt-4">
+                <div class="card-footer">
+                    <a href="{{ route('admin.propositions.edit', $proposition) }}" class="card-footer-link">Edit</a>
                     <a href="{{ route('admin.propositions.toggle', [
                         'proposition' => $proposition,
                         'is_open' => ! $proposition->is_open
                         ]) }}"
-                       class="uppercase font-bold text-md text-gray-900 px-2 py-px rounded hover:bg-gray-200"
+                       class="card-footer-link"
                     >
                         {{ $proposition->is_open ? 'Close' : 'Open' }}
                     </a>

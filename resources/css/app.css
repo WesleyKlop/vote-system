@@ -1,3 +1,16 @@
 @import '~tailwindcss/base.css';
 @import '~tailwindcss/components.css';
+
+@import './banner.css';
+@import './card.css';
+@import './header.css';
+@import './headings.css';
+@import './input.css';
+@import './tables.css';
+@import './vote.css';
+
+.badge {
+    @apply text-sm rounded-full px-4 py-1 my-1 leading-4 bg-gray-200 uppercase font-bold;
+}
+
 @import '~tailwindcss/utilities.css';

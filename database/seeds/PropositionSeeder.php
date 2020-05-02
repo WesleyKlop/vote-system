@@ -20,7 +20,10 @@ class PropositionSeeder extends Seeder
         ])
             ->options()
             ->createMany([
-                ['axis' => 'horizontal', 'option' => 'Wat vindt je van deze app?'],
+                [
+                    'axis' => 'horizontal',
+                    'option' => 'Wat vindt je van deze app?',
+                ],
                 ['option' => 'Ja'],
                 ['option' => 'Nee'],
             ]);

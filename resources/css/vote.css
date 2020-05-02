@@ -1,0 +1,15 @@
+.vote-radio {
+    @apply hidden;
+}
+
+.vote-radio-label {
+    @apply w-5 h-5 p-1 flex items-center justify-center rounded-full mx-auto border-2 border-gray-500 bg-white;
+}
+
+.vote-radio-label > span {
+    @apply opacity-0 transition-opacity duration-75 ease-in bg-gray-500 rounded-full w-full h-full;
+}
+
+.vote-radio:checked + .vote-radio-label > span {
+    @apply opacity-100;
+}

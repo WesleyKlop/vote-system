@@ -1,0 +1,30 @@
+.input-label {
+    @apply flex flex-col text-sm my-4 text-gray-700;
+}
+
+.input {
+    @apply h-8 rounded border-2 border-gray-300 px-1 text-base;
+}
+
+.input--token {
+    @apply font-mono;
+}
+
+.submit-button {
+    @apply uppercase font-bold text-base py-2 px-5 rounded my-4 bg-gray-700 text-white;
+}
+
+.submit-button:hover {
+    @apply bg-gray-900;
+}
+
+.radio-input-label {
+    @apply block p-2 my-2 border rounded;
+}
+
+input[type='radio']:checked + .radio-input-label {
+    @apply bg-gray-200 shadow border-gray-400;
+}
+
+.radio-input-text {
+}

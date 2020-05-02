@@ -9,17 +9,17 @@
 </head>
 <body>
 <div id="app" class="container mx-auto">
-    <header class="flex justify-between py-6 mb-6 border-b items-center">
+    <header class="header">
         @auth('voter')
-            <div class="flex bg-gray-100 rounded px-2 py-px font-mono">
-                Jouw token: {{ Auth::user()->token }}
+            <div class="header-token">
+                {{ Auth::user()->token }}
             </div>
         @else
             <a href="{{ route('voter.index') }}" class="font-bold text-lg uppercase">Vote System</a>
         @endauth
         <nav>
             @auth('voter')
-                <a href="{{ route('admin.login.logout') }}" class="mx-2 uppercase">Exit</a>
+                <a href="{{ route('voter.logout') }}" class="mx-2 uppercase">Exit</a>
             @endauth
         </nav>
     </header>

@@ -9,12 +9,12 @@
 </head>
 <body>
 <div id="app" class="container mx-auto">
-    <header class="flex justify-between py-6 mb-6 border-b items-center">
-        <a href="{{ route('admin.index') }}" class="font-bold text-lg uppercase">Vote System</a>
-        <nav>
-            <a href="{{ route('admin.voters.index') }}" class="mx-2 uppercase">Voters</a>
-            <a href="{{ route('admin.propositions.index') }}" class="mx-2 uppercase">Propositions</a>
-            <a href="{{ route('admin.login.logout') }}" class="mx-2 uppercase">Logout</a>
+    <header class="header">
+        <a href="{{ route('admin.index') }}" class="header-title">Vote System</a>
+        <nav class="header-nav">
+            <a href="{{ route('admin.voters.index') }}">Voters</a>
+            <a href="{{ route('admin.index') }}">Propositions</a>
+            <a href="{{ route('admin.login.logout') }}">Logout</a>
         </nav>
     </header>
     @section('content')@show

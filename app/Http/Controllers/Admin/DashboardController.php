@@ -11,8 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $propositions = Proposition
-            ::with(['options', 'answers'])
+        $propositions = Proposition::with(['options', 'answers'])
             ->orderBy('order')
             ->get();
         $voterCount = Voter::count();

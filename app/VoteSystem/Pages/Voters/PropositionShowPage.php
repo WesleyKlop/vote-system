@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\VoteSystem\Pages\Voters;
-
 
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Models\PropositionOption;
@@ -16,7 +14,6 @@ class PropositionShowPage extends AbstractPage
      * @var Proposition
      */
     private $proposition;
-
 
     public function __construct(Proposition $proposition)
     {
@@ -35,16 +32,11 @@ class PropositionShowPage extends AbstractPage
 
     public function getListQuestion(): PropositionOption
     {
-        return $this
-            ->proposition
-            ->horizontalOptions()
-            ->first();
+        return $this->proposition->horizontalOptions()->first();
     }
 
     public function getListOptions(): Collection
     {
-        return $this
-            ->proposition
-            ->verticalOptions();
+        return $this->proposition->verticalOptions();
     }
 }
