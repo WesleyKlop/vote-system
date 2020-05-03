@@ -90,7 +90,7 @@ export default {
                         @keyup="col.isDirty = true"
                         @change="removeIfRemovable(col)"
                         :name="`options[horizontal][${col.id || ''}]`"
-                        class="border"
+                        class="input"
                     />
                 </th>
             </tr>
@@ -104,7 +104,7 @@ export default {
                         @keyup="row.isDirty = true"
                         @change="removeIfRemovable(row)"
                         :name="`options[vertical][${row.id || ''}]`"
-                        class="border"
+                        class="input"
                     />
                 </td>
                 <td v-for="_ in horizontal.length + 1" :key="_"></td>
