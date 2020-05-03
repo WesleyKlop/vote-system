@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
  * Class AbstractModel
  * @package App
  * @mixin Eloquent
+ * @property string $id
  */
 abstract class AbstractModel extends Model
 {

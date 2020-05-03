@@ -29,10 +29,10 @@ export default {
         }
     },
     created() {
-        this.source.push([
+        this.source = this.source.concat(
             this.createOption('horizontal'),
             this.createOption('vertical'),
-        ])
+        )
     },
     computed: {
         type() {
@@ -56,17 +56,17 @@ export default {
                     ? this.source[this.source.length - 1].id + 1
                     : 0
 
-            this.source.push({
+            return {
                 axis: axis,
                 option: '',
                 isDirty: false,
                 id: lastOptionId,
-            })
+            }
         },
         options(axis) {
             const options = this.source.filter((e) => e.axis === axis)
             if (options.every((item) => item.option.length > 0)) {
-                this.createOption(axis)
+                this.source.push(this.createOption(axis))
             }
             return options
         },
