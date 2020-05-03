@@ -12,7 +12,14 @@
                 <th>{{ $rowOption->option }}</th>
                 @foreach($proposition->horizontalOptions() as $colOption)
                     <td>
-                        <input class="vote-radio" id="option-{{$rowOption->id}}_{{$colOption->id}}" type="radio" name="answer[{{ $rowOption->id }}]" value="{{ $colOption->id }}"/>
+                        <input
+                            class="vote-radio"
+                            id="option-{{$rowOption->id}}_{{$colOption->id}}"
+                            type="radio"
+                            name="answer[{{ $rowOption->id }}]"
+                            value="{{ $colOption->id }}"
+                            required
+                        />
                         <label class="vote-radio-label" for="option-{{$rowOption->id}}_{{$colOption->id}}">
                             <span></span>
                         </label>

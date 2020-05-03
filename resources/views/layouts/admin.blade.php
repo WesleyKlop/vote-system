@@ -8,16 +8,11 @@
     <script defer src="{{ mix('js/app.js') }}"></script>
 </head>
 <body>
-<div id="app" class="container mx-auto">
-    <header class="header">
-        <a href="{{ route('admin.index') }}" class="header-title">Vote System</a>
-        <nav class="header-nav">
-            <a href="{{ route('admin.voters.index') }}">Voters</a>
-            <a href="{{ route('admin.index') }}">Propositions</a>
-            <a href="{{ route('admin.login.logout') }}">Logout</a>
-        </nav>
-    </header>
+<div id="app" class="container mx-auto flex flex-col min-h-screen">
+    @include('components.header-admin')
     @section('content')@show
+    <div class="flex-1"></div>
+    @include('components.footer')
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 .input-label {
-    @apply flex flex-col text-sm my-4 text-gray-700;
+    @apply flex flex-col text-sm my-4 text-gray-700 font-bold;
 }
 
 .input {
@@ -19,7 +19,7 @@
 }
 
 .radio-input-label {
-    @apply block p-2 my-2 border rounded;
+    @apply block p-2 my-2 border rounded cursor-pointer;
 }
 
 input[type='radio']:checked + .radio-input-label {
@@ -27,4 +27,25 @@ input[type='radio']:checked + .radio-input-label {
 }
 
 .radio-input-text {
+}
+
+.checkbox-input {
+    @apply hidden;
+}
+
+.checkbox-input-label {
+    @apply text-gray-800 h-5 flex items-center;
+}
+
+.checkbox-input-label::before {
+    content: '\2713';
+    @apply inline-block rounded border-2 w-5 h-5 leading-4 cursor-pointer text-white font-bold;
+}
+
+.checkbox-input-text {
+    @apply ml-2;
+}
+
+.checkbox-input:checked + .checkbox-input-label::before {
+    @apply border-purple-500 bg-purple-500;
 }

@@ -1,6 +1,7 @@
 @import '~tailwindcss/base.css';
 @import '~tailwindcss/components.css';
 
+@import './badge.css';
 @import './banner.css';
 @import './card.css';
 @import './header.css';
@@ -9,8 +10,9 @@
 @import './tables.css';
 @import './vote.css';
 
-.badge {
-    @apply text-sm rounded-full px-4 py-1 my-1 leading-4 bg-gray-200 uppercase font-bold;
-}
-
 @import '~tailwindcss/utilities.css';
+
+.background--login {
+    @apply bg-cover bg-center;
+    background-image: url('../img/login-background.jpg');
+}

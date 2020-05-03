@@ -7,9 +7,10 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
     <script defer src="{{ mix('js/app.js') }}"></script>
 </head>
-<body class="bg-gray-100">
-<div id="app" class="container mx-auto h-screen flex items-center justify-center">
+<body class="background--login">
+<div id="app" class="container mx-auto min-h-screen flex flex-col items-center justify-center">
     @section('content')@show
+    @include('components.footer')
 </div>
 </body>
 </html>

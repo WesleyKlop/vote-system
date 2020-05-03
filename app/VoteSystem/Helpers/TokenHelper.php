@@ -23,6 +23,12 @@ use Exception;
 final class TokenHelper
 {
     /**
+     * All characters that can be used for a token.
+     * Basically all number and letters except for 0, 1, I, L and O
+     */
+    public const KEY_SPACE = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
+
+    /**
      * @param  int  $amount
      * @return array
      * @throws Exception
@@ -38,20 +44,18 @@ final class TokenHelper
     }
 
     /**
-     * Generates a token with given length inside a given keyspace. Based on code by Stan Overgauw
+     * Generates a token with given length inside a given keySpace. Based on code by Stan Overgauw
      * @param  int  $length
-     * @param  string  $keySpace
      * @return string
      * @throws Exception
      */
     public static function generateToken(
-        int $length,
-        string $keySpace = '23456789ABCDEFGHJKMNPQRSTUVWXYZ'
+        int $length
     ): string {
         $pieces = [];
-        $max = mb_strlen($keySpace) - 1;
+        $max = mb_strlen(self::KEY_SPACE) - 1;
         for ($i = 0; $i < $length; $i++) {
-            $pieces[] = $keySpace[random_int(0, $max)];
+            $pieces[] = self::KEY_SPACE[random_int(0, $max)];
         }
         return implode('', $pieces);
     }

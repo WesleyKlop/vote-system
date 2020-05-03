@@ -7,6 +7,7 @@ use App\VoteSystem\Models\Voter;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
@@ -21,10 +22,13 @@ class LoginController extends Controller
     protected $redirectTo = '/vote';
 
     /**
-     * @return View
+     * @return View|RedirectResponse
      */
-    public function showLoginForm(): View
+    public function showLoginForm(Request $request)
     {
+        if ($request->user('voter')) {
+            return redirect()->route('proposition.index');
+        }
         return view('views.voter.login');
     }
 

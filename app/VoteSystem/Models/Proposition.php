@@ -31,7 +31,7 @@ class Proposition extends AbstractModel
 
     public function voters()
     {
-        return $this->belongsToMany(Voter::class, 'voter_proposition_options');
+        return $this->hasManyThrough(Voter::class, VoterPropositionOption::class, 'proposition_id', 'id', 'id', 'voter_id');
     }
 
     public function answers()

@@ -3,7 +3,7 @@
 }
 
 .vote-radio-label {
-    @apply w-5 h-5 p-1 flex items-center justify-center rounded-full mx-auto border-2 border-gray-500 bg-white;
+    @apply w-5 h-5 p-1 flex items-center justify-center rounded-full mx-auto border-2 border-gray-500 bg-white cursor-pointer;
 }
 
 .vote-radio-label > span {
@@ -12,4 +12,8 @@
 
 .vote-radio:checked + .vote-radio-label > span {
     @apply opacity-100;
+}
+
+.vote-radio:user-invalid + .vote-radio-label {
+    @apply border-red-500;
 }

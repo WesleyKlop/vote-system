@@ -5,8 +5,8 @@ export default {
             type: Array,
             default: () => [
                 { axis: 'horizontal', option: 'Voorzitter' },
-                { axis: 'horizontal', option: 'Vice-vo' },
-                { axis: 'horizontal', option: 'Penny' },
+                { axis: 'horizontal', option: 'Vice-voorzitter' },
+                { axis: 'horizontal', option: 'Penningmeester' },
                 { axis: 'horizontal', option: 'Extern' },
                 { axis: 'horizontal', option: 'Secretaris' },
                 { axis: 'horizontal', option: 'Intern' },
@@ -35,6 +35,13 @@ export default {
         ])
     },
     computed: {
+        type() {
+            const filledHorizontalOptions = this
+                .options('horizontal')
+                .filter(e => e.option)
+
+            return filledHorizontalOptions.length > 1 ? 'Grid' : 'List'
+        },
         horizontal() {
             return this.options('horizontal')
         },
@@ -79,36 +86,37 @@ export default {
 </script>
 
 <template>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th :key="col.id" v-for="col of horizontal">
+    <div class="grid grid-cols-2 gap-4 w-full sm:w-3/4">
+        <div class="col-span-2">Proposition type: <span class="font-bold">{{ type }}</span></div>
+        <div class="col-span-1">
+            <h2 class="sub-title">Horizontal options</h2>
+            <ol class="list-outside list-decimal pl-4">
+                <li :key="col.id" class="mb-1" v-for="col of horizontal">
                     <input
                         type="text"
                         v-model="col.option"
                         @keyup="col.isDirty = true"
                         @change="removeIfRemovable(col)"
                         :name="`options[horizontal][${col.id || ''}]`"
-                        class="input"
+                        class="input w-full"
                     />
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="row of vertical" :key="row.id">
-                <td>
+                </li>
+            </ol>
+        </div>
+        <div class="col-span-1">
+            <h2 class="sub-title">Vertical options</h2>
+            <ol class="list-outside list-decimal pl-4">
+                <li :key="row.id" class="mb-1" v-for="row of vertical">
                     <input
                         type="text"
                         v-model="row.option"
                         @keyup="row.isDirty = true"
                         @change="removeIfRemovable(row)"
                         :name="`options[vertical][${row.id || ''}]`"
-                        class="input"
+                        class="input w-full"
                     />
-                </td>
-                <td v-for="_ in horizontal.length + 1" :key="_"></td>
-            </tr>
-        </tbody>
-    </table>
+                </li>
+            </ol>
+        </div>
+    </div>
 </template>

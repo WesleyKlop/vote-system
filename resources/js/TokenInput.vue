@@ -8,6 +8,7 @@
         placeholder="ABCD 1234 WXYZ 7890"
         size="16"
         type="text"
+        required
     />
 </template>
 

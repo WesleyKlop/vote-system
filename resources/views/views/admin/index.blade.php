@@ -68,9 +68,12 @@
         @endforeach
     </div>
     <a
-        class="fixed bottom-0 right-0 rounded-full bg-gray-500 m-4 sm:m-8 p-4 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-lg"
+        class="fixed bottom-0 right-0 rounded-full bg-gray-500 m-4 sm:m-8 p-2 w-16 h-16 sm:w-20 sm:h-20 shadow-lg"
         href="{{ route('admin.propositions.create') }}"
+        title="Create proposition"
     >
-        Add
+        <svg viewBox="0 0 24 24" class="w-full h-full text-white">
+            <path fill="currentColor" fill-rule="evenodd" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/>
+        </svg>
     </a>
 @endsection

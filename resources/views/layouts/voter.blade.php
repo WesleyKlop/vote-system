@@ -8,22 +8,11 @@
     <script defer src="{{ mix('js/app.js') }}"></script>
 </head>
 <body>
-<div id="app" class="container mx-auto">
-    <header class="header">
-        @auth('voter')
-            <div class="header-token">
-                {{ Auth::user()->token }}
-            </div>
-        @else
-            <a href="{{ route('voter.index') }}" class="font-bold text-lg uppercase">Vote System</a>
-        @endauth
-        <nav>
-            @auth('voter')
-                <a href="{{ route('voter.logout') }}" class="mx-2 uppercase">Exit</a>
-            @endauth
-        </nav>
-    </header>
+<div id="app" class="container mx-auto flex flex-col min-h-screen">
+    @include('components.header-voter')
     @section('content')@show
+    <div class="flex-1"></div>
+    @include('components.footer')
 </div>
 </body>
 </html>

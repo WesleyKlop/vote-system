@@ -1,26 +1,34 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.propositions.store') }}" class="flex flex-col">
-        <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0">Create proposition</h1>
+    <form method="POST" action="{{ route('admin.propositions.store') }}" class="flex flex-col items-stretch px-8 sm:px-0 w-full lg:w-3/4">
+        <h1 class="title">Create proposition</h1>
         @csrf
 
-        <div class="w-64">
+        <div class="">
             <label class="input-label">
                 Title
-                <input type="text" required name="title" class="input"/>
+                <input type="text" required name="title" class="input" placeholder="Is it okay to put pineapple on pizza?"/>
             </label>
-            <label class="input-label flex-row items-center">
-                <input type="checkbox" name="is_open" class="mr-4"/> Is open
-            </label>
+
             <label class="input-label">
                 Order
-                <input type="number" min="1" name="order" class="input"/>
+                <input type="number" min="1" name="order" class="input" placeholder="1"/>
+            </label>
+
+            <input type="checkbox" name="is_open" class="checkbox-input" checked hidden id="is_open"/>
+            <label class="checkbox-input-label" for="is_open">
+                <span class="checkbox-input-text">Open for voting</span>
             </label>
         </div>
 
+        <p class="my-2">
+            Creating a proposition with a single horizontal option makes a list proposition,
+            otherwise the users will be presented with a grid.<br/>
+            Empty options will be filtered out.
+        </p>
         <proposition-option-editor></proposition-option-editor>
 
-        <input type="submit"/>
+        <input type="submit" class="submit-button self-start" value="create"/>
     </form>
 @endsection
