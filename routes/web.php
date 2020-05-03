@@ -66,5 +66,5 @@ Route::prefix('/admin')
         Route
             ::get('/propositions/{proposition}/toggle', 'Admin\PropositionController@toggle')
             ->name('propositions.toggle');
-        Route::resource('propositions', 'Admin\PropositionController')->except('index');
+        Route::resource('propositions', 'Admin\PropositionController')->except('index', 'show');
     });

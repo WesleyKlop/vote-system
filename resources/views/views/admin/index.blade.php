@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
         <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0">Dashboard</h1>
         <p class="banner col-span-1 lg:col-span-2">
             Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span><br/>
@@ -67,4 +67,10 @@
             </div>
         @endforeach
     </div>
+    <a
+        class="fixed bottom-0 right-0 rounded-full bg-gray-500 m-4 sm:m-8 p-4 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center shadow-lg"
+        href="{{ route('admin.propositions.create') }}"
+    >
+        Add
+    </a>
 @endsection
