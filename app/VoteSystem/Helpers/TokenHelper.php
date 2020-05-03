@@ -49,9 +49,8 @@ final class TokenHelper
      * @return string
      * @throws Exception
      */
-    public static function generateToken(
-        int $length
-    ): string {
+    public static function generateToken(int $length): string
+    {
         $pieces = [];
         $max = mb_strlen(self::KEY_SPACE) - 1;
         for ($i = 0; $i < $length; $i++) {

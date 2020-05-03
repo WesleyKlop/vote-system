@@ -7,6 +7,8 @@ use App\Http\Requests\Admin\PropositionStoreRequest;
 use App\Http\Requests\Admin\PropositionUpdateRequest;
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Services\PropositionService;
+use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class PropositionController extends Controller
@@ -28,29 +30,31 @@ class PropositionController extends Controller
         return view('views.admin.propositions.create');
     }
 
-    public function update(PropositionUpdateRequest $request, Proposition $proposition)
-    {
-        $this
-            ->propositionService
-            ->updateProposition($proposition, $request->validated());
+    public function update(
+        PropositionUpdateRequest $request,
+        Proposition $proposition
+    ) {
+        $this->propositionService->updateProposition(
+            $proposition,
+            $request->validated()
+        );
 
         return redirect()->route('admin.propositions.index');
     }
 
     public function store(PropositionStoreRequest $request)
     {
-        $this
-            ->propositionService
-            ->createProposition($request->validated());
+        $this->propositionService->createProposition($request->validated());
 
         return redirect()->route('admin.propositions.index');
     }
 
     public function toggle(Request $request, Proposition $proposition)
     {
-        $this
-            ->propositionService
-            ->toggleProposition($proposition, $request->get('is_open') === '1');
+        $this->propositionService->toggleProposition(
+            $proposition,
+            $request->get('is_open') === '1'
+        );
 
         return redirect()->route('admin.index');
     }
@@ -62,5 +66,17 @@ class PropositionController extends Controller
         return view('views.admin.propositions.edit', [
             'proposition' => $proposition,
         ]);
+    }
+
+    /**
+     * @param  Proposition  $proposition
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function destroy(Proposition $proposition)
+    {
+        $proposition->delete();
+
+        return redirect()->route('admin.proposition.index');
     }
 }

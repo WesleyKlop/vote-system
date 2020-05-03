@@ -46,25 +46,28 @@ Route::prefix('/admin')
     ->middleware('admin')
     ->name('admin.')
     ->group(function () {
-        Route
-            ::get('/', 'Admin\DashboardController@index')
-            ->name('index');
+        Route::get('/', 'Admin\DashboardController@index')->name('index');
 
-        Route
-            ::get('/voters', 'Admin\VoterController@index')
-            ->name('voters.index');
-        Route
-            ::post('/voters', 'Admin\VoterController@update')
-            ->name('voters.update');
-        Route
-            ::get('/voters/{voter}/delete', 'Admin\VoterController@destroy')
-            ->name('voters.destroy');
+        Route::get('/voters', 'Admin\VoterController@index')->name(
+            'voters.index'
+        );
+        Route::post('/voters', 'Admin\VoterController@update')->name(
+            'voters.update'
+        );
+        Route::get(
+            '/voters/{voter}/delete',
+            'Admin\VoterController@destroy'
+        )->name('voters.destroy');
 
-        Route
-            ::get('/propositions', 'Admin\PropositionController@index')
-            ->name('propositions.index');
-        Route
-            ::get('/propositions/{proposition}/toggle', 'Admin\PropositionController@toggle')
-            ->name('propositions.toggle');
-        Route::resource('propositions', 'Admin\PropositionController')->except('index', 'show');
+        Route::get('/propositions', 'Admin\PropositionController@index')->name(
+            'propositions.index'
+        );
+        Route::get(
+            '/propositions/{proposition}/toggle',
+            'Admin\PropositionController@toggle'
+        )->name('propositions.toggle');
+        Route::resource('propositions', 'Admin\PropositionController')->except(
+            'index',
+            'show'
+        );
     });

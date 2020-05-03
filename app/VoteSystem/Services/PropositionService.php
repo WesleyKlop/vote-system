@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\VoteSystem\Services;
-
 
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Models\PropositionOption;
@@ -27,13 +25,16 @@ class PropositionService
 
     public function getNextProposition(Voter $voter): ?Proposition
     {
-        return $this
-            ->propositionRepository
-            ->findOpenWhereUnanswered($voter->id);
+        return $this->propositionRepository->findOpenWhereUnanswered(
+            $voter->id
+        );
     }
 
-    public function answerProposition(Voter $voter, Proposition $proposition, Collection $answers): void
-    {
+    public function answerProposition(
+        Voter $voter,
+        Proposition $proposition,
+        Collection $answers
+    ): void {
         // Grid option key => value is flipped so we can give an option per row
         if ($proposition->type === 'grid') {
             $answers = $answers->flip();
@@ -48,23 +49,21 @@ class PropositionService
             ]
         );
 
-        $this
-            ->voterPropositionOptionRepository
-            ->insert($voterPropositionOptions);
+        $this->voterPropositionOptionRepository->insert(
+            $voterPropositionOptions
+        );
     }
 
-    public function createProposition(array $validated)
+    public function createProposition(array $validated): void
     {
         $options = $this->mapOptions($validated['options']);
 
-        $proposition = $this
-            ->propositionRepository
-            ->create(
-                $validated['title'],
-                $validated['order'],
-                array_key_exists('is_open', $validated),
-                $this->getPropositionType($options)
-            );
+        $proposition = $this->propositionRepository->create(
+            $validated['title'],
+            $validated['order'],
+            array_key_exists('is_open', $validated),
+            $this->getPropositionType($options)
+        );
 
         $this->syncPropositionOptions($proposition, $options);
     }
@@ -97,47 +96,66 @@ class PropositionService
         return $horizontalOptions > 1 ? 'grid' : 'list';
     }
 
-    private function syncPropositionOptions(Proposition $proposition, Collection $newOptions)
-    {
+    private function syncPropositionOptions(
+        Proposition $proposition,
+        Collection $newOptions
+    ): void {
         $existingOptions = $proposition->options->keyBy('id');
         $newOptions = $newOptions->keyBy('id');
 
-        $deletedOptions = $existingOptions->whereNotIn('id', $newOptions->keys())->pluck('id');
-        $createdOptions = $newOptions->whereNotIn('id', $existingOptions->keys());
+        $deletedOptions = $existingOptions
+            ->whereNotIn('id', $newOptions->keys())
+            ->pluck('id');
+        $createdOptions = $newOptions->whereNotIn(
+            'id',
+            $existingOptions->keys()
+        );
         $updatedOptions = $existingOptions->whereIn('id', $newOptions->keys());
 
         $proposition
             ->options()
             ->whereIn('id', $deletedOptions)
             ->delete();
-        $proposition
-            ->options()
-            ->createMany($createdOptions);
-        $updatedOptions->each(fn(PropositionOption $option) => $option->update($newOptions->get($option->id)));
+        $proposition->options()->createMany($createdOptions);
+        $updatedOptions->each(
+            fn(PropositionOption $option) => $option->update(
+                $newOptions->get($option->id)
+            )
+        );
     }
 
-    public function toggleProposition(Proposition $proposition, bool $newState)
-    {
-        return $this
-            ->propositionRepository
-            ->update($proposition, [
-                'is_open' => $newState,
-            ]);
+    public function toggleProposition(
+        Proposition $proposition,
+        bool $newState
+    ): bool {
+        return $this->propositionRepository->update($proposition, [
+            'is_open' => $newState,
+        ]);
     }
 
-    public function updateProposition(Proposition $proposition, array $validated)
-    {
+    public function updateProposition(
+        Proposition $proposition,
+        array $validated
+    ): void {
         $options = $this->mapOptions($validated['options']);
 
-        $this
-            ->propositionRepository
-            ->update($proposition, [
-                'title' => $validated['title'],
-                'order' => $validated['order'],
-                'is_open' => array_key_exists('is_open', $validated),
-                'type' => $this->getPropositionType($options),
-            ]);
+        $this->propositionRepository->update($proposition, [
+            'title' => $validated['title'],
+            'order' => $validated['order'],
+            'is_open' => array_key_exists('is_open', $validated),
+            'type' => $this->getPropositionType($options),
+        ]);
 
         $this->syncPropositionOptions($proposition, $options);
+    }
+
+    public function propositionHasVoter(
+        Proposition $proposition,
+        Voter $voter
+    ): bool {
+        return $proposition
+            ->voters()
+            ->where('id', $voter->id)
+            ->exists();
     }
 }

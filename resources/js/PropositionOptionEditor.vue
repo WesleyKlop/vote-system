@@ -36,9 +36,9 @@ export default {
     },
     computed: {
         type() {
-            const filledHorizontalOptions = this
-                .options('horizontal')
-                .filter(e => e.option)
+            const filledHorizontalOptions = this.options('horizontal').filter(
+                (e) => e.option,
+            )
 
             return filledHorizontalOptions.length > 1 ? 'Grid' : 'List'
         },
@@ -87,7 +87,9 @@ export default {
 
 <template>
     <div class="grid grid-cols-2 gap-4 w-full sm:w-3/4">
-        <div class="col-span-2">Proposition type: <span class="font-bold">{{ type }}</span></div>
+        <div class="col-span-2">
+            Proposition type: <span class="font-bold">{{ type }}</span>
+        </div>
         <div class="col-span-1">
             <h2 class="sub-title">Horizontal options</h2>
             <ol class="list-outside list-decimal pl-4">

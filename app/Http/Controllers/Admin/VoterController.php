@@ -15,8 +15,7 @@ class VoterController extends Controller
 {
     public function index(): View
     {
-        $voters = Voter
-            ::query()
+        $voters = Voter::query()
             ->orderBy('id')
             ->get();
 

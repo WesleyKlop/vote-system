@@ -24,9 +24,7 @@ class PropositionController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        $proposition = $this
-            ->propositionService
-            ->getNextProposition($user->id);
+        $proposition = $this->propositionService->getNextProposition($user);
 
         if (is_null($proposition)) {
             return view('views.voter.empty_state');
@@ -46,16 +44,23 @@ class PropositionController extends Controller
         $voter = $request->user();
         $proposition = Proposition::findOrFail($request->get('proposition'));
 
-        // Validate that the proposition is still open
-        if (! $proposition->is_open) {
+        if (!$proposition->is_open) {
             throw new Exception('Proposition is already closed');
+        }
+
+        if (
+            $this->propositionService->propositionHasVoter($proposition, $voter)
+        ) {
+            throw new Exception('You already answered this proposition');
         }
 
         $answers = collect($request->get('answer'));
 
-        $this
-            ->propositionService
-            ->answerProposition($voter, $proposition, $answers);
+        $this->propositionService->answerProposition(
+            $voter,
+            $proposition,
+            $answers
+        );
 
         return redirect()->route('proposition.index');
     }

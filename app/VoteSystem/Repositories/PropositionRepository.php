@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\VoteSystem\Repositories;
-
 
 use App\VoteSystem\Models\Proposition;
 use Illuminate\Database\Eloquent\Builder;
@@ -10,10 +8,14 @@ use Illuminate\Database\Eloquent\Collection;
 
 class PropositionRepository
 {
-    public function findOpenWhereUnanswered(string $voterId, array $includes = ['options']): ?Proposition
-    {
+    public function findOpenWhereUnanswered(
+        string $voterId,
+        array $includes = ['options']
+    ): ?Proposition {
         return Proposition::with($includes)
-            ->whereDoesntHave('voters', function (Builder $query) use ($voterId) {
+            ->whereDoesntHave('voters', function (Builder $query) use (
+                $voterId
+            ) {
                 $query->where('voters.id', $voterId);
             })
             ->open()
@@ -28,12 +30,17 @@ class PropositionRepository
             ->get();
     }
 
-    public function create(string $title, int $order, bool $is_open, string $type): Proposition
-    {
+    public function create(
+        string $title,
+        int $order,
+        bool $is_open,
+        string $type
+    ): Proposition {
         return Proposition::create([
             'title' => $title,
             'order' => $order,
-            'is_open', $is_open,
+            'is_open',
+            $is_open,
             'type' => $type,
         ]);
     }
