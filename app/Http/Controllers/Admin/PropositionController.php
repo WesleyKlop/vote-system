@@ -59,4 +59,13 @@ class PropositionController extends Controller
         $proposition->save();
         return redirect()->route('admin.index');
     }
+
+    public function edit(Proposition $proposition)
+    {
+        $proposition->load('options');
+
+        return view('views.admin.propositions.edit', [
+            'proposition' => $proposition,
+        ]);
+    }
 }

@@ -29,7 +29,8 @@ class CreateVoterPropositionOptionsTable extends Migration
             $table
                 ->foreign('voter_id')
                 ->references('id')
-                ->on('voters');
+                ->on('voters')
+                ->cascadeOnDelete();
             $table
                 ->foreign('horizontal_option_id')
                 ->references('id')

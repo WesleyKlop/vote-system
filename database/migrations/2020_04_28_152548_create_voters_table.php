@@ -16,6 +16,7 @@ class CreateVotersTable extends Migration
         Schema::create('voters', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->char('token', 16)->unique();
+            $table->timestamp('used_at')->nullable();
         });
     }
 

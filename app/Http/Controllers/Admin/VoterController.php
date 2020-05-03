@@ -7,14 +7,18 @@ use App\Http\Requests\Admin\TokenGenerateRequest;
 use App\VoteSystem\Helpers\TokenHelper;
 use App\VoteSystem\Models\Voter;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Str;
 
 class VoterController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        $voters = Voter::all();
+        $voters = Voter
+            ::query()
+            ->orderBy('id')
+            ->get();
 
         return view('views.admin.voters.index', ['voters' => $voters]);
     }
@@ -24,7 +28,7 @@ class VoterController extends Controller
      * @return RedirectResponse
      * @throws Exception
      */
-    public function update(TokenGenerateRequest $request)
+    public function update(TokenGenerateRequest $request): RedirectResponse
     {
         // Delete all existing tokens, which as a side effect deletes all answers given by a token
         Voter::query()->delete();
@@ -40,6 +44,18 @@ class VoterController extends Controller
             ->all();
 
         Voter::insert($tokens);
+
+        return redirect()->back();
+    }
+
+    /**
+     * @param  Voter  $voter
+     * @return RedirectResponse
+     * @throws Exception
+     */
+    public function destroy(Voter $voter): RedirectResponse
+    {
+        $voter->delete();
 
         return redirect()->back();
     }

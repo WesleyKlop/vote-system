@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
+use App\VoteSystem\Models\Voter;
+use Carbon\CarbonImmutable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -66,5 +68,14 @@ class LoginController extends Controller
     protected function loggedOut(Request $request)
     {
         return redirect()->route('voter.index');
+    }
+
+    protected function authenticated(Request $request, Voter $voter)
+    {
+        // Set the used at property if not set yet
+        if (is_null($voter->used_at)) {
+            $voter->used_at = CarbonImmutable::now();
+            $voter->save();
+        }
     }
 }

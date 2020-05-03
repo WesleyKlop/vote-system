@@ -1,9 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0">Dashboard</h1>
         <p class="banner col-span-1 lg:col-span-2">
-            Total voter count: <span class="font-bold">{{ $page->getVoterCount() }}</span>
+            Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span><br/>
+            These statistics are based on the <span class="font-bold">used</span> tokens.
         </p>
         @foreach($page->getPropositions() as $proposition)
             <div class="card">
@@ -18,7 +20,7 @@
                         @foreach($page->getListOptions($proposition) as $option)
                             @php
                                 $count = $page->getOptionCount($proposition, $option);
-                                $width = $count / $page->getVoterCount()
+                                $width = $count / ($page->getUsedVoterCount() ?: 1)
                             @endphp
                             <div class="w-3/4 relative h-8 rounded border-2 border-gray-300 overflow-hidden my-2">
                                 <div class="mr-auto bg-gray-200 absolute left-0 inset-y-0" style="width: {{ $width * 100 }}%"></div>

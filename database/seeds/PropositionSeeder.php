@@ -12,6 +12,13 @@ class PropositionSeeder extends Seeder
      */
     public function run()
     {
+        $this->createListProposition();
+
+        $this->createGridProposition();
+    }
+
+    private function createListProposition()
+    {
         Proposition::create([
             'title' => 'Jouw mening over deze app',
             'is_open' => true,
@@ -27,7 +34,10 @@ class PropositionSeeder extends Seeder
                 ['option' => 'Ja'],
                 ['option' => 'Nee'],
             ]);
+    }
 
+    private function createGridProposition(): void
+    {
         Proposition::create([
             'title' => 'Kies rollen voor bestuur',
             'is_open' => true,
@@ -37,7 +47,16 @@ class PropositionSeeder extends Seeder
             ->options()
             ->createMany([
                 ['axis' => 'horizontal', 'option' => 'Voorzitter'],
-                ['axis' => 'vertical', 'option' => 'Wesley'],
+                ['axis' => 'horizontal', 'option' => 'Secretaris'],
+                ['axis' => 'horizontal', 'option' => 'Penningmeester'],
+                ['axis' => 'horizontal', 'option' => 'Vice-Voorzitter'],
+                ['axis' => 'horizontal', 'option' => 'Intern'],
+                ['axis' => 'horizontal', 'option' => 'Extern'],
+                ['axis' => 'vertical', 'option' => 'Wesley Klop'],
+                ['axis' => 'vertical', 'option' => 'Peter Nijessen'],
+                ['axis' => 'vertical', 'option' => 'Niels van Gijzen'],
+                ['axis' => 'vertical', 'option' => 'Sander Laarhoven'],
+                ['axis' => 'vertical', 'option' => 'Jason Kloor'],
             ]);
     }
 }
