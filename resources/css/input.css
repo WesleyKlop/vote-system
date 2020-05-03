@@ -47,5 +47,5 @@ input[type='radio']:checked + .radio-input-label {
 }
 
 .checkbox-input:checked + .checkbox-input-label::before {
-    @apply border-purple-500 bg-purple-500;
+    @apply border-primary bg-primary;
 }

@@ -15,5 +15,5 @@
 }
 
 .vote-radio:user-invalid + .vote-radio-label {
-    @apply border-red-500;
+    @apply border-failure;
 }

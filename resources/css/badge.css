@@ -1,3 +1,19 @@
 .badge {
-    @apply text-sm rounded-full px-4 py-1 my-1 leading-4 bg-gray-200 uppercase font-bold;
+    @apply text-sm rounded-full px-4 py-1 my-1 leading-4 bg-gray-200 uppercase font-bold ;
+}
+
+.badge--success {
+    @apply bg-success text-white;
+}
+
+.badge--failure {
+    @apply bg-failure text-white;
+}
+
+.badge--warning {
+    @apply bg-warning;
+}
+
+.badge--accent {
+    @apply bg-accent text-white;
 }

@@ -9,7 +9,7 @@
 }
 
 .header-title {
-    @apply font-bold text-lg uppercase;
+    @apply font-bold text-lg uppercase text-primary;
 }
 
 .header-nav > a {
