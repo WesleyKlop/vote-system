@@ -15,7 +15,7 @@
 }
 
 .submit-button:hover {
-    @apply bg-gray-900;
+    @apply bg-accent;
 }
 
 .radio-input-label {
