@@ -2,7 +2,7 @@
 
 @section('content')
     @php($proposition = $page->getProposition())
-
+    @include('components.token-banner')
     <form class="my-2 p-2 w-full lg:w-3/4" method="POST" action="{{ route('proposition.update') }}">
         @csrf
         <input type="hidden" name="proposition" value="{{ $proposition->id }}" required/>
