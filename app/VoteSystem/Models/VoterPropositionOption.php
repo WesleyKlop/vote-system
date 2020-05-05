@@ -2,6 +2,14 @@
 
 namespace App\VoteSystem\Models;
 
+/**
+ * Class VoterPropositionOption
+ * @package App\VoteSystem\Models
+ * @property Voter $voter
+ * @property Proposition $proposition
+ * @property PropositionOption $verticalOption
+ * @property PropositionOption $horizontalOption
+ */
 class VoterPropositionOption extends AbstractModel
 {
     protected $fillable = [
@@ -21,8 +29,13 @@ class VoterPropositionOption extends AbstractModel
         return $this->belongsTo(Voter::class);
     }
 
-    public function propositionOption()
+    public function verticalOption()
     {
-        return $this->belongsTo(PropositionOption::class);
+        return $this->belongsTo(PropositionOption::class, 'vertical_option_id');
+    }
+
+    public function horizontalOption()
+    {
+        return $this->belongsTo(PropositionOption::class, 'horizontal_option_id');
     }
 }
