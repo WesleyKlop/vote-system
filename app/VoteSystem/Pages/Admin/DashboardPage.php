@@ -2,6 +2,7 @@
 
 namespace App\VoteSystem\Pages\Admin;
 
+use App\VoteSystem\Helpers\PropositionHelper;
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Models\PropositionOption;
 use App\VoteSystem\Models\Voter;
@@ -26,9 +27,6 @@ class DashboardPage extends AbstractPage
         $this->voterCount = $voterCount;
     }
 
-    /**
-     * @return int
-     */
     public function getUnusedVoterCount(): int
     {
         return $this->voterCount->unused;
@@ -44,9 +42,6 @@ class DashboardPage extends AbstractPage
         return $this->voterCount->total;
     }
 
-    /**
-     * @return Collection
-     */
     public function getPropositions(): Collection
     {
         return $this->propositions;
@@ -54,12 +49,12 @@ class DashboardPage extends AbstractPage
 
     public function getListQuestion(Proposition $proposition): PropositionOption
     {
-        return $proposition->horizontalOptions()->first();
+        return PropositionHelper::getListQuestion($proposition);
     }
 
     public function getListOptions(Proposition $proposition): Collection
     {
-        return $proposition->verticalOptions();
+        return PropositionHelper::getListOptions($proposition);
     }
 
     public function getOptionCount(
@@ -67,15 +62,6 @@ class DashboardPage extends AbstractPage
         PropositionOption $vertical,
         PropositionOption $horizontal = null
     ): int {
-        $answers = $proposition->answers->where(
-            'vertical_option_id',
-            $vertical->id
-        );
-
-        if (!is_null($horizontal)) {
-            $answers = $answers->where('horizontal_option_id', $horizontal->id);
-        }
-
-        return $answers->count();
+        return PropositionHelper::getOptionCount($proposition, $vertical, $horizontal);
     }
 }
