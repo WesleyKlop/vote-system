@@ -1,0 +1,78 @@
+name: Automated tests
+
+on:
+    pull_request:
+    push:
+        branches:
+            - master
+
+env:
+    PHP_VERSION: 7.4
+#    POSTGRES_VERSION: 12
+    NODE_VERSION: 14.x
+
+jobs:
+    lint:
+        name: Lint code
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+            - id: yarn-cache-dir-path
+              run: echo "::set-output name=dir::$(yarn cache dir)"
+            - uses: actions/cache@v1
+              with:
+                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            - run: yarn --frozen-lockfile
+            - run: yarn lint:check
+
+    build:
+        name: Build frontend
+        needs: [lint]
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ env.NODE_VERSION }}
+            - id: yarn-cache-dir-path
+              run: echo "::set-output name=dir::$(yarn cache dir)"
+            - uses: actions/cache@v1
+              id: yarn-cache
+              with:
+                  path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+                  key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            - run: yarn --frozen-lockfile
+            - run: yarn build
+
+    test:
+        name: Test code
+        needs: [lint]
+        runs-on: ubuntu-latest
+        services:
+            database:
+                image: postgres:12
+                ports:
+                    - 5432/tcp
+                env:
+                    POSTGRES_DB: votesystem
+                    POSTGRES_PASSWORD: votesystem
+                    POSTGRES_USER: votesystem
+                volumes:
+                    - db-data:/var/lib/postgresql/data
+        steps:
+            - uses: actions/checkout@v2
+            - uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ env.PHP_VERSION }}
+                  coverage: xdebug
+                  extensions: mbstring, intl, pdo-mysql
+            - uses: actions/cache@v1
+              with:
+                  path: vendor
+                  key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            - run: composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
+            - run: vendor/bin/phpunit --do-not-cache-result --no-interaction --disallow-todo-tests
