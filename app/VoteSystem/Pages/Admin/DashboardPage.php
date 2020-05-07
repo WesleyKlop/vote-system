@@ -62,6 +62,10 @@ class DashboardPage extends AbstractPage
         PropositionOption $vertical,
         PropositionOption $horizontal = null
     ): int {
-        return PropositionHelper::getOptionCount($proposition, $vertical, $horizontal);
+        return PropositionHelper::getOptionCount(
+            $proposition,
+            $vertical,
+            $horizontal
+        );
     }
 }

@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\VoteSystem\Helpers;
-
 
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Models\PropositionOption;
@@ -10,8 +8,9 @@ use Illuminate\Support\Collection;
 
 final class PropositionHelper
 {
-    public static function getListQuestion(Proposition $proposition): PropositionOption
-    {
+    public static function getListQuestion(
+        Proposition $proposition
+    ): PropositionOption {
         return $proposition->horizontalOptions()->first();
     }
 
@@ -30,11 +29,10 @@ final class PropositionHelper
             $vertical->id
         );
 
-        if (! is_null($horizontal)) {
+        if (!is_null($horizontal)) {
             $answers = $answers->where('horizontal_option_id', $horizontal->id);
         }
 
         return $answers->count();
     }
-
 }

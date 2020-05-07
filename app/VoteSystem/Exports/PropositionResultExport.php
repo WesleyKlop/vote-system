@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\VoteSystem\Exports;
-
 
 use App\VoteSystem\Models\VoterPropositionOption;
 use Illuminate\Database\Eloquent\Builder;
@@ -14,7 +12,13 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class PropositionResultExport implements FromQuery, WithTitle, ShouldAutoSize, WithMapping, WithStrictNullComparison, WithHeadings
+class PropositionResultExport implements
+    FromQuery,
+    WithTitle,
+    ShouldAutoSize,
+    WithMapping,
+    WithStrictNullComparison,
+    WithHeadings
 {
     private string $propositionId;
 
@@ -25,8 +29,12 @@ class PropositionResultExport implements FromQuery, WithTitle, ShouldAutoSize, W
 
     public function query(): Builder
     {
-        return VoterPropositionOption
-            ::with('voter', 'proposition', 'horizontalOption', 'verticalOption')
+        return VoterPropositionOption::with(
+            'voter',
+            'proposition',
+            'horizontalOption',
+            'verticalOption'
+        )
             ->orderBy('voter_id')
             ->orderBy('horizontal_option_id')
             ->where('proposition_id', $this->propositionId);
@@ -53,11 +61,6 @@ class PropositionResultExport implements FromQuery, WithTitle, ShouldAutoSize, W
 
     public function headings(): array
     {
-        return [
-            'Proposition',
-            'Token',
-            'Horizontal',
-            'Vertical',
-        ];
+        return ['Proposition', 'Token', 'Horizontal', 'Vertical'];
     }
 }

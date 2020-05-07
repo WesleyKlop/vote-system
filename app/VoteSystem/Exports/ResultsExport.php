@@ -16,11 +16,11 @@ class ResultsExport implements WithMultipleSheets, Responsable
 
     public function sheets(): array
     {
-        if($this->propositionId !== null) {
+        if ($this->propositionId !== null) {
             return [new PropositionResultExport($this->propositionId)];
         }
-        return Proposition
-            ::orderBy('order')
+
+        return Proposition::orderBy('order')
             ->get('id')
             ->pluck('id')
             ->map(fn(string $id) => new PropositionResultExport($id))
