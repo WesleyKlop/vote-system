@@ -29,7 +29,7 @@ jobs:
             - run: yarn --frozen-lockfile
             - run: yarn lint:check
 
-    build:
+    build-frontend:
         name: Build frontend
         needs: [lint]
         runs-on: ubuntu-latest
@@ -48,8 +48,8 @@ jobs:
             - run: yarn --frozen-lockfile
             - run: yarn production
 
-    test:
-        name: Test code
+    test-backend:
+        name: Test backend
         needs: [lint]
         runs-on: ubuntu-latest
         services:
