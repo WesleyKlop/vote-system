@@ -19,6 +19,7 @@ class ResultsExport implements WithMultipleSheets, Responsable
         if ($this->propositionId !== null) {
             return [new PropositionResultExport($this->propositionId)];
         }
+
         return Proposition::orderBy('order')
             ->get('id')
             ->pluck('id')
