@@ -71,5 +71,7 @@ Route::prefix('/admin')
             'show'
         );
 
-        Route::get('/export', 'Admin\ResultExportController@index')->name('export.index');
+        Route::get('/export', 'Admin\ResultExportController@index')->name(
+            'export.index'
+        );
     });

@@ -36,6 +36,9 @@ class VoterPropositionOption extends AbstractModel
 
     public function horizontalOption()
     {
-        return $this->belongsTo(PropositionOption::class, 'horizontal_option_id');
+        return $this->belongsTo(
+            PropositionOption::class,
+            'horizontal_option_id'
+        );
     }
 }
