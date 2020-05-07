@@ -21,10 +21,9 @@ class LoginTest extends TestCase
     {
         $token = 'someInvalidToken';
 
-        $response = $this
-            ->post(route('voter.login'), [
-                'token' => $token,
-            ]);
+        $response = $this->post(route('voter.login'), [
+            'token' => $token,
+        ]);
 
         $response
             ->assertSessionHasErrors()
@@ -35,10 +34,9 @@ class LoginTest extends TestCase
     {
         $voter = $this->voter();
 
-        $response = $this
-            ->post(route('voter.login'), [
-                'token' => $voter->token,
-            ]);
+        $response = $this->post(route('voter.login'), [
+            'token' => $voter->token,
+        ]);
 
         $response
             ->assertSessionHasNoErrors()
