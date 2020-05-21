@@ -10,7 +10,7 @@
         "lint:fix": "yarn prettier --write"
     },
     "devDependencies": {
-        "@prettier/plugin-php": "^0.14.0",
+        "@prettier/plugin-php": "^0.14.1",
         "cross-env": "^7.0",
         "laravel-mix": "^5.0.1",
         "prettier": "^2.0.5",
