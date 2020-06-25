@@ -74,4 +74,11 @@ Route::prefix('/admin')
         Route::get('/export', 'Admin\ResultExportController@index')->name(
             'export.index'
         );
+
+        Route::get('/config', 'Admin\AppConfigController@index')->name(
+            'config.index'
+        );
+        Route::post('/config', 'Admin\AppConfigController@update')->name(
+            'config.update'
+        );
     });

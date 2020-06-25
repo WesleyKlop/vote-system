@@ -5,7 +5,7 @@
         mask="#### #### #### ####"
         maxlength="16"
         name="token"
-        placeholder="ABCD 1234 WXYZ 7890"
+        placeholder="ABCD 2345 WXYZ 6789"
         size="16"
         type="text"
         required

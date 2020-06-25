@@ -17,6 +17,7 @@ class PropositionController extends Controller
 
     public function __construct(PropositionService $propositionService)
     {
+        parent::__construct();
         $this->propositionService = $propositionService;
     }
 

@@ -1,5 +1,5 @@
 .header {
-    @apply flex justify-between py-6 mb-6 border-b items-center px-8;
+    @apply flex justify-between mb-6 border-b items-center px-8 h-20;
 }
 
 @screen sm {

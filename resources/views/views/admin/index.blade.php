@@ -3,10 +3,13 @@
 @section('content')
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
         <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0 text-primary">Dashboard</h1>
-        <p class="banner col-span-1 lg:col-span-2">
-            Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span><br/>
-            These statistics are based on the <span class="font-bold">used</span> tokens.
-        </p>
+        <div class="banner col-span-1 lg:col-span-2">
+            <p>{!! $page->getWelcomeMessage() !!}</p>
+            <p>
+                Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span><br/>
+                These statistics are based on the <span class="font-bold">used</span> tokens.
+            </p>
+        </div>
         @foreach($page->getPropositions() as $proposition)
             <div class="card">
                 <div class="card-header">

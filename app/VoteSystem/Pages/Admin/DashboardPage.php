@@ -20,11 +20,24 @@ class DashboardPage extends AbstractPage
      * @var Voter
      */
     private Voter $voterCount;
+    private string $welcomeMessage;
 
-    public function __construct(Collection $propositions, Voter $voterCount)
-    {
+    public function __construct(
+        Collection $propositions,
+        Voter $voterCount,
+        string $welcomeMessage
+    ) {
         $this->propositions = $propositions;
         $this->voterCount = $voterCount;
+        $this->welcomeMessage = $welcomeMessage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWelcomeMessage(): string
+    {
+        return $this->welcomeMessage;
     }
 
     public function getUnusedVoterCount(): int

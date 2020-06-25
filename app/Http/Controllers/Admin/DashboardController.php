@@ -17,6 +17,7 @@ class DashboardController extends Controller
         PropositionRepository $propositionRepository,
         VoterRepository $voterRepository
     ) {
+        parent::__construct();
         $this->propositionRepository = $propositionRepository;
         $this->voterRepository = $voterRepository;
     }
@@ -28,7 +29,10 @@ class DashboardController extends Controller
             'answers',
         ]);
         $voterCount = $this->voterRepository->aggregateVoterStatistics();
+        $welcomeMessage = $this->config->get('admin_welcome_message');
 
-        return $this->page(new DashboardPage($propositions, $voterCount));
+        return $this->page(
+            new DashboardPage($propositions, $voterCount, $welcomeMessage)
+        );
     }
 }

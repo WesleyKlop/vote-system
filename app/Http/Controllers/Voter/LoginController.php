@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
-use App\VoteSystem\Models\AppConfig;
 use App\VoteSystem\Models\Voter;
 use Carbon\CarbonImmutable;
-use Illuminate\Auth\SessionGuard;
+use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
@@ -16,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+
     /**
      * Where to redirect users after login.
      */
@@ -30,8 +30,12 @@ class LoginController extends Controller
         if ($request->user('voter')) {
             return redirect()->route('proposition.index');
         }
-        $welcomeMessage = AppConfig::getValue('welcome_message');
-        return view('views.voter.login', [ 'welcomeMessage' => $welcomeMessage ]);
+        return view('views.voter.login', [
+            'welcomeMessage' => $this->config->get('welcome_message'),
+            'voterLegalRequirements' => $this->config->get(
+                'voter_legal_requirements'
+            ),
+        ]);
     }
 
     /**
@@ -45,6 +49,7 @@ class LoginController extends Controller
     {
         $request->validate([
             $this->username() => 'required|string',
+            'legal_accepted' => 'required|accepted',
         ]);
     }
 
@@ -65,17 +70,17 @@ class LoginController extends Controller
         return 'token';
     }
 
-    protected function guard(): SessionGuard
+    protected function guard(): StatefulGuard
     {
         return Auth::guard('voter');
     }
 
-    protected function loggedOut(Request $request): RedirectResponse
+    protected function loggedOut(): RedirectResponse
     {
         return redirect()->route('voter.index');
     }
 
-    protected function authenticated(Request $request, Voter $voter): void
+    protected function authenticated(Voter $voter): void
     {
         // Set the used at property if not set yet
         if (is_null($voter->used_at)) {
