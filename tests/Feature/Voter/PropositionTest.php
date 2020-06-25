@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests\Feature\Voter;
-
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\CreatesPropositions;
@@ -15,23 +13,22 @@ class PropositionTest extends TestCase
     use UsesVoters;
     use CreatesPropositions;
 
-    public function testPropositionPageUnreachableWhenGuest(): void {
+    public function testPropositionPageUnreachableWhenGuest(): void
+    {
         $response = $this->get(route('proposition.index'));
 
-        $response
-            ->assertRedirect(route('voter.index'));
+        $response->assertRedirect(route('voter.index'));
     }
 
-    public function testCanVisitPropositionPage(): void {
+    public function testCanVisitPropositionPage(): void
+    {
         $voter = $this->voter();
         $proposition = $this->createProposition();
 
-        $response = $this
-            ->actingAs($voter, 'voter')
-            ->get(route('proposition.index'));
+        $response = $this->actingAs($voter, 'voter')->get(
+            route('proposition.index')
+        );
 
-        $response
-            ->dump()
-            ->assertOk();
+        $response->dump()->assertOk();
     }
 }

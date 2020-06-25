@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests;
-
 
 use App\VoteSystem\Models\Voter;
 
