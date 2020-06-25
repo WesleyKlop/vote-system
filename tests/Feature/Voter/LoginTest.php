@@ -2,13 +2,14 @@
 
 namespace Tests\Feature\Voter;
 
-use App\VoteSystem\Models\Voter;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Tests\UsesVoters;
 
 class LoginTest extends TestCase
 {
     use RefreshDatabase;
+    use UsesVoters;
 
     public function testLoginPageReachable(): void
     {
@@ -41,10 +42,5 @@ class LoginTest extends TestCase
         $response
             ->assertSessionHasNoErrors()
             ->assertRedirect(route('proposition.index'));
-    }
-
-    protected function voter(): Voter
-    {
-        return factory(Voter::class)->create();
     }
 }
