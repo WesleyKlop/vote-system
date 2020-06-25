@@ -10,7 +10,7 @@
         "lint:fix": "yarn prettier --write"
     },
     "devDependencies": {
-        "@prettier/plugin-php": "^0.14.0",
+        "@prettier/plugin-php": "^0.14.2",
         "cross-env": "^7.0",
         "laravel-mix": "^5.0.1",
         "prettier": "^2.0.5",
@@ -18,7 +18,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "tailwindcss": "^1.4.5",
+        "tailwindcss": "^1.4.6",
         "vue": "^2.6.11",
         "vue-masked-input": "^0.5.2"
     }
