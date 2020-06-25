@@ -56,7 +56,7 @@ jobs:
             database:
                 image: postgres:12
                 ports:
-                    - 5432/tcp
+                    - 5432:5432
                 env:
                     POSTGRES_DB: votesystem
                     POSTGRES_PASSWORD: votesystem
@@ -69,7 +69,7 @@ jobs:
               with:
                   php-version: ${{ env.PHP_VERSION }}
                   coverage: xdebug
-                  extensions: mbstring, intl, pdo-mysql
+                  extensions: mbstring, intl, pdo-pgsql
             - uses: actions/cache@v1
               with:
                   path: vendor

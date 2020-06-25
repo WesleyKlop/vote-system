@@ -19,7 +19,7 @@ class PropositionRepository
                 $query->where('voters.id', $voterId);
             })
             ->open()
-            ->orderBy('index')
+            ->orderBy('order')
             ->first();
     }
 
