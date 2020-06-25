@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
+use App\VoteSystem\Models\AppConfig;
 use App\VoteSystem\Models\Voter;
 use Carbon\CarbonImmutable;
 use Illuminate\Auth\SessionGuard;
@@ -29,7 +30,8 @@ class LoginController extends Controller
         if ($request->user('voter')) {
             return redirect()->route('proposition.index');
         }
-        return view('views.voter.login');
+        $welcomeMessage = AppConfig::getValue('welcome_message');
+        return view('views.voter.login', [ 'welcomeMessage' => $welcomeMessage ]);
     }
 
     /**
