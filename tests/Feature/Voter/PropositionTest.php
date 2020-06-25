@@ -29,6 +29,9 @@ class PropositionTest extends TestCase
             route('proposition.index')
         );
 
-        $response->dump()->assertOk();
+        $response
+            ->assertViewIs('views.voter.show')
+            ->assertSeeText($proposition->title)
+            ->assertOk();
     }
 }

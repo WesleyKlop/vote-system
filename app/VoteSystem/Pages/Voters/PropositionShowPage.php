@@ -30,7 +30,7 @@ class PropositionShowPage extends AbstractPage
         return $this->proposition->type === $type;
     }
 
-    public function getListQuestion(): PropositionOption
+    public function getListQuestion(): ?PropositionOption
     {
         return $this->proposition->horizontalOptions()->first();
     }
