@@ -39,8 +39,7 @@ class PropositionRepository
         return Proposition::create([
             'title' => $title,
             'order' => $order,
-            'is_open',
-            $is_open,
+            'is_open' => $is_open,
             'type' => $type,
         ]);
     }

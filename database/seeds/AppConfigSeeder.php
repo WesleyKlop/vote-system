@@ -28,6 +28,8 @@ class AppConfigSeeder extends Seeder
                     'I declare that the filled in token is mine;<br />I am a participating member of this association;<br />I will not cast my vote more than once.',
             ],
             ['name' => 'logo_url', 'default' => null],
+            ['name' => 'primary_color', 'default' => null],
+            ['name' => 'accent_color', 'default' => null],
         ]);
     }
 }

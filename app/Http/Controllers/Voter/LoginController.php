@@ -25,7 +25,7 @@ class LoginController extends Controller
      * @param  Request  $request
      * @return View|RedirectResponse
      */
-    public function showLoginForm(Request $request): View
+    public function showLoginForm(Request $request)
     {
         if ($request->user('voter')) {
             return redirect()->route('proposition.index');
@@ -80,7 +80,7 @@ class LoginController extends Controller
         return redirect()->route('voter.index');
     }
 
-    protected function authenticated(Voter $voter): void
+    protected function authenticated(Request $request, Voter $voter): void
     {
         // Set the used at property if not set yet
         if (is_null($voter->used_at)) {

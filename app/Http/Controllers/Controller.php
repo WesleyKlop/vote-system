@@ -20,10 +20,11 @@ abstract class Controller extends BaseController
     public function __construct()
     {
         $this->config = AppConfig::dictionary();
-        \Illuminate\Support\Facades\View::share(
-            'logoUrl',
-            $this->config->get('logo_url')
-        );
+        \Illuminate\Support\Facades\View::share([
+            'logoUrl' => $this->config->get('logo_url'),
+            'primaryColor' => $this->config->get('primary_color'),
+            'accentColor' => $this->config->get('accent_color'),
+        ]);
     }
 
     protected function page(AbstractPage $page): View
