@@ -23,6 +23,7 @@ trait CreatesPropositions
         /** @var Proposition $proposition */
         $proposition = factory(Proposition::class)->create([
             'type' => $type,
+            'is_open' => true,
         ]);
 
         $options = [
