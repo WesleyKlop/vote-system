@@ -13,7 +13,7 @@ class DashboardPage extends AbstractPage
 {
     protected string $view = 'views.admin.index';
     /**
-     * @var Collection<Proposition>
+     * @var Collection<int, Proposition>
      */
     private Collection $propositions;
     /**

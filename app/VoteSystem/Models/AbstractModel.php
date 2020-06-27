@@ -2,8 +2,6 @@
 
 namespace App\VoteSystem\Models;
 
-use App\WhiteBox\Contracts\EntityModel;
-use App\WhiteBox\Support\Helpers\EntityHelper;
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
