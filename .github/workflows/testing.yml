@@ -58,9 +58,9 @@ jobs:
                 ports:
                     - 5432:5432
                 env:
-                    POSTGRES_DB: votesystem
-                    POSTGRES_PASSWORD: votesystem
-                    POSTGRES_USER: votesystem
+                    POSTGRES_DB: votesystem-ci
+                    POSTGRES_PASSWORD: gh-actions-votesystem
+                    POSTGRES_USER: gh-actions
                 volumes:
                     - db-data:/var/lib/postgresql/data
         steps:
@@ -74,5 +74,8 @@ jobs:
               with:
                   path: vendor
                   key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-            - run: composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
+            - run: |
+                  cp .env.ci .env
+                  composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
+                  php artisan key:generate
             - run: vendor/bin/phpunit --do-not-cache-result --no-interaction --disallow-todo-tests

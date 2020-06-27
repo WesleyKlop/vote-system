@@ -1,0 +1,8 @@
+vendor/
+node_modules/
+bootstrap/cache/**
+storage/framework/cache/**
+storage/framework/sessions/**
+storage/framework/views/**
+.git
+.idea

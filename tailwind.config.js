@@ -2,6 +2,11 @@
 const { colors } = require('tailwindcss/defaultTheme')
 
 module.exports = {
+    purge: [
+        './resources/views/**/*.blade.php',
+        './resources/svg/**/*.svg',
+        './resources/js/**/*.vue',
+    ],
     theme: {
         colors: {
             white: '#ffffff',
