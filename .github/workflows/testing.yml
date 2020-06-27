@@ -75,4 +75,5 @@ jobs:
                   path: vendor
                   key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
             - run: composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
+            - run: php artisan migrate --seed
             - run: vendor/bin/phpunit --do-not-cache-result --no-interaction --disallow-todo-tests
