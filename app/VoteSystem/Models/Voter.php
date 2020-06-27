@@ -14,9 +14,9 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 /**
  * Class Voter
  * @package App\VoteSystem\Models
- * @property DateTimeInterface $used_at
+ * @property \DateTimeInterface $used_at
  * @property string $token
- * @property Collection<VoterPropositionOption> $answers
+ * @property Collection<int, VoterPropositionOption> $answers
  */
 class Voter extends AbstractModel implements
     AuthenticatableContract,
