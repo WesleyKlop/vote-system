@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "wesleyklop/vote-system",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Vote System made with laravel",
     "keywords": [
         "framework",
         "laravel"

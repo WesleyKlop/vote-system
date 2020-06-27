@@ -35,6 +35,6 @@ class CreatePropositionOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grid_proposition_options');
+        Schema::dropIfExists('proposition_options');
     }
 }
