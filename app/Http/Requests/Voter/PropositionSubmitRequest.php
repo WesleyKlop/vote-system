@@ -11,9 +11,9 @@ class PropositionSubmitRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array
+     * @return string[][]
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
             'proposition' => ['required', 'uuid', 'exists:propositions,id'],
@@ -22,8 +22,8 @@ class PropositionSubmitRequest extends FormRequest
 
         $answerKeyCount = $this->getAnswerKeyCount();
 
-        if (! is_null($answerKeyCount)) {
-            $rules['answer'][] = 'size:'.$answerKeyCount;
+        if (!is_null($answerKeyCount)) {
+            $rules['answer'][] = 'size:' . $answerKeyCount;
         }
 
         return $rules;
@@ -32,7 +32,7 @@ class PropositionSubmitRequest extends FormRequest
     private function findProposition(): ?Proposition
     {
         $propositionId = $this->request->get('proposition');
-        if (! $propositionId || ! Str::isUuid($propositionId)) {
+        if (!$propositionId || !Str::isUuid($propositionId)) {
             return null;
         }
         return Proposition::find($propositionId);
@@ -40,13 +40,16 @@ class PropositionSubmitRequest extends FormRequest
 
     private function getAnswerKeyCount(): ?int
     {
-        if (! $proposition = $this->findProposition()) {
+        if (!($proposition = $this->findProposition())) {
             return null;
         }
 
         return $proposition
             ->options()
-            ->where('axis', $proposition->type === 'grid' ? 'vertical' : 'horizontal')
+            ->where(
+                'axis',
+                $proposition->type === 'grid' ? 'vertical' : 'horizontal'
+            )
             ->count();
     }
 }

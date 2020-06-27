@@ -1,6 +1,12 @@
 // tailwind.config.js
 const { colors } = require('tailwindcss/defaultTheme')
 
+const getPalette = (color) => ({
+    light: color['100'],
+    default: color['600'],
+    dark: color['900'],
+})
+
 module.exports = {
     purge: [
         './resources/views/**/*.blade.php',
@@ -14,9 +20,9 @@ module.exports = {
             primary: `var(--primary-color, ${colors.teal['500']})`,
             accent: `var(--accent-color, ${colors.blue['700']})`,
             gray: colors.gray,
-            success: colors.green['600'],
-            failure: colors.red['600'],
-            warning: colors.yellow['600'],
+            success: getPalette(colors.green),
+            failure: getPalette(colors.red),
+            warning: getPalette(colors.yellow),
         },
     },
 }

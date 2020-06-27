@@ -8,7 +8,7 @@
             Token
             <token-input value="{{ old('token') }}" :errors='@json($errors->get('token'))'></token-input>
         </label>
-        <p class="mb-2">
+        <p class="mb-2 text-gray-900">
             The token can contain all letters and numbers except for: <span class="font-mono text-sm">0, 1, I, L, O</span>
         </p>
 
