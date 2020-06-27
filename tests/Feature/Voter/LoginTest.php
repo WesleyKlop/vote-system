@@ -37,7 +37,7 @@ class LoginTest extends TestCase
 
         $response = $this->post(route('voter.login'), [
             'token' => $voter->token,
-            'legal_accepted' => true
+            'legal_accepted' => true,
         ]);
 
         $response
