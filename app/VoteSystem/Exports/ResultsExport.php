@@ -21,7 +21,7 @@ class ResultsExport implements WithMultipleSheets, Responsable
         }
 
         return Proposition::orderBy('order')
-            ->get('id')
+            ->get(['id'])
             ->pluck('id')
             ->map(fn(string $id) => new PropositionResultExport($id))
             ->all();

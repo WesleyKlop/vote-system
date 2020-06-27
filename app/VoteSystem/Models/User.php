@@ -2,7 +2,6 @@
 
 namespace App\VoteSystem\Models;
 
-use Eloquent;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -11,7 +10,6 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 /**
  * Class User
  * @package App
- * @mixin Eloquent
  */
 class User extends AbstractModel implements
     AuthenticatableContract,

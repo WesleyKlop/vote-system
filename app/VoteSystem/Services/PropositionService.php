@@ -114,7 +114,7 @@ class PropositionService
             ->options()
             ->whereIn('id', $deletedOptions)
             ->delete();
-        $proposition->options()->createMany($createdOptions);
+        $proposition->options()->createMany($createdOptions->toArray());
         $updatedOptions->each(
             fn(PropositionOption $option) => $option->update(
                 $newOptions->get($option->id)

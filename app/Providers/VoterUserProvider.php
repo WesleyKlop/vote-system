@@ -11,14 +11,16 @@ class VoterUserProvider implements UserProvider
 {
     /**
      * @inheritDoc
+     * @psalm-suppress all
      */
-    public function retrieveById($identifier)
+    public function retrieveById($identifier): ?Voter
     {
         return Voter::find($identifier);
     }
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function retrieveByToken($identifier, $token)
     {
@@ -27,6 +29,7 @@ class VoterUserProvider implements UserProvider
 
     /**
      * @inheritDoc
+     * @throws Exception
      */
     public function updateRememberToken(Authenticatable $user, $token)
     {
@@ -39,7 +42,7 @@ class VoterUserProvider implements UserProvider
     public function retrieveByCredentials(array $credentials)
     {
         if (!array_key_exists('token', $credentials)) {
-            return;
+            return null;
         }
         return Voter::where('token', $credentials['token'])->first();
     }
