@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
     <script defer src="{{ mix('js/app.js') }}"></script>
+    @include('components.custom-styling')
 </head>
 <body class="background--login">
 <div id="app" class="container mx-auto min-h-screen flex flex-col items-center justify-center">

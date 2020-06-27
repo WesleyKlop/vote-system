@@ -78,12 +78,10 @@ class PropositionService
                     continue;
                 }
                 $model = [
+                    'id' => $id ?? Str::uuid(),
                     'axis' => $axis,
                     'option' => $option,
                 ];
-                if (Str::isUuid($id)) {
-                    $model['id'] = $id;
-                }
                 $mapped->push($model);
             }
         }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Voter;
 use App\Http\Controllers\Controller;
 use App\VoteSystem\Models\Voter;
 use Carbon\CarbonImmutable;
-use Illuminate\Auth\SessionGuard;
+use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+
     /**
      * Where to redirect users after login.
      */
@@ -24,12 +25,17 @@ class LoginController extends Controller
      * @param  Request  $request
      * @return View|RedirectResponse
      */
-    public function showLoginForm(Request $request): View
+    public function showLoginForm(Request $request)
     {
         if ($request->user('voter')) {
             return redirect()->route('proposition.index');
         }
-        return view('views.voter.login');
+        return view('views.voter.login', [
+            'welcomeMessage' => $this->config->get('welcome_message'),
+            'voterLegalRequirements' => $this->config->get(
+                'voter_legal_requirements'
+            ),
+        ]);
     }
 
     /**
@@ -43,6 +49,7 @@ class LoginController extends Controller
     {
         $request->validate([
             $this->username() => 'required|string',
+            'legal_accepted' => 'required|accepted',
         ]);
     }
 
@@ -63,12 +70,12 @@ class LoginController extends Controller
         return 'token';
     }
 
-    protected function guard(): SessionGuard
+    protected function guard(): StatefulGuard
     {
         return Auth::guard('voter');
     }
 
-    protected function loggedOut(Request $request): RedirectResponse
+    protected function loggedOut(): RedirectResponse
     {
         return redirect()->route('voter.index');
     }

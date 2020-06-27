@@ -34,7 +34,7 @@ input[type='radio']:checked + .radio-input-label {
 }
 
 .checkbox-input-label {
-    @apply text-gray-800 h-5 flex items-center;
+    @apply text-gray-800 flex items-center;
 }
 
 .checkbox-input-label::before {
