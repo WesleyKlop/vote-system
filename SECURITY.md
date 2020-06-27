@@ -1,6 +1,7 @@
 # Security Policy
 
 ## Supported Versions
+
 As this is a prerelease, no versions are currently really supported. I'll do my best to fix all issues that come to light.
 
 ## Reporting a Vulnerability
