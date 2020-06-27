@@ -39,3 +39,5 @@ COPY --from=back-builder /app /app
 COPY --from=front-builder /app/public /app/public
 
 RUN chgrp -R www-data /app/storage /app/bootstrap/cache && chmod -R 770 /app/storage /app/bootstrap/cache
+# Cache everything except config cache because .env is loaded at container creation time.
+RUN php artisan route:cache && php artisan view:cache
