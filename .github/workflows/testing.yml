@@ -26,6 +26,7 @@ jobs:
               with:
                   path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
                   key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: ${{ runner.os }}-yarn-
             - run: yarn --frozen-lockfile
             - run: yarn lint:check
 
@@ -45,6 +46,7 @@ jobs:
               with:
                   path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
                   key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+                  restore-keys: ${{ runner.os }}-yarn-
             - run: yarn --frozen-lockfile
             - run: yarn production
 
@@ -74,6 +76,7 @@ jobs:
               with:
                   path: vendor
                   key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+                  restore-keys: ${{ runner.os }}-composer-
             - run: |
                   cp .env.ci .env
                   composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
