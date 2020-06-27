@@ -35,7 +35,9 @@ class PropositionResultExport implements
             'horizontalOption',
             'verticalOption'
         )
-            ->orderBy('voter_id')
+            ->select('voter_proposition_options.*')
+            ->leftJoin('voters', 'voters.id', '=','voter_id')
+            ->orderBy('voters.token')
             ->orderBy('horizontal_option_id')
             ->where('proposition_id', $this->propositionId);
     }
