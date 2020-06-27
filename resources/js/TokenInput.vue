@@ -1,15 +1,20 @@
 <template>
-    <masked-input
-        autocomplete="off"
-        class="input input--token"
-        mask="#### #### #### ####"
-        maxlength="16"
-        name="token"
-        placeholder="ABCD 2345 WXYZ 6789"
-        size="16"
-        type="text"
-        required
-    />
+    <div class="flex flex-col">
+        <masked-input
+            autocomplete="off"
+            class="input input--token"
+            mask="#### #### #### ####"
+            maxlength="16"
+            name="token"
+            placeholder="ABCD 2345 WXYZ 6789"
+            size="16"
+            type="text"
+            required
+        />
+        <div v-for="error of errors" class="font-normal text-failure">
+            {{ error }}
+        </div>
+    </div>
 </template>
 
 <script>
@@ -24,6 +29,11 @@ export default {
             type: String,
             required: false,
             default: '',
+        },
+        errors: {
+            type: Array,
+            required: false,
+            default: () => [],
         },
     },
     data() {

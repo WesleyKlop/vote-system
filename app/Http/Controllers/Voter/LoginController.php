@@ -49,7 +49,7 @@ class LoginController extends Controller
     protected function validateLogin(Request $request): void
     {
         $request->validate([
-            $this->username() => 'required|string',
+            $this->username() => 'required|string|size:19',
             'legal_accepted' => 'required|accepted',
         ]);
     }
