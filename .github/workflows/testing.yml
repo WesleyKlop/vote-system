@@ -81,4 +81,4 @@ jobs:
                   cp .env.ci .env
                   composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
                   php artisan key:generate
-            - run: vendor/bin/phpunit --do-not-cache-result --no-interaction --disallow-todo-tests
+            - run: php artisan test
