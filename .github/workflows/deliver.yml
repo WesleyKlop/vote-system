@@ -13,13 +13,13 @@ env:
 
 jobs:
     deliver:
+        name: Build & Push Docker image
         runs-on: ubuntu-latest
         outputs:
             image: ${{ env.REGISTRY_HOST }}/${{ env.IMAGE_NAME }}:${{ steps.publish.outputs.tag }}
         steps:
             - uses: actions/checkout@v2
-            - name: publish docker image
-              id: publish
+            - id: publish
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
                   name: ${{ env.IMAGE_NAME }}
