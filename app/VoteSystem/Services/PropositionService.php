@@ -153,7 +153,7 @@ class PropositionService
     ): bool {
         return $proposition
             ->voters()
-            ->where('id', $voter->id)
+            ->where('voters.id', $voter->id)
             ->exists();
     }
 }
