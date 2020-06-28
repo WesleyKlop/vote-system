@@ -14,7 +14,7 @@ class TokenGenerateRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => ['required', 'integer', 'min:1', 'max:999'],
+            'amount' => ['required', 'integer', 'min:0', 'max:999'],
         ];
     }
 }

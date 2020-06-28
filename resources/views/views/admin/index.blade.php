@@ -3,13 +3,9 @@
 @section('content')
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
         <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0 text-primary">Dashboard</h1>
-        <div class="banner col-span-1 lg:col-span-2">
-            <p>{!! $page->getWelcomeMessage() !!}</p>
-            <p>
-                Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span><br/>
-                These statistics are based on the <span class="font-bold">used</span> tokens.
-            </p>
-        </div>
+        <div class="banner col-span-1 lg:col-span-2">{!! $page->getWelcomeMessage() !!}
+            Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span>
+            These statistics are based on the <span class="font-bold">used</span> tokens.</div>
         @foreach($page->getPropositions() as $proposition)
             <div class="card">
                 <div class="card-header">
@@ -71,7 +67,7 @@
         @endforeach
     </div>
     <a
-        class="fixed bottom-0 right-0 rounded-full bg-accent m-4 sm:m-8 p-2 w-16 h-16 sm:w-20 sm:h-20 shadow-lg"
+        class="fixed bottom-0 right-0 rounded-full bg-accent m-4 sm:m-8 p-2 w-16 h-16 sm:w-20 sm:h-20 shadow-lg z-10"
         href="{{ route('admin.propositions.create') }}"
         title="Create proposition"
     >
