@@ -1,7 +1,7 @@
 @extends('layouts.voter')
 
 @section('content')
-    <p class="banner whitespace-pre">{!! $welcomeMessage !!}</p>
+    <p class="banner">{!! $welcomeMessage !!}</p>
     <form action="{{ route('voter.login') }}" method="POST" class="px-8 sm:px-0">
         @csrf
         <label class="input-label w-64 mb-1">
@@ -14,7 +14,7 @@
 
         <input type="checkbox" name="legal_accepted" class="checkbox-input" hidden id="legal_accepted"/>
         <label class="checkbox-input-label items-baseline flex-wrap {{ $errors->has('legal_accepted') ? 'checkbox-input--invalid' : '' }}" for="legal_accepted">
-            <span class="checkbox-input-text leading-tight text-sm whitespace-pre">{!! $voterLegalRequirements !!}</span>
+            <span class="checkbox-input-text leading-tight text-sm whitespace-pre-line flex-1">{!! $voterLegalRequirements !!}</span>
             @error('legal_accepted')
             <span class="text-failure text-sm w-full">Accepting the terms is required.</span>
             @enderror
