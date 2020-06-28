@@ -28,7 +28,17 @@ class PropositionController extends Controller
 
     public function create()
     {
-        return view('views.admin.propositions.create');
+        $nextPropositionOrder = $this
+            ->propositionService
+            ->getNextPropositionOrder();
+        $mappedOldOptions = $this
+            ->propositionService
+            ->mapOptions(old('options', []))
+            ->all();
+        return view('views.admin.propositions.create', [
+            'nextPropositionOrder' => $nextPropositionOrder,
+            'mappedOldOptions' => $mappedOldOptions,
+        ]);
     }
 
     public function update(

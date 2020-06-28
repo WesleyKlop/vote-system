@@ -31,7 +31,7 @@ abstract class AbstractModel extends Model
                 return;
             }
 
-            $entity->{$entity->getKeyName()} = Str::uuid();
+            $entity->{$entity->getKeyName()} = Str::uuid()->toString();
         });
     }
 }

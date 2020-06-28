@@ -68,7 +68,7 @@ class PropositionService
         $this->syncPropositionOptions($proposition, $options);
     }
 
-    private function mapOptions(array $options): Collection
+    public function mapOptions(array $options): Collection
     {
         // Create vertical and horizontal options based on given data
         $mapped = collect();
@@ -78,7 +78,7 @@ class PropositionService
                     continue;
                 }
                 $model = [
-                    'id' => $id ?? Str::uuid(),
+                    'id' => $this->getValidId($id),
                     'axis' => $axis,
                     'option' => $option,
                 ];
@@ -155,5 +155,18 @@ class PropositionService
             ->voters()
             ->where('voters.id', $voter->id)
             ->exists();
+    }
+
+    public function getNextPropositionOrder(): int
+    {
+        return (Proposition::max('order') ?: 0) + 1;
+    }
+
+    private function getValidId($id): string
+    {
+        if(Str::isUuid($id)) {
+            return $id;
+        }
+        return Str::uuid();
     }
 }
