@@ -13,7 +13,7 @@ body_type = "markdown"
 strip_html_comments = true
 
 [update]
-blacklist_usernames = ["dependabot-preview"]
+blacklist_usernames = ["dependabot"]
 
 [approve]
-auto_approve_usernames = ["dependabot-preview", "WesleyKlop"]
+auto_approve_usernames = ["dependabot", "WesleyKlop"]
