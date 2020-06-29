@@ -1,3 +1,6 @@
+@error('answer')
+<span class="text-failure">You are required to select an option for every row</span>
+@enderror
 <div class="table-wrapper mb-2">
     <table class="table">
         <thead>

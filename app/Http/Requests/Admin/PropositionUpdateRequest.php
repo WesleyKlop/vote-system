@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PropositionUpdateRequest extends FormRequest
 {
+    use ValidatesPropositions;
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -17,9 +19,24 @@ class PropositionUpdateRequest extends FormRequest
             'title' => ['required', 'string'],
             'is_open' => ['sometimes', 'accepted'],
             'order' => ['required', 'integer', 'nullable'],
-            'options' => ['required', 'array'],
-            'options.*' => ['required', 'array'],
-            'options.*.*' => ['present', 'nullable', 'string'],
+            'options' => ['required', 'array', 'size:2'],
+            'options.horizontal' => ['required', 'array', 'min:1'],
+            'options.vertical' => ['required', 'array', 'min:1'],
+            'options.*.*' => ['present', 'string'],
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'options' => [
+                'horizontal' => $this->rejectNullEntries(
+                    $this->options['horizontal']
+                ),
+                'vertical' => $this->rejectNullEntries(
+                    $this->options['vertical']
+                ),
+            ],
+        ]);
     }
 }

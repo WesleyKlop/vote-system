@@ -1,5 +1,17 @@
 .banner {
-    @apply bg-gray-100 p-8 py-2 text-lg;
+    @apply bg-gray-100 text-gray-900 px-8 py-2 text-lg mb-4 whitespace-pre-line break-words;
+}
+
+.banner--failure {
+    @apply bg-failure-light text-failure;
+}
+
+.banner--warning {
+    @apply bg-warning-light text-warning;
+}
+
+.banner--success {
+    @apply bg-success-light text-success;
 }
 
 @screen sm {

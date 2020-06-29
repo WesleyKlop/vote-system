@@ -50,7 +50,8 @@
             Empty options will be filtered out.
         </p>
         <proposition-option-editor
-            :source-options='@json($proposition->options)'
+            :errors='@json($errors->get('options.*'))'
+            :source-options='@json($mappedOldOptions)'
         ></proposition-option-editor>
 
         <input type="submit" class="submit-button self-start" value="update"/>

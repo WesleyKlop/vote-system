@@ -12,6 +12,10 @@
     @apply font-bold text-lg uppercase text-primary;
 }
 
+.header-nav {
+    @apply text-right;
+}
+
 .header-nav > a {
     @apply mx-2 uppercase;
 }

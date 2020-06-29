@@ -3,19 +3,13 @@ export default {
     props: {
         sourceOptions: {
             type: Array,
-            default: () => [
-                { axis: 'horizontal', option: 'Voorzitter' },
-                { axis: 'horizontal', option: 'Vice-voorzitter' },
-                { axis: 'horizontal', option: 'Penningmeester' },
-                { axis: 'horizontal', option: 'Extern' },
-                { axis: 'horizontal', option: 'Secretaris' },
-                { axis: 'horizontal', option: 'Intern' },
-                { axis: 'vertical', option: 'Wesley' },
-                { axis: 'vertical', option: 'Sander' },
-                { axis: 'vertical', option: 'Niels' },
-                { axis: 'vertical', option: 'Peter' },
-                { axis: 'vertical', option: 'Jason' },
-            ],
+            default: () => [],
+            required: false,
+        },
+        errors: {
+            // Json Encode converts empty dicts to arrays
+            type: [Object, Array],
+            default: () => ({}),
             required: false,
         },
     },
@@ -47,6 +41,9 @@ export default {
         },
         vertical() {
             return this.options('vertical')
+        },
+        allErrors() {
+            return Object.values(this.errors).flat()
         },
     },
     methods: {
@@ -89,6 +86,9 @@ export default {
     <div class="grid grid-cols-2 gap-4 w-full sm:w-3/4">
         <div class="col-span-2">
             Proposition type: <span class="font-bold">{{ type }}</span>
+        </div>
+        <div class="text-failure text-sm col-span-2">
+            <div v-for="error of allErrors">{{ error }}</div>
         </div>
         <div class="col-span-1">
             <h2 class="sub-title">Horizontal options</h2>

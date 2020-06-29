@@ -28,7 +28,14 @@ class PropositionController extends Controller
 
     public function create()
     {
-        return view('views.admin.propositions.create');
+        $nextPropositionOrder = $this->propositionService->getNextPropositionOrder();
+        $mappedOldOptions = $this->propositionService
+            ->mapOptions(old('options', []))
+            ->all();
+        return view('views.admin.propositions.create', [
+            'nextPropositionOrder' => $nextPropositionOrder,
+            'mappedOldOptions' => $mappedOldOptions,
+        ]);
     }
 
     public function update(
@@ -63,9 +70,18 @@ class PropositionController extends Controller
     public function edit(Proposition $proposition)
     {
         $proposition->load('options');
+        $mappedOldOptions = $this->propositionService->mapOptions(
+            old('options', [])
+        );
+
+        $mappedOldOptions =
+            $mappedOldOptions->count() > 0
+                ? $mappedOldOptions
+                : $proposition->options;
 
         return view('views.admin.propositions.edit', [
             'proposition' => $proposition,
+            'mappedOldOptions' => $mappedOldOptions,
         ]);
     }
 

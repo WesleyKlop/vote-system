@@ -3,9 +3,11 @@
 @section('content')
     <form action="{{ route('admin.login.update') }}" method="POST" class="bg-white shadow sm:rounded-lg p-8">
         <h2 class="title w-64 flex items-center">
-            <svg viewBox="0 0 24 24" class="h-8 w-8">
-                <path class="secondary" d="M9.41 11H17a1 1 0 0 1 0 2H9.41l2.3 2.3a1 1 0 1 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L9.4 11z"/>
-            </svg>
+            <a href="{{ route('voter.index') }}">
+                <svg viewBox="0 0 24 24" class="h-8 w-8">
+                    <path class="secondary" d="M9.41 11H17a1 1 0 0 1 0 2H9.41l2.3 2.3a1 1 0 1 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L9.4 11z"/>
+                </svg>
+            </a>
             Admin Area
         </h2>
         @csrf
@@ -19,6 +21,9 @@
                 class="input"
                 placeholder="Admin"
             />
+            @error('name')
+            <span class="text-failure text-sm font-normal">{{ $message }}</span>
+            @enderror
         </label>
         <label class="input-label">
             Password
@@ -29,6 +34,9 @@
                 class="input"
                 placeholder="hunter2"
             />
+            @error('password')
+            <span class="text-failure text-sm font-normal">{{ $message }}</span>
+            @enderror
         </label>
 
         <input
