@@ -11,7 +11,7 @@ export default {
             type: [Object, Array],
             default: () => ({}),
             required: false,
-        }
+        },
     },
     data() {
         return {
@@ -44,7 +44,7 @@ export default {
         },
         allErrors() {
             return Object.values(this.errors).flat()
-        }
+        },
     },
     methods: {
         createOption(axis) {
@@ -88,7 +88,7 @@ export default {
             Proposition type: <span class="font-bold">{{ type }}</span>
         </div>
         <div class="text-failure text-sm col-span-2">
-            <div v-for="error of allErrors">{{ error}}</div>
+            <div v-for="error of allErrors">{{ error }}</div>
         </div>
         <div class="col-span-1">
             <h2 class="sub-title">Horizontal options</h2>

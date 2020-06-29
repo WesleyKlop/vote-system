@@ -30,8 +30,12 @@ class PropositionUpdateRequest extends FormRequest
     {
         $this->merge([
             'options' => [
-                'horizontal' => $this->rejectNullEntries($this->options['horizontal']),
-                'vertical' => $this->rejectNullEntries($this->options['vertical']),
+                'horizontal' => $this->rejectNullEntries(
+                    $this->options['horizontal']
+                ),
+                'vertical' => $this->rejectNullEntries(
+                    $this->options['vertical']
+                ),
             ],
         ]);
     }

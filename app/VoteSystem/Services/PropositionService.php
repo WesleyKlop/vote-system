@@ -164,7 +164,7 @@ class PropositionService
 
     private function getValidId($id): string
     {
-        if(Str::isUuid($id)) {
+        if (Str::isUuid($id)) {
             return $id;
         }
         return Str::uuid();

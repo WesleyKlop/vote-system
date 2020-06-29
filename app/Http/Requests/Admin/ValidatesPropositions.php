@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Requests\Admin;
-
 
 trait ValidatesPropositions
 {
@@ -12,6 +10,4 @@ trait ValidatesPropositions
             ->reject(fn($entry) => is_null($entry))
             ->all();
     }
-
-
 }
