@@ -5,7 +5,13 @@
         <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0 text-primary">Dashboard</h1>
         <div class="banner col-span-1 lg:col-span-2">{!! $page->getWelcomeMessage() !!}
             Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span>
-            These statistics are based on the <span class="font-bold">used</span> tokens.</div>
+            These statistics are based on the <span class="font-bold">used</span> tokens.
+        </div>
+
+        <a class="p-4 col-span-1 lg:col-span-2" href="{{ route('admin.export.index') }}">
+            Click here to export the voting results
+        </a>
+
         @foreach($page->getPropositions() as $proposition)
             <div class="card">
                 <div class="card-header">
@@ -53,6 +59,7 @@
                 </div>
 
                 <div class="card-footer">
+                    <a href="{{ route('admin.export.index', ['proposition_id' => $proposition->id]) }}" class="card-footer-link text-gray-600">Export</a>
                     <a href="{{ route('admin.propositions.edit', $proposition) }}" class="card-footer-link text-gray-600">Edit</a>
                     <a href="{{ route('admin.propositions.toggle', [
                         'proposition' => $proposition,
