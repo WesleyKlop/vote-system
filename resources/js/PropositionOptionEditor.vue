@@ -7,7 +7,8 @@ export default {
             required: false,
         },
         errors: {
-            type: Object,
+            // Json Encode converts empty dicts to arrays
+            type: [Object, Array],
             default: () => ({}),
             required: false,
         }

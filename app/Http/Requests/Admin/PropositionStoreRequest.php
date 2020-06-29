@@ -9,6 +9,8 @@ use Illuminate\Foundation\Http\FormRequest;
  */
 class PropositionStoreRequest extends FormRequest
 {
+    use ValidatesPropositions;
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,12 +27,6 @@ class PropositionStoreRequest extends FormRequest
             'options.vertical' => ['required', 'array', 'min:1'],
             'options.*.*' => ['present', 'string'],
         ];
-    }
-
-    private function rejectNullEntries(array $array): array {
-        return collect($array)
-            ->reject(fn($entry) => is_null($entry))
-            ->all();
     }
 
     public function prepareForValidation()
