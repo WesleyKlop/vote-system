@@ -12,7 +12,9 @@
     "devDependencies": {
         "@prettier/plugin-php": "^0.14.2",
         "cross-env": "^7.0",
+        "husky": ">=4",
         "laravel-mix": "^5.0.1",
+        "lint-staged": ">=10",
         "prettier": "^2.0.5",
         "resolve-url-loader": "^3.1.0",
         "vue-template-compiler": "^2.6.11"
@@ -21,5 +23,13 @@
         "tailwindcss": "^1.4.6",
         "vue": "^2.6.11",
         "vue-masked-input": "^0.5.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{yml,css,js,vue,json,php,md}": "prettier --write"
     }
 }
