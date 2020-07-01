@@ -3,9 +3,16 @@
         <span class="ml-2">{{ number }}.</span>
         <span class="flex-1"></span>
         <span :title="used_at" class="badge mr-2" v-if="used_at">used</span>
-        <span class="uppercase font-mono w-full mt-2">{{ formattedToken }}</span>
+        <span class="uppercase font-mono w-full mt-2">{{
+            formattedToken
+        }}</span>
         <div class="card-footer p-2 w-full">
-            <a :href="deleteRoute" @click="handleDeleteClick" class="card-footer-link">Delete</a>
+            <a
+                :href="deleteRoute"
+                @click="handleDeleteClick"
+                class="card-footer-link"
+                >Delete</a
+            >
         </div>
     </div>
 </template>
@@ -50,6 +57,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
