@@ -10,6 +10,7 @@
             size="16"
             type="text"
             required
+            :value="value"
         />
         <div v-for="error of errors" class="font-normal text-failure">
             {{ error }}
@@ -35,11 +36,6 @@ export default {
             required: false,
             default: () => [],
         },
-    },
-    data() {
-        return {
-            currentValue: this.value,
-        }
     },
 }
 </script>
