@@ -12,8 +12,8 @@
             class="hidden"
             required
         />
-        <label class="radio-input-label" for="{{ $option->id }}">
-            <span class="radio-input-text">{{ $option->option }}</span>
+        <label class="question-input-label" for="{{ $option->id }}">
+            <span class="question-input-text">{{ $option->option }}</span>
         </label>
     @endforeach
 </div>

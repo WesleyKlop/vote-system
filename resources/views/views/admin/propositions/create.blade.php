@@ -31,14 +31,10 @@
             </label>
         </div>
 
-        <p class="my-2">
-            Creating a proposition with a single horizontal option makes a list proposition,
-            otherwise the users will be presented with a grid.<br/>
-            Empty options will be filtered out.
-        </p>
         <proposition-option-editor
             :errors='@json($errors->get('options.*'))'
             :source-options='@json($mappedOldOptions)'
+            initial-type="list"
         ></proposition-option-editor>
 
         <input type="submit" class="submit-button self-start" value="create"/>

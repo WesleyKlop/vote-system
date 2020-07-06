@@ -44,14 +44,10 @@
             </label>
         </div>
 
-        <p class="my-2">
-            Propositions that are updated that only have a single horizontal options are updated to list propositions.
-            Propositions with multiple horizontal options are updated to a grid.<br/>
-            Empty options will be filtered out.
-        </p>
         <proposition-option-editor
             :errors='@json($errors->get('options.*'))'
             :source-options='@json($mappedOldOptions)'
+            initial-type="{{ $proposition->type }}"
         ></proposition-option-editor>
 
         <input type="submit" class="submit-button self-start" value="update"/>
