@@ -73,7 +73,7 @@ export default {
             }
         },
         handleCreateOption(axis) {
-            this.source.push(this.createOption(axis))
+            this.source = [...this.source, this.createOption(axis)]
         },
     },
 }
