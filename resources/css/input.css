@@ -1,3 +1,6 @@
+/*
+ * Basic inputs
+ */
 .input-label {
     @apply flex flex-col text-sm my-4 text-gray-700 font-bold;
 }
@@ -10,6 +13,9 @@
     @apply font-mono;
 }
 
+/*
+ * Buttons
+ */
 .submit-button {
     @apply uppercase font-bold text-base py-2 px-5 rounded my-4 bg-gray-700 text-white cursor-pointer;
 }
@@ -18,17 +24,23 @@
     @apply bg-accent;
 }
 
-.radio-input-label {
+/*
+ * Question buttons (questions)
+ */
+.question-input-label {
     @apply block p-2 my-2 border rounded cursor-pointer;
 }
 
-input[type='radio']:checked + .radio-input-label {
+input[type='radio']:checked + .question-input-label {
     @apply bg-gray-200 shadow border-gray-400;
 }
 
-.radio-input-text {
+.question-input-text {
 }
 
+/*
+ * Checkboxes
+ */
 .checkbox-input {
     @apply hidden;
 }
@@ -51,5 +63,33 @@ input[type='radio']:checked + .radio-input-label {
 }
 
 .checkbox-input--invalid::before {
+    @apply border-failure;
+}
+
+/*
+ * Radio (generic)
+ */
+.radio-input {
+    @apply hidden;
+}
+
+.radio-input-label {
+    @apply text-gray-800 flex items-center;
+}
+
+.radio-input-label::before {
+    content: '\2713';
+    @apply inline-block rounded-full border-2 w-5 h-5 leading-4 cursor-pointer text-white font-bold;
+}
+
+.radio-input-text {
+    @apply ml-2;
+}
+
+.radio-input:checked + .radio-input-label::before {
+    @apply border-primary bg-primary;
+}
+
+.radio-input--invalid::before {
     @apply border-failure;
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import PropositionOptionEditor from './PropositionOptionEditor'
-import TokenInput from './TokenInput'
+import PropositionOptionEditor from './admin/PropositionOptionEditor'
+import TokenInput from './voter/TokenInput'
 import TokenCard from './admin/TokenCard'
 
 new Vue({
