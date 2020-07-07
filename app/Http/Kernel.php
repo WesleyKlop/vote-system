@@ -11,6 +11,7 @@ use App\Http\Middleware\TokenValid;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\VerifyCsrfToken;
+use Bepsvpt\SecureHeaders\SecureHeadersMiddleware;
 use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
@@ -42,6 +43,7 @@ class Kernel extends HttpKernel
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
+        SecureHeadersMiddleware::class,
     ];
 
     /**
