@@ -12,4 +12,6 @@ fi
 php artisan config:cache
 php artisan migrate --force
 
+php artisan votesystem:admin
+
 exec docker-php-entrypoint "$@"
