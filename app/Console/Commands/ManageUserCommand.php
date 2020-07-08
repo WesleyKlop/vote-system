@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class ManageUserCommand extends Command
 {
-    private const DEFAULT_ADMIN_NAME = 'admin';
-    private const DEFAULT_ADMIN_PASSWORD = 'password';
+    public const DEFAULT_ADMIN_NAME = 'admin';
+    public const DEFAULT_ADMIN_PASSWORD = 'password';
     /**
      * The name and signature of the console command.
      *
@@ -41,11 +41,9 @@ class ManageUserCommand extends Command
      */
     public function handle(): int
     {
-        $name = env('VOTESYSTEM_ADMIN_NAME', self::DEFAULT_ADMIN_NAME);
-        $password = env(
-            'VOTESYSTEM_ADMIN_PASSWORD',
-            self::DEFAULT_ADMIN_PASSWORD
-        );
+        $name = config('vote-system.admin_name');
+        $password = config('vote-system.admin_password');
+
         $user = User::updateOrCreate(
             ['name' => $name],
             ['password' => Hash::make($password)]
