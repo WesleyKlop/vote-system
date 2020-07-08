@@ -6,6 +6,8 @@ on:
             - master
     release:
         types: [created]
+    schedule:
+        - cron: '0 4 * * 0' # Weekly on Sundays at 02:00
 
 env:
     IMAGE_NAME: wesleyklop/vote-system/vote-system
@@ -27,3 +29,4 @@ jobs:
                   password: ${{ github.token }}
                   registry: ${{ env.REGISTRY_HOST }}
                   tag_semver: true
+                  cache: ${{ github.event_name != 'schedule' }}
