@@ -8,6 +8,23 @@ especially during these stay-at-home times can be useful in enabling digital vot
 
 ## Usage / Deployment
 
+### Deployment with docker-compose
+
+Docker compose should **not** be used for production!
+
+The simplest way to run the application with almost zero configuration is by using docker-compose.
+Just download the [docker-compose.yml](./docker-compose.yml) and [example environment file](./.env.example),
+edit the environment file, verify the docker-compose file configuration and then run the following command:
+
+```bash
+docker-compose up -d
+```
+
+This will automatically initialize a database, create an application key, run the migrations,
+setup the admin user and start the application! By default, the application will be reachable via [localhost:80](http://localhost:80).
+
+### Manual docker deployment
+
 The most easy way to use and deploy this application is using Docker.
 You can grab the latest version from this github or use a certain tag by viewing the [packages page](https://github.com/WesleyKlop/vote-system/packages/289544)
 
@@ -27,8 +44,6 @@ You can now run the following command to start the application on the foreground
 IMAGE=docker.pkg.github.com/wesleyklop/vote-system/vote-system:latest
 docker run --rm -p 1337:80 -v /abs/path/to/your/.env-file:/app/.env $IMAGE
 ```
-
-For a better deployment setup, use something like Docker Compose, Docker Swarm, or Kubernetes.
 
 ## Contributing
 
