@@ -26,6 +26,9 @@
             <span class="text-failure text-sm font-normal w-full">{{ $message }}</span>
             @enderror
         </form>
+        <print-tokens-button
+            :tokens='@json($voters->pluck('token'))'
+        ></print-tokens-button>
         <hr/>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 py-6">
@@ -35,3 +38,4 @@
         </div>
     </div>
 @endsection
+

@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { formatToken } from '../helpers'
+
 export default {
     name: 'TokenCard',
     props: {
@@ -44,7 +46,7 @@ export default {
     },
     computed: {
         formattedToken() {
-            return this.token.match(/.{1,4}/g).join(' ')
+            return formatToken(this.token)
         },
     },
     methods: {
