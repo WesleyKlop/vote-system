@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import PropositionOptionEditor from './admin/PropositionOptionEditor'
 import TokenInput from './voter/TokenInput'
-import TokenCard from './admin/TokenCard'
-import PrintTokensButton from './admin/PrintTokensButton'
 
 new Vue({
     el: '#app',
     components: {
         PropositionOptionEditor,
         TokenInput,
-        TokenCard,
-        PrintTokensButton,
+        VoterManagementPage: () => import('./admin/VoterManagementPage'),
+    },
+    data() {
+        return {
+            csrf: document.querySelector('meta[name="csrf-token"]')?.content,
+        }
     },
 })

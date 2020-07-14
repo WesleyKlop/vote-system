@@ -21,10 +21,9 @@
 import { formatToken } from '../helpers'
 
 export default {
-    name: 'TokenCard',
     props: {
         number: {
-            type: String,
+            type: Number,
             required: true,
         },
         used_at: {
