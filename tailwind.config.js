@@ -1,9 +1,9 @@
 // tailwind.config.js
 const { colors } = require('tailwindcss/defaultTheme')
 
-const getPalette = (color) => ({
+const getPalette = (color, base = '600') => ({
     light: color['100'],
-    default: color['600'],
+    default: color[base],
     dark: color['900'],
 })
 
