@@ -8,6 +8,7 @@ on:
         types: [created]
     schedule:
         - cron: '0 4 * * 0' # Weekly on Sundays at 02:00
+    pull_request:
 
 env:
     IMAGE_NAME: w3ssl3y/vote-system
