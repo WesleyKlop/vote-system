@@ -3,8 +3,8 @@ version: '3.5'
 services:
     vote-system:
         # Change "latest" to use a specific version.
-        # You can see all tags at https://github.com/WesleyKlop/vote-system/packages/289544
-        image: docker.pkg.github.com/wesleyklop/vote-system/vote-system:latest
+        # You can see all tags at https://hub.docker.com/repository/docker/w3ssl3y/vote-system/tags
+        image: w3ssl3y/vote-system:latest
         healthcheck:
             test: ['CMD', 'curl', '-f', 'http://localhost']
             interval: 30s

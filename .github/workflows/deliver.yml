@@ -10,23 +10,21 @@ on:
         - cron: '0 4 * * 0' # Weekly on Sundays at 02:00
 
 env:
-    IMAGE_NAME: wesleyklop/vote-system/vote-system
-    REGISTRY_HOST: docker.pkg.github.com
+    IMAGE_NAME: w3ssl3y/vote-system
 
 jobs:
     deliver:
         name: Build & Push Docker image
         runs-on: ubuntu-latest
         outputs:
-            image: ${{ env.REGISTRY_HOST }}/${{ env.IMAGE_NAME }}:${{ steps.publish.outputs.tag }}
+            image: ${{ env.IMAGE_NAME }}:${{ steps.publish.outputs.tag }}
         steps:
             - uses: actions/checkout@v2
             - id: publish
               uses: elgohr/Publish-Docker-Github-Action@master
               with:
                   name: ${{ env.IMAGE_NAME }}
-                  username: ${{ github.actor }}
-                  password: ${{ github.token }}
-                  registry: ${{ env.REGISTRY_HOST }}
+                  username: ${{ secrets.DOCKER_USERNAME }}
+                  password: ${{ secrets.DOCKER_TOKEN }}
                   tag_semver: true
                   cache: ${{ github.event_name != 'schedule' }}

@@ -25,8 +25,8 @@ setup the admin user and start the application! By default, the application will
 
 ### Manual docker deployment
 
-The most easy way to use and deploy this application is using Docker.
-You can grab the latest version from this github or use a certain tag by viewing the [packages page](https://github.com/WesleyKlop/vote-system/packages/289544)
+The easiest way to use and deploy this application is using Docker.
+You can grab the latest version from this github or use a certain tag by viewing the [docker hub page](https://hub.docker.com/repository/docker/w3ssl3y/vote-system/tags).
 
 ### Prerequisites
 
