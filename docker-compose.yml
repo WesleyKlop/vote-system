@@ -1,40 +1,40 @@
 version: '3.5'
 
 services:
-    vote-system:
-        # Change "latest" to use a specific version.
-        # You can see all tags at https://hub.docker.com/repository/docker/w3ssl3y/vote-system/tags
-        image: w3ssl3y/vote-system:latest
-        healthcheck:
-            test: ['CMD', 'curl', '-f', 'http://localhost']
-            interval: 30s
-            timeout: 10s
-            retries: 3
-        volumes:
-            - ./storage/app:/app/storage/app
-            - ./storage/logs:/app/storage/logs
-            - ./.env:/app/.env
-        networks:
-            - net
-        ports:
-            - '80:80'
-        depends_on:
-            - postgres
-        restart: on-failure
-    postgres:
-        image: postgres:latest
-        env_file: ./.env
-        volumes:
-            - db-data:/var/lib/postgresql/data
-        logging:
-            driver: json-file
-        networks:
-            - net
-        expose:
-            - 5432
+  vote-system:
+    # Change "latest" to use a specific version.
+    # You can see all tags at https://hub.docker.com/repository/docker/w3ssl3y/vote-system/tags
+    image: w3ssl3y/vote-system:latest
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - ./storage/app:/app/storage/app
+      - ./storage/logs:/app/storage/logs
+      - ./.env:/app/.env
+    networks:
+      - net
+    ports:
+      - '80:80'
+    depends_on:
+      - postgres
+    restart: on-failure
+  postgres:
+    image: postgres:latest
+    env_file: ./.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    logging:
+      driver: json-file
+    networks:
+      - net
+    expose:
+      - 5432
 
 networks:
-    net:
+  net:
 
 volumes:
-    db-data:
+  db-data:
