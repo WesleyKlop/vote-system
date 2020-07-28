@@ -1,32 +1,35 @@
 name: Deliver
 
 on:
-    push:
-        branches:
-            - master
-    release:
-        types: [created]
-    schedule:
-        - cron: '0 4 * * 0' # Weekly on Sundays at 02:00
+  push:
+    branches:
+      - master
+  release:
+    types: [created]
+  schedule:
+    - cron: '0 4 * * 0' # Weekly on Sundays at 02:00
+  pull_request:
 
 env:
-    IMAGE_NAME: wesleyklop/vote-system/vote-system
-    REGISTRY_HOST: docker.pkg.github.com
+  IMAGE_NAME: w3ssl3y/vote-system
 
 jobs:
-    deliver:
-        name: Build & Push Docker image
-        runs-on: ubuntu-latest
-        outputs:
-            image: ${{ env.REGISTRY_HOST }}/${{ env.IMAGE_NAME }}:${{ steps.publish.outputs.tag }}
-        steps:
-            - uses: actions/checkout@v2
-            - id: publish
-              uses: elgohr/Publish-Docker-Github-Action@master
-              with:
-                  name: ${{ env.IMAGE_NAME }}
-                  username: ${{ github.actor }}
-                  password: ${{ github.token }}
-                  registry: ${{ env.REGISTRY_HOST }}
-                  tag_semver: true
-                  cache: ${{ github.event_name != 'schedule' }}
+  deliver:
+    name: Build & Push Docker image
+    runs-on: ubuntu-latest
+    env:
+      CACHE_FROMS: ''
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set image cache
+        if: github.event_name != 'schedule'
+        run: echo '::set-env name=CACHE_FROMS::'$IMAGE_NAME':latest'
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+          repository: ${{ env.IMAGE_NAME }}
+          tag_with_ref: true
+          add_git_labels: true
+          cache_froms: ${{ env.CACHE_FROMS }}
