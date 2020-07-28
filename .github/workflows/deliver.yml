@@ -17,10 +17,13 @@ jobs:
   deliver:
     name: Build & Push Docker image
     runs-on: ubuntu-latest
-    outputs:
-      image: ${{ env.IMAGE_NAME }}:${{ steps.publish.outputs.tag }}
+    env:
+      CACHE_FROMS: ''
     steps:
       - uses: actions/checkout@v2
+      - name: Set image cache
+        if: github.event_name != 'schedule'
+        run: echo '::set-env name=CACHE_FROMS::$IMAGE_NAME'
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
         with:
@@ -29,3 +32,4 @@ jobs:
           repository: ${{ env.IMAGE_NAME }}
           tag_with_ref: true
           add_git_labels: true
+          cache_froms: ${{ env.CACHE_FROMS }}
