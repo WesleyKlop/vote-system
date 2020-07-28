@@ -22,7 +22,7 @@
                 @enderror
             </label>
 
-            <input type="checkbox" name="is_open" class="checkbox-input" {{ old('is_open', true) ? 'checked' : '' }} hidden id="is_open"/>
+            <input type="checkbox" name="is_open" class="checkbox-input" {{ old('is_open', false) ? 'checked' : '' }} hidden id="is_open"/>
             <label class="checkbox-input-label" for="is_open">
                 <span class="checkbox-input-text">Open for voting</span>
                 @error('is_open')
