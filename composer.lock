@@ -60,16 +60,16 @@
         },
         {
             "name": "bepsvpt/secure-headers",
-            "version": "6.0.1",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bepsvpt/secure-headers.git",
-                "reference": "8eeb3d196293d274fb7459518c7be444df220345"
+                "reference": "8f6837efa19ac140b0eff23c7976483c5666b27e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/8eeb3d196293d274fb7459518c7be444df220345",
-                "reference": "8eeb3d196293d274fb7459518c7be444df220345",
+                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/8f6837efa19ac140b0eff23c7976483c5666b27e",
+                "reference": "8f6837efa19ac140b0eff23c7976483c5666b27e",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +127,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-04-15T11:09:33+00:00"
+            "time": "2020-07-28T00:12:56+00:00"
         },
         {
             "name": "brick/math",
