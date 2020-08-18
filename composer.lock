@@ -7207,22 +7207,22 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v5.3.0",
+            "version": "v5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "57129325ae77e9e3fa6a577b4c3544398af1620e"
+                "reference": "b6601ce910984ccaa24aaffdeda03016e056e9eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/57129325ae77e9e3fa6a577b4c3544398af1620e",
-                "reference": "57129325ae77e9e3fa6a577b4c3544398af1620e",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/b6601ce910984ccaa24aaffdeda03016e056e9eb",
+                "reference": "b6601ce910984ccaa24aaffdeda03016e056e9eb",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^7.10",
                 "mockery/mockery": "^1.3.1",
-                "orchestra/testbench-core": "^5.1.4",
+                "orchestra/testbench-core": "^5.2",
                 "php": ">=7.2.5",
                 "phpunit/phpunit": "^8.4 || ^9.0"
             },
@@ -7259,24 +7259,24 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://www.patreon.com/crynobone",
-                    "type": "patreon"
+                    "url": "https://liberapay.com/crynobone",
+                    "type": "liberapay"
                 }
             ],
-            "time": "2020-05-30T01:04:58+00:00"
+            "time": "2020-08-17T23:01:56+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v5.1.4",
+            "version": "v5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "41ebd765f5b3f1aba366cc6b2f5b3856a1715519"
+                "reference": "cc82d4034fbc1005851ca9a6c9ea2f316f25624a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/41ebd765f5b3f1aba366cc6b2f5b3856a1715519",
-                "reference": "41ebd765f5b3f1aba366cc6b2f5b3856a1715519",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/cc82d4034fbc1005851ca9a6c9ea2f316f25624a",
+                "reference": "cc82d4034fbc1005851ca9a6c9ea2f316f25624a",
                 "shasum": ""
             },
             "require": {
@@ -7335,11 +7335,11 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://www.patreon.com/crynobone",
-                    "type": "patreon"
+                    "url": "https://liberapay.com/crynobone",
+                    "type": "liberapay"
                 }
             ],
-            "time": "2020-05-02T13:35:10+00:00"
+            "time": "2020-08-17T22:51:07+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -8103,20 +8103,20 @@
         },
         {
             "name": "psalm/plugin-laravel",
-            "version": "v1.3.1",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-laravel.git",
-                "reference": "58a444c30f6710b90ac2e1fd986097df4f35806b"
+                "reference": "95761f9f385a3c758438e0daef9ba09040709a61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/58a444c30f6710b90ac2e1fd986097df4f35806b",
-                "reference": "58a444c30f6710b90ac2e1fd986097df4f35806b",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/95761f9f385a3c758438e0daef9ba09040709a61",
+                "reference": "95761f9f385a3c758438e0daef9ba09040709a61",
                 "shasum": ""
             },
             "require": {
-                "barryvdh/laravel-ide-helper": "^2.7",
+                "barryvdh/laravel-ide-helper": "^2.8.0",
                 "ext-simplexml": "*",
                 "illuminate/container": "5.8.* || ^6.0 || ^7.0",
                 "illuminate/contracts": "5.8.* || ^6.0 || ^7.0",
@@ -8125,7 +8125,7 @@
                 "illuminate/support": "5.8.* || ^6.0 || ^7.0",
                 "orchestra/testbench": "^3.8 || ^4.0 || ^5.0",
                 "php": "^7.2|^8",
-                "vimeo/psalm": "^3.11.7"
+                "vimeo/psalm": "^3.13.1"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1.6",
@@ -8160,7 +8160,7 @@
                 }
             ],
             "description": "A Laravel plugin for Psalm",
-            "time": "2020-06-22T14:35:17+00:00"
+            "time": "2020-08-15T06:58:50+00:00"
         },
         {
             "name": "react/promise",
