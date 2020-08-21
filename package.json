@@ -13,7 +13,7 @@
         "@prettier/plugin-php": "^0.14.3",
         "cross-env": "^7.0",
         "husky": ">=4",
-        "laravel-mix": "^5.0.1",
+        "laravel-mix": "^5.0.5",
         "lint-staged": ">=10",
         "prettier": "^2.0.5",
         "resolve-url-loader": "^3.1.0",
