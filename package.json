@@ -20,7 +20,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "tailwindcss": "^1.8.7",
+        "tailwindcss": "^1.8.9",
         "vue": "^2.6.12",
         "vue-masked-input": "^0.5.2"
     },
