@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "185d47f1042f2a75aa02a3e8a8f268eb",
+    "content-hash": "3a06f2d5e99e12917348e4b76c4d15ed",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -60,16 +60,16 @@
         },
         {
             "name": "bepsvpt/secure-headers",
-            "version": "6.3.0",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bepsvpt/secure-headers.git",
-                "reference": "be5948516c10dab75a863a98dabcc3cb151711aa"
+                "reference": "954d001e76b65bb5a5c6fbc33c4a1727bd41357a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/be5948516c10dab75a863a98dabcc3cb151711aa",
-                "reference": "be5948516c10dab75a863a98dabcc3cb151711aa",
+                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/954d001e76b65bb5a5c6fbc33c4a1727bd41357a",
+                "reference": "954d001e76b65bb5a5c6fbc33c4a1727bd41357a",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +127,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-09-07T10:43:49+00:00"
+            "time": "2020-10-14T13:28:07+00:00"
         },
         {
             "name": "brick/math",
