@@ -60,29 +60,31 @@
         },
         {
             "name": "bepsvpt/secure-headers",
-            "version": "7.0.0",
+            "version": "7.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bepsvpt/secure-headers.git",
-                "reference": "954d001e76b65bb5a5c6fbc33c4a1727bd41357a"
+                "reference": "c80c5ff1357ab61495f168d560f12cc370d8b25b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/954d001e76b65bb5a5c6fbc33c4a1727bd41357a",
-                "reference": "954d001e76b65bb5a5c6fbc33c4a1727bd41357a",
+                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/c80c5ff1357ab61495f168d560f12cc370d8b25b",
+                "reference": "c80c5ff1357ab61495f168d560f12cc370d8b25b",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.1|~6.0|~7.0|~8.0",
-                "php": "^7.0|^8.0"
+                "illuminate/support": "~5.1 || ~6.0 || ~7.0 || ~8.0",
+                "php": "^7.0 || ^8.0"
             },
             "require-dev": {
                 "ext-json": "*",
                 "ext-xdebug": "*",
-                "friendsofphp/php-cs-fixer": "~2.2",
-                "orchestra/testbench": "~3.1|~4.0|~5.0|~6.0",
-                "phpstan/phpstan": "~0.7",
-                "phpunit/phpunit": "~5.7|~6.5|~7.5|~8.4|~9.0"
+                "orchestra/testbench": "~3.1 || ~4.0 || ~5.0 || ~6.0"
+            },
+            "suggest": {
+                "friendsofphp/php-cs-fixer": "Coding style fixer",
+                "phpstan/phpstan": "Static analysis tool",
+                "phpunit/phpunit": "PHP unit testing framework"
             },
             "type": "library",
             "extra": {
@@ -95,7 +97,10 @@
             "autoload": {
                 "psr-4": {
                     "Bepsvpt\\SecureHeaders\\": "src/"
-                }
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -127,7 +132,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-10-14T13:28:07+00:00"
+            "time": "2020-12-12T07:01:56+00:00"
         },
         {
             "name": "brick/math",
