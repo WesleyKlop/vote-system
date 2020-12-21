@@ -16,7 +16,7 @@ env:
 jobs:
   deliver:
     name: Build & Push Docker image
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Set up Docker Buildx
@@ -38,5 +38,4 @@ jobs:
           tags: ${{ env.IMAGE_NAME}}:latest
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.html_url }}
-#            org.opencontainers.image.created=${{ steps.prep.outputs.created }}
             org.opencontainers.image.revision=${{ github.sha }}

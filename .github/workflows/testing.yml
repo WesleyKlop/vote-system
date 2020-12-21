@@ -14,7 +14,7 @@ env:
 jobs:
   lint:
     name: Lint code
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
@@ -33,7 +33,7 @@ jobs:
   build-frontend:
     name: Build frontend
     needs: [lint]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
@@ -53,7 +53,7 @@ jobs:
   test-backend:
     name: Test backend
     needs: [lint]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     services:
       database:
         image: postgres:12
