@@ -2,11 +2,11 @@ FROM node:alpine as front-builder
 WORKDIR /app
 
 # Copy package manager files, and vendor because that way laravel-mix knows that it's laravel
-COPY package.json yarn.lock webpack.mix.js tailwind.config.js artisan ./
-RUN yarn --frozen-lockfile
+COPY package.json package-lock.json webpack.mix.js tailwind.config.js postcss.config.js artisan ./
+RUN npm ci
 
 COPY resources ./resources
-RUN yarn production
+RUN npm run production
 
 FROM composer:2 as back-builder
 WORKDIR /app
