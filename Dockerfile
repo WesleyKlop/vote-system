@@ -8,7 +8,7 @@ RUN yarn --frozen-lockfile
 COPY resources ./resources
 RUN yarn production
 
-FROM composer:latest as back-builder
+FROM composer:2 as back-builder
 WORKDIR /app
 
 COPY composer.json composer.lock ./
@@ -35,11 +35,12 @@ ADD .docker/apache.conf /etc/apache2/sites-available/000-default.conf
 ADD .docker/php.ini ${PHP_INI_DIR}/conf.d/99-overrides.ini
 ADD .docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
+USER www-data
+
 WORKDIR /app
 COPY --from=back-builder /app /app
 COPY --from=front-builder /app/public /app/public
 
-RUN chgrp -R www-data /app/storage /app/bootstrap/cache && chmod -R 770 /app/storage /app/bootstrap/cache
 # Cache everything except config cache because .env is loaded at container creation time.
 RUN php artisan route:cache && php artisan view:cache
 
