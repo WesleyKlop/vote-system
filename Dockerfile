@@ -41,6 +41,9 @@ WORKDIR /app
 COPY --from=back-builder /app /app
 COPY --from=front-builder /app/public /app/public
 
+VOLUME /app/storage/logs
+VOLUME /app/storage/app
+
 # Cache everything except config cache because .env is loaded at container creation time.
 RUN php artisan route:cache && php artisan view:cache
 
