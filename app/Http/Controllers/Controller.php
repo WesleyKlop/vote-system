@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\VoteSystem\Models\AppConfig;
 use App\VoteSystem\Pages\AbstractPage;
+use Illuminate\Support\Collection;
 use Illuminate\View\View;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;

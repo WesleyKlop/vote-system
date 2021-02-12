@@ -3,6 +3,7 @@
 namespace App\VoteSystem\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class AppConfig extends Model
 {
@@ -19,7 +20,7 @@ class AppConfig extends Model
         return $entry->value ?? $entry->default;
     }
 
-    public static function dictionary()
+    public static function dictionary(): Collection
     {
         return self::all()->mapWithKeys(
             fn($row) => [$row->name => $row->value ?: $row->default]
