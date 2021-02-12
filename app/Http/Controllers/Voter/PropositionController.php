@@ -45,12 +45,11 @@ class PropositionController extends Controller
         $voter = $request->user();
         $proposition = Proposition::findOrFail($request->get('proposition'));
 
-        if (!$proposition->is_open) {
+        if (! $proposition->is_open) {
             return redirect()
                 ->route('proposition.index')
                 ->withErrors([
-                    'proposition' =>
-                        'The answer for the previous proposition has not been registered as the proposition was already closed.',
+                    'proposition' => 'The answer for the previous proposition has not been registered as the proposition was already closed.',
                 ]);
         }
 

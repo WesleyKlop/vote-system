@@ -10,7 +10,7 @@ use Illuminate\Contracts\Auth\UserProvider;
 class VoterUserProvider implements UserProvider
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      * @psalm-suppress all
      */
     public function retrieveById($identifier): ?Voter
@@ -19,7 +19,7 @@ class VoterUserProvider implements UserProvider
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      * @throws Exception
      */
     public function retrieveByToken($identifier, $token)
@@ -28,7 +28,7 @@ class VoterUserProvider implements UserProvider
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      * @throws Exception
      */
     public function updateRememberToken(Authenticatable $user, $token)
@@ -37,18 +37,19 @@ class VoterUserProvider implements UserProvider
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function retrieveByCredentials(array $credentials)
     {
-        if (!array_key_exists('token', $credentials)) {
+        if (! array_key_exists('token', $credentials)) {
             return null;
         }
+
         return Voter::where('token', $credentials['token'])->first();
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function validateCredentials(
         Authenticatable $user,

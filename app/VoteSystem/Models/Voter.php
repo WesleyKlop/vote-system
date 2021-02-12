@@ -12,8 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
- * Class Voter
- * @package App\VoteSystem\Models
+ * Class Voter.
  * @property \DateTimeInterface $used_at
  * @property string $token
  * @property Collection<int, VoterPropositionOption> $answers

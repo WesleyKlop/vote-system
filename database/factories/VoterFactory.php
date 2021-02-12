@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(
     Voter::class,
-    fn(Faker $faker) => [
+    fn (Faker $faker) => [
         'id' => $faker->uuid,
         // 16 chars
         'token' => TokenHelper::generateToken(

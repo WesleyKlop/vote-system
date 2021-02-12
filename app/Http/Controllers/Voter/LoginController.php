@@ -31,6 +31,7 @@ class LoginController extends Controller
         if ($request->user('voter')) {
             return redirect()->route('proposition.index');
         }
+
         return view('views.voter.login', [
             'welcomeMessage' => $this->config->get('welcome_message'),
             'voterLegalRequirements' => $this->config->get(
@@ -44,7 +45,6 @@ class LoginController extends Controller
      *
      * @param  Request  $request
      * @return void
-     *
      */
     protected function validateLogin(Request $request): void
     {

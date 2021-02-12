@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * Class PropositionOption
- * @package App\VoteSystem\Models
+ * Class PropositionOption.
  * @property string $axis
  * @property string $option
  * @property Proposition $proposition

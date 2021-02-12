@@ -49,13 +49,14 @@ class ManageUserCommand extends Command
             ['password' => Hash::make($password)]
         );
         $this->info(
-            'Created or updated the admin user with name: ' . $user->name
+            'Created or updated the admin user with name: '.$user->name
         );
         if ($this->shouldShowProductionWarning($name, $password)) {
             $this->warn(
                 "Application running in production but is using the default credentials!!!\nWhat are you doing!?"
             );
         }
+
         return 0;
     }
 

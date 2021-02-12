@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use App\VoteSystem\Models\AppConfig;
 use App\VoteSystem\Pages\AbstractPage;
-use Illuminate\Support\Collection;
-use Illuminate\View\View;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Collection;
+use Illuminate\View\View;
 
 abstract class Controller extends BaseController
 {

@@ -40,7 +40,7 @@ class PropositionService
             $answers = $answers->flip();
         }
         $voterPropositionOptions = $answers->map(
-            fn(string $vertical, string $horizontal) => [
+            fn (string $vertical, string $horizontal) => [
                 'id' => Str::uuid(),
                 'voter_id' => $voter->id,
                 'proposition_id' => $proposition->id,
@@ -85,12 +85,14 @@ class PropositionService
                 $mapped->push($model);
             }
         }
+
         return $mapped;
     }
 
     private function getPropositionType(Collection $options): string
     {
         $horizontalOptions = $options->where('axis', 'horizontal')->count();
+
         return $horizontalOptions > 1 ? 'grid' : 'list';
     }
 
@@ -116,7 +118,7 @@ class PropositionService
             ->delete();
         $proposition->options()->createMany($createdOptions->toArray());
         $updatedOptions->each(
-            fn(PropositionOption $option) => $option->update(
+            fn (PropositionOption $option) => $option->update(
                 $newOptions->get($option->id)
             )
         );
@@ -167,6 +169,7 @@ class PropositionService
         if (Str::isUuid($id)) {
             return $id;
         }
+
         return Str::uuid();
     }
 }

@@ -24,6 +24,7 @@ class AppConfigController extends Controller
                 'value' => $value,
             ]);
         }
+
         return redirect()->back();
     }
 }

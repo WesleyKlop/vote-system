@@ -3,8 +3,7 @@
 namespace App\VoteSystem\Models;
 
 /**
- * Class VoterPropositionOption
- * @package App\VoteSystem\Models
+ * Class VoterPropositionOption.
  * @property Voter $voter
  * @property Proposition $proposition
  * @property PropositionOption $verticalOption

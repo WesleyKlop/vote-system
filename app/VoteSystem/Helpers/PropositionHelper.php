@@ -29,7 +29,7 @@ final class PropositionHelper
             $vertical->id
         );
 
-        if (!is_null($horizontal)) {
+        if (! is_null($horizontal)) {
             $answers = $answers->where('horizontal_option_id', $horizontal->id);
         }
 

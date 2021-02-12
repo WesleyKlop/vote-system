@@ -13,6 +13,7 @@ class ResultExportController extends Controller
         if ($request->has('proposition_id')) {
             $export->setPropositionId($request->get('proposition_id'));
         }
+
         return $export;
     }
 }

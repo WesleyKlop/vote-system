@@ -17,13 +17,14 @@ class AppConfig extends Model
     public static function getValue(string $name)
     {
         $entry = self::findOrFail($name);
+
         return $entry->value ?? $entry->default;
     }
 
     public static function dictionary(): Collection
     {
         return self::all()->mapWithKeys(
-            fn($row) => [$row->name => $row->value ?: $row->default]
+            fn ($row) => [$row->name => $row->value ?: $row->default]
         );
     }
 }

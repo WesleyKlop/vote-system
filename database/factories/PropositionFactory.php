@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(
     Proposition::class,
-    fn(Faker $faker) => [
+    fn (Faker $faker) => [
         'id' => $faker->uuid,
         'title' => $faker->sentence,
         'is_open' => $faker->boolean,
