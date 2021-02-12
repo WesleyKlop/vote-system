@@ -1,4 +1,4 @@
-FROM node:alpine as front-builder
+FROM node:15-alpine as front-builder
 WORKDIR /app
 
 # Copy package manager files, and vendor because that way laravel-mix knows that it's laravel
@@ -38,8 +38,8 @@ ADD .docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 USER www-data
 
 WORKDIR /app
-COPY --from=back-builder /app /app
-COPY --from=front-builder /app/public /app/public
+COPY --from=back-builder /app/ /app
+COPY --from=front-builder /app/public/ /app/public
 
 VOLUME /app/storage/logs
 VOLUME /app/storage/app
