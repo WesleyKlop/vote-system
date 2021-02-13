@@ -19,6 +19,7 @@ class AppConfigUpdateRequest extends FormRequest
         foreach ($appConfig as $name => $value) {
             $rules[$name] = ['present', 'nullable', 'string'];
         }
+
         return $rules;
     }
 }

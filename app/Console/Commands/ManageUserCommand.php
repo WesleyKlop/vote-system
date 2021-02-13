@@ -56,6 +56,7 @@ class ManageUserCommand extends Command
                 "Application running in production but is using the default credentials!!!\nWhat are you doing!?"
             );
         }
+
         return 0;
     }
 

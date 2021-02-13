@@ -5,7 +5,7 @@ namespace App\VoteSystem\Helpers;
 use Exception;
 
 /**
- * Copyright (C) 2018  Stan Overgauw
+ * Copyright (C) 2018  Stan Overgauw.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published
@@ -24,7 +24,7 @@ final class TokenHelper
 {
     /**
      * All characters that can be used for a token.
-     * Basically all number and letters except for 0, 1, I, L and O
+     * Basically all number and letters except for 0, 1, I, L and O.
      */
     public const KEY_SPACE = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
 
@@ -40,11 +40,12 @@ final class TokenHelper
         for ($i = 0; $i < $amount; $i++) {
             $tokens[] = static::generateToken($tokenLength);
         }
+
         return $tokens;
     }
 
     /**
-     * Generates a token with given length inside a given keySpace. Based on code by Stan Overgauw
+     * Generates a token with given length inside a given keySpace. Based on code by Stan Overgauw.
      * @param  int  $length
      * @return string
      * @throws Exception
@@ -56,6 +57,7 @@ final class TokenHelper
         for ($i = 0; $i < $length; $i++) {
             $pieces[] = self::KEY_SPACE[random_int(0, $max)];
         }
+
         return implode('', $pieces);
     }
 }

@@ -2,7 +2,7 @@
 
 return [
     /**
-     * Length of Voter tokens
+     * Length of Voter tokens.
      */
     'token_length' => env('VS_TOKEN_LENGTH', 16),
     'admin_name' => env('VS_ADMIN_NAME', 'admin'),

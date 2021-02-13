@@ -1,4 +1,5 @@
 <?php
+
 $isHttps = \Illuminate\Support\Str::startsWith(env('APP_URL'), 'https://');
 
 return [

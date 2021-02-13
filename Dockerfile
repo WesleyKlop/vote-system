@@ -1,4 +1,4 @@
-FROM node:15-alpine as front-builder
+FROM node:15 as front-builder
 WORKDIR /app
 
 # Copy package manager files, and vendor because that way laravel-mix knows that it's laravel

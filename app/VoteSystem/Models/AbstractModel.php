@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
- * Class AbstractModel
- * @package App
+ * Class AbstractModel.
  * @mixin Eloquent
  * @property string $id
  */
@@ -19,14 +18,14 @@ abstract class AbstractModel extends Model
     public $incrementing = false;
 
     /**
-     * Boot the model
+     * Boot the model.
      */
     public static function boot()
     {
         parent::boot();
 
         // Use the model creating event
-        static::creating(function (AbstractModel $entity) {
+        static::creating(function (self $entity) {
             if ($entity->getKey()) {
                 return;
             }

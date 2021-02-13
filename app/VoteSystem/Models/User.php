@@ -8,8 +8,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
 /**
- * Class User
- * @package App
+ * Class User.
  */
 class User extends AbstractModel implements
     AuthenticatableContract,

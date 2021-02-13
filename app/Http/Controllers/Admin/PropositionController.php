@@ -32,6 +32,7 @@ class PropositionController extends Controller
         $mappedOldOptions = $this->propositionService
             ->mapOptions(old('options', []))
             ->all();
+
         return view('views.admin.propositions.create', [
             'nextPropositionOrder' => $nextPropositionOrder,
             'mappedOldOptions' => $mappedOldOptions,

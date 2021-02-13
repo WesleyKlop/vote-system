@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
- * Class Proposition
- * @package App\VoteSystem\Models
+ * Class Proposition.
  * @property string $title
  * @property bool $is_open
  * @property string $type

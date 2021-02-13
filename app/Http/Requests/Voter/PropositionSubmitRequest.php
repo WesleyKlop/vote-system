@@ -35,6 +35,7 @@ class PropositionSubmitRequest extends FormRequest
         if (!$propositionId || !Str::isUuid($propositionId)) {
             return null;
         }
+
         return Proposition::find($propositionId);
     }
 

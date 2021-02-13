@@ -85,12 +85,14 @@ class PropositionService
                 $mapped->push($model);
             }
         }
+
         return $mapped;
     }
 
     private function getPropositionType(Collection $options): string
     {
         $horizontalOptions = $options->where('axis', 'horizontal')->count();
+
         return $horizontalOptions > 1 ? 'grid' : 'list';
     }
 
@@ -167,6 +169,7 @@ class PropositionService
         if (Str::isUuid($id)) {
             return $id;
         }
+
         return Str::uuid();
     }
 }
