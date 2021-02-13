@@ -2,6 +2,7 @@
 
 namespace App\VoteSystem\Services;
 
+use App\VoteSystem\Factories\VoterPropositionOptionFactory;
 use App\VoteSystem\Models\Proposition;
 use App\VoteSystem\Models\PropositionOption;
 use App\VoteSystem\Models\Voter;
@@ -35,19 +36,7 @@ class PropositionService
         Proposition $proposition,
         Collection $answers
     ): void {
-        // Grid option key => value is flipped so we can give an option per row
-        if ($proposition->type === 'grid') {
-            $answers = $answers->flip();
-        }
-        $voterPropositionOptions = $answers->map(
-            fn(string $vertical, string $horizontal) => [
-                'id' => Str::uuid(),
-                'voter_id' => $voter->id,
-                'proposition_id' => $proposition->id,
-                'horizontal_option_id' => $horizontal,
-                'vertical_option_id' => $vertical,
-            ]
-        );
+        $voterPropositionOptions = VoterPropositionOptionFactory::make($voter, $proposition, $answers);
 
         $this->voterPropositionOptionRepository->insert(
             $voterPropositionOptions
