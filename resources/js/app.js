@@ -4,7 +4,8 @@ import TokenInput from './voter/TokenInput'
 new Vue({
     el: '#app',
     components: {
-        PropositionOptionEditor: () => import('./admin/PropositionOptionEditor'),
+        PropositionOptionEditor: () =>
+            import('./admin/PropositionOptionEditor'),
         TokenInput,
         VoterManagementPage: () => import('./admin/VoterManagementPage'),
     },
