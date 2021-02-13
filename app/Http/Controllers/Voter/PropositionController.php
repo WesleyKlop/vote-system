@@ -34,12 +34,7 @@ class PropositionController extends Controller
         return $this->page(new PropositionShowPage($proposition));
     }
 
-    /**
-     * @param  PropositionSubmitRequest  $request
-     * @return RedirectResponse
-     * @throws Exception
-     */
-    public function update(PropositionSubmitRequest $request)
+    public function update(PropositionSubmitRequest $request): RedirectResponse
     {
         /** @var Voter $voter */
         $voter = $request->user();
