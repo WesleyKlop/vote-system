@@ -7,7 +7,7 @@ trait ValidatesPropositions
     protected function rejectNullEntries(array $array): array
     {
         return collect($array)
-            ->reject(fn ($entry) => is_null($entry))
+            ->reject(fn($entry) => is_null($entry))
             ->all();
     }
 }

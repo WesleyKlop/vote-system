@@ -22,8 +22,8 @@ class PropositionSubmitRequest extends FormRequest
 
         $answerKeyCount = $this->getAnswerKeyCount();
 
-        if (! is_null($answerKeyCount)) {
-            $rules['answer'][] = 'size:'.$answerKeyCount;
+        if (!is_null($answerKeyCount)) {
+            $rules['answer'][] = 'size:' . $answerKeyCount;
         }
 
         return $rules;
@@ -32,7 +32,7 @@ class PropositionSubmitRequest extends FormRequest
     private function findProposition(): ?Proposition
     {
         $propositionId = $this->request->get('proposition');
-        if (! $propositionId || ! Str::isUuid($propositionId)) {
+        if (!$propositionId || !Str::isUuid($propositionId)) {
             return null;
         }
 
@@ -41,7 +41,7 @@ class PropositionSubmitRequest extends FormRequest
 
     private function getAnswerKeyCount(): ?int
     {
-        if (! ($proposition = $this->findProposition())) {
+        if (!($proposition = $this->findProposition())) {
             return null;
         }
 

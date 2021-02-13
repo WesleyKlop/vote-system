@@ -41,7 +41,7 @@ class VoterUserProvider implements UserProvider
      */
     public function retrieveByCredentials(array $credentials)
     {
-        if (! array_key_exists('token', $credentials)) {
+        if (!array_key_exists('token', $credentials)) {
             return null;
         }
 

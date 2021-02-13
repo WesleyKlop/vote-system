@@ -40,7 +40,7 @@ class PropositionService
             $answers = $answers->flip();
         }
         $voterPropositionOptions = $answers->map(
-            fn (string $vertical, string $horizontal) => [
+            fn(string $vertical, string $horizontal) => [
                 'id' => Str::uuid(),
                 'voter_id' => $voter->id,
                 'proposition_id' => $proposition->id,
@@ -118,7 +118,7 @@ class PropositionService
             ->delete();
         $proposition->options()->createMany($createdOptions->toArray());
         $updatedOptions->each(
-            fn (PropositionOption $option) => $option->update(
+            fn(PropositionOption $option) => $option->update(
                 $newOptions->get($option->id)
             )
         );
