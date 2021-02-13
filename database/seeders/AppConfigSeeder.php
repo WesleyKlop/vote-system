@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use App\VoteSystem\Models\AppConfig;
 use Illuminate\Database\Seeder;
