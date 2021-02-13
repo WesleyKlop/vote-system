@@ -2,9 +2,9 @@ version: '3.5'
 
 services:
   vote-system:
-    # Change "latest" to use a specific version.
-    # You can see all tags at https://hub.docker.com/repository/docker/w3ssl3y/vote-system/tags
-    image: w3ssl3y/vote-system:latest
+    # Change "main" to use a specific version.
+    # You can see all tags at https://github.com/users/WesleyKlop/packages/container/vote-system/versions
+    image: ghcr.io/wesleyklop/vote-system:main
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost']
       interval: 30s
@@ -22,16 +22,15 @@ services:
       - postgres
     restart: on-failure
   postgres:
-    image: postgres:latest
-    env_file: ./.env
+    image: postgres:13
+    env_file: .env
     volumes:
       - db-data:/var/lib/postgresql/data
-    logging:
-      driver: json-file
     networks:
       - net
     expose:
       - 5432
+    restart: on-failure
 
 networks:
   net:
