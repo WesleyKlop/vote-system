@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/setup-node@v2.1.4
         with:
           node-version: ${{ env.NODE_VERSION }}
       - uses: actions/cache@v2
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/setup-node@v2.1.4
         with:
           node-version: ${{ env.NODE_VERSION }}
       - uses: actions/cache@v2
