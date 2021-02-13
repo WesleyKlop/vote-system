@@ -49,7 +49,9 @@ class PropositionController extends Controller
                 ]);
         }
 
-        if ($this->propositionService->propositionHasVoter($proposition, $voter)) {
+        if (
+            $this->propositionService->propositionHasVoter($proposition, $voter)
+        ) {
             throw new Exception('You already answered this proposition');
         }
 

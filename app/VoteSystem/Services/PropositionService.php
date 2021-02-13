@@ -36,7 +36,11 @@ class PropositionService
         Proposition $proposition,
         Collection $answers
     ): void {
-        $voterPropositionOptions = VoterPropositionOptionFactory::make($voter, $proposition, $answers);
+        $voterPropositionOptions = VoterPropositionOptionFactory::make(
+            $voter,
+            $proposition,
+            $answers
+        );
 
         $this->voterPropositionOptionRepository->insert(
             $voterPropositionOptions
