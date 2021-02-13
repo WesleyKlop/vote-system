@@ -1,10 +1,9 @@
-// tailwind.config.js
-const { colors } = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
-const getPalette = (color, base = '600') => ({
-    light: color['100'],
-    default: color[base],
-    dark: color['900'],
+const getPalette = (color, base = 600) => ({
+    light: color[100],
+    DEFAULT: color[base],
+    dark: color[900],
 })
 
 module.exports = {
@@ -15,11 +14,13 @@ module.exports = {
     ],
     theme: {
         colors: {
-            white: '#ffffff',
-            black: '#000',
-            primary: `var(--primary-color, ${colors.teal['500']})`,
-            accent: `var(--accent-color, ${colors.blue['700']})`,
-            gray: colors.gray,
+            transparent: 'transparent',
+            current: 'currentColor',
+            white: colors.white,
+            black: colors.black,
+            primary: `var(--primary-color, ${colors.teal[500]})`,
+            accent: `var(--accent-color, ${colors.blue[700]})`,
+            gray: colors.coolGray,
             success: getPalette(colors.green),
             failure: getPalette(colors.red),
             warning: getPalette(colors.yellow),

@@ -1,11 +1,10 @@
 import Vue from 'vue'
-import PropositionOptionEditor from './admin/PropositionOptionEditor'
 import TokenInput from './voter/TokenInput'
 
 new Vue({
     el: '#app',
     components: {
-        PropositionOptionEditor,
+        PropositionOptionEditor: () => import('./admin/PropositionOptionEditor'),
         TokenInput,
         VoterManagementPage: () => import('./admin/VoterManagementPage'),
     },

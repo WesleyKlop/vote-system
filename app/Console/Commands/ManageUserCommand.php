@@ -41,8 +41,8 @@ class ManageUserCommand extends Command
      */
     public function handle(): int
     {
-        $name = config('vote-system.admin_name');
-        $password = config('vote-system.admin_password');
+        $name = config('vote-system.admin_name') ?: self::DEFAULT_ADMIN_NAME;
+        $password = config('vote-system.admin_password', ) ?: self::DEFAULT_ADMIN_PASSWORD;
 
         $user = User::updateOrCreate(
             ['name' => $name],
