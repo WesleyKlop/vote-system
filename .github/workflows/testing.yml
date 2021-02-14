@@ -8,7 +8,6 @@ on:
 
 env:
   PHP_VERSION: 8
-  #    POSTGRES_VERSION: 12
   NODE_VERSION: 15.x
 
 jobs:
@@ -53,7 +52,7 @@ jobs:
     runs-on: ubuntu-20.04
     services:
       database:
-        image: postgres:12
+        image: postgres:13
         ports:
           - 5432:5432
         env:
