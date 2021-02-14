@@ -1,23 +1,37 @@
 <?php
 
-/** @var Factory $factory */
+namespace Database\Factories;
 
 use App\VoteSystem\Models\PropositionOption;
-use Faker\Generator as Faker;
-use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(
-    PropositionOption::class,
-    fn(Faker $faker) => [
-        'id' => $faker->uuid,
-        'option' => $faker->words(3, true),
-    ]
-);
+class PropositionOptionFactory extends Factory
+{
+    protected $model = PropositionOption::class;
 
-$factory->state(PropositionOption::class, 'vertical', [
-    'axis' => 'vertical',
-]);
+    public function vertical(): self
+    {
+        return $this->state(
+            fn(array $attributes) => [
+                'axis' => 'vertical',
+            ]
+        );
+    }
 
-$factory->state(PropositionOption::class, 'horizontal', [
-    'axis' => 'horizontal',
-]);
+    public function horizontal(): self
+    {
+        return $this->state(
+            fn(array $attributes) => [
+                'axis' => 'horizontal',
+            ]
+        );
+    }
+
+    public function definition(): array
+    {
+        return [
+            'id' => $this->faker->uuid,
+            'option' => $this->faker->words(3, true),
+        ];
+    }
+}

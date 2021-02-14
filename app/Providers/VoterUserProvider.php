@@ -58,6 +58,5 @@ class VoterUserProvider implements UserProvider
         $token = $credentials['token'];
 
         return $token === $user->token;
-        // TODO: Implement validateCredentials() method.
     }
 }
