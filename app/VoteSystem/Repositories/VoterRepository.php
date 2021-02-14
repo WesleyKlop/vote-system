@@ -2,7 +2,7 @@
 
 namespace App\VoteSystem\Repositories;
 
-use App\VoteSystem\Models\Voter;
+use App\Models\Voter;
 use Illuminate\Support\Facades\DB;
 
 class VoterRepository

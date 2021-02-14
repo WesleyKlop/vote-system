@@ -1,8 +1,9 @@
 <?php
 
-namespace App\VoteSystem\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -13,6 +14,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class PropositionOption extends AbstractModel
 {
+    use HasFactory;
+
     protected $fillable = ['axis', 'option'];
 
     public function proposition(): BelongsTo

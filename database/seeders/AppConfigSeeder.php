@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\VoteSystem\Models\AppConfig;
+use App\Models\AppConfig;
 use Illuminate\Database\Seeder;
 
 class AppConfigSeeder extends Seeder

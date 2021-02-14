@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AppConfigUpdateRequest;
-use App\VoteSystem\Models\AppConfig;
+use App\Models\AppConfig;
 
 class AppConfigController extends Controller
 {

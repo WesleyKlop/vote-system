@@ -1,7 +1,7 @@
 <?php
 namespace Database\Seeders;
 
-use App\VoteSystem\Models\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder

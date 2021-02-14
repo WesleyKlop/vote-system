@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Admin;
 
-use App\VoteSystem\Models\AppConfig;
+use App\Models\AppConfig;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AppConfigUpdateRequest extends FormRequest

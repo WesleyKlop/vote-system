@@ -2,7 +2,7 @@
 
 namespace App\VoteSystem\Exports;
 
-use App\VoteSystem\Models\Proposition;
+use App\Models\Proposition;
 use Illuminate\Contracts\Support\Responsable;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;

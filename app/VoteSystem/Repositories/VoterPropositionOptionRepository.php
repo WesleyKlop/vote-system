@@ -2,7 +2,7 @@
 
 namespace App\VoteSystem\Repositories;
 
-use App\VoteSystem\Models\VoterPropositionOption;
+use App\Models\VoterPropositionOption;
 use Illuminate\Support\Collection;
 
 class VoterPropositionOptionRepository

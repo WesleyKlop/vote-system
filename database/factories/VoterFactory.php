@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\VoteSystem\Helpers\TokenHelper;
-use App\VoteSystem\Models\Voter;
+use App\Models\Voter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VoterFactory extends Factory

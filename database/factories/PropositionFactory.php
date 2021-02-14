@@ -1,7 +1,7 @@
 <?php
 namespace Database\Factories;
 
-use App\VoteSystem\Models\Proposition;
+use App\Models\Proposition;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PropositionFactory extends Factory

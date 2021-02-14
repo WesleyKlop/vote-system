@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\VoteSystem\Models\PropositionOption;
+use App\Models\PropositionOption;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PropositionOptionFactory extends Factory

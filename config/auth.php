@@ -1,7 +1,7 @@
 <?php
 
-use App\VoteSystem\Models\User;
-use App\VoteSystem\Models\Voter;
+use App\Models\User;
+use App\Models\Voter;
 
 return [
     /*

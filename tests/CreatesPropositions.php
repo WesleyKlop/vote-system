@@ -2,16 +2,18 @@
 
 namespace Tests;
 
-use App\VoteSystem\Models\Proposition;
-use App\VoteSystem\Models\PropositionOption;
+use App\Models\Proposition;
+use App\Models\PropositionOption;
+use Database\Factories\PropositionOptionFactory;
 use Illuminate\Support\Collection;
 
 trait CreatesPropositions
 {
     protected function makePropositions(int $amount, string $axis): Collection
     {
-        return factory(PropositionOption::class, $amount)
-            ->state($axis)
+        return PropositionOption::factory()
+            ->count($amount)
+            ->{$axis}()
             ->make();
     }
 
@@ -20,22 +22,22 @@ trait CreatesPropositions
         int $verticalOptions = 4,
         int $horizontalOptions = 1
     ): Proposition {
-        /** @var Proposition $proposition */
-        $proposition = factory(Proposition::class)->create([
-            'type' => $type,
-            'is_open' => true,
-        ]);
-
-        $options = [
-            ...$this->makePropositions($verticalOptions, 'vertical')->toArray(),
-            ...$this->makePropositions(
-                $horizontalOptions,
-                'horizontal'
-            )->toArray(),
-        ];
-
-        $proposition->options()->createMany($options);
-
-        return $proposition;
+        /** @var PropositionOptionFactory $propositionOptionFactory */
+        $propositionOptionFactory = PropositionOption::factory();
+        return Proposition::factory()
+            ->has(
+                $propositionOptionFactory->count($verticalOptions)->vertical(),
+                'options'
+            )
+            ->has(
+                $propositionOptionFactory
+                    ->count($horizontalOptions)
+                    ->horizontal(),
+                'options'
+            )
+            ->createOne([
+                'type' => $type,
+                'is_open' => true,
+            ]);
     }
 }

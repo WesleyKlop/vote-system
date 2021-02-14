@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TokenGenerateRequest;
 use App\VoteSystem\Helpers\TokenHelper;
-use App\VoteSystem\Models\Voter;
+use App\Models\Voter;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;

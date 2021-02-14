@@ -1,6 +1,6 @@
 <?php
 
-namespace App\VoteSystem\Models;
+namespace App\Models;
 
 /**
  * Class VoterPropositionOption.

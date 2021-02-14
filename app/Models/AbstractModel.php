@@ -1,6 +1,6 @@
 <?php
 
-namespace App\VoteSystem\Models;
+namespace App\Models;
 
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;

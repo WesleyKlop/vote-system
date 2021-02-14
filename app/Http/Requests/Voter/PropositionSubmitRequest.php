@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\Voter;
 
-use App\VoteSystem\Models\Proposition;
+use App\Models\Proposition;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 
