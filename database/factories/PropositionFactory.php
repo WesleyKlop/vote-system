@@ -1,18 +1,21 @@
 <?php
+namespace Database\Factories;
 
-/** @var Factory $factory */
+use App\Models\Proposition;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-use App\VoteSystem\Models\Proposition;
-use Faker\Generator as Faker;
-use Illuminate\Database\Eloquent\Factory;
+class PropositionFactory extends Factory
+{
+    protected $model = Proposition::class;
 
-$factory->define(
-    Proposition::class,
-    fn(Faker $faker) => [
-        'id' => $faker->uuid,
-        'title' => $faker->sentence,
-        'is_open' => $faker->boolean,
-        'order' => $faker->randomDigitNotNull,
-        'type' => $faker->randomElement(['list', 'grid']),
-    ]
-);
+    public function definition(): array
+    {
+        return [
+            'id' => $this->faker->uuid,
+            'title' => $this->faker->sentence,
+            'is_open' => $this->faker->boolean,
+            'order' => $this->faker->randomDigitNotNull,
+            'type' => $this->faker->randomElement(['list', 'grid']),
+        ];
+    }
+}

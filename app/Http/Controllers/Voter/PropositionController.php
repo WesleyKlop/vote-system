@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Voter\PropositionSubmitRequest;
-use App\VoteSystem\Models\Proposition;
-use App\VoteSystem\Models\Voter;
+use App\Models\Proposition;
+use App\Models\Voter;
 use App\VoteSystem\Pages\Voters\PropositionShowPage;
 use App\VoteSystem\Services\PropositionService;
 use Exception;

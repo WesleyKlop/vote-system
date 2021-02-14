@@ -3,9 +3,9 @@
 namespace App\VoteSystem\Services;
 
 use App\VoteSystem\Factories\VoterPropositionOptionFactory;
-use App\VoteSystem\Models\Proposition;
-use App\VoteSystem\Models\PropositionOption;
-use App\VoteSystem\Models\Voter;
+use App\Models\Proposition;
+use App\Models\PropositionOption;
+use App\Models\Voter;
 use App\VoteSystem\Repositories\PropositionRepository;
 use App\VoteSystem\Repositories\VoterPropositionOptionRepository;
 use Illuminate\Support\Collection;

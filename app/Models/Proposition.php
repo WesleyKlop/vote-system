@@ -1,9 +1,10 @@
 <?php
 
-namespace App\VoteSystem\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
@@ -19,6 +20,8 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  */
 class Proposition extends AbstractModel
 {
+    use HasFactory;
+
     protected $fillable = ['title', 'is_open', 'type', 'order'];
 
     public function scopeOpen(Builder $query): Builder

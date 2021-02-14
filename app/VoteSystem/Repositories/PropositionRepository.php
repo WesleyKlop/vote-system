@@ -2,7 +2,7 @@
 
 namespace App\VoteSystem\Repositories;
 
-use App\VoteSystem\Models\Proposition;
+use App\Models\Proposition;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 

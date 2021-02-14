@@ -2,7 +2,7 @@
 
 namespace App\VoteSystem\Exports;
 
-use App\VoteSystem\Models\VoterPropositionOption;
+use App\Models\VoterPropositionOption;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromQuery;

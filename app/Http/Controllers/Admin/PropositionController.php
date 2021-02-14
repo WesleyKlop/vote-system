@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PropositionStoreRequest;
 use App\Http\Requests\Admin\PropositionUpdateRequest;
-use App\VoteSystem\Models\Proposition;
+use App\Models\Proposition;
 use App\VoteSystem\Services\PropositionService;
 use Exception;
 use Illuminate\Http\RedirectResponse;

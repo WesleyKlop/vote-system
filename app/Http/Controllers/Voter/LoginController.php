@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
-use App\VoteSystem\Models\Voter;
+use App\Models\Voter;
 use Carbon\CarbonImmutable;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\View\View;

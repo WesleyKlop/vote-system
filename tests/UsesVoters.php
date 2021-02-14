@@ -2,12 +2,12 @@
 
 namespace Tests;
 
-use App\VoteSystem\Models\Voter;
+use App\Models\Voter;
 
 trait UsesVoters
 {
     protected function voter(): Voter
     {
-        return factory(Voter::class)->create();
+        return Voter::factory()->create();
     }
 }

@@ -2,8 +2,8 @@
 
 namespace App\VoteSystem\Helpers;
 
-use App\VoteSystem\Models\Proposition;
-use App\VoteSystem\Models\PropositionOption;
+use App\Models\Proposition;
+use App\Models\PropositionOption;
 use Illuminate\Support\Collection;
 
 final class PropositionHelper

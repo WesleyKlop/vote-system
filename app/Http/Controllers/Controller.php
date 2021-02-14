@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\VoteSystem\Models\AppConfig;
+use App\Models\AppConfig;
 use App\VoteSystem\Pages\AbstractPage;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

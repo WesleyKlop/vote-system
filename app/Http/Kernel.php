@@ -4,10 +4,9 @@ namespace App\Http;
 
 use App\Http\Middleware\AuthenticateAdmin;
 use App\Http\Middleware\AuthenticateVoter;
-use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Middleware\TokenValid;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\VerifyCsrfToken;
@@ -39,7 +38,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         TrustProxies::class,
         HandleCors::class,
-        CheckForMaintenanceMode::class,
+        PreventRequestsDuringMaintenance::class,
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
@@ -61,7 +60,7 @@ class Kernel extends HttpKernel
             SubstituteBindings::class,
         ],
 
-        'api' => ['throttle:60,1', SubstituteBindings::class],
+        'api' => ['throttle:api', SubstituteBindings::class],
 
         'voter' => [AuthenticateVoter::class],
 
