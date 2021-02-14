@@ -31,15 +31,15 @@ RUN install-php-extensions opcache pgsql pdo_pgsql bcmath mysqli pdo_mysql
 
 RUN a2enmod rewrite
 
-ADD .docker/apache.conf /etc/apache2/sites-available/000-default.conf
-ADD .docker/php.ini ${PHP_INI_DIR}/conf.d/99-overrides.ini
-ADD .docker/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY .docker/apache.conf /etc/apache2/sites-available/000-default.conf
+COPY .docker/php.ini ${PHP_INI_DIR}/conf.d/99-overrides.ini
+COPY .docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
 USER www-data
 
 WORKDIR /app
-COPY --from=back-builder /app/ /app
-COPY --from=front-builder /app/public/ /app/public
+COPY --chown=www-data:www-data --from=back-builder /app/ /app
+COPY --chown=www-data:www-data --from=front-builder /app/public/ /app/public
 
 VOLUME /app/storage/logs
 VOLUME /app/storage/app

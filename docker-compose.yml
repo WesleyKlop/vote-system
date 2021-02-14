@@ -5,6 +5,7 @@ services:
     # Change "main" to use a specific version.
     # You can see all tags at https://github.com/users/WesleyKlop/packages/container/vote-system/versions
     image: ghcr.io/wesleyklop/vote-system:main
+    # build: .
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost']
       interval: 30s
@@ -17,7 +18,7 @@ services:
     networks:
       - net
     ports:
-      - '80:80'
+      - '8080:80'
     depends_on:
       - postgres
     restart: on-failure
