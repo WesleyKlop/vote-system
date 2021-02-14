@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Voter;
-use App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------

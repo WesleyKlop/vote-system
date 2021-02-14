@@ -2,10 +2,10 @@
 
 namespace App\VoteSystem\Pages\Admin;
 
-use App\VoteSystem\Helpers\PropositionHelper;
 use App\Models\Proposition;
 use App\Models\PropositionOption;
 use App\Models\Voter;
+use App\VoteSystem\Helpers\PropositionHelper;
 use App\VoteSystem\Pages\AbstractPage;
 use Illuminate\Support\Collection;
 

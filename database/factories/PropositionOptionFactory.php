@@ -12,7 +12,7 @@ class PropositionOptionFactory extends Factory
     public function vertical(): self
     {
         return $this->state(
-            fn(array $attributes) => [
+            fn (array $attributes) => [
                 'axis' => 'vertical',
             ]
         );
@@ -21,7 +21,7 @@ class PropositionOptionFactory extends Factory
     public function horizontal(): self
     {
         return $this->state(
-            fn(array $attributes) => [
+            fn (array $attributes) => [
                 'axis' => 'horizontal',
             ]
         );
