@@ -7,9 +7,9 @@ on:
       - main
 
 env:
-  PHP_VERSION: 7.4
+  PHP_VERSION: 8
   #    POSTGRES_VERSION: 12
-  NODE_VERSION: 14.x
+  NODE_VERSION: 15.x
 
 jobs:
   lint:
@@ -69,11 +69,16 @@ jobs:
           php-version: ${{ env.PHP_VERSION }}
           coverage: xdebug
           extensions: mbstring, intl, pdo-pgsql
-      - uses: actions/cache@v2.1.4
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v2
         with:
-          path: vendor
+          path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
+          restore-keys: |
+            ${{ runner.os }}-composer-
       - run: |
           cp .env.ci .env
           composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
