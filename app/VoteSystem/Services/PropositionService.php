@@ -13,15 +13,8 @@ use Illuminate\Support\Str;
 
 class PropositionService
 {
-    private PropositionRepository $propositionRepository;
-    private VoterPropositionOptionRepository $voterPropositionOptionRepository;
-
-    public function __construct(
-        PropositionRepository $propositionRepository,
-        VoterPropositionOptionRepository $voterPropositionOptionRepository
-    ) {
-        $this->propositionRepository = $propositionRepository;
-        $this->voterPropositionOptionRepository = $voterPropositionOptionRepository;
+    public function __construct(private PropositionRepository $propositionRepository, private VoterPropositionOptionRepository $voterPropositionOptionRepository)
+    {
     }
 
     public function getNextProposition(Voter $voter): ?Proposition

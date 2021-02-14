@@ -21,11 +21,7 @@ class LoginController extends Controller
      */
     protected string $redirectTo = '/vote';
 
-    /**
-     * @param  Request  $request
-     * @return View|RedirectResponse
-     */
-    public function showLoginForm(Request $request)
+    public function showLoginForm(Request $request): \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
     {
         if ($request->user('voter')) {
             return redirect()->route('proposition.index');
@@ -41,9 +37,6 @@ class LoginController extends Controller
 
     /**
      * Validate the user login request.
-     *
-     * @param  Request  $request
-     * @return void
      */
     protected function validateLogin(Request $request): void
     {

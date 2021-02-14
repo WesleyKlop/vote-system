@@ -26,10 +26,8 @@ class AuthenticateAdmin extends Middleware
      * Handle an incoming request.
      *
      * @param  Request  $request
-     * @param  Closure  $next
      * @param  string[]  ...$guards
      * @return mixed
-     *
      * @throws AuthenticationException
      */
     public function handle($request, Closure $next, ...$guards)

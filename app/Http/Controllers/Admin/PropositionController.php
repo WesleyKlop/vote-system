@@ -13,12 +13,9 @@ use Illuminate\Http\Request;
 
 class PropositionController extends Controller
 {
-    private PropositionService $propositionService;
-
-    public function __construct(PropositionService $propositionService)
+    public function __construct(private PropositionService $propositionService)
     {
         parent::__construct();
-        $this->propositionService = $propositionService;
     }
 
     public function index()
@@ -87,7 +84,6 @@ class PropositionController extends Controller
     }
 
     /**
-     * @param  Proposition  $proposition
      * @return RedirectResponse
      * @throws Exception
      */

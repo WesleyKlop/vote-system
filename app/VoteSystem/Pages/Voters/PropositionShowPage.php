@@ -10,14 +10,9 @@ use Illuminate\Support\Collection;
 class PropositionShowPage extends AbstractPage
 {
     protected string $view = 'views.voter.show';
-    /**
-     * @var Proposition
-     */
-    private Proposition $proposition;
 
-    public function __construct(Proposition $proposition)
+    public function __construct(private Proposition $proposition)
     {
-        $this->proposition = $proposition;
     }
 
     public function getProposition(): Proposition

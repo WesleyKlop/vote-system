@@ -12,29 +12,18 @@ use Illuminate\Support\Collection;
 class DashboardPage extends AbstractPage
 {
     protected string $view = 'views.admin.index';
-    /**
-     * @var Collection<int, Proposition>
-     */
-    private Collection $propositions;
-    /**
-     * @var Voter
-     */
-    private Voter $voterCount;
-    private string $welcomeMessage;
 
     public function __construct(
-        Collection $propositions,
-        Voter $voterCount,
-        string $welcomeMessage
-    ) {
-        $this->propositions = $propositions;
-        $this->voterCount = $voterCount;
-        $this->welcomeMessage = $welcomeMessage;
+        /**
+         * @var Collection<int, Proposition>
+         */
+        private Collection $propositions,
+        private Voter $voterCount,
+        private string $welcomeMessage
+    )
+    {
     }
 
-    /**
-     * @return string
-     */
     public function getWelcomeMessage(): string
     {
         return $this->welcomeMessage;

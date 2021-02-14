@@ -23,8 +23,6 @@ class VoterController extends Controller
     }
 
     /**
-     * @param  TokenGenerateRequest  $request
-     * @return RedirectResponse
      * @throws Exception
      */
     public function update(TokenGenerateRequest $request): RedirectResponse
@@ -48,8 +46,6 @@ class VoterController extends Controller
     }
 
     /**
-     * @param  Voter  $voter
-     * @return RedirectResponse
      * @throws Exception
      */
     public function destroy(Voter $voter): RedirectResponse
