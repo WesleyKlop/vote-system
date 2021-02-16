@@ -28,6 +28,28 @@ jobs:
       - run: npm ci
       - run: npm run lint:check
 
+  lint-php:
+    name: Lint PHP Code
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          coverage: xdebug
+      - id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+      - run: composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
+      - run: composer rector:check -- --no-progress-bar --no-diffs
+      - run: composer ecs:check -- --no-progress-bar --no-error-table
+
   build-frontend:
     name: Build frontend
     needs: [lint]
@@ -48,7 +70,7 @@ jobs:
 
   test-backend:
     name: Test backend
-    needs: [lint]
+    needs: [lint, lint-php]
     runs-on: ubuntu-20.04
     services:
       database:
@@ -68,8 +90,7 @@ jobs:
           php-version: ${{ env.PHP_VERSION }}
           coverage: xdebug
           extensions: mbstring, intl, pdo-pgsql
-      - name: Get Composer Cache Directory
-        id: composer-cache
+      - id: composer-cache
         run: |
           echo "::set-output name=dir::$(composer config cache-files-dir)"
       - uses: actions/cache@v2

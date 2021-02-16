@@ -29,8 +29,6 @@ final class TokenHelper
     public const KEY_SPACE = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
 
     /**
-     * @param  int  $amount
-     * @return array
      * @throws Exception
      */
     public static function generateTokens(int $amount): array
@@ -46,8 +44,6 @@ final class TokenHelper
 
     /**
      * Generates a token with given length inside a given keySpace. Based on code by Stan Overgauw.
-     * @param  int  $length
-     * @return string
      * @throws Exception
      */
     public static function generateToken(int $length): string

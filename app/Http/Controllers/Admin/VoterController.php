@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TokenGenerateRequest;
-use App\VoteSystem\Helpers\TokenHelper;
 use App\Models\Voter;
+use App\VoteSystem\Helpers\TokenHelper;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -23,8 +23,6 @@ class VoterController extends Controller
     }
 
     /**
-     * @param  TokenGenerateRequest  $request
-     * @return RedirectResponse
      * @throws Exception
      */
     public function update(TokenGenerateRequest $request): RedirectResponse
@@ -48,8 +46,6 @@ class VoterController extends Controller
     }
 
     /**
-     * @param  Voter  $voter
-     * @return RedirectResponse
      * @throws Exception
      */
     public function destroy(Voter $voter): RedirectResponse

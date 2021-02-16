@@ -15,7 +15,7 @@ class VoterPropositionOptionFactory
         Collection $answers
     ): Collection {
         return $answers->map(
-            fn(string $vertical, string $horizontal) => $proposition->type ===
+            fn (string $vertical, string $horizontal) => $proposition->type ===
             'grid'
                 ? self::mapRow(
                     $voter->id,

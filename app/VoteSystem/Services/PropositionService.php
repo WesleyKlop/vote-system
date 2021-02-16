@@ -2,10 +2,10 @@
 
 namespace App\VoteSystem\Services;
 
-use App\VoteSystem\Factories\VoterPropositionOptionFactory;
 use App\Models\Proposition;
 use App\Models\PropositionOption;
 use App\Models\Voter;
+use App\VoteSystem\Factories\VoterPropositionOptionFactory;
 use App\VoteSystem\Repositories\PropositionRepository;
 use App\VoteSystem\Repositories\VoterPropositionOptionRepository;
 use Illuminate\Support\Collection;
@@ -13,15 +13,8 @@ use Illuminate\Support\Str;
 
 class PropositionService
 {
-    private PropositionRepository $propositionRepository;
-    private VoterPropositionOptionRepository $voterPropositionOptionRepository;
-
-    public function __construct(
-        PropositionRepository $propositionRepository,
-        VoterPropositionOptionRepository $voterPropositionOptionRepository
-    ) {
-        $this->propositionRepository = $propositionRepository;
-        $this->voterPropositionOptionRepository = $voterPropositionOptionRepository;
+    public function __construct(private PropositionRepository $propositionRepository, private VoterPropositionOptionRepository $voterPropositionOptionRepository)
+    {
     }
 
     public function getNextProposition(Voter $voter): ?Proposition
@@ -111,7 +104,7 @@ class PropositionService
             ->delete();
         $proposition->options()->createMany($createdOptions->toArray());
         $updatedOptions->each(
-            fn(PropositionOption $option) => $option->update(
+            fn (PropositionOption $option) => $option->update(
                 $newOptions->get($option->id)
             )
         );

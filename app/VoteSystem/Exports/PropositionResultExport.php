@@ -20,11 +20,8 @@ class PropositionResultExport implements
     WithStrictNullComparison,
     WithHeadings
 {
-    private string $propositionId;
-
-    public function __construct(string $propositionId)
+    public function __construct(private string $propositionId)
     {
-        $this->propositionId = $propositionId;
     }
 
     public function query(): Builder
@@ -49,7 +46,6 @@ class PropositionResultExport implements
 
     /**
      * @param  VoterPropositionOption  $proposition
-     * @return array
      */
     public function map($proposition): array
     {

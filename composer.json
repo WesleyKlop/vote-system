@@ -28,6 +28,8 @@
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3",
         "psalm/plugin-laravel": "^1.3",
+        "rector/rector": "^0.9.28",
+        "symplify/easy-coding-standard": "^9.1",
         "vimeo/psalm": "^4"
     },
     "config": {
@@ -59,11 +61,20 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        "post-root-package-install": "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+        "post-create-project-cmd": "@php artisan key:generate --ansi",
+        "test": "@php artisan test",
+        "rector:check": "@rector:fix --dry-run",
+        "rector:fix": "@php vendor/bin/rector process",
+        "ecs:check": "@php vendor/bin/ecs check app tests routes config database",
+        "ecs:fix": "@ecs:check --fix",
+        "lint:check": [
+            "@rector:check",
+            "@ecs:check"
         ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+        "lint:fix": [
+            "@rector:fix",
+            "@ecs:fix"
         ]
     }
 }

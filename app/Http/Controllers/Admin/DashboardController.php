@@ -10,16 +10,11 @@ use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
-    private PropositionRepository $propositionRepository;
-    private VoterRepository $voterRepository;
-
     public function __construct(
-        PropositionRepository $propositionRepository,
-        VoterRepository $voterRepository
+        private PropositionRepository $propositionRepository,
+        private VoterRepository $voterRepository
     ) {
         parent::__construct();
-        $this->propositionRepository = $propositionRepository;
-        $this->voterRepository = $voterRepository;
     }
 
     public function index(): View
