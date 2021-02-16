@@ -21,7 +21,7 @@ class LoginController extends Controller
      */
     protected string $redirectTo = '/vote';
 
-    public function showLoginForm(Request $request): \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
+    public function showLoginForm(Request $request): \Illuminate\Contracts\View\View | \Illuminate\Http\RedirectResponse
     {
         if ($request->user('voter')) {
             return redirect()->route('proposition.index');

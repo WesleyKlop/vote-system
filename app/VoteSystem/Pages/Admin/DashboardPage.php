@@ -20,8 +20,7 @@ class DashboardPage extends AbstractPage
         private Collection $propositions,
         private Voter $voterCount,
         private string $welcomeMessage
-    )
-    {
+    ) {
     }
 
     public function getWelcomeMessage(): string
