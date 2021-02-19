@@ -16,7 +16,7 @@ class AppConfig extends Model
 
     public static function getValue(string $name)
     {
-        $entry = self::findOrFail($name);
+        $entry = static::query()->findOrFail($name);
 
         return $entry->value ?? $entry->default;
     }
