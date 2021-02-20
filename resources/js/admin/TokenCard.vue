@@ -2,8 +2,12 @@
     <div class="pt-2 rounded shadow text-center relative flex flex-wrap">
         <span class="ml-2">{{ number }}.</span>
         <span class="flex-1"></span>
-        <span :title="usedAt" class="badge mr-2" v-if="usedAt">{{ $t('Used') }}</span>
-        <span class="uppercase font-mono w-full mt-2">{{ formattedToken }}</span>
+        <span :title="usedAt" class="badge mr-2" v-if="usedAt">{{
+            $t('Used')
+        }}</span>
+        <span class="uppercase font-mono w-full mt-2">{{
+            formattedToken
+        }}</span>
         <div class="card-footer p-2 w-full">
             <a
                 :href="deleteRoute"
@@ -27,7 +31,7 @@ export default {
         usedAt: {
             type: Date,
             required: false,
-            default: null
+            default: null,
         },
         token: {
             type: String,

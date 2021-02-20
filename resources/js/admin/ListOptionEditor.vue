@@ -14,7 +14,9 @@
                 v-model="question.option"
             />
         </label>
-        <label class="input-label mb-0" id="choice-label">{{ $t('Choices') }}</label>
+        <label class="input-label mb-0" id="choice-label">{{
+            $t('Choices')
+        }}</label>
         <ol class="list-outside list-decimal pl-4">
             <li :key="row.id" class="mb-1" v-for="row of choices">
                 <input

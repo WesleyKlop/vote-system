@@ -11,7 +11,7 @@ const i18n = new VueI18n({
     locale,
 })
 
-import(`../lang/${locale}.json`).then(messages => {
+import(`../lang/${locale}.json`).then((messages) => {
     i18n.setLocaleMessage(locale, messages)
 })
 

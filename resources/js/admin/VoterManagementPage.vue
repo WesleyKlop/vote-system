@@ -4,7 +4,7 @@
         <p class="mt-2 text-gray-600">
             {{ $t('On this page you can manage the tokens usable by voters') }}
         </p>
-        <p v-html="$t('Token refresh warning')"/>
+        <p v-html="$t('Token refresh warning')" />
         <div class="flex flex-col sm:flex-row justify-between">
             <form
                 :action="updateRoute"
@@ -38,7 +38,9 @@
                 >
             </form>
 
-            <button @click="handlePrintTokenClick" class="button" type="button">{{ $t('Print tokens') }}</button>
+            <button @click="handlePrintTokenClick" class="button" type="button">
+                {{ $t('Print tokens') }}
+            </button>
         </div>
 
         <hr />
