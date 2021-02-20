@@ -27,7 +27,7 @@
     "Config warning": "<strong>Be aware</strong> that there is no validation or escaping done on these values, so trying to do anything too fancy might break the application.",
 
     "Dashboard": "Dashboard",
-    "Voter statistics": "Total voter count: <span class='font-bold'>:total</span> | Used: <span class='font-bold'>:used</span>",
+    "Voter statistics": "Total voter count: <span class='font-bold'>:total</span> | Tokens used: <span class='font-bold'>:used</span>",
     "These statistics are based on the used tokens.": "These statistics are based on the <span class='font-bold'>used</span> tokens.",
     "Click here to export the voting results to Excel": "Click here to export the voting results to Excel (.xlsx)",
 

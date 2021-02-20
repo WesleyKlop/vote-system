@@ -1,3 +1,48 @@
 {
-    "Made with love": "Gemaakt met &#9825; door <a href=\"https://wesley.io\" class=\"text-primary\">Wesley Klop</a>"
+    "Vote System": "Stem Systeem",
+    "Made with love": "Gemaakt met &#9825; door <a href='https://wesley.io' class='text-primary'>Wesley Klop</a>",
+
+    "Voters": "Stemmers",
+    "Your token": "Jouw token: <span class='font-mono'>:token</span>",
+    "There is currently no proposition for you to answer": "Er is momenteel geen stelling om te beantwoorden",
+    "Token": "Token",
+    "Token validation information": "Een token kan alle letters en cijfers bevatten behalve: <span class=\"font-mono text-sm\">0, 1, I, L, O</span>",
+    "Accepting the terms is required.": "Het is verplicht om de voorwaarden te accepteren",
+
+    "Proposition": "Stelling",
+    "You are required to select an option for every row.": "Je moet voor iedere rij een optie selecteren",
+    "You are required to select an answer.": "Je moet een antwoord selecteren",
+    "Create proposition": "Stelling aanmaken",
+    "Title": "Titel",
+    "Is it okay to put pineapple on pizza?": "Is het oke om ananas op pizza te doen?",
+    "Order": "Volgorde",
+    "Open for voting": "Open om te stemmen",
+    "Edit proposition": "Stelling aanpassen",
+    "Open": "Open",
+    "Close": "Sluit",
+
+    "Config": "Instellingen",
+    "Config management": "Beheer instellingen",
+    "On this page you can control certain settings used throughout the application.": "Op deze pagina kan je verschillende instellingen van de applicatie aanpassen.",
+    "Config warning": "<strong>Let op</strong> dat er geen validatie of mutatie plaatsvind op deze waardes, dus als je iets heel geks doet kan je de applicatie slopen.",
+
+    "Dashboard": "Dashboard",
+    "Voter statistics": "Totaal aantal stemmers: <span class='font-bold'>:total</span> | Tokens gebruikt: <span class='font-bold'>:used</span>",
+    "These statistics are based on the used tokens.": "Deze statistieken zijn gebaseerd op de <span class='font-bold'>gebruikte</span> tokens.",
+    "Click here to export the voting results to Excel": "Klik hier om de resultaten te exporteren naar Excel (.xlsx)",
+
+    "Admin area": "Admin paneel",
+    "Username": "Gebruikersnaam",
+    "Admin": "Admin",
+    "Password": "Wachtwoord",
+
+
+    "Save": "Opslaan",
+    "Create": "Aanmaken",
+    "Update": "Update",
+    "Edit": "Pas aan",
+    "Vote": "Stem",
+    "Sign out": "Uitloggen",
+    "Sign in": "Inloggen",
+    "Exit": "Stoppen"
 }
