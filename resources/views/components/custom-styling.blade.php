@@ -1,3 +1,4 @@
+@if($primaryColor || $accentColor)
 <style>
 :root {
     @if($primaryColor)
@@ -8,3 +9,4 @@
     @endif
 }
 </style>
+@endif

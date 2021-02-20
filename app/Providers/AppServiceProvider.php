@@ -38,8 +38,8 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $language = AppConfig::find('language');
-        if($language !== null && in_array($language, ['en', 'nl']) === true) {
-            app()->setLocale($language);
+        if($language !== null && in_array($language->value(), ['en', 'nl'])) {
+            app()->setLocale($language->value());
         }
     }
 }

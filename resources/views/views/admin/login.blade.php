@@ -8,25 +8,25 @@
                     <path class="secondary" d="M9.41 11H17a1 1 0 0 1 0 2H9.41l2.3 2.3a1 1 0 1 1-1.42 1.4l-4-4a1 1 0 0 1 0-1.4l4-4a1 1 0 0 1 1.42 1.4L9.4 11z"/>
                 </svg>
             </a>
-            Admin Area
+            @lang('Admin Area')
         </h2>
         @csrf
 
         <label class="input-label">
-            Username
+            @lang("Username')
             <input
                 type="text"
                 name="name"
                 autocomplete="username"
                 class="input"
-                placeholder="Admin"
+                placeholder="@lang('Admin')"
             />
             @error('name')
             <span class="text-failure text-sm font-normal">{{ $message }}</span>
             @enderror
         </label>
         <label class="input-label">
-            Password
+            @lang('Password')
             <input
                 type="password"
                 name="password"
@@ -41,7 +41,7 @@
 
         <input
             type="submit"
-            value="Sign in"
+            value="@lang('Sign in')"
             class="submit-button"
         />
     </form>

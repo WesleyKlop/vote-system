@@ -1,0 +1,48 @@
+{
+    "Vote System": "Vote System",
+    "Made with love": "Made with &#9825; by <a href='https://wesley.io' class='text-primary'>Wesley Klop</a>",
+
+    "Voters": "Voters",
+    "Your token": "Your token: <span class='font-mono'>:token</span>",
+    "There is currently no proposition for you to answer": "There is currently no proposition for you to answer",
+    "Token": "Token",
+    "Token validation information": "The token can contain all letters and numbers except for: <span class=\"font-mono text-sm\">0, 1, I, L, O</span>",
+    "Accepting the terms is required.": "Accepting the terms in required",
+
+    "Proposition": "Proposition",
+    "You are required to select an option for every row.": "You are required to select an option for every row.",
+    "You are required to select an answer.": "You are required to select an answer.",
+    "Create proposition": "Create proposition",
+    "Title": "Title",
+    "Is it okay to put pineapple on pizza?": "Is it okay to put pineapple on pizza?",
+    "Order": "Order",
+    "Open for voting": "Open for voting",
+    "Edit proposition": "Edit proposition",
+    "Open": "Open",
+    "Close": "Close",
+
+    "Config": "Config",
+    "Config management": "Config management",
+    "On this page you can control certain settings used throughout the application.": "On this page you can control certain settings used throughout the application.",
+    "Config warning": "<strong>Be aware</strong> that there is no validation or escaping done on these values, so trying to do anything too fancy might break the application.",
+
+    "Dashboard": "Dashboard",
+    "Voter statistics": "Total voter count: <span class='font-bold'>:total</span> | Used: <span class='font-bold'>:used</span>",
+    "These statistics are based on the used tokens.": "These statistics are based on the <span class='font-bold'>used</span> tokens.",
+    "Click here to export the voting results to Excel": "Click here to export the voting results to Excel (.xlsx)",
+
+    "Admin area": "Admin Area",
+    "Username": "Username",
+    "Admin": "Admin",
+    "Password": "Password",
+
+
+    "Save": "Save",
+    "Create": "Create",
+    "Update": "Update",
+    "Edit": "Edit",
+    "Vote": "Vote",
+    "Sign out": "Sign out",
+    "Sign in": "Sign in",
+    "Exit": "Exit"
+}

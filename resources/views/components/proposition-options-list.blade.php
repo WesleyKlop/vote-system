@@ -1,7 +1,7 @@
 <h3 class="sub-title">{{ $page->getListQuestion()->option }}</h3>
 <div>
     @error('answer')
-    <span class="text-failure">You are required to select an answer</span>
+    <span class="text-failure">@lang('You are required to select an answer.')</span>
     @enderror
     @foreach($page->getListOptions() as $option)
         <input

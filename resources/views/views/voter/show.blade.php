@@ -7,11 +7,11 @@
     <form class="my-2 p-2 w-full lg:w-3/4" method="POST" action="{{ route('proposition.update') }}">
         @csrf
         <input type="hidden" name="proposition" value="{{ $proposition->id }}" required/>
-        <span class="text-gray-600">Proposition {{ $proposition->order }}</span>
+        <span class="text-gray-600">@lang('Proposition') {{ $proposition->order }}</span>
         <h2 class="title mb-6">{{ $proposition->title }}</h2>
 
         @include('components.proposition-options-' . $proposition->type)
 
-        <input type="submit" class="submit-button" value="Vote"/>
+        <input type="submit" class="submit-button" value="@lang('Vote')"/>
     </form>
 @endsection
