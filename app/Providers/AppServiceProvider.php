@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if (! app()->runningInConsole()) {
+        if (!app()->runningInConsole()) {
             $this->bootWebApplication();
         }
     }
@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         $language = AppConfig::find('language');
-        if($language !== null && in_array($language->value(), ['en', 'nl'])) {
+        if ($language !== null && in_array($language->value(), ['en', 'nl'])) {
             app()->setLocale($language->value());
         }
     }

@@ -28,7 +28,8 @@ class AppConfig extends Model
         );
     }
 
-    public function value() {
+    public function value()
+    {
         return $this->value ?? $this->default;
     }
 }
