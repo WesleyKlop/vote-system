@@ -15,11 +15,11 @@ return [
 
         'port' => env('LARAVEL_WEBSOCKETS_PORT', 6001),
 
-        'path' => 'laravel-websockets',
+        'path' => 'admin/websockets',
 
         'middleware' => [
             'web',
-            \BeyondCode\LaravelWebSockets\Dashboard\Http\Middleware\Authorize::class,
+            'admin',
         ],
 
     ],
@@ -71,7 +71,7 @@ return [
             'enable_client_messages' => false,
             'enable_statistics' => true,
             'allowed_origins' => [
-                //
+                (new \GuzzleHttp\Psr7\Uri(env('APP_URL')))->getHost(),
             ],
         ],
     ],
