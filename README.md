@@ -3,6 +3,8 @@
 ![Automated tests](https://github.com/WesleyKlop/vote-system/workflows/Automated%20tests/badge.svg?event=push)
 ![Deliver](https://github.com/WesleyKlop/vote-system/workflows/Deliver/badge.svg)
 
+![Question example](.github/screenshots/banner.png)
+
 Vote System is a general purpose voting application that,
 especially during these stay-at-home times can be useful in enabling digital voting.
 
@@ -44,6 +46,10 @@ You can now run the following command to start the application on the foreground
 IMAGE=ghcr.io/wesleyklop/vote-system:main
 docker run --rm -p 1337:80 -v /abs/path/to/your/.env-file:/app/.env $IMAGE
 ```
+
+## Screenshots
+
+![Admin dashboard](.github/screenshots/dashboard.png)
 
 ## Contributing
 
