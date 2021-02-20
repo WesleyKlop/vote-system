@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header">
                     <h2 class="title flex-1 truncate">{{ $proposition->order }}. {{ $proposition->title }}</h2>
-                    <span class="badge {{ $proposition->is_open ? 'badge--accent' : '' }}">{{ $proposition->is_open ? 'open' : 'closed' }}</span>
+                    <span class="badge {{ $proposition->is_open ? 'badge--accent' : '' }}">@lang($proposition->is_open ? 'Open' : 'Closed')</span>
                 </div>
 
                 <div class="card-content">
