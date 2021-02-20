@@ -49,7 +49,6 @@ class PropositionResultExport implements
 
     /**
      * @param VoterPropositionOption $proposition
-     * @return array
      */
     public function map($proposition): array
     {
