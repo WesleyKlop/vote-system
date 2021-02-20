@@ -1,14 +1,10 @@
 <template>
     <div class="px-8 sm:px-0">
-        <h1 class="title">Voter management</h1>
+        <h1 class="title">{{ $t('Voter management') }}</h1>
         <p class="mt-2 text-gray-600">
-            On this page you can manage the tokens usable by voters.
+            {{ $t('On this page you can manage the tokens usable by voters') }}
         </p>
-        <p class="">
-            By generating new tokens you delete all existing ones, meaning all
-            existing votes will be
-            <span class="font-extrabold uppercase">removed</span>.
-        </p>
+        <p v-html="$t('Token refresh warning')"/>
         <div class="flex flex-col sm:flex-row justify-between">
             <form
                 :action="updateRoute"
@@ -17,7 +13,7 @@
             >
                 <input :value="csrf" name="_token" type="hidden" />
                 <label class="input-label inline-flex my-0 flex-1" for="amount">
-                    Amount of tokens
+                    {{ $t('Amount of tokens') }}
                     <input
                         class="input rounded-r-none"
                         id="amount"
@@ -42,9 +38,7 @@
                 >
             </form>
 
-            <button @click="handlePrintTokenClick" class="button" type="button">
-                Print tokens
-            </button>
+            <button @click="handlePrintTokenClick" class="button" type="button">{{ $t('Print tokens') }}</button>
         </div>
 
         <hr />
@@ -56,7 +50,8 @@
                 :delete-route="deleteRouteFor(voter.id)"
                 :key="voter.id"
                 :number="i + 1"
-                v-bind="voter"
+                :token="voter.token"
+                :used-at="voter.used_at && new Date(voter.used_at)"
                 v-for="(voter, i) of voters"
             />
         </div>

@@ -19,7 +19,7 @@ export default {
             default: 'grid',
         },
         errors: {
-            // Json Encode converts empty dicts to arrays
+            // Json Encode converts empty dictionaries to arrays
             type: [Object, Array],
             default: () => ({}),
             required: false,
@@ -82,7 +82,7 @@ export default {
 <template>
     <div class="w-full sm:w-3/4 mt-6">
         <div class="col-span-2">
-            <h2 class="sub-title">Options</h2>
+            <h2 class="sub-title">{{ $t('Options') }}</h2>
             <input
                 class="radio-input"
                 hidden
@@ -93,7 +93,7 @@ export default {
                 value="list"
             />
             <label class="radio-input-label" for="type-list">
-                <span class="radio-input-text">List</span>
+                <span class="radio-input-text">{{ $t('List') }}</span>
             </label>
             <input
                 class="radio-input"
@@ -105,7 +105,7 @@ export default {
                 value="grid"
             />
             <label class="radio-input-label" for="type-grid">
-                <span class="radio-input-text">Grid</span>
+                <span class="radio-input-text">{{ $t('Grid') }}</span>
             </label>
         </div>
         <div class="text-failure text-sm col-span-2">

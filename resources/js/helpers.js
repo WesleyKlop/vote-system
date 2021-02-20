@@ -17,3 +17,7 @@ export const chunkArray = (array, chunkSize) =>
 
         return resultArray
     }, [])
+
+export const getAppLocale = () => {
+    return document.querySelector('html').lang
+}

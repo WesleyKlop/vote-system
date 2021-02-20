@@ -1,7 +1,7 @@
 <template>
     <div class="grid grid-cols-2 gap-4 w-full sm:w-3/4">
         <div class="col-span-1">
-            <h3 class="input-label mb-0">Horizontal options</h3>
+            <h3 class="input-label mb-0">{{ $t('Horizontal options') }}</h3>
             <ol class="list-outside list-decimal pl-4">
                 <li :key="col.id" class="mb-1" v-for="col of horizontal">
                     <input
@@ -16,7 +16,7 @@
             </ol>
         </div>
         <div class="col-span-1">
-            <h3 class="input-label mb-0">Vertical options</h3>
+            <h3 class="input-label mb-0">{{ $t('Vertical options') }}</h3>
             <ol class="list-outside list-decimal pl-4">
                 <li :key="row.id" class="mb-1" v-for="row of vertical">
                     <input
