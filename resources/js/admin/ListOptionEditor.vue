@@ -1,20 +1,22 @@
 <template>
     <div class="w-full sm:w-3/4">
         <label class="input-label">
-            Question
+            {{ $t('Question') }}
             <input
                 :name="`options[horizontal][${question.id || ''}]`"
                 @change="$emit('check-remove', question)"
                 @keyup="question.isDirty = true"
                 autocomplete="off"
                 class="input"
-                placeholder="How do you like this?"
+                :placeholder="$t('How do you like this?')"
                 required
                 type="text"
                 v-model="question.option"
             />
         </label>
-        <label class="input-label mb-0" id="choice-label">Choices</label>
+        <label class="input-label mb-0" id="choice-label">{{
+            $t('Choices')
+        }}</label>
         <ol class="list-outside list-decimal pl-4">
             <li :key="row.id" class="mb-1" v-for="row of choices">
                 <input
@@ -58,5 +60,3 @@ export default {
     },
 }
 </script>
-
-<style scoped></style>

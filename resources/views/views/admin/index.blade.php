@@ -2,14 +2,14 @@
 
 @section('content')
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
-        <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0 text-primary">Dashboard</h1>
+        <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0 text-primary">@lang('Dashboard')</h1>
         <div class="banner col-span-1 lg:col-span-2">{!! $page->getWelcomeMessage() !!}
-            Total voter count: <span class="font-bold">{{ $page->getTotalVoterCount() }}</span> | Used: <span class="font-bold">{{ $page->getUsedVoterCount() }}</span>
-            These statistics are based on the <span class="font-bold">used</span> tokens.
+            @lang('Voter statistics', ['total' => $page->getTotalVoterCount(), 'used' => $page->getUsedVoterCount() ])
+            @lang('These statistics are based on the used tokens.')
         </div>
 
         <a class="col-span-1 lg:col-span-2" href="{{ route('admin.export.index') }}">
-            Click here to export the voting results to Excel (.xlsx)
+            @lang('Click here to export the voting results to Excel')
         </a>
 
         @foreach($page->getPropositions() as $proposition)
@@ -59,15 +59,9 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="{{ route('admin.propositions.edit', $proposition) }}" class="card-footer-link text-gray-600">Edit</a>
-                    <a
-                        href="{{ route('admin.propositions.toggle', [
-                            'proposition' => $proposition,
-                            'is_open' => ! $proposition->is_open
-                        ]) }}"
-                        class="card-footer-link"
-                    >
-                        {{ $proposition->is_open ? 'Close' : 'Open' }}
+                    <a href="{{ route('admin.propositions.edit', $proposition) }}" class="card-footer-link text-gray-600">@lang('Edit')</a>
+                    <a href="{{ route('admin.propositions.toggle', ['proposition' => $proposition, 'is_open' => ! $proposition->is_open]) }}" class="card-footer-link">
+                        @lang($proposition->is_open ? 'Close' : 'Open')
                     </a>
                 </div>
             </div>
@@ -76,7 +70,7 @@
     <a
         class="fixed bottom-0 right-0 rounded-full bg-accent m-4 sm:m-8 p-2 w-16 h-16 sm:w-20 sm:h-20 shadow-lg z-10"
         href="{{ route('admin.propositions.create') }}"
-        title="Create proposition"
+        title="@lang('Create proposition')"
     >
         <svg viewBox="0 0 24 24" class="w-full h-full text-white">
             <path fill="currentColor" fill-rule="evenodd" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/>

@@ -16,9 +16,9 @@ class AppConfig extends Model
 
     public static function getValue(string $name)
     {
-        $entry = self::findOrFail($name);
+        $entry = static::query()->findOrFail($name);
 
-        return $entry->value ?? $entry->default;
+        return $entry->value();
     }
 
     public static function dictionary(): Collection
@@ -26,5 +26,10 @@ class AppConfig extends Model
         return self::all()->mapWithKeys(
             fn ($row) => [$row->name => $row->value ?: $row->default]
         );
+    }
+
+    public function value()
+    {
+        return $this->value ?? $this->default;
     }
 }

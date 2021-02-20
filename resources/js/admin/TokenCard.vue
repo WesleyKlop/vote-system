@@ -2,7 +2,9 @@
     <div class="pt-2 rounded shadow text-center relative flex flex-wrap">
         <span class="ml-2">{{ number }}.</span>
         <span class="flex-1"></span>
-        <span :title="used_at" class="badge mr-2" v-if="used_at">used</span>
+        <span :title="usedAt" class="badge mr-2" v-if="usedAt">{{
+            $t('Used')
+        }}</span>
         <span class="uppercase font-mono w-full mt-2">{{
             formattedToken
         }}</span>
@@ -11,7 +13,7 @@
                 :href="deleteRoute"
                 @click="handleDeleteClick"
                 class="card-footer-link"
-                >Delete</a
+                >{{ $t('Delete') }}</a
             >
         </div>
     </div>
@@ -26,8 +28,10 @@ export default {
             type: Number,
             required: true,
         },
-        used_at: {
+        usedAt: {
             type: Date,
+            required: false,
+            default: null,
         },
         token: {
             type: String,
@@ -50,7 +54,7 @@ export default {
     },
     methods: {
         handleDeleteClick($event) {
-            if (this.used_at !== null && !confirm(this.confirmText)) {
+            if (this.usedAt !== null && !confirm(this.$t(this.confirmText))) {
                 $event.preventDefault()
             }
         },

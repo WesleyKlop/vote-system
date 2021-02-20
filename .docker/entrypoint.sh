@@ -10,7 +10,7 @@ if [ -z "$APP_KEY" ]; then
 fi
 
 php artisan config:cache
-php artisan migrate --force
+php artisan migrate --force --seed
 
 php artisan votesystem:admin
 
