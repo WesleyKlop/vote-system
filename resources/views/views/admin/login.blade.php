@@ -13,7 +13,7 @@
         @csrf
 
         <label class="input-label">
-            @lang("Username')
+            @lang('Username')
             <input
                 type="text"
                 name="name"

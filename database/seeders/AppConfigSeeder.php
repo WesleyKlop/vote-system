@@ -15,14 +15,14 @@ class AppConfigSeeder extends Seeder
     public function run()
     {
         $this->assertAppConfigsExist([
-            ['name' => 'welcome_message', 'default' => <<<'TXT'
+            ['name' => 'welcome_message', 'default' => <<<'HTML'
 Welcome to this voting application!
 Please enter the token you've been given to start.
-TXT],
+HTML],
             ['name' => 'admin_welcome_message', 'default' => 'Welcome to the admin part of the voting app!', ],
             ['name' => 'voter_legal_requirements', 'default' => <<<'HTML'
-I declare that the filled in token is mine;<br />
-I am a valid member of this association;<br />
+I declare that the filled in token is mine;
+I am a valid member of this association;
 I will not cast my vote more than once.
 HTML],
             ['name' => 'logo_url', 'default' => null],

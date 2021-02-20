@@ -10,6 +10,7 @@
     "Accepting the terms is required.": "Het is verplicht om de voorwaarden te accepteren",
 
     "Proposition": "Stelling",
+    "Propositions": "Stellingen",
     "You are required to select an option for every row.": "Je moet voor iedere rij een optie selecteren",
     "You are required to select an answer.": "Je moet een antwoord selecteren",
     "Create proposition": "Stelling aanmaken",
@@ -36,10 +37,9 @@
     "Admin": "Admin",
     "Password": "Wachtwoord",
 
-
     "Save": "Opslaan",
     "Create": "Aanmaken",
-    "Update": "Update",
+    "Update": "Pas aan",
     "Edit": "Pas aan",
     "Vote": "Stem",
     "Sign out": "Uitloggen",

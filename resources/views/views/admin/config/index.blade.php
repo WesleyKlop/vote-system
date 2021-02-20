@@ -14,7 +14,7 @@
             @foreach($settings as $setting)
                 <div class="p-2 rounded shadow">
                     <label class="font-mono w-full mb-2" for="{{ $setting->name }}">
-                        @lang($setting->name)
+                        @lang('appconfig.' . $setting->name)
                     </label>
                     <textarea
                         id="{{ $setting->name }}"

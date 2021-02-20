@@ -10,6 +10,7 @@
     "Accepting the terms is required.": "Accepting the terms in required",
 
     "Proposition": "Proposition",
+    "Propositions": "Propositions",
     "You are required to select an option for every row.": "You are required to select an option for every row.",
     "You are required to select an answer.": "You are required to select an answer.",
     "Create proposition": "Create proposition",
@@ -35,7 +36,6 @@
     "Username": "Username",
     "Admin": "Admin",
     "Password": "Password",
-
 
     "Save": "Save",
     "Create": "Create",
