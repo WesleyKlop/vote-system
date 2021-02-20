@@ -24,6 +24,9 @@ class PropositionResultExport implements
     {
     }
 
+    /**
+     * @return Builder<VoterPropositionOption>
+     */
     public function query(): Builder
     {
         return VoterPropositionOption::with(
@@ -45,7 +48,7 @@ class PropositionResultExport implements
     }
 
     /**
-     * @param  VoterPropositionOption  $proposition
+     * @param VoterPropositionOption $proposition
      */
     public function map($proposition): array
     {
