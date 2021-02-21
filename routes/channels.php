@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('propositions', function (Authenticatable $user) {
+Broadcast::channel('propositions', function (?Authenticatable $user) {
     return $user instanceof Voter;
-});
+}, ['guards' => 'voter']);
