@@ -11,11 +11,10 @@ class Authenticate extends Middleware
      * Get the path the user should be redirected to when they are not authenticated.
      *
      * @param \Illuminate\Http\Request $request
-     * @return string|null
      */
     protected function redirectTo($request, array $guards = []): ?string
     {
-        if (! $request->expectsJson()) {
+        if (!$request->expectsJson()) {
             return route([
                 'web-voter' => 'voter.index',
                 'web-admin' => 'admin.login.show'
@@ -27,7 +26,9 @@ class Authenticate extends Middleware
     protected function unauthenticated($request, array $guards)
     {
         throw new AuthenticationException(
-            'Unauthenticated.', $guards, $this->redirectTo($request, $guards)
+            'Unauthenticated.',
+            $guards,
+            $this->redirectTo($request, $guards)
         );
     }
 }

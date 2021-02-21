@@ -12,6 +12,6 @@
 |
 */
 
-Route::middleware('auth:api-voter')->get('user', function() {
+Route::middleware('auth:api-voter')->get('user', function () {
     return response()->json(auth('api-voter')->user());
 });
