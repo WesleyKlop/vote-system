@@ -36,10 +36,10 @@
  * Question buttons (questions)
  */
 .question-input-label {
-    @apply block p-2 my-2 border rounded cursor-pointer;
+    @apply w-full text-left block p-2 my-2 border rounded cursor-pointer;
 }
 
-input[type='radio']:checked + .question-input-label {
+.question-input-label--selected {
     @apply bg-gray-200 shadow border-gray-400;
 }
 

@@ -21,6 +21,7 @@ new Vue({
             import('./admin/PropositionOptionEditor'),
         TokenInput,
         VoterManagementPage: () => import('./admin/VoterManagementPage'),
+        VoterVotingPage: () => import('./voter/VoterVotingPage'),
     },
     data() {
         return {
@@ -29,9 +30,7 @@ new Vue({
     },
 })
 
-
-console.log(echo)
-echo.private('propositions')
-    .listen('PropositionChange', event => {
-        console.log(event)
-    })
+// echo().private('propositions')
+//     .listen('PropositionChange', event => {
+//         console.log(event)
+//     })

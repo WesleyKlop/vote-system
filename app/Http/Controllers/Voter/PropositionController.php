@@ -24,11 +24,9 @@ class PropositionController extends Controller
         $user = $request->user();
         $proposition = $this->propositionService->getNextProposition($user);
 
-        if (is_null($proposition)) {
-            return view('views.voter.empty_state');
-        }
-
-        return $this->page(new PropositionShowPage($proposition));
+        return view('views.voter.show', [
+            'proposition' => $proposition,
+        ]);
     }
 
     public function update(PropositionSubmitRequest $request): RedirectResponse

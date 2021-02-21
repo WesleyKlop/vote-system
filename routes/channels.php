@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Voter;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Broadcast;
@@ -18,3 +19,7 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('propositions', function (?Authenticatable $user) {
     return $user instanceof Voter;
 }, ['guards' => 'voter']);
+
+Broadcast::channel('results', function (?Authenticatable $user) {
+    return $user instanceof User;
+}, ['guards' => 'admin']);

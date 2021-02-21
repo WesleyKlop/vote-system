@@ -16,12 +16,13 @@ class PropositionChange implements ShouldBroadcast
 
     public function __construct(public ?Proposition $proposition)
     {
+        if($this->proposition !== null) {
+            $this->proposition->loadMissing('options');
+        }
     }
 
     /**
      * Get the channels the event should broadcast on.
-     *
-     * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn(): Channel
     {
