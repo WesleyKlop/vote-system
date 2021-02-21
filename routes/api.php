@@ -11,3 +11,7 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::middleware('auth:api-voter')->get('user', function() {
+    return response()->json(auth('api-voter')->user());
+});

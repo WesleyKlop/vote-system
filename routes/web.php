@@ -23,7 +23,7 @@ Route::get('/', [Voter\LoginController::class, 'showLoginForm'])->name('voter.in
 Route::post('/', [Voter\LoginController::class, 'login'])->name('voter.login');
 Route::get('/exit', [Voter\LoginController::class, 'logout'])->name('voter.logout');
 
-Route::middleware('voter')->group(function () {
+Route::middleware('auth:web-voter')->group(function () {
     Route::get('/vote', [Voter\PropositionController::class, 'index'])->name('proposition.index');
     Route::post('/vote', [Voter\PropositionController::class, 'update'])->name('proposition.update');
 });
@@ -35,7 +35,7 @@ Route::get('/admin/login', [Admin\LoginController::class, 'showLoginForm'])->nam
 Route::post('/admin/login', [Admin\LoginController::class, 'login'])->name('admin.login.update');
 Route::get('/admin/logout', [Admin\LoginController::class, 'logout'])->name('admin.login.logout');
 
-Route::prefix('/admin')->middleware('admin')->name('admin.')->group(function () {
+Route::prefix('/admin')->middleware('auth:web-admin')->name('admin.')->group(function () {
     Route::get('/', [Admin\DashboardController::class, 'index'])->name('index');
 
     Route::get('/voters', [Admin\VoterController::class, 'index'])->name('voters.index');
