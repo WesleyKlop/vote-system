@@ -19,6 +19,8 @@ const getConnection = () => {
                 forceTLS: false,
                 disableStats: true,
                 authEndpoint: '/broadcasting/auth',
+                httpHost: null,
+                statsHost: null,
             }),
         })
     }

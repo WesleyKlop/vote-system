@@ -10,10 +10,6 @@
     @apply opacity-0 transition-opacity duration-75 ease-in bg-gray-500 rounded-full w-full h-full;
 }
 
-.vote-radio:checked + .vote-radio-label > span {
+.vote-radio-label--selected > span {
     @apply opacity-100;
-}
-
-.vote-radio:user-invalid + .vote-radio-label {
-    @apply border-failure;
 }

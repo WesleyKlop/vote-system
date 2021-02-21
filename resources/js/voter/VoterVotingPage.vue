@@ -1,15 +1,15 @@
 <template>
     <div
-        v-if="!proposition || proposition.is_open === false"
-        class="text-center px-4 sm:px-0"
+        v-if='!proposition || proposition.is_open === false'
+        class='text-center px-4 sm:px-0'
     >
         {{ $t('There is currently no proposition for you to answer') }}
     </div>
     <proposition-form
         v-else
-        :proposition="proposition"
-        @submit="submitAnswers"
-        @option:select="selectOption"
+        :proposition='proposition'
+        @submit='submitAnswers'
+        @option:select='selectOption'
     />
 </template>
 
@@ -51,7 +51,7 @@ export default {
         },
         selectOption({ horizontalId, verticalId }) {
             const option = this.proposition.options.find(
-                (opt) => opt.id === horizontalId,
+                (option) => option.id === horizontalId,
             )
             this.$set(option, 'selected', verticalId)
         },
@@ -66,6 +66,8 @@ export default {
                 }, {}),
             }
             console.log(payload)
+            console.log(echo()
+                .private('propositions'))
         },
     },
 }
