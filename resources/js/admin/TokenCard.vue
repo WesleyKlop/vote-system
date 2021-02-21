@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { formatToken } from '../helpers'
+import { formatToken } from '../shared/helpers'
 
 export default {
     props: {

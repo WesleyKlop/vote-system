@@ -19,6 +19,8 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "laravel-echo": "^1.10.0",
+        "pusher-js": "^7.0.3",
         "tailwindcss": "^2.0.3",
         "vue": "^2.6.12",
         "vue-i18n": "^8.22.4",
