@@ -13,7 +13,12 @@
             @select="$emit('option:select', $event)"
         />
 
-        <button type="button" class="submit-button" @click="$emit('submit')">
+        <button
+            type="button"
+            class="submit-button"
+            @click="$emit('submit')"
+            :disabled="disabled"
+        >
             {{ $t('Vote') }}
         </button>
     </div>
@@ -29,6 +34,10 @@ export default {
         PropositionOptionsGrid,
     },
     props: {
+        disabled: {
+            type: Boolean,
+            required: true,
+        },
         proposition: {
             type: Object,
             required: false,

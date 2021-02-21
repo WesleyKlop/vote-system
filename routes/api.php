@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Voter;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,6 @@
 |
 */
 
-Route::middleware('auth:api-voter')->get('user', function () {
-    return response()->json(auth('api-voter')->user());
+Route::middleware('auth:api-voter')->group(function () {
+    Route::post('propositions/{proposition}/vote', [Voter\PropositionVotesController::class, 'store'])->name('api.proposition.votes.store');
 });

@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Voter;
+
 use Illuminate\Support\Facades\Route;
 
 /*

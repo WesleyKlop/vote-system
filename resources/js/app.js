@@ -26,6 +26,7 @@ new Vue({
     data() {
         return {
             csrf: document.querySelector('meta[name="csrf-token"]')?.content,
+            token: document.querySelector('meta[name="voter-token"]')?.content,
         }
     },
 })

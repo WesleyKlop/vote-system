@@ -32,6 +32,10 @@
     @apply bg-accent;
 }
 
+.button[disabled] {
+    @apply bg-gray-300 opacity-40 cursor-not-allowed;
+}
+
 /*
  * Question buttons (questions)
  */

@@ -10,12 +10,14 @@
         :proposition="proposition"
         @submit="submitAnswers"
         @option:select="selectOption"
+        :disabled="answeredCurrentProposition"
     />
 </template>
 
 <script>
 import echo from '../shared/websockets'
 import PropositionForm from './PropositionForm'
+import VotingService from './VotingService'
 
 export default {
     components: {
@@ -32,7 +34,7 @@ export default {
     data() {
         return {
             proposition: this.initialProposition,
-            channel: null,
+            answeredPropositions: [],
         }
     },
     mounted() {
@@ -56,17 +58,26 @@ export default {
             this.$set(option, 'selected', verticalId)
         },
         submitAnswers() {
-            const payload = {
-                proposition: this.proposition.id,
-                answers: this.proposition.options.reduce((answers, curr) => {
-                    if ('selected' in curr) {
-                        answers[curr.id] = curr.selected
-                    }
-                    return answers
-                }, {}),
-            }
-            console.log(payload)
-            console.log(echo().private('propositions'))
+            const propositionId = this.proposition.id
+            const answers = this.proposition.options.reduce((answers, curr) => {
+                if ('selected' in curr) {
+                    answers[curr.id] = curr.selected
+                }
+                return answers
+            }, {})
+
+            const votingService = new VotingService(
+                this.$root.token,
+                this.voteRoute,
+            )
+            votingService.submitAnswers(propositionId, answers).then(() => {
+                this.answeredPropositions.push(propositionId)
+            })
+        },
+    },
+    computed: {
+        answeredCurrentProposition() {
+            return this.answeredPropositions.includes(this.proposition?.id)
         },
     },
 }

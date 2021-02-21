@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Broadcast;
 
 Broadcast::channel('propositions', function (?Authenticatable $user) {
     return $user instanceof Voter;
-}, ['guards' => 'voter']);
+}, ['guards' => 'web-voter']);
 
 Broadcast::channel('results', function (?Authenticatable $user) {
     return $user instanceof User;
-}, ['guards' => 'admin']);
+}, ['guards' => 'web-admin']);
