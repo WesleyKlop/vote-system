@@ -27,7 +27,7 @@ RUN composer dump-autoload -a
 FROM php:8-apache
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
-RUN install-php-extensions opcache pgsql pdo_pgsql bcmath mysqli pdo_mysql
+RUN install-php-extensions opcache pgsql pdo_pgsql bcmath mysqli pdo_mysql pcntl
 
 RUN a2enmod rewrite
 
