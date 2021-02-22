@@ -8,7 +8,7 @@
         :errors="errors"
     />
     <div v-else class="text-center px-4 sm:px-0">
-        <team-work class="w-full p-8 max-w-screen-md mx-auto md:p-16" />
+        <ill-team-work class="w-full p-8 max-w-screen-md mx-auto md:p-16" />
         <span class="text-gray-900">{{
             $t('There is currently no proposition for you to answer')
         }}</span>
@@ -19,12 +19,12 @@
 import AppError, { ValidationError } from '../shared/errors'
 import echo from '../shared/websockets'
 import PropositionForm from './PropositionForm'
-import TeamWork from '../shared/TeamWork'
+import IllTeamWork from '../shared/IllTeamWork'
 import VotingService from './VotingService'
 
 export default {
     components: {
-        TeamWork,
+        IllTeamWork,
         PropositionForm,
     },
     props: {
@@ -47,7 +47,7 @@ export default {
         return {
             proposition: this.initialProposition,
             answeredPropositions: this.answeredPropositionIds,
-            errors: null,
+            errors: [],
         }
     },
     mounted() {

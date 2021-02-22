@@ -22,6 +22,7 @@ new Vue({
         TokenInput,
         VoterManagementPage: () => import('./admin/VoterManagementPage'),
         VoterVotingPage: () => import('./voter/VoterVotingPage'),
+        IllVote: () => import('./shared/IllVote'),
     },
     data() {
         return {
