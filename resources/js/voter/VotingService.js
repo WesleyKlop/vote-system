@@ -1,3 +1,5 @@
+import { HttpError, ValidationError } from '../shared/errors'
+
 export default class VotingService {
     /**
      * @property {string} #token
@@ -26,7 +28,8 @@ export default class VotingService {
     /**
      * @param {string} propositionId
      * @param {Object} answers
-     * @returns {Promise<*>}
+     * @returns {Promise<boolean>}
+     * @throws {HttpError}
      */
     async submitAnswers(propositionId, answers) {
         const response = await fetch(
@@ -38,6 +41,15 @@ export default class VotingService {
             },
         )
 
-        console.log(response)
+        if (response.ok) {
+            return true
+        }
+
+        switch (response.status) {
+            case 422: // Validation error
+                throw await ValidationError.FromResponse(response)
+            default:
+                throw await HttpError.FromResponseJson(response)
+        }
     }
 }

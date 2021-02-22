@@ -15,8 +15,9 @@
 <body>
 <div id="app" class="container mx-auto flex flex-col min-h-screen">
     @include('components.header-voter')
+    <div class='flex-1'>
     @section('content')@show
-    <div class="flex-1"></div>
+    </div>
     @include('components.footer')
 </div>
 </body>

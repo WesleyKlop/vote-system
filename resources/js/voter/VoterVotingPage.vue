@@ -1,40 +1,53 @@
 <template>
-    <div
-        v-if="!proposition || proposition.is_open === false"
-        class="text-center px-4 sm:px-0"
-    >
-        {{ $t('There is currently no proposition for you to answer') }}
-    </div>
     <proposition-form
-        v-else
+        v-if="proposition && proposition.is_open === true"
         :proposition="proposition"
         @submit="submitAnswers"
         @option:select="selectOption"
-        :disabled="answeredCurrentProposition"
+        :is-answered="answeredCurrentProposition"
+        :errors="errors"
     />
+    <div v-else class="text-center px-4 sm:px-0">
+        <team-work class="w-full p-8 max-w-screen-md mx-auto md:p-16" />
+        <span class="text-gray-900">{{
+            $t('There is currently no proposition for you to answer')
+        }}</span>
+    </div>
 </template>
 
 <script>
+import AppError, { ValidationError } from '../shared/errors'
 import echo from '../shared/websockets'
 import PropositionForm from './PropositionForm'
+import TeamWork from '../shared/TeamWork'
 import VotingService from './VotingService'
 
 export default {
     components: {
+        TeamWork,
         PropositionForm,
     },
     props: {
         initialProposition: {
             type: Object,
             required: false,
-            default: () => null,
+            default: null,
         },
-        voteRoute: { type: String, required: true },
+        answeredPropositionIds: {
+            type: Array,
+            required: false,
+            default: () => [],
+        },
+        voteRoute: {
+            type: String,
+            required: true,
+        },
     },
     data() {
         return {
             proposition: this.initialProposition,
-            answeredPropositions: [],
+            answeredPropositions: this.answeredPropositionIds,
+            errors: null,
         }
     },
     mounted() {
@@ -49,7 +62,15 @@ export default {
     },
     methods: {
         handlePropositionChange({ proposition }) {
+            if (
+                proposition.id !== this.proposition?.id &&
+                proposition.is_open === false
+            ) {
+                console.warn('Ignoring out of order proposition change')
+                return
+            }
             this.proposition = proposition
+            this.errors = []
         },
         selectOption({ horizontalId, verticalId }) {
             const option = this.proposition.options.find(
@@ -57,7 +78,7 @@ export default {
             )
             this.$set(option, 'selected', verticalId)
         },
-        submitAnswers() {
+        async submitAnswers() {
             const propositionId = this.proposition.id
             const answers = this.proposition.options.reduce((answers, curr) => {
                 if ('selected' in curr) {
@@ -70,9 +91,18 @@ export default {
                 this.$root.token,
                 this.voteRoute,
             )
-            votingService.submitAnswers(propositionId, answers).then(() => {
+
+            try {
+                await votingService.submitAnswers(propositionId, answers)
                 this.answeredPropositions.push(propositionId)
-            })
+                this.errors = [this.$t('You have answered the proposition!')]
+            } catch (error) {
+                if (error instanceof ValidationError) {
+                    this.errors = error.errors.answers
+                } else if (error instanceof AppError) {
+                    this.errors = [error.message]
+                }
+            }
         },
     },
     computed: {

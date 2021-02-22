@@ -20,11 +20,11 @@ class PropositionVotesController extends Controller
         abort_unless(
             $proposition->is_open,
             400,
-            'The answer for the previous proposition has not been registered as the proposition was already closed.'
+            trans('The answer for the previous proposition has not been registered as the proposition was already closed')
         );
 
         if ($this->propositionService->propositionHasVoter($proposition, $request->user())) {
-            abort(400, 'You already answered this proposition');
+            abort(400, trans('You already answered this proposition'));
         }
 
         $answers = collect($request->get('answers'));
@@ -34,5 +34,7 @@ class PropositionVotesController extends Controller
             $proposition,
             $answers
         );
+
+        return response(null, 204);
     }
 }
