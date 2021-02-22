@@ -2,7 +2,7 @@ FROM node:15 as front-builder
 WORKDIR /app
 
 # Copy package manager files, and vendor because that way laravel-mix knows that it's laravel
-COPY package.json package-lock.json webpack.mix.js tailwind.config.js postcss.config.js artisan ./
+COPY package.json package-lock.json webpack.mix.js tailwind.config.js .babelrc postcss.config.js artisan ./
 RUN npm ci
 
 COPY resources ./resources
