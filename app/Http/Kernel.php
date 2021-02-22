@@ -2,8 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AuthenticateAdmin;
-use App\Http\Middleware\AuthenticateVoter;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -61,10 +60,6 @@ class Kernel extends HttpKernel
         ],
 
         'api' => ['throttle:api', SubstituteBindings::class],
-
-        'voter' => [AuthenticateVoter::class],
-
-        'admin' => [AuthenticateAdmin::class],
     ];
 
     /**
@@ -75,6 +70,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'auth' => Authenticate::class,
         'bindings' => SubstituteBindings::class,
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,

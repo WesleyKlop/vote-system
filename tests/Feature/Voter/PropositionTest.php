@@ -25,13 +25,13 @@ class PropositionTest extends TestCase
         $voter = $this->voter();
         $proposition = $this->createProposition();
 
-        $response = $this->actingAs($voter, 'voter')->get(
+        $response = $this->actingAs($voter, 'web-voter')->get(
             route('proposition.index')
         );
 
         $response
             ->assertViewIs('views.voter.show')
-            ->assertSeeText($proposition->title)
+            ->assertSee($proposition->title)
             ->assertOk();
     }
 }

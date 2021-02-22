@@ -7,7 +7,7 @@
         @endif
     </a>
     <nav class="header-nav">
-        @auth('voter')
+        @auth('web-voter')
             <a href="{{ route('voter.logout') }}" class="hover:text-failure">@lang('Exit')</a>
         @endauth
     </nav>
