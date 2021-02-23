@@ -11,16 +11,17 @@ let instance = null
  */
 const getConnection = () => {
     if (!instance) {
+        const config = window.__PUSHER_CONFIG__
         instance = new Echo({
             broadcaster: 'pusher',
-            client: new Pusher(process.env.MIX_PUSHER_APP_KEY, {
+            client: new Pusher(config.PUSHER_APP_KEY, {
                 wsHost: window.location.hostname,
                 statsHost: window.location.hostname,
+                httpHost: window.location.hostname,
                 wsPort: 6001,
                 forceTLS: window.location.protocol === 'https:',
                 disableStats: true,
                 authEndpoint: '/broadcasting/auth',
-                httpHost: null,
             }),
         })
     }

@@ -10,15 +10,16 @@
     @endauth
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"  nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('style') }}"/>
     <script defer src="{{ mix('js/app.js') }}" nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}"></script>
-    @include('components.custom-styling')
+    <x-custom-styling />
+    <x-websocket-config />
 </head>
 <body>
 <div id="app" class="container mx-auto flex flex-col min-h-screen">
-    @include('components.header-voter')
+    <x-header-voter />
     <div class='flex-1'>
     @section('content')@show
     </div>
-    @include('components.footer')
+    <x-footer />
 </div>
 </body>
 </html>
