@@ -15,12 +15,12 @@ const getConnection = () => {
             broadcaster: 'pusher',
             client: new Pusher(process.env.MIX_PUSHER_APP_KEY, {
                 wsHost: window.location.hostname,
+                statsHost: window.location.hostname,
                 wsPort: 6001,
-                forceTLS: false,
+                forceTLS: window.location.protocol === 'https:',
                 disableStats: true,
                 authEndpoint: '/broadcasting/auth',
                 httpHost: null,
-                statsHost: null,
             }),
         })
     }

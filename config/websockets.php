@@ -19,7 +19,7 @@ return [
 
         'middleware' => [
             'web',
-            'admin',
+            'auth:web-admin',
         ],
 
     ],
