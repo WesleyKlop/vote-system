@@ -57,6 +57,6 @@ class VoterUserProvider implements UserProvider
     ) {
         $token = $credentials['token'];
 
-        return $token === $user->token;
+        return $token === $user->getAuthPassword();
     }
 }

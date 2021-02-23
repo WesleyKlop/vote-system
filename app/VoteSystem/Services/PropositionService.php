@@ -148,12 +148,12 @@ class PropositionService
         return (Proposition::max('order') ?: 0) + 1;
     }
 
-    private function getValidId($id): string
+    private function getValidId(int | string $id): string
     {
-        if (Str::isUuid($id)) {
+        if (is_string($id) && Str::isUuid($id)) {
             return $id;
         }
 
-        return Str::uuid();
+        return Str::uuid()->toString();
     }
 }
