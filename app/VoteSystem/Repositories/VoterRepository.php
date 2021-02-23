@@ -9,7 +9,7 @@ class VoterRepository
 {
     public function aggregateVoterStatistics(): Voter
     {
-        return Voter::first([
+        return Voter::firstOrFail([
             DB::raw('count(*) as total'),
             DB::raw('count(used_at) AS used'),
             DB::raw('count(*) - count(used_at) as unused'),

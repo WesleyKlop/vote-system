@@ -64,7 +64,6 @@
         ],
         "post-root-package-install": "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
         "post-create-project-cmd": "@php artisan key:generate --ansi",
-        "test": "@php artisan test",
         "rector:check": "@rector:fix --dry-run",
         "rector:fix": "@php vendor/bin/rector process",
         "ecs:check": "@php vendor/bin/ecs check app tests routes config database",
@@ -76,6 +75,13 @@
         "lint:fix": [
             "@rector:fix",
             "@ecs:fix"
+        ],
+        "psalm:check": "@php vendor/bin/psalm",
+        "psalm:fix": "@psalm:check --issues=all --alter",
+        "phpunit:check": "@php vendor/bin/phpunit",
+        "test": [
+            "@psalm:check",
+            "@phpunit:check"
         ]
     }
 }
