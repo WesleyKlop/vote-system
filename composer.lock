@@ -144,16 +144,16 @@
         },
         {
             "name": "beyondcode/laravel-websockets",
-            "version": "2.0.0-beta.32",
+            "version": "2.0.0-beta.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-websockets.git",
-                "reference": "6be62b149dfeb45b0a5dac52cf38d02a9b9f23ee"
+                "reference": "efb3aa82b9be93fcdabc1c7e089ab6d2d0aa63d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/6be62b149dfeb45b0a5dac52cf38d02a9b9f23ee",
-                "reference": "6be62b149dfeb45b0a5dac52cf38d02a9b9f23ee",
+                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/efb3aa82b9be93fcdabc1c7e089ab6d2d0aa63d5",
+                "reference": "efb3aa82b9be93fcdabc1c7e089ab6d2d0aa63d5",
                 "shasum": ""
             },
             "require": {
@@ -169,7 +169,7 @@
                 "illuminate/queue": "^6.3|^7.0|^8.0",
                 "illuminate/routing": "^6.3|^7.0|^8.0",
                 "illuminate/support": "^6.3|^7.0|^8.0",
-                "pusher/pusher-php-server": "^4.0",
+                "pusher/pusher-php-server": "^4.0|^5.0",
                 "react/promise": "^2.0",
                 "symfony/http-kernel": "^4.0|^5.0",
                 "symfony/psr-http-message-bridge": "^1.1|^2.0"
@@ -233,9 +233,9 @@
             ],
             "support": {
                 "issues": "https://github.com/beyondcode/laravel-websockets/issues",
-                "source": "https://github.com/beyondcode/laravel-websockets/tree/2.0.0-beta.32"
+                "source": "https://github.com/beyondcode/laravel-websockets/tree/2.0.0-beta.33"
             },
-            "time": "2020-12-07T18:18:58+00:00"
+            "time": "2021-02-24T20:12:05+00:00"
         },
         {
             "name": "brick/math",
@@ -3690,16 +3690,16 @@
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "v4.1.5",
+            "version": "v5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "251f22602320c1b1aff84798fe74f3f7ee0504a9"
+                "reference": "6cad1269f1f5261969848b72829f4f30736f3d90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/251f22602320c1b1aff84798fe74f3f7ee0504a9",
-                "reference": "251f22602320c1b1aff84798fe74f3f7ee0504a9",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/6cad1269f1f5261969848b72829f4f30736f3d90",
+                "reference": "6cad1269f1f5261969848b72829f4f30736f3d90",
                 "shasum": ""
             },
             "require": {
@@ -3714,7 +3714,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.4-dev"
+                    "dev-master": "5.0-dev"
                 }
             },
             "autoload": {
@@ -3742,9 +3742,9 @@
             ],
             "support": {
                 "issues": "https://github.com/pusher/pusher-http-php/issues",
-                "source": "https://github.com/pusher/pusher-http-php/tree/v4.1.5"
+                "source": "https://github.com/pusher/pusher-http-php/tree/v5.0.1"
             },
-            "time": "2020-12-09T09:38:19+00:00"
+            "time": "2021-02-22T19:30:51+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -14549,9 +14549,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "beyondcode/laravel-websockets": 10
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
