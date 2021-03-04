@@ -35,8 +35,6 @@ COPY .docker/apache.conf /etc/apache2/sites-available/000-default.conf
 COPY .docker/php.ini ${PHP_INI_DIR}/conf.d/99-overrides.ini
 COPY .docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 
-USER www-data
-
 WORKDIR /app
 COPY --chown=www-data:www-data --from=back-builder /app/ /app
 COPY --chown=www-data:www-data --from=front-builder /app/public/ /app/public
@@ -45,7 +43,12 @@ VOLUME /app/storage/logs
 VOLUME /app/storage/app
 
 # Cache everything except config cache because .env is loaded at container creation time.
-RUN php artisan route:cache && php artisan view:cache
+USER www-data
+RUN php artisan route:cache \
+ && php artisan view:cache \
+ && php artisan event:cache \
+ && php artisan view:cache
+USER root
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["apache2-foreground"]
