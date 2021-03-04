@@ -9,6 +9,14 @@ if [ -z "$APP_KEY" ]; then
     exit 1;
 fi
 
+if [ "$1" == "artisan" ]; then
+    exec docker-php-entrypoint php "$@"
+fi
+
+if [ "$1" != "apache2-foreground" ]; then
+    exec docker-php-entrypoint "$@"
+fi
+
 sudo -u www-data php artisan config:cache
 sudo -u www-data php artisan migrate --force --seed
 

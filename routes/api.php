@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Voter;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,3 +12,7 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::middleware('auth:api-voter')->group(function () {
+    Route::post('propositions/{proposition}/vote', [Voter\PropositionVotesController::class, 'store'])->name('api.proposition.votes.store');
+});

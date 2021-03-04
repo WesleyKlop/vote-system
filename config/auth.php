@@ -16,8 +16,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'web-admin',
+        'passwords' => 'admins',
     ],
 
     /*
@@ -38,25 +38,21 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'web-admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
         ],
 
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-
-        'voter' => [
+        'web-voter' => [
             'driver' => 'session',
             'provider' => 'voters',
         ],
 
-        'api' => [
+        'api-voter' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'voters',
             'hash' => false,
+            'storage_key' => 'token',
         ],
     ],
 
@@ -78,7 +74,7 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'admins' => [
             'driver' => 'eloquent',
             'model' => User::class,
         ],
@@ -87,11 +83,6 @@ return [
             'driver' => 'voter',
             'model' => Voter::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -110,8 +101,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'admins' => [
+            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -35,7 +35,10 @@
     "Grid": "Table",
     "Question": "Question",
     "How do you like this?": "What do you think of this?",
-    "Choices": "Choises",
+    "Choices": "Choices",
+    "You have answered the proposition!": "You have answered the proposition!",
+    "You already answered this proposition": "You have already answered this proposition",
+    "The answer for the previous proposition has not been registered as the proposition was already closed": "The answer for the previous proposition has not been registered as the proposition was already closed.",
 
     "Config": "Config",
     "Config management": "Config management",

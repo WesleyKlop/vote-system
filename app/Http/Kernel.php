@@ -2,8 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\AuthenticateAdmin;
-use App\Http\Middleware\AuthenticateVoter;
+use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -33,7 +32,7 @@ class Kernel extends HttpKernel
      *
      * These middleware are run during every request to your application.
      *
-     * @var array
+     * @var class-string[]
      */
     protected $middleware = [
         TrustProxies::class,
@@ -48,7 +47,7 @@ class Kernel extends HttpKernel
     /**
      * The application's route middleware groups.
      *
-     * @var array
+     * @var array<string, class-string[]>
      */
     protected $middlewareGroups = [
         'web' => [
@@ -61,10 +60,6 @@ class Kernel extends HttpKernel
         ],
 
         'api' => ['throttle:api', SubstituteBindings::class],
-
-        'voter' => [AuthenticateVoter::class],
-
-        'admin' => [AuthenticateAdmin::class],
     ];
 
     /**
@@ -72,9 +67,10 @@ class Kernel extends HttpKernel
      *
      * These middleware may be assigned to groups or used individually.
      *
-     * @var array
+     * @var array<string, class-string>
      */
     protected $routeMiddleware = [
+        'auth' => Authenticate::class,
         'bindings' => SubstituteBindings::class,
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,

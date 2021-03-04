@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\User;
+use App\Models\Voter;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -13,6 +16,10 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
-});
+Broadcast::channel('propositions', function (?Authenticatable $user) {
+    return $user instanceof Voter;
+}, ['guards' => 'web-voter']);
+
+Broadcast::channel('results', function (?Authenticatable $user) {
+    return $user instanceof User;
+}, ['guards' => 'web-admin']);

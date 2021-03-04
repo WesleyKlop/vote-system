@@ -4,7 +4,7 @@ namespace App\VoteSystem\Pages\Admin;
 
 use App\Models\Proposition;
 use App\Models\PropositionOption;
-use App\Models\Voter;
+use App\VoteSystem\Domain\VoterStatistics;
 use App\VoteSystem\Helpers\PropositionHelper;
 use App\VoteSystem\Pages\AbstractPage;
 use Illuminate\Support\Collection;
@@ -13,12 +13,12 @@ class DashboardPage extends AbstractPage
 {
     protected string $view = 'views.admin.index';
 
+    /**
+     * @param Collection<int, Proposition> $propositions
+     */
     public function __construct(
-        /**
-         * @var Collection<int, Proposition>
-         */
         private Collection $propositions,
-        private Voter $voterCount,
+        private VoterStatistics $voterStatistics,
         private string $welcomeMessage
     ) {
     }
@@ -30,17 +30,17 @@ class DashboardPage extends AbstractPage
 
     public function getUnusedVoterCount(): int
     {
-        return $this->voterCount->unused;
+        return $this->voterStatistics->unused;
     }
 
     public function getUsedVoterCount(): int
     {
-        return $this->voterCount->used;
+        return $this->voterStatistics->used;
     }
 
     public function getTotalVoterCount(): int
     {
-        return $this->voterCount->total;
+        return $this->voterStatistics->total;
     }
 
     public function getPropositions(): Collection
