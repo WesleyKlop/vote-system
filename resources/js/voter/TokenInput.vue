@@ -1,16 +1,16 @@
 <template>
     <div class="flex flex-col">
-        <masked-input
+        <input
             autocomplete="off"
             class="input input--token"
-            mask="#### #### #### ####"
-            maxlength="16"
+            v-mask="'NNNN NNNN NNNN NNNN'"
+            maxlength="19"
             name="token"
             placeholder="ABCD 2345 WXYZ 6789"
-            size="16"
             type="text"
             required
-            :value="value"
+            v-model="value"
+            autofocus
         />
         <div v-for="error of errors" class="font-normal text-failure">
             {{ error }}
@@ -19,14 +19,21 @@
 </template>
 
 <script>
-import MaskedInput from 'vue-masked-input'
+import { VueMaskDirective } from 'v-mask'
 
 export default {
-    components: {
-        MaskedInput,
+    directives: {
+        mask: VueMaskDirective,
     },
+
+    data() {
+        return {
+            value: this.initialValue,
+        }
+    },
+
     props: {
-        value: {
+        initialValue: {
             type: String,
             required: false,
             default: '',

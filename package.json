@@ -23,9 +23,9 @@
         "laravel-echo": "^1.10.0",
         "pusher-js": "^7.0.3",
         "tailwindcss": "^2.0.3",
+        "v-mask": "^2.2.4",
         "vue": "^2.6.12",
-        "vue-i18n": "^8.23.0",
-        "vue-masked-input": "^0.5.2"
+        "vue-i18n": "^8.23.0"
     },
     "husky": {
         "hooks": {
