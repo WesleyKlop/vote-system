@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests\Voter;
 
-use App\Models\Proposition;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
 
-class PropositionSubmitRequest extends FormRequest
+class PropositionVotesSubmitRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -16,8 +14,7 @@ class PropositionSubmitRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'proposition' => ['required', 'uuid', 'exists:propositions,id'],
-            'answer' => ['required', 'array'],
+            'answers' => ['required', 'array'],
         ];
 
         $answerKeyCount = $this->getAnswerKeyCount();
@@ -29,19 +26,9 @@ class PropositionSubmitRequest extends FormRequest
         return $rules;
     }
 
-    private function findProposition(): ?Proposition
-    {
-        $propositionId = $this->request->get('proposition');
-        if (!$propositionId || !Str::isUuid($propositionId)) {
-            return null;
-        }
-
-        return Proposition::find($propositionId);
-    }
-
     private function getAnswerKeyCount(): ?int
     {
-        if (!($proposition = $this->findProposition())) {
+        if (!($proposition = $this->proposition)) {
             return null;
         }
 

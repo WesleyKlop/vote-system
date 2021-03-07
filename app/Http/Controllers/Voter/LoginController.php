@@ -23,7 +23,7 @@ class LoginController extends Controller
 
     public function showLoginForm(Request $request): \Illuminate\Contracts\View\View | \Illuminate\Http\RedirectResponse
     {
-        if ($request->user('voter')) {
+        if ($request->user('web-voter')) {
             return redirect()->route('proposition.index');
         }
 
@@ -65,7 +65,7 @@ class LoginController extends Controller
 
     protected function guard(): StatefulGuard
     {
-        return Auth::guard('voter');
+        return Auth::guard('web-voter');
     }
 
     protected function loggedOut(): RedirectResponse

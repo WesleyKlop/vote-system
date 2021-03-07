@@ -36,6 +36,9 @@
     "Question": "Vraag",
     "How do you like this?": "Wat vindt je hier van?",
     "Choices": "Keuzes",
+    "You have answered the proposition!": "Je hebt de stelling beantwoord!",
+    "You already answered this proposition": "Je hebt deze stelling al beantwoord",
+    "The answer for the previous proposition has not been registered as the proposition was already closed": "Je antwoord op de stelling is niet geregistreerd omdat de stelling al was gesloten.",
 
     "Config": "Instellingen",
     "Config management": "Beheer instellingen",

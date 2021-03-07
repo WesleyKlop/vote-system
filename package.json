@@ -10,6 +10,7 @@
         "lint:fix": "npm run prettier -- --write"
     },
     "devDependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.13.0",
         "husky": "^5",
         "laravel-mix": "^6.0",
         "lint-staged": ">=10",
@@ -19,9 +20,11 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "laravel-echo": "^1.10.0",
+        "pusher-js": "^7.0.3",
         "tailwindcss": "^2.0.3",
         "vue": "^2.6.12",
-        "vue-i18n": "^8.22.4",
+        "vue-i18n": "^8.23.0",
         "vue-masked-input": "^0.5.2"
     },
     "husky": {

@@ -1,4 +1,4 @@
-import { chunkArray, formatToken } from '../helpers'
+import { chunkArray, formatToken } from '../shared/helpers'
 
 /**
  * @property {Window} window
