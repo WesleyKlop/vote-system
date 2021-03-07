@@ -17,9 +17,10 @@ if [ "$1" != "apache2-foreground" ]; then
     exec docker-php-entrypoint "$@"
 fi
 
-sudo -u www-data php artisan config:cache
-sudo -u www-data php artisan migrate --force --seed
-
-sudo -u www-data php artisan votesystem:admin
+su www-data -s /bin/bash -c '
+php artisan config:cache
+php artisan migrate --force --seed
+php artisan votesystem:admin
+'
 
 exec docker-php-entrypoint "$@"

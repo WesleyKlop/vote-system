@@ -30,6 +30,10 @@ jobs:
         uses: crazy-max/ghaction-docker-meta@v1
         with:
           images: ghcr.io/${{ github.repository }}
+          tag-semver: |
+            {{version}}
+            {{major}}.{{minor}}
+            {{major}}
       - name: Build and push docker image
         id: build
         uses: docker/build-push-action@v2
