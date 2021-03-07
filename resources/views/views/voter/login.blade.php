@@ -6,7 +6,7 @@
         @csrf
         <label class="input-label w-64 mb-1">
             @lang('Token')
-            <token-input value="{{ old('token') }}" :errors='@json($errors->get('token'))'></token-input>
+            <token-input initial-value="{{ old('token') }}" :errors='@json($errors->get('token'))'></token-input>
         </label>
         <p class="mb-2 text-gray-900">@lang('Token validation information')</p>
 
