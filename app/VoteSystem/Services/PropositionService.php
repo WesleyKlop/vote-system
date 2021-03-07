@@ -2,6 +2,7 @@
 
 namespace App\VoteSystem\Services;
 
+use App\Events\PropositionChange;
 use App\Models\Proposition;
 use App\Models\PropositionOption;
 use App\Models\Voter;
@@ -13,8 +14,10 @@ use Illuminate\Support\Str;
 
 class PropositionService
 {
-    public function __construct(private PropositionRepository $propositionRepository, private VoterPropositionOptionRepository $voterPropositionOptionRepository)
-    {
+    public function __construct(
+        private PropositionRepository $propositionRepository,
+        private VoterPropositionOptionRepository $voterPropositionOptionRepository
+    ) {
     }
 
     public function getNextProposition(Voter $voter): ?Proposition
@@ -24,11 +27,8 @@ class PropositionService
         );
     }
 
-    public function answerProposition(
-        Voter $voter,
-        Proposition $proposition,
-        Collection $answers
-    ): void {
+    public function answerProposition(Voter $voter, Proposition $proposition, Collection $answers): void
+    {
         $voterPropositionOptions = VoterPropositionOptionFactory::make(
             $voter,
             $proposition,
@@ -82,10 +82,8 @@ class PropositionService
         return $horizontalOptions > 1 ? 'grid' : 'list';
     }
 
-    private function syncPropositionOptions(
-        Proposition $proposition,
-        Collection $newOptions
-    ): void {
+    private function syncPropositionOptions(Proposition $proposition, Collection $newOptions): void
+    {
         $existingOptions = $proposition->options->keyBy('id');
         $newOptions = $newOptions->keyBy('id');
 
@@ -110,19 +108,21 @@ class PropositionService
         );
     }
 
-    public function toggleProposition(
-        Proposition $proposition,
-        bool $newState
-    ): bool {
-        return $this->propositionRepository->update($proposition, [
+    public function toggleProposition(Proposition $proposition, bool $newState): bool
+    {
+        $isChanged = $this->propositionRepository->update($proposition, [
             'is_open' => $newState,
         ]);
+
+        if ($isChanged === true) {
+            PropositionChange::dispatch($proposition);
+        }
+
+        return $isChanged;
     }
 
-    public function updateProposition(
-        Proposition $proposition,
-        array $validated
-    ): void {
+    public function updateProposition(Proposition $proposition, array $validated): void
+    {
         $options = $this->mapOptions($validated['options']);
 
         $this->propositionRepository->update($proposition, [
@@ -135,10 +135,8 @@ class PropositionService
         $this->syncPropositionOptions($proposition, $options);
     }
 
-    public function propositionHasVoter(
-        Proposition $proposition,
-        Voter $voter
-    ): bool {
+    public function propositionHasVoter(Proposition $proposition, Voter $voter): bool
+    {
         return $proposition
             ->voters()
             ->where('voters.id', $voter->id)
@@ -150,12 +148,12 @@ class PropositionService
         return (Proposition::max('order') ?: 0) + 1;
     }
 
-    private function getValidId($id): string
+    private function getValidId(int | string $id): string
     {
-        if (Str::isUuid($id)) {
+        if (is_string($id) && Str::isUuid($id)) {
             return $id;
         }
 
-        return Str::uuid();
+        return Str::uuid()->toString();
     }
 }

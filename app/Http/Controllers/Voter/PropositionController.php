@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Voter\PropositionSubmitRequest;
 use App\Models\Proposition;
-use App\Models\Voter;
-use App\VoteSystem\Pages\Voters\PropositionShowPage;
 use App\VoteSystem\Services\PropositionService;
-use Exception;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PropositionController extends Controller
@@ -19,47 +15,25 @@ class PropositionController extends Controller
         parent::__construct();
     }
 
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $user = $request->user();
         $proposition = $this->propositionService->getNextProposition($user);
 
-        if (is_null($proposition)) {
-            return view('views.voter.empty_state');
-        }
-
-        return $this->page(new PropositionShowPage($proposition));
+        return $this->show($request, $proposition);
     }
 
-    public function update(PropositionSubmitRequest $request): RedirectResponse
+    public function show(Request $request, ?Proposition $proposition): View
     {
-        /** @var Voter $voter */
-        $voter = $request->user();
-        $proposition = Proposition::findOrFail($request->get('proposition'));
+        $answeredPropositionIds = $request->user()
+            ->answers()
+            ->distinct('proposition_id')
+            ->get(['proposition_id'])
+            ->pluck('proposition_id');
 
-        if (!$proposition->is_open) {
-            return redirect()
-                ->route('proposition.index')
-                ->withErrors([
-                    'proposition' =>
-                        'The answer for the previous proposition has not been registered as the proposition was already closed.',
-                ]);
-        }
-
-        if (
-            $this->propositionService->propositionHasVoter($proposition, $voter)
-        ) {
-            throw new Exception('You already answered this proposition');
-        }
-
-        $answers = collect($request->get('answer'));
-
-        $this->propositionService->answerProposition(
-            $voter,
-            $proposition,
-            $answers
-        );
-
-        return redirect()->route('proposition.index');
+        return view('views.voter.show', [
+            'proposition' => $proposition,
+            'answeredPropositions' => $answeredPropositionIds
+        ]);
     }
 }

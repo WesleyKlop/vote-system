@@ -30,7 +30,7 @@ class LoginController extends Controller
 
     protected function guard(): StatefulGuard
     {
-        return Auth::guard('admin');
+        return Auth::guard('web-admin');
     }
 
     protected function loggedOut(): RedirectResponse

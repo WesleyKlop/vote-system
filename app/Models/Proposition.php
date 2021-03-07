@@ -24,6 +24,10 @@ class Proposition extends AbstractModel
 
     protected $fillable = ['title', 'is_open', 'type', 'order'];
 
+    protected $casts = [
+        'is_open' => 'bool',
+    ];
+
     public function scopeOpen(Builder $query): Builder
     {
         return $query->where('is_open', true);

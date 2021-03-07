@@ -23,11 +23,11 @@ class DashboardController extends Controller
             'options',
             'answers',
         ]);
-        $voterCount = $this->voterRepository->aggregateVoterStatistics();
+        $voterStatistics = $this->voterRepository->aggregateVoterStatistics();
         $welcomeMessage = $this->config->get('admin_welcome_message');
 
         return $this->page(
-            new DashboardPage($propositions, $voterCount, $welcomeMessage)
+            new DashboardPage($propositions, $voterStatistics, $welcomeMessage)
         );
     }
 }

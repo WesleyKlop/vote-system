@@ -1,18 +1,18 @@
 <template>
-    <div class='flex flex-col'>
+    <div class="flex flex-col">
         <input
-            autocomplete='off'
-            class='input input--token'
+            autocomplete="off"
+            class="input input--token"
             v-mask="'NNNN NNNN NNNN NNNN'"
-            maxlength='19'
-            name='token'
-            placeholder='ABCD 2345 WXYZ 6789'
-            type='text'
+            maxlength="19"
+            name="token"
+            placeholder="ABCD 2345 WXYZ 6789"
+            type="text"
             required
-            v-model='value'
+            v-model="value"
             autofocus
         />
-        <div v-for='error of errors' class='font-normal text-failure'>
+        <div v-for="error of errors" class="font-normal text-failure">
             {{ error }}
         </div>
     </div>

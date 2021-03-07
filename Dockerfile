@@ -2,7 +2,7 @@ FROM node:15 as front-builder
 WORKDIR /app
 
 # Copy package manager files, and vendor because that way laravel-mix knows that it's laravel
-COPY package.json package-lock.json webpack.mix.js tailwind.config.js postcss.config.js artisan ./
+COPY package.json package-lock.json webpack.mix.js tailwind.config.js .babelrc postcss.config.js artisan ./
 RUN npm ci
 
 COPY resources ./resources
@@ -27,7 +27,7 @@ RUN composer dump-autoload -a
 FROM php:8-apache
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
-RUN install-php-extensions opcache pgsql pdo_pgsql bcmath mysqli pdo_mysql
+RUN install-php-extensions opcache pgsql pdo_pgsql bcmath mysqli pdo_mysql pcntl
 
 RUN a2enmod rewrite
 

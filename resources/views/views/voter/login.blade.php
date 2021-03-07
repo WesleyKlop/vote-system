@@ -19,5 +19,7 @@
         </label>
 
         <input type="submit" value="Start" class="submit-button"/>
+
+        <ill-vote class='w-full p-8 max-w-xl mx-auto md:p-16' />
     </form>
 @endsection
