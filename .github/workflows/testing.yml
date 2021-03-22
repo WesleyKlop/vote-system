@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - develop
 
 env:
   PHP_VERSION: 8

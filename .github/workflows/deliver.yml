@@ -3,12 +3,10 @@ name: Deliver
 on:
   push:
     branches:
-      - main
+      - develop
   release:
     types:
       - created
-  schedule:
-    - cron: '0 4 * * 0' # Weekly on Sundays at 02:00
 
 jobs:
   deliver:
