@@ -1,5 +1,3 @@
 module.exports = {
-    plugins: [
-        require('@tailwindcss/jit')
-    ],
+    plugins: [require('@tailwindcss/jit')],
 }
