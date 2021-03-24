@@ -42,9 +42,7 @@ Route::prefix('/admin')->middleware('auth:web-admin')->name('admin.')->group(fun
     Route::post('/voters', [Admin\VoterController::class, 'update'])->name('voters.update');
     Route::get('/voters/{voter}/delete', [Admin\VoterController::class, 'destroy'])->name('voters.destroy');
 
-    Route::get('/propositions', [Admin\PropositionController::class, 'index'])->name('propositions.index');
-    Route::get('/propositions/{proposition}/toggle', [Admin\PropositionController::class, 'toggle'])->name('propositions.toggle');
-    Route::resource('propositions', Admin\PropositionController::class)->except('index', 'show');
+    Route::resource('propositions', Admin\PropositionController::class)->except(['show']);
 
     Route::get('/export', [Admin\ResultExportController::class, 'index'])->name('export.index');
 

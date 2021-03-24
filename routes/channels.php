@@ -20,6 +20,10 @@ Broadcast::channel('propositions', function (?Authenticatable $user) {
     return $user instanceof Voter;
 }, ['guards' => 'web-voter']);
 
+Broadcast::channel('controls', function (?Authenticatable $user) {
+    return $user instanceof User;
+}, ['guards' => 'web-admin']);
+
 Broadcast::channel('results', function (?Authenticatable $user) {
     return $user instanceof User;
 }, ['guards' => 'web-admin']);

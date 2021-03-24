@@ -66,16 +66,6 @@ class PropositionController extends Controller
         return redirect()->route('admin.propositions.index');
     }
 
-    public function toggle(Request $request, Proposition $proposition): RedirectResponse
-    {
-        $this->propositionService->toggleProposition(
-            $proposition,
-            $request->get('is_open') === '1'
-        );
-
-        return redirect()->back();
-    }
-
     public function edit(Proposition $proposition): View
     {
         $proposition->load('options');

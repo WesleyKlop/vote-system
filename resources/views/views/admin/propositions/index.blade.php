@@ -64,12 +64,10 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="{{ route('admin.propositions.edit', $proposition) }}"
-                       class="card-footer-link text-gray-600">@lang('Edit')</a>
-                    <a href="{{ route('admin.propositions.toggle', ['proposition' => $proposition, 'is_open' => ! $proposition->is_open]) }}"
-                       class="card-footer-link">
-                        @lang($proposition->is_open ? 'Close' : 'Open')
-                    </a>
+                    <a
+                        href="{{ route('admin.propositions.edit', $proposition) }}"
+                        class="card-footer-link text-gray-600"
+                    >@lang('Edit')</a>
                 </div>
             </div>
         @endforeach
