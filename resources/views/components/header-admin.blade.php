@@ -7,8 +7,9 @@
         @endif
     </a>
     <nav class="header-nav">
+        <a href="{{ route('admin.index') }}">@lang('Live')</a>
         <a href="{{ route('admin.voters.index') }}">@lang('Voters')</a>
-        <a href="{{ route('admin.index') }}">@lang('Propositions')</a>
+        <a href="{{ route('admin.propositions.index') }}">@lang('Propositions')</a>
         <a href="{{ route('admin.config.index') }}">@lang('Config')</a>
         <a href="{{ route('admin.login.logout') }}" class="hover:text-failure">@lang('Sign out')</a>
     </nav>

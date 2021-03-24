@@ -50,6 +50,8 @@
     "These statistics are based on the used tokens.": "These statistics are based on the <span class='font-bold'>used</span> tokens.",
     "Click here to export the voting results to Excel": "Click here to export the voting results to Excel (.xlsx)",
 
+    "Live": "Live",
+
     "Admin Area": "Admin area",
     "Username": "Username",
     "Admin": "Admin",

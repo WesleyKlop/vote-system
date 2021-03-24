@@ -3,8 +3,9 @@
 @section('content')
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
         <h1 class="title col-span-1 lg:col-span-2 px-8 sm:px-0 text-primary">@lang('Dashboard')</h1>
-        <div class="banner col-span-1 lg:col-span-2">{!! $page->getWelcomeMessage() !!}
-            @lang('Voter statistics', ['total' => $page->getTotalVoterCount(), 'used' => $page->getUsedVoterCount() ])<br />
+        <div class="banner col-span-1 lg:col-span-2">{{--
+        --}}@lang('Voter statistics', ['total' => $page->getTotalVoterCount(), 'used' => $page->getUsedVoterCount() ])
+            <br />
             @lang('These statistics are based on the used tokens.')
         </div>
 
@@ -16,7 +17,8 @@
             <div class="card">
                 <div class="card-header">
                     <h2 class="title flex-1 truncate">{{ $proposition->order }}. {{ $proposition->title }}</h2>
-                    <span class="badge {{ $proposition->is_open ? 'badge--accent' : '' }}">@lang($proposition->is_open ? 'Open' : 'Closed')</span>
+                    <span
+                        class="badge {{ $proposition->is_open ? 'badge--accent' : '' }}">@lang($proposition->is_open ? 'Open' : 'Closed')</span>
                 </div>
 
                 <div class="card-content">
@@ -28,8 +30,11 @@
                                 $width = $count / ($page->getUsedVoterCount() ?: 1)
                             @endphp
                             <div class="w-3/4 relative h-8 rounded border-2 border-gray-300 overflow-hidden my-2">
-                                <div class="mr-auto bg-gray-200 absolute left-0 inset-y-0" style="width: {{ $width * 100 }}%"></div>
-                                <div class="z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0">{{ $option->option }}: {{$count}} ({{ round($width * 100) }}%)</div>
+                                <div class="mr-auto bg-gray-200 absolute left-0 inset-y-0"
+                                     style="width: {{ $width * 100 }}%"></div>
+                                <div class="z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0">{{ $option->option }}
+                                    : {{$count}} ({{ round($width * 100) }}%)
+                                </div>
                             </div>
                         @endforeach
                     @elseif($proposition->type === 'grid')
@@ -59,8 +64,10 @@
                 </div>
 
                 <div class="card-footer">
-                    <a href="{{ route('admin.propositions.edit', $proposition) }}" class="card-footer-link text-gray-600">@lang('Edit')</a>
-                    <a href="{{ route('admin.propositions.toggle', ['proposition' => $proposition, 'is_open' => ! $proposition->is_open]) }}" class="card-footer-link">
+                    <a href="{{ route('admin.propositions.edit', $proposition) }}"
+                       class="card-footer-link text-gray-600">@lang('Edit')</a>
+                    <a href="{{ route('admin.propositions.toggle', ['proposition' => $proposition, 'is_open' => ! $proposition->is_open]) }}"
+                       class="card-footer-link">
                         @lang($proposition->is_open ? 'Close' : 'Open')
                     </a>
                 </div>
@@ -73,7 +80,8 @@
         title="@lang('Create proposition')"
     >
         <svg viewBox="0 0 24 24" class="w-full h-full text-white">
-            <path fill="currentColor" fill-rule="evenodd" d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z"/>
+            <path fill="currentColor" fill-rule="evenodd"
+                  d="M17 11a1 1 0 0 1 0 2h-4v4a1 1 0 0 1-2 0v-4H7a1 1 0 0 1 0-2h4V7a1 1 0 0 1 2 0v4h4z" />
         </svg>
     </a>
 @endsection

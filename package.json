@@ -12,7 +12,7 @@
     "devDependencies": {
         "@babel/plugin-proposal-class-properties": "^7.13.0",
         "@tailwindcss/jit": "^0.1.7",
-        "husky": "^5",
+        "husky": "^4",
         "laravel-mix": "^6.0",
         "lint-staged": ">=10",
         "prettier": "^2.2.1",
@@ -34,6 +34,6 @@
         }
     },
     "lint-staged": {
-        "*.{yml,css,js,vue,json,php,md}": "prettier --write"
+        "*.{yml,css,js,vue,json,md}": "prettier --write"
     }
 }
