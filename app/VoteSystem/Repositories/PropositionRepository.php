@@ -51,11 +51,11 @@ final class PropositionRepository
         return $proposition->update($attributes);
     }
 
-    public function currentProposition(): ?Proposition
+    public function currentOrFirst(): ?Proposition
     {
         return Proposition::query()
+            ->orderByDesc('is_open')
             ->orderBy('order')
-            ->where('is_open', true)
             ->first();
     }
 }

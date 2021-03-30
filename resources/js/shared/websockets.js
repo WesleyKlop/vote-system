@@ -12,7 +12,7 @@ let instance = null
 const getConnection = () => {
     if (!instance) {
         const config = window.__PUSHER_CONFIG__
-        if(!config) {
+        if (!config) {
             throw `Missing websocket configuration`
         }
         instance = new Echo({

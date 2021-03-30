@@ -54,6 +54,12 @@ return [
             'hash' => false,
             'storage_key' => 'token',
         ],
+
+        'api-admin' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+            'hash' => false,
+        ],
     ],
 
     /*

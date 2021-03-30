@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import { getAppLocale } from './shared/helpers'
+import httpClient from './shared/HttpClient'
 
 Vue.use(VueI18n)
 
@@ -15,8 +16,10 @@ new Vue({
     i18n,
     el: '#app',
     components: {
-        LiveApplicationControls: () => import('./admin/LiveApplicationControls'),
-        PropositionOptionEditor: () => import('./admin/PropositionOptionEditor'),
+        LiveApplicationControls: () =>
+            import('./admin/LiveApplicationControls'),
+        PropositionOptionEditor: () =>
+            import('./admin/PropositionOptionEditor'),
         VoterManagementPage: () => import('./admin/VoterManagementPage'),
 
         TokenInput: () => import('./voter/TokenInput'),
@@ -27,7 +30,7 @@ new Vue({
     data() {
         return {
             csrf: document.querySelector('meta[name="csrf-token"]')?.content,
-            token: document.querySelector('meta[name="voter-token"]')?.content,
+            token: document.querySelector('meta[name="auth-token"]')?.content,
         }
     },
 })

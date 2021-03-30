@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Voter;
+use App\Http\Controllers\Admin;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,8 @@ use App\Http\Controllers\Voter;
 
 Route::middleware('auth:api-voter')->group(function () {
     Route::post('propositions/{proposition}/vote', [Voter\PropositionVotesController::class, 'store'])->name('api.proposition.votes.store');
+});
+
+Route::middleware('auth:api-admin')->group(function() {
+    Route::patch('propositions/{proposition}', [Admin\PropositionController::class, 'update'])->name('api.proposition.update');
 });

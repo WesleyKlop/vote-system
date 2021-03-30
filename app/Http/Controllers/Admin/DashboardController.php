@@ -18,11 +18,15 @@ class DashboardController extends Controller
     {
         $proposition = $this
             ->propositionRepository
-            ->currentProposition();
+            ->currentOrFirst();
+        $propositions = $this
+            ->propositionRepository
+            ->findAll();
 
         return view('views.admin.index', [
             'welcomeMessage' => $this->config->get('admin_welcome_message'),
-            'proposition' => $proposition
+            'currentPropositionId' => $proposition->id,
+            'propositions' => $propositions
         ]);
     }
 }
