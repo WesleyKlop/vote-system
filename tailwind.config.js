@@ -6,24 +6,4 @@ const getPalette = (color, base = 600) => ({
     dark: color[900],
 })
 
-module.exports = {
-    purge: [
-        './resources/views/**/*.blade.php',
-        './resources/svg/**/*.svg',
-        './resources/js/**/*.vue',
-    ],
-    theme: {
-        colors: {
-            transparent: 'transparent',
-            current: 'currentColor',
-            white: colors.white,
-            black: colors.black,
-            primary: `var(--primary-color, ${colors.teal[500]})`,
-            accent: `var(--accent-color, ${colors.blue[700]})`,
-            gray: colors.coolGray,
-            success: getPalette(colors.green),
-            failure: getPalette(colors.red),
-            warning: getPalette(colors.yellow),
-        },
-    },
-}
+module.exports = {"purge":["./resources/views/**/*.blade.php","./resources/svg/**/*.svg","./resources/js/**/*.vue"],"theme":{"colors":{"primary":`var(--primary-color,"accent":`var(--accent-color,"success":getPalette(colors.green),"failure":getPalette(colors.red),"warning":getPalette(colors.yellow)}}}
