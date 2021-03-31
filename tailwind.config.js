@@ -7,7 +7,11 @@ const getPalette = (color, base = 600) => ({
 })
 
 module.exports = {
-    purge: ['./resources/views/**/*.blade.php', './resources/svg/**/*.svg', './resources/js/**/*.vue'],
+    purge: [
+        './resources/views/**/*.blade.php',
+        './resources/svg/**/*.svg',
+        './resources/js/**/*.vue',
+    ],
     theme: {
         colors: {
             primary: `var(--primary-color, ${colors.teal[500]})`,
