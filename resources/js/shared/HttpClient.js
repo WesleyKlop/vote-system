@@ -3,10 +3,11 @@ import { HttpError, ValidationError } from './errors'
 export default class HttpClient {
     #token
 
-    #makeHeaders = () => new Headers({
-        Accept: 'application/json',
-        Authorization: `Bearer ${this.#token}`,
-    })
+    #makeHeaders = () =>
+        new Headers({
+            Accept: 'application/json',
+            Authorization: `Bearer ${this.#token}`,
+        })
 
     constructor(token) {
         this.#token = token
@@ -20,7 +21,12 @@ export default class HttpClient {
      * @param body
      * @returns {Promise<T|boolean>}
      */
-    #request = async (method, url, { contentType = 'application/json' } = {}, body = null) => {
+    #request = async (
+        method,
+        url,
+        { contentType = 'application/json' } = {},
+        body = null,
+    ) => {
         const request = new Request(url, {
             method,
             headers: this.#makeHeaders(),
@@ -28,7 +34,8 @@ export default class HttpClient {
 
         if (method !== 'GET' && !!body) {
             request.headers.append('Content-Type', contentType)
-            request.body = typeof body === 'object' ? JSON.stringify(body) : body
+            request.body =
+                typeof body === 'object' ? JSON.stringify(body) : body
         }
 
         const response = await fetch(request)
@@ -52,5 +59,17 @@ export default class HttpClient {
 
     post(url, body, params) {
         return this.#request('POST', url, params, body)
+    }
+
+    patch(url, body, params) {
+        return this.#request('PATCH', url, params, body)
+    }
+
+    put(url, body, params) {
+        return this.#request('PUT', url, params, body)
+    }
+
+    delete(url, body, params) {
+        return this.#request('DELETE', url, params, body)
     }
 }

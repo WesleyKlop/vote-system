@@ -22,12 +22,12 @@ class User extends AbstractModel implements
      *
      * @var array
      */
-    protected $fillable = ['name', 'password'];
+    protected $fillable = ['name', 'password', 'api_token'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token', 'api_token'];
 }

@@ -9,7 +9,7 @@
             initial-proposition-id='{{ $currentPropositionId }}'
             :initial-propositions='@json($propositions)'
             :routes='@json([
-                'foo' => route('api.proposition.')
+                'update' => route('api.proposition.update', ':id'),
             ])'
         ></live-application-controls>
     </div>

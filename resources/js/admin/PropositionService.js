@@ -5,15 +5,25 @@ export default class PropositionService {
      * @member {string} #voteRoute
      * @private
      */
-    #voteRoute
+    #routes
 
     /**
      * @member {HttpClient} #httpClient
      */
     #httpClient
 
-    constructor(token, voteRoute) {
+    constructor(token, routes) {
         this.#httpClient = new HttpClient(token)
-        this.#voteRoute = voteRoute
+        this.#routes = routes
+    }
+
+    route(name, id) {
+        return this.#routes[name].replace(':id', id)
+    }
+
+    toggleProposition(propositionId, is_open) {
+        return this.#httpClient.patch(this.route('update', propositionId), {
+            is_open,
+        })
     }
 }

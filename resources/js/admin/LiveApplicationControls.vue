@@ -1,19 +1,19 @@
 <template>
     <div>
-        <div v-if='proposition' class='my-2 p-2 w-full lg:w-3/4'>
-            <span class='text-gray-600'
-            >{{ $t('Proposition') }} {{ proposition.order }}</span
+        <div v-if="proposition" class="my-2 p-2 w-full lg:w-3/4">
+            <span class="text-gray-600"
+                >{{ $t('Proposition') }} {{ proposition.order }}</span
             >
-            <h2 class='title mb-6'>{{ proposition.title }}</h2>
+            <h2 class="title mb-6">{{ proposition.title }}</h2>
         </div>
 
         <live-control-actions
-            :selected-open='proposition.is_open'
-            :has-previous='propositionIdx > 0'
-            :has-next='propositions[propositionIdx+1] !== undefined'
-            @next='toProposition(1)'
-            @prev='toProposition(-1)'
-            @toggle='handleToggleProposition'
+            :selected-open="proposition.is_open"
+            :has-previous="propositionIdx > 0"
+            :has-next="propositions[propositionIdx + 1] !== undefined"
+            @next="toProposition(1)"
+            @prev="toProposition(-1)"
+            @toggle="handleToggleProposition"
         />
     </div>
 </template>
@@ -23,6 +23,9 @@ import echo from '../shared/websockets'
 import LiveControlActions from './LiveControlActions'
 import PropositionService from './PropositionService'
 
+/**
+ * @property {PropositionService} propositionService
+ */
 export default {
     components: {
         LiveControlActions,
@@ -70,7 +73,9 @@ export default {
     },
     computed: {
         propositionIdx() {
-            return this.propositions.findIndex(p => p.id === this.propositionId)
+            return this.propositions.findIndex(
+                (p) => p.id === this.propositionId,
+            )
         },
         proposition() {
             return this.propositions[this.propositionIdx]
@@ -84,7 +89,9 @@ export default {
             //
         },
         toProposition(delta) {
-            const nextProposition = this.propositions[this.propositionIdx + delta]
+            const nextProposition = this.propositions[
+                this.propositionIdx + delta
+            ]
 
             if (delta > 0) {
                 // If moving forward, open it now!
@@ -95,8 +102,14 @@ export default {
             this.proposition.is_open = false
             this.propositionId = nextProposition.id
         },
-        handleToggleProposition(newState) {
+        async handleToggleProposition(newState) {
+            const result = await this.propositionService.toggleProposition(
+                this.propositionId,
+                newState,
+            )
             this.proposition.is_open = newState
+
+            this.propositions[this.propositionIdx] = result
         },
     },
 }
