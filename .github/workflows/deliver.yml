@@ -25,13 +25,15 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_PAT }}
       - id: meta
-        uses: crazy-max/ghaction-docker-meta@v1
+        uses: crazy-max/ghaction-docker-meta@v2.1.1
         with:
           images: ghcr.io/${{ github.repository }}
-          tag-semver: |
-            {{version}}
-            {{major}}.{{minor}}
-            {{major}}
+          flavor: |
+            type=edge,branch=develop
+            latest=auto
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
       - name: Build and push docker image
         id: build
         uses: docker/build-push-action@v2
