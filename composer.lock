@@ -144,16 +144,16 @@
         },
         {
             "name": "beyondcode/laravel-websockets",
-            "version": "2.0.0-beta.34",
+            "version": "2.0.0-beta.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beyondcode/laravel-websockets.git",
-                "reference": "1bb727f322cac0241b6a405ebc8024416fd5c9a9"
+                "reference": "9dbc38aff9d01fdf5de21cfb941dd684d7548a21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/1bb727f322cac0241b6a405ebc8024416fd5c9a9",
-                "reference": "1bb727f322cac0241b6a405ebc8024416fd5c9a9",
+                "url": "https://api.github.com/repos/beyondcode/laravel-websockets/zipball/9dbc38aff9d01fdf5de21cfb941dd684d7548a21",
+                "reference": "9dbc38aff9d01fdf5de21cfb941dd684d7548a21",
                 "shasum": ""
             },
             "require": {
@@ -233,9 +233,9 @@
             ],
             "support": {
                 "issues": "https://github.com/beyondcode/laravel-websockets/issues",
-                "source": "https://github.com/beyondcode/laravel-websockets/tree/2.0.0-beta.34"
+                "source": "https://github.com/beyondcode/laravel-websockets/tree/2.0.0-beta.36"
             },
-            "time": "2021-03-30T15:11:58+00:00"
+            "time": "2021-04-06T14:31:38+00:00"
         },
         {
             "name": "brick/math",
