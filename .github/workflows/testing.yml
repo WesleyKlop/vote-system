@@ -8,8 +8,8 @@ on:
       - develop
 
 env:
-  PHP_VERSION: 8
-  NODE_VERSION: 15.x
+  PHP_VERSION: 8.0
+  NODE_VERSION: 16.x
 
 jobs:
   lint:
