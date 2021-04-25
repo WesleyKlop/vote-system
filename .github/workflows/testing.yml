@@ -47,7 +47,7 @@ jobs:
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
-      - run: composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
+      - run: composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
       - run: composer rector:check -- --no-progress-bar --no-diffs
       - run: composer ecs:check -- --no-progress-bar --no-error-table
 
@@ -102,7 +102,7 @@ jobs:
             ${{ runner.os }}-composer-
       - run: |
           cp .env.ci .env
-          composer install -q --no-ansi --no-interaction --no-suggest --no-progress --prefer-dist --no-scripts
+          composer install -q --no-ansi --no-interaction --no-progress --prefer-dist
           php artisan key:generate
       - run: vendor/bin/psalm
       - run: vendor/bin/phpunit --do-not-cache-result --no-interaction --disallow-todo-tests
