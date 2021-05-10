@@ -14,7 +14,7 @@
         "@tailwindcss/jit": "^0.1.18",
         "husky": "^6",
         "laravel-mix": "^6.0",
-        "lint-staged": ">=10",
+        "lint-staged": ">=11",
         "prettier": "^2.2.1",
         "resolve-url-loader": "^4.0.0",
         "vue-loader": "^15.9.6",
