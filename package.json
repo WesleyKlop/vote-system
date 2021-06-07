@@ -18,14 +18,14 @@
         "prettier": "^2.2.1",
         "resolve-url-loader": "^4.0.0",
         "vue-loader": "^15.9.7",
-        "vue-template-compiler": "^2.6.12"
+        "vue-template-compiler": "^2.6.13"
     },
     "dependencies": {
         "laravel-echo": "^1.10.0",
         "pusher-js": "^7.0.3",
         "tailwindcss": "^2.1.1",
         "v-mask": "^2.2.4",
-        "vue": "^2.6.12",
+        "vue": "^2.6.13",
         "vue-i18n": "^8.24.4"
     },
     "husky": {
