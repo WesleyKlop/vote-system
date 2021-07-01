@@ -7,6 +7,7 @@ const getPalette = (color, base = 600) => ({
 })
 
 module.exports = {
+    mode: 'jit',
     purge: [
         './resources/views/**/*.blade.php',
         './resources/svg/**/*.svg',
