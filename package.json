@@ -11,7 +11,6 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-class-properties": "^7.14.5",
-        "@tailwindcss/jit": "^0.1.18",
         "husky": "^6",
         "laravel-mix": "^6.0",
         "lint-staged": ">=11",
