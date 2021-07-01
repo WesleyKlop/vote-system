@@ -9,12 +9,7 @@ use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigura
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
-
-    // Refactoring to run
-    $parameters->set(Option::SETS, [
-        SetList::PHP_80,
-//        SetList::
-    ]);
+    $containerConfigurator->import(SetList::PHP_80);
 
 //    $parameters->set(Option::AUTOLOAD_PATHS, [
 //        __DIR__ . '/vendor/autoload.php',

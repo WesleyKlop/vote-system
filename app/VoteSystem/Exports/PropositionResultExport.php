@@ -48,15 +48,15 @@ class PropositionResultExport implements
     }
 
     /**
-     * @param VoterPropositionOption $proposition
+     * @param VoterPropositionOption $row
      */
-    public function map($proposition): array
+    public function map($row): array
     {
         return [
-            $proposition->proposition->title,
-            $proposition->voter->token,
-            $proposition->horizontalOption->option,
-            $proposition->verticalOption->option,
+            $row->proposition->title,
+            $row->voter->token,
+            $row->horizontalOption->option,
+            $row->verticalOption->option,
         ];
     }
 
