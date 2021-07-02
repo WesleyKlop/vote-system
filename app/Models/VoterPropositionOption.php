@@ -18,6 +18,13 @@ class VoterPropositionOption extends AbstractModel
         'horizontal_option_id',
     ];
 
+    public $timestamps = true;
+
+    protected $hidden = [
+        'id',
+        'voter_id',
+    ];
+
     public function proposition()
     {
         return $this->belongsTo(Proposition::class);

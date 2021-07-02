@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "start": "mix watch",
         "development": "mix",
         "watch": "mix watch",
         "hot": "mix watch --hot",

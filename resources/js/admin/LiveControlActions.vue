@@ -1,8 +1,14 @@
 <template>
-    <div class='flex mx-auto'>
-        <button class='button' v-if='hasPrevious' @click="$emit('prev')">Prev</button>
-        <button class='button' @click="$emit('toggle', !selectedOpen)">Change to {{ newState }}</button>
-        <button class='button' v-if='hasNext' @click="$emit('next')">Next</button>
+    <div class="flex mx-auto">
+        <button class="button" v-if="hasPrevious" @click="$emit('prev')">
+            {{ $t('Previous') }}
+        </button>
+        <button class="button" @click="$emit('toggle', !selectedOpen)">
+            {{ $t('Change to') }} {{ newState }}
+        </button>
+        <button class="button" v-if="hasNext" @click="$emit('next')">
+            {{ $t('Next') }}
+        </button>
     </div>
 </template>
 

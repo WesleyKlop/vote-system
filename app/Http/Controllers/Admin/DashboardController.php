@@ -21,12 +21,18 @@ class DashboardController extends Controller
             ->currentOrFirst();
         $propositions = $this
             ->propositionRepository
-            ->findAll();
+            ->findAll(['options']);
+
+        $routes = [
+            "results" => route("api.proposition.votes.show", ":id"),
+            "update" => route("api.proposition.update", ":id"),
+        ];
 
         return view('views.admin.index', [
             'welcomeMessage' => $this->config->get('admin_welcome_message'),
             'currentPropositionId' => $proposition->id,
-            'propositions' => $propositions
+            'propositions' => $propositions,
+            'routes' => $routes,
         ]);
     }
 }

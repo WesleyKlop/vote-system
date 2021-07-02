@@ -1,10 +1,15 @@
 <template>
     <div>
         <div v-if="proposition" class="my-2 p-2 w-full lg:w-3/4">
-            <span class="text-gray-600"
-                >{{ $t('Proposition') }} {{ proposition.order }}</span
-            >
+            <span class="text-gray-600">
+                {{ $t('Proposition') }} {{ proposition.order }}
+            </span>
             <h2 class="title mb-6">{{ proposition.title }}</h2>
+            <live-proposition-results
+                :type='proposition.type'
+                :options='proposition.options'
+                :results='results[proposition.id]'
+            />
         </div>
 
         <live-control-actions
@@ -21,14 +26,13 @@
 <script>
 import echo from '../shared/websockets'
 import LiveControlActions from './LiveControlActions'
+import LivePropositionResults from './LivePropositionResults'
 import PropositionService from './PropositionService'
 
-/**
- * @property {PropositionService} propositionService
- */
 export default {
     components: {
         LiveControlActions,
+        LivePropositionResults,
     },
     props: {
         initialPropositionId: {
@@ -53,6 +57,8 @@ export default {
                 this.$root.token,
                 this.routes,
             ),
+            results: {},
+            resultTimestamp: null,
         }
     },
     mounted() {
@@ -62,6 +68,7 @@ export default {
         echo()
             .private('results')
             .listen('ResultsChange', this.handleResultsChange)
+        this.refreshPropositionResults()
     },
     beforeDestroy() {
         echo()
@@ -89,9 +96,8 @@ export default {
             //
         },
         toProposition(delta) {
-            const nextProposition = this.propositions[
-                this.propositionIdx + delta
-            ]
+            const nextProposition =
+                this.propositions[this.propositionIdx + delta]
 
             if (delta > 0) {
                 // If moving forward, open it now!
@@ -111,6 +117,11 @@ export default {
 
             this.propositions[this.propositionIdx] = result
         },
+        async refreshPropositionResults() {
+            const results =  await this.propositionService.fetchResults(this.propositionId)
+            this.results = results.data
+            this.resultTimestamp = results.timestamp
+        }
     },
 }
 </script>

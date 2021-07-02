@@ -13,7 +13,7 @@
 }
 
 .header-nav {
-    @apply text-right;
+    @apply flex items-center justify-end flex-1;
 }
 
 .header-nav > a {

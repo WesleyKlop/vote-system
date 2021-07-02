@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import { getAppLocale } from './shared/helpers'
-import httpClient from './shared/HttpClient'
 
 Vue.use(VueI18n)
 
