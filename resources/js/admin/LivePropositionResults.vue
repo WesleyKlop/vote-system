@@ -1,6 +1,10 @@
 <template>
-    <div class='card'>
-        <component :is='`${type}-option-results`' :options='options' :results='results' />
+    <div class="card">
+        <component
+            :is="`${type}-option-results`"
+            :options="options"
+            :results="results"
+        />
     </div>
 </template>
 
@@ -23,8 +27,8 @@ export default {
         results: {
             type: Object,
             required: false,
-            default: () => ({})
-        }
+            default: () => ({}),
+        },
     },
 }
 </script>

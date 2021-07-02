@@ -35,7 +35,7 @@ class PropositionService
             $answers
         );
 
-        $this->voterPropositionOptionRepository->insert(
+        $this->voterPropositionOptionRepository->create(
             $voterPropositionOptions
         );
     }

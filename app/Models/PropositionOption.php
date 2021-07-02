@@ -18,6 +18,8 @@ class PropositionOption extends AbstractModel
 
     protected $fillable = ['axis', 'option'];
 
+    protected $touches = ['proposition'];
+
     public function proposition(): BelongsTo
     {
         return $this->belongsTo(Proposition::class);

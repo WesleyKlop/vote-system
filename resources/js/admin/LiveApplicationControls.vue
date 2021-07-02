@@ -6,9 +6,9 @@
             </span>
             <h2 class="title mb-6">{{ proposition.title }}</h2>
             <live-proposition-results
-                :type='proposition.type'
-                :options='proposition.options'
-                :results='results[proposition.id]'
+                :type="proposition.type"
+                :options="proposition.options"
+                :results="results[proposition.id]"
             />
         </div>
 
@@ -18,7 +18,7 @@
             :has-next="propositions[propositionIdx + 1] !== undefined"
             @next="toProposition(1)"
             @prev="toProposition(-1)"
-            @toggle="handleToggleProposition"
+            @toggle="toggleProposition(propositionIdx, $event)"
         />
     </div>
 </template>
@@ -65,9 +65,7 @@ export default {
         echo()
             .private('controls')
             .listen('PropositionChange', this.handlePropositionChange)
-        echo()
-            .private('results')
-            .listen('ResultsChange', this.handleResultsChange)
+        echo().private('results').listen('VoterVoted', this.handleResultsChange)
         this.refreshPropositionResults()
     },
     beforeDestroy() {
@@ -76,7 +74,7 @@ export default {
             .stopListening('PropositionChange', this.handlePropositionChange)
         echo()
             .private('results')
-            .stopListening('ResultsChange', this.handleResultsChange)
+            .stopListening('VoterVoted', this.handleResultsChange)
     },
     computed: {
         propositionIdx() {
@@ -89,39 +87,46 @@ export default {
         },
     },
     methods: {
-        handlePropositionChange() {
-            //
+        handlePropositionChange(...args) {
+            console.log('propositionChange', ...args)
         },
-        handleResultsChange() {
-            //
+        handleResultsChange({ results }) {
+            results.forEach((result) =>
+                this.addVote(
+                    result.proposition_id,
+                    result.horizontal_option_id,
+                    result.vertical_option_id,
+                ),
+            )
+        },
+        addVote(p, h, v) {
+            this.$set(this.results, p, this.results[p] ?? {})
+            this.$set(this.results[p], h, this.results[p][h] ?? {})
+            this.$set(this.results[p][h], v, (this.results[p][h][v] ?? 0) + 1)
         },
         toProposition(delta) {
-            const nextProposition =
-                this.propositions[this.propositionIdx + delta]
+            const nextPropositionIdx = this.propositionIdx + delta
+            const nextProposition = this.propositions[nextPropositionIdx]
 
-            if (delta > 0) {
-                // If moving forward, open it now!
-                nextProposition.is_open = true
-            }
-
-            // Always close the current proposition
-            this.proposition.is_open = false
             this.propositionId = nextProposition.id
         },
-        async handleToggleProposition(newState) {
-            const result = await this.propositionService.toggleProposition(
-                this.propositionId,
-                newState,
-            )
-            this.proposition.is_open = newState
+        async toggleProposition(propositionIdx, newState) {
+            // Optimistic update
+            this.propositions[propositionIdx].is_open = newState
 
-            this.propositions[this.propositionIdx] = result
+            this.propositions[propositionIdx] =
+                await this.propositionService.toggleProposition(
+                    this.propositions[propositionIdx].id,
+                    newState,
+                )
         },
         async refreshPropositionResults() {
-            const results =  await this.propositionService.fetchResults(this.propositionId)
+            const results = await this.propositionService.fetchResults(
+                this.propositionId,
+            )
             this.results = results.data
             this.resultTimestamp = results.timestamp
-        }
+        },
     },
 }
 </script>

@@ -28,12 +28,18 @@ export default class PropositionService {
     }
 
     async fetchResults(propositionId) {
-        const { data, timestamp } = await this.#httpClient.get(this.route('results', propositionId))
+        const { data, timestamp } = await this.#httpClient.get(
+            this.route('results', propositionId),
+        )
 
         const mappedData = data.reduce((byProposition, current) => {
             byProposition[current.proposition_id] ??= {}
-            byProposition[current.proposition_id][current.horizontal_option_id] ??= {}
-            byProposition[current.proposition_id][current.horizontal_option_id][current.vertical_option_id] = current.votes
+            byProposition[current.proposition_id][
+                current.horizontal_option_id
+            ] ??= {}
+            byProposition[current.proposition_id][current.horizontal_option_id][
+                current.vertical_option_id
+            ] = current.votes
             return byProposition
         }, {})
 

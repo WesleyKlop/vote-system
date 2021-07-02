@@ -15,11 +15,4 @@ class PropositionUpdateRequest extends FormRequest
             'is_open' => ['sometimes', 'boolean']
         ];
     }
-
-    public function prepareForValidation(): void
-    {
-        $this->merge([
-            'is_open' => $this->filled('is_open'),
-        ]);
-    }
 }

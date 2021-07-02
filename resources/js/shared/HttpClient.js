@@ -27,18 +27,18 @@ export default class HttpClient {
         { contentType = 'application/json' } = {},
         body = null,
     ) => {
-        const request = new Request(url, {
+        const request = {
             method,
             headers: this.#makeHeaders(),
-        })
-
+        }
         if (method !== 'GET' && !!body) {
             request.headers.append('Content-Type', contentType)
             request.body =
                 typeof body === 'object' ? JSON.stringify(body) : body
         }
 
-        const response = await fetch(request)
+        console.log(request)
+        const response = await fetch(new Request(url, request))
 
         switch (response.status) {
             case 200:
