@@ -9,11 +9,13 @@
 </template>
 
 <script>
+import GridOptionResults from './GridOptionResults'
 import ListOptionResults from './ListOptionResults'
 
 export default {
     components: {
         ListOptionResults,
+        GridOptionResults,
     },
     props: {
         type: {

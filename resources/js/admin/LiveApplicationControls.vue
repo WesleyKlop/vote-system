@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class='col-span-1 lg:col-span-2 flex flex-col items-center'>
         <div v-if='proposition' class='my-2 p-2 w-full lg:w-3/4'>
             <span class='text-gray-600'>
                 {{ $t('Proposition') }} {{ proposition.order }}
@@ -92,7 +92,6 @@ export default {
                 (p) => p.id === proposition.id,
             )
 
-            console.log(proposition, idx)
             if (idx === -1) {
                 this.propositions.push(proposition)
             } else {
