@@ -22,8 +22,11 @@ class PropositionChange implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      */
-    public function broadcastOn(): Channel
+    public function broadcastOn(): array
     {
-        return new PrivateChannel('propositions');
+        return [
+            new PrivateChannel('propositions'),
+            new PrivateChannel('controls'),
+        ];
     }
 }
