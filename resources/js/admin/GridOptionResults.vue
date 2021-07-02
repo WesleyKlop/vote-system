@@ -1,18 +1,22 @@
 <template>
-    <div class='card-content'>
-        <div class='table-wrapper'>
-            <table class='table'>
+    <div class="card-content">
+        <div class="table-wrapper">
+            <table class="table">
                 <thead>
-                <tr>
-                    <th></th>
-                    <th v-for='option of horizontal' :key='option.id'>{{ option.option }}</th>
-                </tr>
+                    <tr>
+                        <th></th>
+                        <th v-for="option of horizontal" :key="option.id">
+                            {{ option.option }}
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr v-for='rowOption of vertical' :key='rowOption.id'>
-                    <th>{{ rowOption.option }}</th>
-                    <td v-for='colOption of horizontal' :key='colOption.id'>{{ votes(colOption, rowOption) }}</td>
-                </tr>
+                    <tr v-for="rowOption of vertical" :key="rowOption.id">
+                        <th>{{ rowOption.option }}</th>
+                        <td v-for="colOption of horizontal" :key="colOption.id">
+                            {{ votes(colOption, rowOption) }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

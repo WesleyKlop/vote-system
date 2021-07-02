@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Proposition;
-use App\Models\VoterPropositionOption;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Facades\DB;
 

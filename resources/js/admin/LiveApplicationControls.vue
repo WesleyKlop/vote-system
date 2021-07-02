@@ -1,24 +1,24 @@
 <template>
-    <div class='col-span-1 lg:col-span-2 flex flex-col items-center'>
-        <div v-if='proposition' class='my-2 p-2 w-full lg:w-3/4'>
-            <span class='text-gray-600'>
+    <div class="col-span-1 lg:col-span-2 flex flex-col items-center">
+        <div v-if="proposition" class="my-2 p-2 w-full lg:w-3/4">
+            <span class="text-gray-600">
                 {{ $t('Proposition') }} {{ proposition.order }}
             </span>
-            <h2 class='title mb-6'>{{ proposition.title }}</h2>
+            <h2 class="title mb-6">{{ proposition.title }}</h2>
             <live-proposition-results
-                :type='proposition.type'
-                :options='proposition.options'
-                :results='results[proposition.id]'
+                :type="proposition.type"
+                :options="proposition.options"
+                :results="results[proposition.id]"
             />
         </div>
 
         <live-control-actions
-            :selected-open='proposition.is_open'
-            :has-previous='propositionIdx > 0'
-            :has-next='propositions[propositionIdx + 1] !== undefined'
-            @next='toProposition(1)'
-            @prev='toProposition(-1)'
-            @toggle='toggleProposition(propositionIdx, $event)'
+            :selected-open="proposition.is_open"
+            :has-previous="propositionIdx > 0"
+            :has-next="propositions[propositionIdx + 1] !== undefined"
+            @next="toProposition(1)"
+            @prev="toProposition(-1)"
+            @toggle="toggleProposition(propositionIdx, $event)"
         />
     </div>
 </template>

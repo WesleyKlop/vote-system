@@ -6,7 +6,6 @@ use App\Models\Proposition;
 use App\Models\Voter;
 use App\Models\VoterPropositionOption;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class VoterPropositionOptionFactory
 {
