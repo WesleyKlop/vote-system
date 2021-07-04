@@ -51,6 +51,10 @@
     "Click here to export the voting results to Excel": "Click here to export the voting results to Excel (.xlsx)",
 
     "Live": "Live",
+    "Change to": "Change to",
+    "Next": "Next",
+    "Previous": "Previous",
+    "Opening a proposition closes all others": "Opening a proposition closes all others.",
 
     "Admin Area": "Admin area",
     "Username": "Username",

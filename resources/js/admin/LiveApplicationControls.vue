@@ -20,6 +20,9 @@
             @prev="toProposition(-1)"
             @toggle="toggleProposition(propositionIdx, $event)"
         />
+        <p class="text-sm text-gray-600">
+            {{ $t('Opening a proposition closes all others') }}
+        </p>
     </div>
 </template>
 
@@ -58,7 +61,7 @@ export default {
                 this.routes,
             ),
             results: {},
-            resultTimestamp: null,
+            resultsUpdatedAt: null,
         }
     },
     mounted() {
@@ -99,12 +102,20 @@ export default {
             }
         },
         handleResultsChange({ results }) {
-            results.forEach((result) =>
-                this.addVote(
-                    result.proposition_id,
-                    result.horizontal_option_id,
-                    result.vertical_option_id,
-                ),
+            results
+                .filter(
+                    (result) =>
+                        new Date(result.created_at) > this.resultsUpdatedAt,
+                )
+                .forEach((result) =>
+                    this.addVote(
+                        result.proposition_id,
+                        result.horizontal_option_id,
+                        result.vertical_option_id,
+                    ),
+                )
+            this.resultsUpdatedAt = new Date(
+                results[results.length - 1].created_at,
             )
         },
         addVote(p, h, v) {
@@ -119,21 +130,31 @@ export default {
             this.propositionId = nextProposition.id
         },
         async toggleProposition(propositionIdx, newState) {
+            // Kick off requests to close all other propositions when opening one.
+            const service = this.propositionService
+            const requests =
+                newState === true
+                    ? this.propositions
+                          .filter((p) => p.is_open)
+                          .map((p) => service.toggleProposition(p.id, false))
+                    : []
+
             // Optimistic update
             this.propositions[propositionIdx].is_open = newState
 
-            this.propositions[propositionIdx] =
-                await this.propositionService.toggleProposition(
-                    this.propositions[propositionIdx].id,
-                    newState,
-                )
+            await Promise.all(requests)
+
+            this.propositions[propositionIdx] = await service.toggleProposition(
+                this.propositions[propositionIdx].id,
+                newState,
+            )
         },
         async refreshPropositionResults() {
             const results = await this.propositionService.fetchResults(
                 this.propositionId,
             )
             this.results = results.data
-            this.resultTimestamp = results.timestamp
+            this.resultsUpdatedAt = new Date(results.timestamp)
         },
     },
 }

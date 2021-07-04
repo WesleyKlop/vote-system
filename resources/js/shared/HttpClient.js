@@ -37,7 +37,6 @@ export default class HttpClient {
                 typeof body === 'object' ? JSON.stringify(body) : body
         }
 
-        console.log(request)
         const response = await fetch(new Request(url, request))
 
         switch (response.status) {
