@@ -1709,16 +1709,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.49.0",
+            "version": "v8.49.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "855a919d08b45f93cb3cf709736528c3d1531884"
+                "reference": "62aee1bfeefd82f160c7aa3b4c63cb2f053215c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/855a919d08b45f93cb3cf709736528c3d1531884",
-                "reference": "855a919d08b45f93cb3cf709736528c3d1531884",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/62aee1bfeefd82f160c7aa3b4c63cb2f053215c0",
+                "reference": "62aee1bfeefd82f160c7aa3b4c63cb2f053215c0",
                 "shasum": ""
             },
             "require": {
@@ -1873,7 +1873,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-06-29T13:50:21+00:00"
+            "time": "2021-07-02T16:50:12+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2821,16 +2821,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.10.5",
+            "version": "v4.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f"
+                "reference": "fe14cf3672a149364fb66dfe11bf6549af899f94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4432ba399e47c66624bc73c8c0f811e5c109576f",
-                "reference": "4432ba399e47c66624bc73c8c0f811e5c109576f",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/fe14cf3672a149364fb66dfe11bf6549af899f94",
+                "reference": "fe14cf3672a149364fb66dfe11bf6549af899f94",
                 "shasum": ""
             },
             "require": {
@@ -2871,9 +2871,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v4.10.5"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v4.11.0"
             },
-            "time": "2021-05-03T19:11:20+00:00"
+            "time": "2021-07-03T13:36:55+00:00"
         },
         {
             "name": "opis/closure",
@@ -9960,16 +9960,16 @@
         },
         {
             "name": "psalm/plugin-laravel",
-            "version": "v1.4.7",
+            "version": "v1.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-laravel.git",
-                "reference": "11f6fd4bc5703ff69a688429150a9569ab100505"
+                "reference": "cf9fbd88c0e266e7bfefd3668fa93f1d2de55870"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/11f6fd4bc5703ff69a688429150a9569ab100505",
-                "reference": "11f6fd4bc5703ff69a688429150a9569ab100505",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/cf9fbd88c0e266e7bfefd3668fa93f1d2de55870",
+                "reference": "cf9fbd88c0e266e7bfefd3668fa93f1d2de55870",
                 "shasum": ""
             },
             "require": {
@@ -9982,7 +9982,7 @@
                 "illuminate/support": "^6.0 || ^7.0 || ^8.0",
                 "orchestra/testbench": "^3.8 || ^4.0 || ^5.0 || ^6.0",
                 "php": "^7.3|^8",
-                "vimeo/psalm": "^4.0"
+                "vimeo/psalm": "^4.8.1"
             },
             "require-dev": {
                 "codeception/codeception": "^4.1.6",
@@ -10019,9 +10019,9 @@
             "description": "A Laravel plugin for Psalm",
             "support": {
                 "issues": "https://github.com/psalm/psalm-plugin-laravel/issues",
-                "source": "https://github.com/psalm/psalm-plugin-laravel/tree/v1.4.7"
+                "source": "https://github.com/psalm/psalm-plugin-laravel/tree/v1.4.8"
             },
-            "time": "2021-06-10T05:24:57+00:00"
+            "time": "2021-07-04T17:18:39+00:00"
         },
         {
             "name": "rector/rector",
@@ -11352,16 +11352,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.27.1",
+            "version": "1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "57880fa060c81256363b4b9706e99df447af8613"
+                "reference": "b800636fb022b93df53bd90fa52e5ed07221eb6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/57880fa060c81256363b4b9706e99df447af8613",
-                "reference": "57880fa060c81256363b4b9706e99df447af8613",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/b800636fb022b93df53bd90fa52e5ed07221eb6a",
+                "reference": "b800636fb022b93df53bd90fa52e5ed07221eb6a",
                 "shasum": ""
             },
             "require": {
@@ -11411,7 +11411,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.27.1"
+                "source": "https://github.com/spatie/ray/tree/1.28.0"
             },
             "funding": [
                 {
@@ -11423,7 +11423,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-06-24T06:58:50+00:00"
+            "time": "2021-07-04T13:21:04+00:00"
         },
         {
             "name": "symfony/debug",
@@ -12164,5 +12164,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
