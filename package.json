@@ -11,7 +11,7 @@
     },
     "devDependencies": {
         "@babel/plugin-proposal-class-properties": "^7.14.5",
-        "husky": "^6",
+        "husky": "^7",
         "laravel-mix": "^6.0",
         "lint-staged": ">=11",
         "prettier": "^2.2.1",
