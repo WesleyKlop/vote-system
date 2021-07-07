@@ -42,11 +42,13 @@ class PropositionSeeder extends Seeder
     private function createGridProposition(): void
     {
         Proposition::factory()
-            ->has(PropositionOption::factory()
+            ->has(
+                PropositionOption::factory()
                 ->people()
                 ->vertical()
                 ->count(5),
-                'options')
+                'options'
+            )
             ->create([
                 'title' => 'Choose which members should fill which role',
                 'is_open' => true,
