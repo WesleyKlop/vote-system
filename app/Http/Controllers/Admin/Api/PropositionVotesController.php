@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Proposition;
 use App\VoteSystem\Repositories\VoterPropositionOptionRepository;
-use Carbon\CarbonImmutable;
-use Illuminate\Support\Facades\DB;
 
 class PropositionVotesController extends Controller
 {

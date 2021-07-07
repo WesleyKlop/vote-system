@@ -1,6 +1,9 @@
 <template>
-    <div class="col-span-1 lg:col-span-2 flex flex-col items-center">
-        <div v-if="proposition" class="my-2 p-2 w-full lg:w-3/4">
+    <div
+        v-if="proposition"
+        class="col-span-1 lg:col-span-2 flex flex-col items-center"
+    >
+        <div class="my-2 p-2 w-full lg:w-3/4">
             <span class="text-gray-600">
                 {{ $t('Proposition') }} {{ proposition.order }}
             </span>
@@ -23,6 +26,13 @@
         <p class="text-sm text-gray-600">
             {{ $t('Opening a proposition closes all others') }}
         </p>
+    </div>
+    <div v-else class="col-span-1 lg:col-span-2 flex flex-col items-center">
+        {{
+            $t(
+                'Start by going to the propositions page and creating a proposition',
+            )
+        }}
     </div>
 </template>
 
@@ -152,6 +162,10 @@ export default {
         },
         async refreshPropositionResults() {
             const propositionId = this.propositionId
+            if (!propositionId) {
+                return
+            }
+
             const { results, timestamp } =
                 await this.propositionService.fetchResults(propositionId)
             this.$set(this.results, propositionId, results)

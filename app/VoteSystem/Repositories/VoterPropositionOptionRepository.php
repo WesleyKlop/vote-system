@@ -5,11 +5,9 @@ namespace App\VoteSystem\Repositories;
 use App\Events\VoterVoted;
 use App\Models\Proposition;
 use App\Models\VoterPropositionOption;
-use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\MySqlConnection;
 use Illuminate\Database\PostgresConnection;
 use Illuminate\Database\Query\Expression;
-use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
