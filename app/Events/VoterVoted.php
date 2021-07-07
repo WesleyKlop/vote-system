@@ -13,7 +13,7 @@ class VoterVoted implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public int $timestamp;
+    public float $timestamp;
 
     public function __construct(public Collection $results)
     {
