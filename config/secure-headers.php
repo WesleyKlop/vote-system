@@ -354,7 +354,7 @@ return [
         'connect-src' => [
             'self' => true,
             'allow' => [
-                'ws://'.$appUri->getHost().':6001',
+                'ws://' . $appUri->getHost() . ':6001',
             ]
         ],
 
