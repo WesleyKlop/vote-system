@@ -23,7 +23,8 @@ docker-compose up -d
 ```
 
 This will automatically initialize a database, create an application key, run the migrations,
-set up the admin user and start the application! By default, the application will be reachable via [localhost:80](http://localhost:80).
+set up the admin user and start the application! By default, the application will be reachable via [localhost:8080]
+(http://localhost:8080).
 
 ### Manual docker deployment
 
