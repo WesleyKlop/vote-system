@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Proposition;
+use App\Models\PropositionOption;
 use Illuminate\Database\Seeder;
 
 class PropositionSeeder extends Seeder
@@ -22,7 +23,7 @@ class PropositionSeeder extends Seeder
     private function createListProposition()
     {
         Proposition::create([
-            'title' => 'Jouw mening over deze app',
+            'title' => 'Your opinion of this application',
             'is_open' => true,
             'type' => 'list',
             'order' => 1,
@@ -31,34 +32,35 @@ class PropositionSeeder extends Seeder
             ->createMany([
                 [
                     'axis' => 'horizontal',
-                    'option' => 'Wat vindt je van deze app?',
+                    'option' => 'What do you think of this app?',
                 ],
-                ['option' => 'Ja'],
-                ['option' => 'Nee'],
+                ['option' => 'Very cool'],
+                ['option' => 'Super awesome'],
             ]);
     }
 
     private function createGridProposition(): void
     {
-        Proposition::create([
-            'title' => 'Kies rollen voor bestuur',
-            'is_open' => true,
-            'type' => 'grid',
-            'order' => 2,
-        ])
+        Proposition::factory()
+            ->has(PropositionOption::factory()
+                ->people()
+                ->vertical()
+                ->count(5),
+                'options')
+            ->create([
+                'title' => 'Choose which members should fill which role',
+                'is_open' => true,
+                'type' => 'grid',
+                'order' => 2,
+            ])
             ->options()
             ->createMany([
-                ['axis' => 'horizontal', 'option' => 'Voorzitter'],
-                ['axis' => 'horizontal', 'option' => 'Secretaris'],
-                ['axis' => 'horizontal', 'option' => 'Penningmeester'],
-                ['axis' => 'horizontal', 'option' => 'Vice-Voorzitter'],
-                ['axis' => 'horizontal', 'option' => 'Intern'],
-                ['axis' => 'horizontal', 'option' => 'Extern'],
-                ['axis' => 'vertical', 'option' => 'Wesley Klop'],
-                ['axis' => 'vertical', 'option' => 'Peter Nijessen'],
-                ['axis' => 'vertical', 'option' => 'Niels van Gijzen'],
-                ['axis' => 'vertical', 'option' => 'Sander Laarhoven'],
-                ['axis' => 'vertical', 'option' => 'Jason Kloor'],
+                ['axis' => 'horizontal', 'option' => 'Chairman'],
+                ['axis' => 'horizontal', 'option' => 'Secretary'],
+                ['axis' => 'horizontal', 'option' => 'Treasurer'],
+                ['axis' => 'horizontal', 'option' => 'Vice-chairman'],
+                ['axis' => 'horizontal', 'option' => 'Internal affairs'],
+                ['axis' => 'horizontal', 'option' => 'External affairs'],
             ]);
     }
 }
