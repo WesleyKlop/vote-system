@@ -30,7 +30,7 @@ class DashboardController extends Controller
 
         return view('views.admin.index', [
             'welcomeMessage' => $this->config->get('admin_welcome_message'),
-            'currentPropositionId' => $proposition->id,
+            'currentPropositionId' => $proposition?->id,
             'propositions' => $propositions,
             'routes' => $routes,
         ]);

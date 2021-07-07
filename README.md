@@ -28,24 +28,33 @@ set up the admin user and start the application! By default, the application wil
 ### Manual docker deployment
 
 The easiest way to use and deploy this application is using Docker.
-You can grab the latest version from this github or use a certain tag by viewing the [ghcr versions page](https://github.com/users/WesleyKlop/packages/container/vote-system/versions).
+You can grab the latest version from this GitHub or use a certain tag by viewing the [ghcr versions page]
+(https://github.com/users/WesleyKlop/packages/container/vote-system/versions).
 
 ### Prerequisites
 
 Before you get ready to start the docker image, you should set up the following:
 
--   A database like postgres, mysql, sqlite3(not recommended)
+-   A database like Postgres or MySQL.
+    -   I recommend Postgres because that is what I personally use and also what is used by the CI pipeline.
 -   Copy the [.env](./.env.example) file from this repository, save it somewhere and fill in your database credentials.
     The application will automatically configure an application key if it could not be found on first run.
+    You will also need to configure the websockets secret. (`PUSHER_APP_SECRET`)
 
 ### Using
 
-You can now run the following command to start the application on the foreground:
+You can now run the following two commands to start the websockets server and the webserver.  
+You can modify the below environment variables.
 
 ```bash
+ENV_FILE=/abs/path/to/your/.env-file
 IMAGE=ghcr.io/wesleyklop/vote-system:main
-docker run --rm -p 1337:80 -v /abs/path/to/your/.env-file:/app/.env $IMAGE
+WEB_PORT=8080 # Make sure this matches the port in APP_URL
+docker run --rm -d -p 6001:6001 -v $ENV_FILE:/app/.env $IMAGE php artisan websockets:serve
+docker run --rm -d -p $WEB_PORT:80 -v $ENV_FILE:/app/.env $IMAGE
 ```
+
+I would recommend using the docker-compose file instead.
 
 ## Screenshots
 
