@@ -20,6 +20,7 @@ new Vue({
         PropositionOptionEditor: () =>
             import('./admin/PropositionOptionEditor'),
         VoterManagementPage: () => import('./admin/VoterManagementPage'),
+        ListResultOption: () => import('./admin/ListResultOption'),
 
         TokenInput: () => import('./voter/TokenInput'),
         VoterVotingPage: () => import('./voter/VoterVotingPage'),

@@ -1,33 +1,21 @@
 <template>
     <div class="card-content">
         <h3 class="sub-title">{{ question.option }}</h3>
-        <div
-            class="
-                w-3/4
-                relative
-                h-8
-                rounded
-                border-2 border-gray-300
-                overflow-hidden
-                my-2
-            "
+        <list-result-option
             v-for="option of choices"
-        >
-            <div
-                class="mr-auto bg-gray-200 absolute left-0 inset-y-0"
-                :style="{ width: `${percentage(option)}%` }"
-            ></div>
-            <div class="z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0">
-                {{ option.option }} : {{ votes(option) }} ({{
-                    percentage(option)
-                }}%)
-            </div>
-        </div>
+            :key="option.id"
+            :option="option.option"
+            :count="votes(option)"
+            :total="totalVotes"
+        />
     </div>
 </template>
 
 <script>
+import ListResultOption from './ListResultOption'
+
 export default {
+    components: { ListResultOption },
     props: {
         options: {
             type: Array,
