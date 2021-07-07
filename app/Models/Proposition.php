@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\PropositionChange;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,6 +27,10 @@ class Proposition extends AbstractModel
 
     protected $casts = [
         'is_open' => 'bool',
+    ];
+
+    protected $dispatchesEvents = [
+        'saved' => PropositionChange::class,
     ];
 
     public function scopeOpen(Builder $query): Builder

@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "start": "mix watch",
         "development": "mix",
         "watch": "mix watch",
         "hot": "mix watch --hot",
@@ -33,6 +34,6 @@
         }
     },
     "lint-staged": {
-        "*.{yml,css,js,vue,json,php,md}": "prettier --write"
+        "*.{yml,css,js,vue,json,md}": "prettier --write"
     }
 }

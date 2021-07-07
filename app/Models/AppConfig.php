@@ -16,6 +16,7 @@ class AppConfig extends Model
 
     public static function getValue(string $name)
     {
+        /** @var AppConfig $entry */
         $entry = static::query()->findOrFail($name);
 
         return $entry->value();
@@ -28,7 +29,7 @@ class AppConfig extends Model
         );
     }
 
-    public function value()
+    public function value(): mixed
     {
         return $this->value ?? $this->default;
     }

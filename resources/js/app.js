@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import { getAppLocale } from './shared/helpers'
-import TokenInput from './voter/TokenInput'
-import echo from './shared/websockets'
 
 Vue.use(VueI18n)
 
@@ -17,22 +15,21 @@ new Vue({
     i18n,
     el: '#app',
     components: {
+        LiveApplicationControls: () =>
+            import('./admin/LiveApplicationControls'),
         PropositionOptionEditor: () =>
             import('./admin/PropositionOptionEditor'),
-        TokenInput,
         VoterManagementPage: () => import('./admin/VoterManagementPage'),
+
+        TokenInput: () => import('./voter/TokenInput'),
         VoterVotingPage: () => import('./voter/VoterVotingPage'),
+
         IllVote: () => import('./shared/IllVote'),
     },
     data() {
         return {
             csrf: document.querySelector('meta[name="csrf-token"]')?.content,
-            token: document.querySelector('meta[name="voter-token"]')?.content,
+            token: document.querySelector('meta[name="auth-token"]')?.content,
         }
     },
 })
-
-// echo().private('propositions')
-//     .listen('PropositionChange', event => {
-//         console.log(event)
-//     })

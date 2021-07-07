@@ -11,11 +11,19 @@ namespace App\Models;
  */
 class VoterPropositionOption extends AbstractModel
 {
+    public const UPDATED_AT = null;
+    public $timestamps = true;
+
     protected $fillable = [
         'voter_id',
         'proposition_id',
         'vertical_option_id',
         'horizontal_option_id',
+    ];
+
+    protected $hidden = [
+        'id',
+        'voter_id',
     ];
 
     public function proposition()

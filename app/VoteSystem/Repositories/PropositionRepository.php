@@ -6,13 +6,14 @@ use App\Models\Proposition;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
-class PropositionRepository
+final class PropositionRepository
 {
     public function findOpenWhereUnanswered(
         string $voterId,
         array $includes = ['options']
     ): ?Proposition {
-        return Proposition::with($includes)
+        return Proposition::query()
+            ->with($includes)
             ->whereDoesntHave('voters', function (Builder $query) use (
                 $voterId
             ) {
@@ -25,7 +26,8 @@ class PropositionRepository
 
     public function findAll(array $includes = []): Collection
     {
-        return Proposition::with($includes)
+        return Proposition::query()
+            ->with($includes)
             ->orderBy('order')
             ->get();
     }
@@ -33,13 +35,13 @@ class PropositionRepository
     public function create(
         string $title,
         int $order,
-        bool $is_open,
-        string $type
+        string $type,
+        bool $isOpen = false,
     ): Proposition {
         return Proposition::create([
             'title' => $title,
             'order' => $order,
-            'is_open' => $is_open,
+            'is_open' => $isOpen,
             'type' => $type,
         ]);
     }
@@ -47,5 +49,13 @@ class PropositionRepository
     public function update(Proposition $proposition, array $attributes): bool
     {
         return $proposition->update($attributes);
+    }
+
+    public function currentOrFirst(): ?Proposition
+    {
+        return Proposition::query()
+            ->orderByDesc('is_open')
+            ->orderBy('order')
+            ->first();
     }
 }

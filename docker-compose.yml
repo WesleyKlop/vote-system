@@ -5,7 +5,7 @@ services:
     # Change "main" to use a specific version.
     # You can see all tags at https://github.com/users/WesleyKlop/packages/container/vote-system/versions
     image: ghcr.io/wesleyklop/vote-system:main
-    # build: .
+    #build: .
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost']
       interval: 30s
@@ -19,6 +19,23 @@ services:
       - net
     ports:
       - '8080:80'
+    depends_on:
+      - postgres
+      - vote-system-ws
+    restart: on-failure
+  vote-system-ws:
+    # Change "main" to use a specific version.
+    # You can see all tags at https://github.com/users/WesleyKlop/packages/container/vote-system/versions
+    image: ghcr.io/wesleyklop/vote-system:main
+    #build: .
+    command:
+      - php
+      - artisan
+      - websockets:serve
+    networks:
+      - net
+    ports:
+      - '6001:6001'
     depends_on:
       - postgres
     restart: on-failure

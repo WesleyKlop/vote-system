@@ -11,20 +11,23 @@ class PropositionOptionFactory extends Factory
 
     public function vertical(): self
     {
-        return $this->state(
-            fn (array $attributes) => [
-                'axis' => 'vertical',
-            ]
-        );
+        return $this->state(fn (array $attributes) => [
+            'axis' => 'vertical',
+        ]);
     }
 
     public function horizontal(): self
     {
-        return $this->state(
-            fn (array $attributes) => [
-                'axis' => 'horizontal',
-            ]
-        );
+        return $this->state(fn (array $attributes) => [
+            'axis' => 'horizontal',
+        ]);
+    }
+
+    public function people(): self
+    {
+        return $this->state(fn (array $attributes) => [
+            'option' => $this->faker->name,
+        ]);
     }
 
     public function definition(): array

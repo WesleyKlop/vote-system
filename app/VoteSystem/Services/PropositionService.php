@@ -35,7 +35,7 @@ class PropositionService
             $answers
         );
 
-        $this->voterPropositionOptionRepository->insert(
+        $this->voterPropositionOptionRepository->create(
             $voterPropositionOptions
         );
     }
@@ -47,7 +47,6 @@ class PropositionService
         $proposition = $this->propositionRepository->create(
             $validated['title'],
             $validated['order'],
-            array_key_exists('is_open', $validated),
             $this->getPropositionType($options)
         );
 
@@ -128,7 +127,6 @@ class PropositionService
         $this->propositionRepository->update($proposition, [
             'title' => $validated['title'],
             'order' => $validated['order'],
-            'is_open' => array_key_exists('is_open', $validated),
             'type' => $this->getPropositionType($options),
         ]);
 

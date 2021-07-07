@@ -17,7 +17,6 @@ class PropositionUpdateRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
-            'is_open' => ['sometimes', 'accepted'],
             'order' => ['required', 'integer', 'nullable'],
             'options' => ['required', 'array', 'size:2'],
             'options.horizontal' => ['required', 'array', 'min:1'],

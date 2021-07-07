@@ -45,7 +45,6 @@ VOLUME /app/storage/app
 # Cache everything except config cache because .env is loaded at container creation time.
 USER www-data
 RUN php artisan route:cache \
- && php artisan view:cache \
  && php artisan event:cache \
  && php artisan view:cache
 USER root

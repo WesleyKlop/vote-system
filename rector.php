@@ -19,15 +19,17 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     // paths to refactor; solid alternative to CLI arguments
     $parameters->set(Option::PATHS, [
-        __DIR__.'/app',
-        __DIR__.'/bootstrap/app.php',
-        __DIR__.'/config',
-        __DIR__.'/database/seeders',
-        __DIR__.'/database/factories',
-        __DIR__.'/public/index.php',
-        __DIR__.'/resources/lang',
-        __DIR__.'/routes',
-        __DIR__.'/tests',
+        __DIR__ . '/app',
+        __DIR__ . '/bootstrap/app.php',
+        __DIR__ . '/config',
+        __DIR__ . '/database/seeders',
+        __DIR__ . '/database/factories',
+        __DIR__ . '/public/index.php',
+        __DIR__ . '/resources/lang',
+        __DIR__ . '/routes',
+        __DIR__ . '/tests',
+        __DIR__ . '/ecs.php',
+        __DIR__ . '/rector.php',
     ]);
 
     // is your PHP version different from the one your refactor to? [default: your PHP version], uses PHP_VERSION_ID format

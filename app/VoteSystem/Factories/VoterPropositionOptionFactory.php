@@ -4,8 +4,8 @@ namespace App\VoteSystem\Factories;
 
 use App\Models\Proposition;
 use App\Models\Voter;
+use App\Models\VoterPropositionOption;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class VoterPropositionOptionFactory
 {
@@ -15,20 +15,20 @@ class VoterPropositionOptionFactory
         Collection $answers
     ): Collection {
         return $answers->map(
-            fn (string $vertical, string $horizontal) => $proposition->type ===
-            'grid'
-                ? self::mapRow(
+            fn (string $vertical, string $horizontal) => match ($proposition->type) {
+                "grid" => self::mapRow(
                     $voter->id,
                     $proposition->id,
                     $vertical,
                     $horizontal
-                )
-                : self::mapRow(
+                ),
+                "list" => self::mapRow(
                     $voter->id,
                     $proposition->id,
                     $horizontal,
                     $vertical
                 )
+            }
         );
     }
 
@@ -37,13 +37,12 @@ class VoterPropositionOptionFactory
         string $propositionId,
         string $horizontal,
         string $vertical
-    ): array {
-        return [
-            'id' => Str::uuid(),
+    ): VoterPropositionOption {
+        return VoterPropositionOption::make([
             'voter_id' => $voterId,
             'proposition_id' => $propositionId,
             'horizontal_option_id' => $horizontal,
             'vertical_option_id' => $vertical,
-        ];
+        ]);
     }
 }

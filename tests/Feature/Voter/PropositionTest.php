@@ -2,7 +2,9 @@
 
 namespace Tests\Feature\Voter;
 
+use App\Events\PropositionChange;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\CreatesPropositions;
 use Tests\TestCase;
 use Tests\UsesVoters;
@@ -22,8 +24,12 @@ class PropositionTest extends TestCase
 
     public function testCanVisitPropositionPage(): void
     {
+        Event::fake();
+
         $voter = $this->voter();
         $proposition = $this->createProposition();
+
+        Event::assertDispatched(PropositionChange::class);
 
         $response = $this->actingAs($voter, 'web-voter')->get(
             route('proposition.index')

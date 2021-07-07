@@ -9,9 +9,9 @@ use App\VoteSystem\Helpers\PropositionHelper;
 use App\VoteSystem\Pages\AbstractPage;
 use Illuminate\Support\Collection;
 
-class DashboardPage extends AbstractPage
+class PropositionIndexPage extends AbstractPage
 {
-    protected string $view = 'views.admin.index';
+    protected string $view = 'views.admin.propositions.index';
 
     /**
      * @param Collection<int, Proposition> $propositions
@@ -19,13 +19,7 @@ class DashboardPage extends AbstractPage
     public function __construct(
         private Collection $propositions,
         private VoterStatistics $voterStatistics,
-        private string $welcomeMessage
     ) {
-    }
-
-    public function getWelcomeMessage(): string
-    {
-        return $this->welcomeMessage;
     }
 
     public function getUnusedVoterCount(): int
