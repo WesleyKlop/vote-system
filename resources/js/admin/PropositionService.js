@@ -32,19 +32,15 @@ export default class PropositionService {
             this.route('results', propositionId),
         )
 
-        const mappedData = data.reduce((byProposition, current) => {
-            byProposition[current.proposition_id] ??= {}
-            byProposition[current.proposition_id][
-                current.horizontal_option_id
-            ] ??= {}
-            byProposition[current.proposition_id][current.horizontal_option_id][
-                current.vertical_option_id
-            ] = current.votes
-            return byProposition
+        const results = data.reduce((results, current) => {
+            results[current.horizontal_option_id] ??= {}
+            results[current.horizontal_option_id][current.vertical_option_id] =
+                current.votes
+            return results
         }, {})
 
         return {
-            data: mappedData,
+            results,
             timestamp,
         }
     }

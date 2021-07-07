@@ -60,11 +60,14 @@ export default {
             return this.results[this.question.id]?.[option.id] ?? 0
         },
         percentage(option) {
-            const votes = Math.max(this.votes(option), 1)
+            const votes = this.votes(option)
+            if (votes === 0) {
+                return 0
+            }
+
             return (
-                Math.round(
-                    ((votes / this.totalVotes) * 100 + Number.EPSILON) * 100,
-                ) / 100
+                Math.round((votes / this.totalVotes) * 10000 + Number.EPSILON) /
+                100
             )
         },
     },

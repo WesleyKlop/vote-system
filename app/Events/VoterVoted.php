@@ -13,9 +13,11 @@ class VoterVoted implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public int $timestamp;
+
     public function __construct(public Collection $results)
     {
-        //
+        $this->timestamp = microtime(true);
     }
 
     public function broadcastOn(): PrivateChannel

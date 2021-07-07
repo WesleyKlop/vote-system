@@ -101,22 +101,19 @@ export default {
                 this.$set(this.propositions, idx, proposition)
             }
         },
-        handleResultsChange({ results }) {
-            results
-                .filter(
-                    (result) =>
-                        new Date(result.created_at) > this.resultsUpdatedAt,
-                )
-                .forEach((result) =>
-                    this.addVote(
-                        result.proposition_id,
-                        result.horizontal_option_id,
-                        result.vertical_option_id,
-                    ),
-                )
-            this.resultsUpdatedAt = new Date(
-                results[results.length - 1].created_at,
+        handleResultsChange({ results, timestamp }) {
+            if (timestamp > this.resultsUpdatedAt) {
+                console.warn(`Ignoring stale data with timestamp ${timestamp}.`)
+                return
+            }
+            results.forEach((result) =>
+                this.addVote(
+                    result.proposition_id,
+                    result.horizontal_option_id,
+                    result.vertical_option_id,
+                ),
             )
+            this.resultsUpdatedAt = timestamp
         },
         addVote(p, h, v) {
             this.$set(this.results, p, this.results[p] ?? {})
@@ -128,6 +125,7 @@ export default {
             const nextProposition = this.propositions[nextPropositionIdx]
 
             this.propositionId = nextProposition.id
+            this.refreshPropositionResults()
         },
         toggleProposition(propositionIdx, newState) {
             // Kick off requests to close all other open propositions when opening one.
@@ -153,11 +151,11 @@ export default {
             return Promise.all(requests)
         },
         async refreshPropositionResults() {
-            const results = await this.propositionService.fetchResults(
-                this.propositionId,
-            )
-            this.results = results.data
-            this.resultsUpdatedAt = new Date(results.timestamp)
+            const propositionId = this.propositionId
+            const { results, timestamp } =
+                await this.propositionService.fetchResults(propositionId)
+            this.$set(this.results, propositionId, results)
+            this.resultsUpdatedAt = timestamp
         },
     },
 }
