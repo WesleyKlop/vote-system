@@ -129,8 +129,8 @@ export default {
 
             this.propositionId = nextProposition.id
         },
-        async toggleProposition(propositionIdx, newState) {
-            // Kick off requests to close all other propositions when opening one.
+        toggleProposition(propositionIdx, newState) {
+            // Kick off requests to close all other open propositions when opening one.
             const service = this.propositionService
             const requests =
                 newState === true
@@ -139,15 +139,18 @@ export default {
                           .map((p) => service.toggleProposition(p.id, false))
                     : []
 
+            requests.push(
+                service.toggleProposition(
+                    this.propositions[propositionIdx].id,
+                    newState,
+                ),
+            )
+
             // Optimistic update
             this.propositions[propositionIdx].is_open = newState
 
-            await Promise.all(requests)
-
-            this.propositions[propositionIdx] = await service.toggleProposition(
-                this.propositions[propositionIdx].id,
-                newState,
-            )
+            // We don't have to do anything with the results because we are subscribed to proposition changes.
+            return Promise.all(requests)
         },
         async refreshPropositionResults() {
             const results = await this.propositionService.fetchResults(
