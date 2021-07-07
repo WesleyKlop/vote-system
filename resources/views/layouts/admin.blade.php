@@ -9,7 +9,7 @@
         <meta name='auth-token' content='{{ auth('web-admin')->user()->api_token }}' />
     @endauth
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
-    <script defer src="{{ mix('js/app.js') }}" nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}"></script>
+    <script defer src="{{ mix('js/app.js') }}" nonce="{{ csp_nonce('script') }}"></script>
     <x-custom-styling />
     <x-websocket-config />
 </head>

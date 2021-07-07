@@ -1,6 +1,7 @@
 <?php
 
-$isHttps = \Illuminate\Support\Str::startsWith(env('APP_URL'), 'https://');
+$appUri = (new \GuzzleHttp\Psr7\Uri(env('APP_URL')));
+$isHttps = $appUri->getScheme() === 'https';
 
 return [
     /*
@@ -351,7 +352,10 @@ return [
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/connect-src
         'connect-src' => [
-            //
+            'self' => true,
+            'allow' => [
+                'ws://' . $appUri->getHost() . ':6001',
+            ]
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/default-src
@@ -510,7 +514,6 @@ return [
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
         'style-src' => [
             'self' => true,
-            'unsafe-inline' => true,
         ],
 
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src-attr

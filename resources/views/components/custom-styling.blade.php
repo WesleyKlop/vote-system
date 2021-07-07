@@ -1,5 +1,5 @@
 @if($primaryColor || $accentColor)
-<style nonce='{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('style') }}'>
+<style nonce='{{ csp_nonce('style') }}'>
 :root {
     @if($primaryColor)
         --primary-color: {{ $primaryColor }};

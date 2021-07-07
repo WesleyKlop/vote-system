@@ -8,8 +8,8 @@
     @auth('web-voter')
         <meta name='auth-token' content='{{ auth('web-voter')->user()->token }}' />
     @endauth
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}"  nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('style') }}"/>
-    <script defer src="{{ mix('js/app.js') }}" nonce="{{ Bepsvpt\SecureHeaders\SecureHeaders::nonce('script') }}"></script>
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}"  nonce="{{ csp_nonce('style') }}"/>
+    <script defer src="{{ mix('js/app.js') }}" nonce="{{ csp_nonce('script') }}"></script>
     <x-custom-styling />
     <x-websocket-config />
 </head>

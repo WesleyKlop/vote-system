@@ -30,13 +30,7 @@
                                 $count = $page->getOptionCount($proposition, $option);
                                 $width = $count / ($page->getUsedVoterCount() ?: 1)
                             @endphp
-                            <div class="w-3/4 relative h-8 rounded border-2 border-gray-300 overflow-hidden my-2">
-                                <div class="mr-auto bg-gray-200 absolute left-0 inset-y-0"
-                                     style="width: {{ $width * 100 }}%"></div>
-                                <div class="z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0">{{ $option->option }}
-                                    : {{$count}} ({{ round($width * 100) }}%)
-                                </div>
-                            </div>
+                            <list-result-option option='{{ $option->option }}' :count='{{ $count }}' :total='{{ $page->getUsedVoterCount() ?: 1 }}'></list-result-option>
                         @endforeach
                     @elseif($proposition->type === 'grid')
                         <div class="table-wrapper">
