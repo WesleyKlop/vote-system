@@ -1709,16 +1709,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.49.1",
+            "version": "v8.49.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "62aee1bfeefd82f160c7aa3b4c63cb2f053215c0"
+                "reference": "d9b43ee080b4d51344b2e578aa667f85040471a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/62aee1bfeefd82f160c7aa3b4c63cb2f053215c0",
-                "reference": "62aee1bfeefd82f160c7aa3b4c63cb2f053215c0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d9b43ee080b4d51344b2e578aa667f85040471a2",
+                "reference": "d9b43ee080b4d51344b2e578aa667f85040471a2",
                 "shasum": ""
             },
             "require": {
@@ -1873,7 +1873,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-07-02T16:50:12+00:00"
+            "time": "2021-07-06T14:06:38+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2572,16 +2572,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084"
+                "reference": "df991fd88693ab703aa403413d83e15f688dae33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
-                "reference": "1cb1cde8e8dd0f70cc0fe51354a59acad9302084",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/df991fd88693ab703aa403413d83e15f688dae33",
+                "reference": "df991fd88693ab703aa403413d83e15f688dae33",
                 "shasum": ""
             },
             "require": {
@@ -2600,7 +2600,7 @@
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
                 "phpspec/prophecy": "^1.6.1",
-                "phpstan/phpstan": "^0.12.59",
+                "phpstan/phpstan": "^0.12.91",
                 "phpunit/phpunit": "^8.5",
                 "predis/predis": "^1.1",
                 "rollbar/rollbar": "^1.3",
@@ -2652,7 +2652,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/2.2.0"
+                "source": "https://github.com/Seldaek/monolog/tree/2.3.0"
             },
             "funding": [
                 {
@@ -2664,20 +2664,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-14T13:15:25+00:00"
+            "time": "2021-07-05T11:34:13+00:00"
         },
         {
             "name": "myclabs/php-enum",
-            "version": "1.8.1",
+            "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/php-enum.git",
-                "reference": "55555d31a622b4bc9662664132a0533ae6ef47b1"
+                "reference": "b942d263c641ddb5190929ff840c68f78713e937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/55555d31a622b4bc9662664132a0533ae6ef47b1",
-                "reference": "55555d31a622b4bc9662664132a0533ae6ef47b1",
+                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/b942d263c641ddb5190929ff840c68f78713e937",
+                "reference": "b942d263c641ddb5190929ff840c68f78713e937",
                 "shasum": ""
             },
             "require": {
@@ -2712,7 +2712,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/php-enum/issues",
-                "source": "https://github.com/myclabs/php-enum/tree/1.8.1"
+                "source": "https://github.com/myclabs/php-enum/tree/1.8.3"
             },
             "funding": [
                 {
@@ -2724,7 +2724,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-29T09:20:05+00:00"
+            "time": "2021-07-05T08:18:36+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -8242,16 +8242,16 @@
         },
         {
             "name": "fakerphp/faker",
-            "version": "v1.14.1",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1"
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
-                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/89c6201c74db25fa759ff16e78a4d8f32547770e",
+                "reference": "89c6201c74db25fa759ff16e78a4d8f32547770e",
                 "shasum": ""
             },
             "require": {
@@ -8301,9 +8301,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v.1.14.1"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.15.0"
             },
-            "time": "2021-03-30T06:27:33+00:00"
+            "time": "2021-07-06T20:39:40+00:00"
         },
         {
             "name": "felixfbecker/advanced-json-rpc",
@@ -9960,16 +9960,16 @@
         },
         {
             "name": "psalm/plugin-laravel",
-            "version": "v1.4.8",
+            "version": "v1.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/psalm/psalm-plugin-laravel.git",
-                "reference": "cf9fbd88c0e266e7bfefd3668fa93f1d2de55870"
+                "reference": "7f15023e45ef086b58264641eae65403af3bda5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/cf9fbd88c0e266e7bfefd3668fa93f1d2de55870",
-                "reference": "cf9fbd88c0e266e7bfefd3668fa93f1d2de55870",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/7f15023e45ef086b58264641eae65403af3bda5f",
+                "reference": "7f15023e45ef086b58264641eae65403af3bda5f",
                 "shasum": ""
             },
             "require": {
@@ -10019,22 +10019,22 @@
             "description": "A Laravel plugin for Psalm",
             "support": {
                 "issues": "https://github.com/psalm/psalm-plugin-laravel/issues",
-                "source": "https://github.com/psalm/psalm-plugin-laravel/tree/v1.4.8"
+                "source": "https://github.com/psalm/psalm-plugin-laravel/tree/v1.4.9"
             },
-            "time": "2021-07-04T17:18:39+00:00"
+            "time": "2021-07-05T15:18:55+00:00"
         },
         {
             "name": "rector/rector",
-            "version": "0.11.32",
+            "version": "0.11.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "cbc812647c9c9877c5c5a65435111009e8799f70"
+                "reference": "b842577f964997cc6331dc50d5c3bd0c4d7f83a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/cbc812647c9c9877c5c5a65435111009e8799f70",
-                "reference": "cbc812647c9c9877c5c5a65435111009e8799f70",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/b842577f964997cc6331dc50d5c3bd0c4d7f83a7",
+                "reference": "b842577f964997cc6331dc50d5c3bd0c4d7f83a7",
                 "shasum": ""
             },
             "require": {
@@ -10072,7 +10072,7 @@
             "description": "Prefixed and PHP 7.1 downgraded version of rector/rector",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.11.32"
+                "source": "https://github.com/rectorphp/rector/tree/0.11.35"
             },
             "funding": [
                 {
@@ -10080,7 +10080,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-30T22:19:56+00:00"
+            "time": "2021-07-06T14:09:11+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -11695,16 +11695,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "9.4.8",
+            "version": "9.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "373348024eb3f05554a6483b796f620dafad912b"
+                "reference": "2776e656cd5cc3a5d13e3164d54bdf1a441a2367"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/373348024eb3f05554a6483b796f620dafad912b",
-                "reference": "373348024eb3f05554a6483b796f620dafad912b",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/2776e656cd5cc3a5d13e3164d54bdf1a441a2367",
+                "reference": "2776e656cd5cc3a5d13e3164d54bdf1a441a2367",
                 "shasum": ""
             },
             "require": {
@@ -11729,7 +11729,7 @@
             ],
             "description": "Prefixed scoped version of ECS package",
             "support": {
-                "source": "https://github.com/symplify/easy-coding-standard/tree/9.4.8"
+                "source": "https://github.com/symplify/easy-coding-standard/tree/9.4.14"
             },
             "funding": [
                 {
@@ -11741,7 +11741,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-03T14:16:11+00:00"
+            "time": "2021-07-07T23:34:35+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -12164,5 +12164,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
