@@ -11,12 +11,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
     $containerConfigurator->import(SetList::PHP_80);
 
-//    $parameters->set(Option::AUTOLOAD_PATHS, [
-//        __DIR__ . '/vendor/autoload.php',
-//        __DIR__ . '/bootstrap/app.php',
-//    ]);
-
-
     // paths to refactor; solid alternative to CLI arguments
     $parameters->set(Option::PATHS, [
         __DIR__ . '/app',
