@@ -107,19 +107,6 @@ class PropositionService
         );
     }
 
-    public function toggleProposition(Proposition $proposition, bool $newState): bool
-    {
-        $isChanged = $this->propositionRepository->update($proposition, [
-            'is_open' => $newState,
-        ]);
-
-        if ($isChanged === true) {
-            PropositionChange::dispatch($proposition);
-        }
-
-        return $isChanged;
-    }
-
     public function updateProposition(Proposition $proposition, array $validated): void
     {
         $options = $this->mapOptions($validated['options']);
@@ -128,6 +115,8 @@ class PropositionService
             'title' => $validated['title'],
             'order' => $validated['order'],
             'type' => $this->getPropositionType($options),
+            'has_abstain' => $validated['has_abstain'],
+            'has_blank' => $validated['has_blank'],
         ]);
 
         $this->syncPropositionOptions($proposition, $options);
@@ -146,7 +135,7 @@ class PropositionService
         return (Proposition::max('order') ?: 0) + 1;
     }
 
-    private function getValidId(int | string $id): string
+    private function getValidId(int|string $id): string
     {
         if (is_string($id) && Str::isUuid($id)) {
             return $id;

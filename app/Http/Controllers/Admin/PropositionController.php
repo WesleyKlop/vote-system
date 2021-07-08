@@ -67,14 +67,13 @@ class PropositionController extends Controller
 
     public function edit(Proposition $proposition): View
     {
-        $proposition->load('options');
         $mappedOldOptions = $this->propositionService->mapOptions(
             old('options', [])
         );
 
         $mappedOldOptions = $mappedOldOptions->count() > 0
             ? $mappedOldOptions
-            : $proposition->options;
+            : $proposition->options()->get();
 
         return view('views.admin.propositions.edit', [
             'proposition' => $proposition,

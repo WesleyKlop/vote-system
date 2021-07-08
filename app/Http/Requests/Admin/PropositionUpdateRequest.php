@@ -10,10 +10,8 @@ class PropositionUpdateRequest extends FormRequest
 
     /**
      * Get the validation rules that apply to the request.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'title' => ['required', 'string'],
@@ -22,10 +20,12 @@ class PropositionUpdateRequest extends FormRequest
             'options.horizontal' => ['required', 'array', 'min:1'],
             'options.vertical' => ['required', 'array', 'min:1'],
             'options.*.*' => ['present', 'string'],
+            'has_abstain' => ['required', 'boolean'],
+            'has_blank' => ['required', 'boolean'],
         ];
     }
 
-    public function prepareForValidation()
+    public function prepareForValidation(): void
     {
         $this->merge([
             'options' => [
@@ -36,6 +36,8 @@ class PropositionUpdateRequest extends FormRequest
                     $this->options['vertical']
                 ),
             ],
+            'has_abstain' => $this->filled('has_abstain'),
+            'has_blank' => $this->filled('has_blank'),
         ]);
     }
 }
