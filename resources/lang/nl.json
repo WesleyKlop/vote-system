@@ -71,5 +71,9 @@
     "Used": "Gebruikt",
     "Sign out": "Uitloggen",
     "Sign in": "Inloggen",
-    "Exit": "Stoppen"
+    "Exit": "Stoppen",
+
+    "abstain": "Onthouden",
+    "blank": "Blanco",
+    "Blank and abstain help text": "Het uitgelichte resultaat is de automatisch berekende winnende optie. Hierbij wordt ook rekening gehouden met de opties 'blanco' en 'onthouden'. Een blanco stem is een voorkeursstem en wordt dus automatisch opgeteld bij de optie met de meeste stemmen. Het getal wat er bij die optie staat is zonder deze stemmen meegetelt."
 }

@@ -9,13 +9,14 @@
             overflow-hidden
             my-2
         "
+        :class='{ "font-bold": isWinning }'
     >
         <div
             class="mr-auto bg-gray-200 absolute left-0 inset-y-0"
             :style="{ width: `${percentage}%` }"
         ></div>
         <div class="z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0">
-            {{ option }} : {{ count }} ({{ percentage }}%)
+            {{ title }} : {{ count }} ({{ percentage }}%)
         </div>
     </div>
 </template>
@@ -35,8 +36,19 @@ export default {
             type: Number,
             required: true,
         },
+        isWinning: {
+            type: Boolean,
+            required: false,
+            default: false,
+        }
     },
     computed: {
+        title() {
+            if(['abstain', 'blank'].includes(this.option)) {
+                return this.$t(this.option)
+            }
+            return this.option
+        },
         percentage() {
             if (this.count === 0) {
                 return 0
