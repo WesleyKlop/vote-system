@@ -31,15 +31,12 @@ final class TokenHelper
     /**
      * @throws Exception
      */
-    public static function generateTokens(int $amount): array
+    public static function generateTokens(int $amount): iterable
     {
         $tokenLength = config('vote-system.token_length');
-        $tokens = [];
         for ($i = 0; $i < $amount; $i++) {
-            $tokens[] = static::generateToken($tokenLength);
+            yield TokenHelper::generateToken($tokenLength);
         }
-
-        return $tokens;
     }
 
     /**

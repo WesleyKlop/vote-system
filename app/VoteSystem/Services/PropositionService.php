@@ -2,7 +2,6 @@
 
 namespace App\VoteSystem\Services;
 
-use App\Events\PropositionChange;
 use App\Models\Proposition;
 use App\Models\PropositionOption;
 use App\Models\Voter;
@@ -58,6 +57,7 @@ class PropositionService
         // Create vertical and horizontal options based on given data
         $mapped = collect();
         foreach ($options as $axis => $items) {
+            $sortOrder = 0;
             foreach ($items as $id => $option) {
                 if (is_null($option)) {
                     continue;
@@ -66,6 +66,7 @@ class PropositionService
                     'id' => $this->getValidId($id),
                     'axis' => $axis,
                     'option' => $option,
+                    'sort_order' => $sortOrder++,
                 ];
                 $mapped->push($model);
             }
@@ -135,9 +136,9 @@ class PropositionService
         return (Proposition::max('order') ?: 0) + 1;
     }
 
-    private function getValidId(int|string $id): string
+    private function getValidId(int | string $id): string
     {
-        if (is_string($id) && Str::isUuid($id)) {
+        if (Str::isUuid($id)) {
             return $id;
         }
 

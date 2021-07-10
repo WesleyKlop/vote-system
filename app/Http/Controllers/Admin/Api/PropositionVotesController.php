@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Proposition;
 use App\VoteSystem\Repositories\VoterPropositionOptionRepository;
+use Illuminate\Http\JsonResponse;
 
 class PropositionVotesController extends Controller
 {
@@ -13,12 +14,12 @@ class PropositionVotesController extends Controller
         parent::__construct();
     }
 
-    public function __invoke(Proposition $proposition): array
+    public function __invoke(Proposition $proposition): JsonResponse
     {
         $timestamp = microtime(true);
-        return [
+        return response()->json([
             'data' => $this->optionRepository->findVotesBefore($proposition, $timestamp),
             'timestamp' => $timestamp,
-        ];
+        ]);
     }
 }
