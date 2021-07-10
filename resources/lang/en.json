@@ -71,5 +71,8 @@
     "Used": "Used",
     "Sign out": "Sign out",
     "Sign in": "Sign in",
-    "Exit": "Exit"
+    "Exit": "Exit",
+
+    "abstain": "Abstain",
+    "blank": "Blank"
 }

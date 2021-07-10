@@ -4,6 +4,8 @@
             :is="`${type}-option-results`"
             :options="options"
             :results="results"
+            :blank-id='blankId'
+            :abstain-id='abstainId'
         />
     </div>
 </template>
@@ -18,6 +20,16 @@ export default {
         GridOptionResults,
     },
     props: {
+        abstainId: {
+            type: String,
+            required: false,
+            default: null,
+        },
+        blankId: {
+            type: String,
+            required: false,
+            default: null,
+        },
         type: {
             type: String,
             required: true,

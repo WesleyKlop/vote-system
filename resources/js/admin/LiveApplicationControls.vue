@@ -7,8 +7,11 @@
             <span class="text-gray-600">
                 {{ $t('Proposition') }} {{ proposition.order }}
             </span>
-            <h2 class="title mb-6">{{ proposition.title }}</h2>
+            <h2 class="title mb-3">{{ proposition.title }}</h2>
+            <p class='text-gray-800 text-sm mb-6'>{{ $t('Blank and abstain help text')}}</p>
             <live-proposition-results
+                :blank-id="proposition.blank_option_id"
+                :abstain-id="proposition.abstain_option_id"
                 :type="proposition.type"
                 :options="proposition.options"
                 :results="results[proposition.id]"
