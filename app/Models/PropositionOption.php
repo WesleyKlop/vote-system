@@ -10,7 +10,7 @@ class PropositionOption extends AbstractModel
 {
     use HasFactory;
 
-    protected $fillable = ['axis', 'option', 'proposition_id'];
+    protected $fillable = ['axis', 'option', 'proposition_id', 'sort_order'];
 
     protected $touches = ['proposition'];
 

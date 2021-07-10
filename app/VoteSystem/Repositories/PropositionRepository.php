@@ -70,29 +70,33 @@ final class PropositionRepository
 
     private function syncAbstainOption(Proposition $proposition, bool $hasAbstain): void
     {
-        if (! $hasAbstain) {
+        if (!$hasAbstain) {
             $proposition->abstainOption()->delete();
             return;
         }
 
-        $option = $proposition->abstainOption()->updateOrCreate(
-            ['option' => 'abstain', 'proposition_id' => $proposition->id],
-            ['axis' => $proposition->type === 'list' ? 'vertical' : 'horizontal']
-        );
+        $option = $proposition->abstainOption()->updateOrCreate([
+            'option' => 'abstain', 'proposition_id' => $proposition->id
+        ], [
+            'axis' => $proposition->type === 'list' ? 'vertical' : 'horizontal',
+            'sort_order' => 999,
+        ]);
         $proposition->abstain_option_id = $option->id;
     }
 
     private function syncBlankOption(Proposition $proposition, bool $hasBlank): void
     {
-        if (! $hasBlank) {
+        if (!$hasBlank) {
             $proposition->blankOption()->delete();
             return;
         }
 
-        $option = $proposition->blankOption()->updateOrCreate(
-            ['option' => 'blank', 'proposition_id' => $proposition->id],
-            ['axis' => $proposition->type === 'list' ? 'vertical' : 'horizontal']
-        );
+        $option = $proposition->blankOption()->updateOrCreate([
+            'option' => 'blank', 'proposition_id' => $proposition->id
+        ], [
+            'axis' => $proposition->type === 'list' ? 'vertical' : 'horizontal',
+            'sort_order' => 998,
+        ]);
         $proposition->blank_option_id = $option->id;
     }
 }

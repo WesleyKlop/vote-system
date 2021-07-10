@@ -26,10 +26,7 @@ class PropositionController extends Controller
 
     public function index(): View
     {
-        $propositions = $this->propositionRepository->findAll([
-            'options',
-            'answers',
-        ]);
+        $propositions = $this->propositionRepository->findAll(['options', 'answers']);
         $voterStatistics = $this->voterRepository->aggregateVoterStatistics();
 
         return $this->page(new PropositionIndexPage($propositions, $voterStatistics));

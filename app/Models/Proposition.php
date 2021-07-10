@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Proposition extends AbstractModel
 {
@@ -34,10 +33,15 @@ class Proposition extends AbstractModel
     {
         return $this
             ->hasMany(PropositionOption::class)
-            ->when($this->blank_option_id,
-                fn (Builder $query, string $optionId) => $query->where('id', '!=', $optionId))
-            ->when($this->abstain_option_id,
-                fn (Builder $query, string $optionId) => $query->where('id', '!=', $optionId));
+            ->orderBy('sort_order')
+            ->when(
+                $this->blank_option_id,
+                fn (Builder $query, string $optionId) => $query->where('id', '!=', $optionId)
+            )
+            ->when(
+                $this->abstain_option_id,
+                fn (Builder $query, string $optionId) => $query->where('id', '!=', $optionId)
+            );
     }
 
     public function blankOption(): BelongsTo
@@ -52,12 +56,12 @@ class Proposition extends AbstractModel
 
     public function hasBlank(): bool
     {
-        return ! is_null($this->blank_option_id);
+        return !is_null($this->blank_option_id);
     }
 
     public function hasAbstain(): bool
     {
-        return ! is_null($this->abstain_option_id);
+        return !is_null($this->abstain_option_id);
     }
 
     public function verticalOptions(): Collection

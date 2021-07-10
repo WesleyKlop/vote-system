@@ -1,9 +1,7 @@
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
 
-/**
- * @type {null|Echo} instance
- */
+/** @type {?Echo} */
 let instance = null
 
 /**
@@ -24,7 +22,7 @@ const getConnection = () => {
                 wsPort: 6001,
                 forceTLS: window.location.protocol === 'https:',
                 disableStats: true,
-                authEndpoint: '/broadcasting/auth',
+                authEndpoint: config.PUSHER_AUTH_ROUTE,
             }),
         })
     }
