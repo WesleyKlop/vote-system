@@ -4,8 +4,8 @@
             :is="`${type}-option-results`"
             :options="options"
             :results="results"
-            :blank-id='blankId'
-            :abstain-id='abstainId'
+            :blank-id="blankId"
+            :abstain-id="abstainId"
         />
     </div>
 </template>

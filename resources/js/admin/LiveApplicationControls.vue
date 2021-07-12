@@ -7,8 +7,7 @@
             <span class="text-gray-600">
                 {{ $t('Proposition') }} {{ proposition.order }}
             </span>
-            <h2 class="title mb-3">{{ proposition.title }}</h2>
-            <p class='text-gray-800 text-sm mb-6'>{{ $t('Blank and abstain help text')}}</p>
+            <h2 class="title mb-6">{{ proposition.title }}</h2>
             <live-proposition-results
                 :blank-id="proposition.blank_option_id"
                 :abstain-id="proposition.abstain_option_id"
@@ -16,6 +15,9 @@
                 :options="proposition.options"
                 :results="results[proposition.id]"
             />
+            <p class="text-gray-800 text-sm mt-3">
+                {{ $t('Blank and abstain help text') }}
+            </p>
         </div>
 
         <live-control-actions
@@ -115,8 +117,10 @@ export default {
             }
         },
         handleResultsChange({ results, timestamp }) {
-            if (timestamp > this.resultsUpdatedAt) {
-                console.warn(`Ignoring stale data with timestamp ${timestamp}.`)
+            if (timestamp < this.resultsUpdatedAt) {
+                console.warn(
+                    `Ignoring stale data with timestamp ${timestamp}. Our timestamp is ${this.resultsUpdatedAt}.`,
+                )
                 return
             }
             results.forEach((result) =>

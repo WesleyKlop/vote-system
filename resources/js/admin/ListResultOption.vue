@@ -9,19 +9,21 @@
             overflow-hidden
             my-2
         "
-        :class='{ "font-bold": isWinning }'
+        :class="{ 'font-bold': isWinning }"
     >
         <div
             class="mr-auto bg-gray-200 absolute left-0 inset-y-0"
             :style="{ width: `${percentage}%` }"
         ></div>
         <div class="z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0">
-            {{ title }} : {{ count }} ({{ percentage }}%)
+            {{ title }}: {{ count }} ({{ percentage }})
         </div>
     </div>
 </template>
 
 <script>
+import { formatPercentage } from '../shared/helpers'
+
 export default {
     props: {
         option: {
@@ -40,11 +42,11 @@ export default {
             type: Boolean,
             required: false,
             default: false,
-        }
+        },
     },
     computed: {
         title() {
-            if(['abstain', 'blank'].includes(this.option)) {
+            if (['abstain', 'blank'].includes(this.option)) {
                 return this.$t(this.option)
             }
             return this.option
@@ -54,10 +56,7 @@ export default {
                 return 0
             }
 
-            return (
-                Math.round((this.count / this.total) * 10000 + Number.EPSILON) /
-                100
-            )
+            return formatPercentage(this.count / this.total)
         },
     },
 }

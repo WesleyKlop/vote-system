@@ -74,5 +74,6 @@
     "Exit": "Exit",
 
     "abstain": "Abstain",
-    "blank": "Blank"
+    "blank": "Blank",
+    "Blank and abstain help text": "The accentuated result is the automatically calculated winner. It considers the abstain and blank options during calculation. A blank vote is a preference vote and is counted towards the option with the most votes. Those votes are not visibly added to that option."
 }
