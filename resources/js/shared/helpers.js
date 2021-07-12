@@ -1,3 +1,5 @@
+import { APP_LOCALE } from './constants'
+
 export const formatToken = (token) => token.match(/.{1,4}/g).join(' ')
 
 /**
@@ -18,6 +20,11 @@ export const chunkArray = (array, chunkSize) =>
         return resultArray
     }, [])
 
-export const getAppLocale = () => {
-    return document.querySelector('html').lang
+export const formatPercentage = (percentage) => {
+    const formatter = new Intl.NumberFormat(APP_LOCALE, {
+        style: 'percent',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+    })
+    return formatter.format(percentage)
 }

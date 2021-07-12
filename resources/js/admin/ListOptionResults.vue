@@ -38,16 +38,6 @@ export default {
         },
     },
     computed: {
-        abstain() {
-            if (this.abstainId) {
-                return this.options.find((o) => o.id === this.abstainId)
-            }
-        },
-        blank() {
-            if (this.blankId) {
-                return this.options.find((o) => o.id === this.blankId)
-            }
-        },
         choices() {
             return this.options
                 .filter((o) => o.axis === 'vertical')
@@ -71,8 +61,9 @@ export default {
         optionWithMostVotes() {
             const sorted = this.choices
                 .filter((o) => ![this.blankId, this.abstainId].includes(o.id))
-                .sort((a, b) => Math.sign(a.votes - b.votes))
-            if (sorted[0].votes > sorted[1].votes) {
+                .sort((a, b) => Math.sign(b.votes - a.votes))
+            // If they have the same amount of votes it's not decided.
+            if (sorted.length > 1 && sorted[0].votes > sorted[1].votes) {
                 return sorted[0]
             }
         },
@@ -80,17 +71,6 @@ export default {
     methods: {
         votes(option) {
             return this.results[this.question.id]?.[option.id] ?? 0
-        },
-        percentage(option) {
-            const votes = this.votes(option)
-            if (votes === 0) {
-                return 0
-            }
-
-            return (
-                Math.round((votes / this.totalVotes) * 10000 + Number.EPSILON) /
-                100
-            )
         },
         isWinning(option) {
             if ([this.blankId, this.abstainId].includes(option.id)) {

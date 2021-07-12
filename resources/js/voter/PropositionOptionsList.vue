@@ -1,24 +1,22 @@
 <template>
     <div>
         <h3 class="sub-title">{{ question.option }}</h3>
-        <button
+        <list-option-item
             v-for="answer of answers"
             :key="answer.id"
-            @click="selectAnswer(answer.id)"
-            class="question-input-label"
-            :class="{
-                'question-input-label--selected':
-                    question.selected === answer.id,
-            }"
-            :for="answer.id"
+            :option="answer.option"
+            :is-selected="question.selected === answer.id"
+            @select="selectAnswer(answer.id)"
         >
-            <span class="question-input-text">{{ answer.option }}</span>
-        </button>
+        </list-option-item>
     </div>
 </template>
 
 <script>
+import ListOptionItem from './ListOptionItem'
+
 export default {
+    components: { ListOptionItem },
     props: {
         options: {
             type: Array,
