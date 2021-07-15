@@ -1,6 +1,6 @@
 <template>
     <div
-        class='
+        class="
             w-3/4
             relative
             h-8
@@ -8,15 +8,15 @@
             border-2 border-gray-300
             overflow-hidden
             my-2
-        '
+        "
         :class="{ 'font-bold': isWinning }"
     >
         <div
-            v-if='showBar'
-            class='mr-auto bg-gray-200 absolute left-0 inset-y-0'
-            :style='{ width: `${percentage}%` }'
+            v-if="showBar"
+            class="mr-auto bg-gray-200 absolute left-0 inset-y-0"
+            :style="{ width: `${percentage}%` }"
         ></div>
-        <div class='z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0'>
+        <div class="z-10 leading-5 absolute px-2 py-1 left-0 inset-y-0">
             {{ title }}: {{ count }}
         </div>
     </div>
@@ -45,7 +45,7 @@ export default {
         showBar: {
             type: Boolean,
             required: true,
-        }
+        },
     },
     computed: {
         title() {
@@ -59,7 +59,7 @@ export default {
                 return 0
             }
 
-            return this.count / this.total * 100
+            return (this.count / this.total) * 100
         },
     },
 }

@@ -1,4 +1,4 @@
-@props(['name', 'checked' => false, 'label'])
+@props(['name', 'checked' => false, 'label','hint' => null])
 <input
     type="checkbox"
     name="{{ $name }}"
@@ -8,8 +8,12 @@
     id="{{ $name }}"
 />
 <label class="checkbox-input-label" for="{{ $name }}">
-    <span class="checkbox-input-text">@lang($label)</span>
-    @error($name)
-    <span class="text-failure text-sm font-normal">{{ $message }}</span>
-    @enderror
+    <span class="ml-2">@lang($label)</span>
+    <div class='ml-7 w-full'>
+        @error($name)
+        <span class="text-failure text-sm font-normal">{{ $message }}</span>
+        @elseif($hint)
+        <span class='text-gray-600 text-sm font-normal'>{{ $hint }}</span>
+        @enderror
+    </div>
 </label>

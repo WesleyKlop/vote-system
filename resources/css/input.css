@@ -58,16 +58,12 @@
 }
 
 .checkbox-input-label {
-    @apply text-gray-800 flex items-center;
+    @apply text-gray-800 flex flex-wrap items-center;
 }
 
 .checkbox-input-label::before {
     content: '\2713';
     @apply inline-block rounded border-2 w-5 h-5 leading-4 cursor-pointer text-white font-bold;
-}
-
-.checkbox-input-text {
-    @apply ml-2;
 }
 
 .checkbox-input:checked + .checkbox-input-label::before {

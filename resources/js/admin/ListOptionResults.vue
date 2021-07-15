@@ -1,15 +1,21 @@
 <template>
-    <div class='card-content'>
-        <h3 class='sub-title'>{{ question.option }}</h3>
-        <p class='text-xs text-gray-500'>{{ $t('At least x votes are required to pass', { x: votesThreshold })}}</p>
+    <div class="card-content">
+        <h3 class="sub-title">{{ question.option }}</h3>
+        <p class="text-xs text-gray-500">
+            {{
+                $t('At least x votes are required to pass', {
+                    x: votesThreshold,
+                })
+            }}
+        </p>
         <list-result-option
-            v-for='option of choices'
-            :key='option.id'
-            :option='option.option'
-            :count='option.votes'
-            :total='totalVotesWithoutAbstain'
-            :is-winning='isWinning(option)'
-            :show-bar='option.id !== abstainId'
+            v-for="option of choices"
+            :key="option.id"
+            :option="option.option"
+            :count="option.votes"
+            :total="totalVotesWithoutAbstain"
+            :is-winning="isWinning(option)"
+            :show-bar="option.id !== abstainId"
         />
     </div>
 </template>

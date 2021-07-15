@@ -77,6 +77,8 @@
     "blank": "Blanco",
     "Has abstain option": "Heeft onthouden optie",
     "Has blank option": "Heeft blanco optie",
+    "Abstain option explanation": "De onthouden optie kan ingeschakeld worden om een speciale optie toe te voegen die niet wordt meegetelt in het uitrekenen van de hoeveelheid benodigde stemmen.",
+    "Blank option explanation": "De blanco optie kan ingeschakeld worden om een optie toe te voegen die niet voor een bepaalde optie telt maar wel wordt meegenomen in de berekening van de hoeveelheid benodigde stemmen.",
     "At least x votes are required to pass": "Er zijn meer dan {x} stemmen nodig voor een meerderheid.",
     "Blank and abstain help text": "Het uitgelichte resultaat is het resultaat met meer dan de helft van de totaal aantal stemmen exclusief de stemmen op 'onthouden'."
 }
