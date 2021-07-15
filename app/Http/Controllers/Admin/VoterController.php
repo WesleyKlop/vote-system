@@ -9,6 +9,7 @@ use App\VoteSystem\Helpers\TokenHelper;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\LazyCollection;
 use Illuminate\Support\Str;
 
 class VoterController extends Controller
@@ -31,8 +32,8 @@ class VoterController extends Controller
         Voter::query()->delete();
 
         $tokens = TokenHelper::generateTokens($request->get('amount'));
-        $tokens = collect($tokens)
-            ->transform(function (string $token) {
+        $tokens = LazyCollection::make($tokens)
+            ->map(function (string $token) {
                 return [
                     'token' => $token,
                     'id' => Str::uuid(),

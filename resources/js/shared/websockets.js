@@ -1,9 +1,8 @@
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
+import { PUSHER_CONFIG } from './constants'
 
-/**
- * @type {null|Echo} instance
- */
+/** @type {?Echo} */
 let instance = null
 
 /**
@@ -11,7 +10,7 @@ let instance = null
  */
 const getConnection = () => {
     if (!instance) {
-        const config = window.__PUSHER_CONFIG__
+        const config = PUSHER_CONFIG
         if (!config) {
             throw `Missing websocket configuration`
         }
@@ -24,7 +23,7 @@ const getConnection = () => {
                 wsPort: 6001,
                 forceTLS: window.location.protocol === 'https:',
                 disableStats: true,
-                authEndpoint: '/broadcasting/auth',
+                authEndpoint: config.PUSHER_AUTH_ROUTE,
             }),
         })
     }

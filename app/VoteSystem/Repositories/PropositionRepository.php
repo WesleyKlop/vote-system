@@ -48,7 +48,16 @@ final class PropositionRepository
 
     public function update(Proposition $proposition, array $attributes): bool
     {
-        return $proposition->update($attributes);
+        $proposition->fill($attributes);
+
+        if (isset($attributes['has_abstain'])) {
+            $this->syncAbstainOption($proposition, $attributes['has_abstain']);
+        }
+        if (isset($attributes['has_blank'])) {
+            $this->syncBlankOption($proposition, $attributes['has_blank']);
+        }
+
+        return $proposition->save();
     }
 
     public function currentOrFirst(): ?Proposition
@@ -57,5 +66,37 @@ final class PropositionRepository
             ->orderByDesc('is_open')
             ->orderBy('order')
             ->first();
+    }
+
+    private function syncAbstainOption(Proposition $proposition, bool $hasAbstain): void
+    {
+        if (!$hasAbstain) {
+            $proposition->abstainOption()->delete();
+            return;
+        }
+
+        $option = $proposition->abstainOption()->updateOrCreate([
+            'option' => 'abstain', 'proposition_id' => $proposition->id
+        ], [
+            'axis' => $proposition->type === 'list' ? 'vertical' : 'horizontal',
+            'sort_order' => 999,
+        ]);
+        $proposition->abstain_option_id = $option->id;
+    }
+
+    private function syncBlankOption(Proposition $proposition, bool $hasBlank): void
+    {
+        if (!$hasBlank) {
+            $proposition->blankOption()->delete();
+            return;
+        }
+
+        $option = $proposition->blankOption()->updateOrCreate([
+            'option' => 'blank', 'proposition_id' => $proposition->id
+        ], [
+            'axis' => $proposition->type === 'list' ? 'vertical' : 'horizontal',
+            'sort_order' => 998,
+        ]);
+        $proposition->blank_option_id = $option->id;
     }
 }

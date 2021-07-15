@@ -41,7 +41,7 @@ class LoginController extends Controller
         return redirect()->route('admin.login.show');
     }
 
-    protected function authenticated(Request $request, User $user)
+    protected function authenticated(Request $request, User $user): void
     {
         $user->update([
             'api_token' => Str::random(32),

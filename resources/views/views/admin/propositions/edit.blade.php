@@ -45,6 +45,36 @@
                 <span class="text-failure text-sm font-normal">{{ $message }}</span>
                 @enderror
             </label>
+
+            <input
+                type="checkbox"
+                name="has_abstain"
+                class="checkbox-input"
+                {{ old('has_abstain', $proposition->hasAbstain()) ? 'checked' : '' }}
+                hidden
+                id="has_abstain"
+            />
+            <label class="checkbox-input-label" for="has_abstain">
+                <span class="checkbox-input-text">@lang('Has abstain option')</span>
+                @error('has_abstain')
+                <span class="text-failure text-sm font-normal">{{ $message }}</span>
+                @enderror
+            </label>
+
+            <input
+                type="checkbox"
+                name="has_blank"
+                class="checkbox-input"
+                {{ old('has_blank', $proposition->hasBlank()) ? 'checked' : '' }}
+                hidden
+                id="has_blank"
+            />
+            <label class="checkbox-input-label" for="has_blank">
+                <span class="checkbox-input-text">@lang('Has blank option')</span>
+                @error('has_blank')
+                <span class="text-failure text-sm font-normal">{{ $message }}</span>
+                @enderror
+            </label>
         </div>
 
         <proposition-option-editor
