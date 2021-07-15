@@ -19,7 +19,6 @@ export default {
             default: 'grid',
         },
         errors: {
-            // Json Encode converts empty dictionaries to arrays
             type: [Object, Array],
             default: () => ({}),
             required: false,

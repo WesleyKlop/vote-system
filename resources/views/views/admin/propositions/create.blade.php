@@ -1,26 +1,22 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.propositions.store') }}" class="flex flex-col items-stretch px-8 sm:px-0 w-full lg:w-3/4">
+    <form
+        method="POST"
+        action="{{ route('admin.propositions.store') }}"
+        class="flex flex-col items-stretch px-8 sm:px-0 w-full lg:w-3/4"
+    >
         <h1 class="title">@lang('Create proposition')</h1>
         @csrf
 
         <div>
-            <label class="input-label">
-                @lang('Title')
-                <input type="text" required name="title" value="{{ old('title') }}" class="input" placeholder="@lang('Is it okay to put pineapple on pizza?')"/>
-                @error('title')
-                <span class="text-failure text-sm font-normal">{{ $message }}</span>
-                @enderror
-            </label>
+            <x-form.textfield name='title' required placeholder='Is it okay to put pineapple on pizza?' label='Title' />
 
-            <label class="input-label">
-                @lang('Order')
-                <input type="number" min="1" name="order" class="input" placeholder="1" value="{{ old('order', $nextPropositionOrder) }}"/>
-                @error('order')
-                <span class="text-failure text-sm font-normal">{{ $message }}</span>
-                @enderror
-            </label>
+            <x-form.textfield name='order' required placeholder='1' type='number' label='Order' min='1' />
+
+            <x-form.checkbox name='has_abstain' label='Has abstain option' />
+
+            <x-form.checkbox name='has_blank' label='Has blank option' />
         </div>
 
         <proposition-option-editor
@@ -29,6 +25,6 @@
             initial-type="list"
         ></proposition-option-editor>
 
-        <input type="submit" class="submit-button self-start" value="@lang('Create')"/>
+        <x-form.button type='submit'>@lang('Create')</x-form.button>
     </form>
 @endsection

@@ -1,13 +1,15 @@
 <template>
-    <div class="card-content">
-        <h3 class="sub-title">{{ question.option }}</h3>
+    <div class='card-content'>
+        <h3 class='sub-title'>{{ question.option }}</h3>
+        <p class='text-xs text-gray-500'>{{ $t('At least x votes are required to pass', { x: votesThreshold })}}</p>
         <list-result-option
-            v-for="option of choices"
-            :key="option.id"
-            :option="option.option"
-            :count="option.votes"
-            :total="totalVotes"
-            :is-winning="isWinning(option)"
+            v-for='option of choices'
+            :key='option.id'
+            :option='option.option'
+            :count='option.votes'
+            :total='totalVotesWithoutAbstain'
+            :is-winning='isWinning(option)'
+            :show-bar='option.id !== abstainId'
         />
     </div>
 </template>
@@ -49,6 +51,12 @@ export default {
         question() {
             return this.options.find((o) => o.axis === 'horizontal')
         },
+        blank() {
+            return this.choices.find((o) => o.id === this.blankId)
+        },
+        abstain() {
+            return this.choices.find((o) => o.id === this.abstainId)
+        },
         totalVotes() {
             if (!this.results[this.question.id]) {
                 return 0
@@ -58,14 +66,15 @@ export default {
                 0,
             )
         },
-        optionWithMostVotes() {
-            const sorted = this.choices
-                .filter((o) => ![this.blankId, this.abstainId].includes(o.id))
-                .sort((a, b) => Math.sign(b.votes - a.votes))
-            // If they have the same amount of votes it's not decided.
-            if (sorted.length > 1 && sorted[0].votes > sorted[1].votes) {
-                return sorted[0]
+        totalVotesWithoutAbstain() {
+            let totalVotes = this.totalVotes
+            if (this.abstain) {
+                totalVotes -= this.abstain.votes
             }
+            return totalVotes
+        },
+        votesThreshold() {
+            return Math.ceil(this.totalVotesWithoutAbstain / 2)
         },
     },
     methods: {
@@ -76,7 +85,7 @@ export default {
             if ([this.blankId, this.abstainId].includes(option.id)) {
                 return false
             }
-            return option.id === this.optionWithMostVotes?.id
+            return option.votes > this.votesThreshold
         },
     },
 }

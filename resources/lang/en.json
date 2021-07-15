@@ -75,5 +75,8 @@
 
     "abstain": "Abstain",
     "blank": "Blank",
-    "Blank and abstain help text": "The accentuated result is the automatically calculated winner. It considers the abstain and blank options during calculation. A blank vote is a preference vote and is counted towards the option with the most votes. Those votes are not visibly added to that option."
+    "Has abstain option": "Has abstain option",
+    "Has blank option": "Has blank option",
+    "At least x votes are required to pass": "At least {x} votes are required to pass.",
+    "Blank and abstain help text": "The bold styled result is the result with more than half the votes. This exluces the votes towards 'abstain' if that option is enabled."
 }
