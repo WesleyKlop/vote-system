@@ -5,6 +5,7 @@ namespace App\VoteSystem\Repositories;
 use App\Events\VoterVoted;
 use App\Models\Proposition;
 use App\Models\VoterPropositionOption;
+use Exception;
 use Illuminate\Database\MySqlConnection;
 use Illuminate\Database\PostgresConnection;
 use Illuminate\Database\Query\Expression;
@@ -21,7 +22,7 @@ class VoterPropositionOptionRepository
             return DB::raw("UNIX_TIMESTAMP(\"$column\")");
         }
 
-        throw new \Exception("Invalid database driver");
+        throw new Exception("Invalid database driver");
     }
 
     public function create(Collection $voterPropositionOptions): bool

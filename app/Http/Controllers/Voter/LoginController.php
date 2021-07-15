@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -20,7 +21,7 @@ class LoginController extends Controller
      */
     protected string $redirectTo = '/vote';
 
-    public function showLoginForm(Request $request): \Illuminate\Contracts\View\View | \Illuminate\Http\RedirectResponse
+    public function showLoginForm(Request $request): View|RedirectResponse
     {
         if ($request->user('web-voter')) {
             return redirect()->route('proposition.index');
@@ -42,18 +43,17 @@ class LoginController extends Controller
         $request->validate([
             $this->username() => 'required|string|size:19',
             'legal_accepted' => 'required|accepted',
+        ], [
+            'legal_accepted.required' => __('Accepting the terms is required.'),
         ]);
     }
 
     protected function credentials(Request $request): array
     {
-        $token = $request->get($this->username());
-        $token = str_replace(' ', '', $token);
-        $token = strtoupper($token);
-
-        // Cleanup token
         return [
-            'token' => $token,
+            $this->username() => (string) Str::of($request->input($this->username()))
+                ->replace(' ', '')
+                ->upper(),
         ];
     }
 

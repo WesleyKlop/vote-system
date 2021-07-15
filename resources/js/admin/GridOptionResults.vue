@@ -11,12 +11,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="rowOption of vertical" :key="rowOption.id">
-                        <th>{{ rowOption.option }}</th>
-                        <td v-for="colOption of horizontal" :key="colOption.id">
-                            {{ votes(colOption, rowOption) }}
-                        </td>
-                    </tr>
+                    <grid-option-results-row
+                        v-for="rowOption of vertical"
+                        :key="rowOption.id"
+                        :row="rowOption"
+                        :columns="horizontal"
+                        :results="results"
+                    />
                 </tbody>
             </table>
         </div>
@@ -24,7 +25,10 @@
 </template>
 
 <script>
+import GridOptionResultsRow from './GridOptionResultsRow'
+
 export default {
+    components: { GridOptionResultsRow },
     props: {
         options: {
             type: Array,

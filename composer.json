@@ -28,7 +28,6 @@
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3",
-        "psalm/plugin-laravel": "^1.4.4",
         "rector/rector": "^0.12.3",
         "symplify/easy-coding-standard": "^9.1",
         "vimeo/psalm": "^4"
@@ -65,8 +64,8 @@
         "post-root-package-install": "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
         "post-create-project-cmd": "@php artisan key:generate --ansi",
         "rector:check": "@rector:fix --dry-run",
-        "rector:fix": "@php vendor/bin/rector process",
-        "ecs:check": "@php vendor/bin/ecs check",
+        "rector:fix": "@php rector process",
+        "ecs:check": "@php ecs check",
         "ecs:fix": "@ecs:check --fix",
         "lint:check": [
             "@rector:check",
@@ -76,9 +75,9 @@
             "@rector:fix",
             "@ecs:fix"
         ],
-        "psalm:check": "@php vendor/bin/psalm",
+        "psalm:check": "@php psalm",
         "psalm:fix": "@psalm:check --issues=all --alter",
-        "phpunit:check": "@php vendor/bin/phpunit",
+        "phpunit:check": "@php phpunit",
         "test": [
             "@psalm:check",
             "@phpunit:check"
