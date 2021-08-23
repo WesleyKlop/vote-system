@@ -8,9 +8,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
-/**
- * Class User.
- */
 class User extends AbstractModel implements
     AuthenticatableContract,
     AuthorizableContract
