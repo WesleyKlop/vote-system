@@ -9,16 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
-/**
- * Class Proposition.
- * @property string $title
- * @property bool $is_open
- * @property string $type
- * @property int $order
- * @property Collection<PropositionOption> $options
- * @property Collection<Voter> $voters
- * @property Collection<VoterPropositionOption> $answers
- */
 class Proposition extends AbstractModel
 {
     use HasFactory;

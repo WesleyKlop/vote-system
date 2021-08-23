@@ -6,12 +6,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * Class PropositionOption.
- * @property string $axis
- * @property string $option
- * @property Proposition $proposition
- */
 class PropositionOption extends AbstractModel
 {
     use HasFactory;

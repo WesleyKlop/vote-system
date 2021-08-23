@@ -2,13 +2,6 @@
 
 namespace App\Models;
 
-/**
- * Class VoterPropositionOption.
- * @property Voter $voter
- * @property Proposition $proposition
- * @property PropositionOption $verticalOption
- * @property PropositionOption $horizontalOption
- */
 class VoterPropositionOption extends AbstractModel
 {
     public const UPDATED_AT = null;

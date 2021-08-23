@@ -8,11 +8,12 @@
         "production": "mix --production",
         "prettier": "prettier \"./**/*.{yml,css,js,vue,json,md}\" ",
         "lint:check": "npm run prettier -- --check",
-        "lint:fix": "npm run prettier -- --write"
+        "lint:fix": "npm run prettier -- --write",
+        "prepare": "husky install"
     },
     "devDependencies": {
         "@babel/plugin-proposal-class-properties": "^7.14.5",
-        "husky": "^7",
+        "husky": "^7.0.0",
         "laravel-mix": "^6.0",
         "lint-staged": ">=11",
         "prettier": "^2.2.1",
@@ -27,11 +28,6 @@
         "v-mask": "^2.2.4",
         "vue": "^2.6.14",
         "vue-i18n": "^8.25.0"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
     },
     "lint-staged": {
         "*.{yml,css,js,vue,json,md}": "prettier --write"

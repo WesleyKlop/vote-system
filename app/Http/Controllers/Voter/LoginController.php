@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Voter;
 
 use App\Http\Controllers\Controller;
 use App\Models\Voter;
-use Carbon\CarbonImmutable;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -77,7 +76,7 @@ class LoginController extends Controller
     {
         // Set the used at property if not set yet
         if (is_null($voter->used_at)) {
-            $voter->used_at = CarbonImmutable::now();
+            $voter->used_at = now();
             $voter->save();
         }
     }
