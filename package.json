@@ -30,6 +30,10 @@
         "vue-i18n": "^8.25.0"
     },
     "lint-staged": {
-        "*.{yml,css,js,vue,json,md}": "prettier --write"
+        "*.{yml,css,js,vue,json,md}": "prettier --write",
+        "!(*blade).php": [
+            "vendor/bin/rector process",
+            "vendor/bin/ecs --fix check"
+        ]
     }
 }

@@ -11,12 +11,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $parameters = $containerConfigurator->parameters();
     $containerConfigurator->import(SetList::PHP_80);
 
-//    $parameters->set(Option::AUTOLOAD_PATHS, [
-//        __DIR__ . '/vendor/autoload.php',
-//        __DIR__ . '/bootstrap/app.php',
-//    ]);
-
-
     // paths to refactor; solid alternative to CLI arguments
     $parameters->set(Option::PATHS, [
         __DIR__ . '/app',
@@ -43,7 +37,4 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     // skip classes used in PHP DocBlocks, like in /** @var \Some\Class */ [default: true]
     $parameters->set(Option::IMPORT_DOC_BLOCKS, true);
-
-    // Run Rector only on changed files
-    $parameters->set(Option::ENABLE_CACHE, true);
 };
