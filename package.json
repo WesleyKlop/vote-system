@@ -27,7 +27,7 @@
         "tailwindcss": "^2.2.19",
         "v-mask": "^2.3.0",
         "vue": "^2.6.14",
-        "vue-i18n": "^8.26.5"
+        "vue-i18n": "^8.26.7"
     },
     "lint-staged": {
         "*.{yml,css,js,vue,json,md}": "prettier --write",
