@@ -26,10 +26,7 @@ class PropositionController extends Controller
 
     public function index(): View
     {
-        $propositions = $this->propositionRepository->findAll([
-            'options',
-            'answers',
-        ]);
+        $propositions = $this->propositionRepository->findAll(['options', 'answers']);
         $voterStatistics = $this->voterRepository->aggregateVoterStatistics();
 
         return $this->page(new PropositionIndexPage($propositions, $voterStatistics));
@@ -67,14 +64,13 @@ class PropositionController extends Controller
 
     public function edit(Proposition $proposition): View
     {
-        $proposition->load('options');
         $mappedOldOptions = $this->propositionService->mapOptions(
             old('options', [])
         );
 
         $mappedOldOptions = $mappedOldOptions->count() > 0
             ? $mappedOldOptions
-            : $proposition->options;
+            : $proposition->options()->get();
 
         return view('views.admin.propositions.edit', [
             'proposition' => $proposition,

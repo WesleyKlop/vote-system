@@ -30,7 +30,12 @@
                                 $count = $page->getOptionCount($proposition, $option);
                                 $width = $count / ($page->getUsedVoterCount() ?: 1)
                             @endphp
-                            <list-result-option option='{{ $option->option }}' :count='{{ $count }}' :total='{{ $page->getUsedVoterCount() ?: 1 }}'></list-result-option>
+                            <list-result-option
+                                option='{{ $option->option }}'
+                                :count='{{ $count }}'
+                                :total='{{ $page->getUsedVoterCount() }}'
+                                :show-bar='{{ $option->id !== $proposition->abstainId ? 'true' : 'false' }}'
+                            ></list-result-option>
                         @endforeach
                     @elseif($proposition->type === 'grid')
                         <div class="table-wrapper">
@@ -39,7 +44,7 @@
                                 <tr>
                                     <th></th>
                                     @foreach($proposition->horizontalOptions() as $option)
-                                        <th>{{ $option->option }}</th>
+                                        <th>{{ __($option->option) }}</th>
                                     @endforeach
                                 </tr>
                                 </thead>

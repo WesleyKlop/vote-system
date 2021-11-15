@@ -71,5 +71,14 @@
     "Used": "Used",
     "Sign out": "Sign out",
     "Sign in": "Sign in",
-    "Exit": "Exit"
+    "Exit": "Exit",
+
+    "abstain": "Abstain",
+    "blank": "Blank",
+    "Has abstain option": "Has abstain option",
+    "Has blank option": "Has blank option",
+    "Abstain option explanation": "The abstain option can be enabled to add a special option that does not count towards the required amount of votes.",
+    "Blank option explanation": "The blank option can be enabled to add an option that does not contribute to any option but does count towards the required amount of votes.",
+    "At least x votes are required to pass": "At least {x} votes are required to pass.",
+    "Blank and abstain help text": "The bold styled result is the result with more than half the votes. This exluces the votes towards 'abstain' if that option is enabled."
 }

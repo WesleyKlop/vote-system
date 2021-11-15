@@ -25,7 +25,7 @@ class AddCreatedAtToVotes extends Migration
      */
     public function down()
     {
-        Schema::table('votes', function (Blueprint $table) {
+        Schema::table('voter_proposition_options', function (Blueprint $table) {
             $table->dropColumn('created_at');
         });
     }

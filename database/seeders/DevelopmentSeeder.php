@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DevelopmentSeeder extends Seeder
 {
@@ -13,8 +15,12 @@ class DevelopmentSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(DatabaseSeeder::class);
         $this->call(VoterSeeder::class);
         $this->call(PropositionSeeder::class);
+
+        User::updateOrCreate(
+            ['name' => 'admin'],
+            ['password' => Hash::make('password')]
+        );
     }
 }

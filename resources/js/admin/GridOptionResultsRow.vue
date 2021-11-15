@@ -1,23 +1,10 @@
 <template>
-    <div class="card-content">
-        <h3 class="sub-title">{{ question.option }}</h3>
-        <p class="text-xs text-gray-500">
-            {{
-                $t('At least x votes are required to pass', {
-                    x: votesThreshold,
-                })
-            }}
-        </p>
-        <list-result-option
-            v-for="option of choices"
-            :key="option.id"
-            :option="option.option"
-            :count="option.votes"
-            :total="totalVotesWithoutAbstain"
-            :is-winning="isWinning(option)"
-            :show-bar="option.id !== abstainId"
-        />
-    </div>
+    <tr>
+        <th>{{ rowOption.option }}</th>
+        <td v-for="colOption of horizontal" :key="colOption.id">
+            {{ votes(colOption, rowOption) }}
+        </td>
+    </tr>
 </template>
 
 <script>
@@ -26,17 +13,11 @@ import ListResultOption from './ListResultOption'
 export default {
     components: { ListResultOption },
     props: {
-        abstainId: {
-            type: String,
-            required: false,
-            default: null,
+        row: {
+            type: Object,
+            required: true,
         },
-        blankId: {
-            type: String,
-            required: false,
-            default: null,
-        },
-        options: {
+        columns: {
             type: Array,
             required: true,
         },
@@ -47,15 +28,10 @@ export default {
     },
     computed: {
         choices() {
-            return this.options
-                .filter((o) => o.axis === 'vertical')
-                .map((option) => ({
-                    ...option,
-                    votes: this.votes(option),
-                }))
-        },
-        question() {
-            return this.options.find((o) => o.axis === 'horizontal')
+            return this.columns.map((option) => ({
+                ...option,
+                votes: this.votes(option),
+            }))
         },
         blank() {
             return this.choices.find((o) => o.id === this.blankId)

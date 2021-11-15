@@ -51,7 +51,7 @@ class PropositionSeeder extends Seeder
             )
             ->create([
                 'title' => 'Choose which members should fill which role',
-                'is_open' => true,
+                'is_open' => false,
                 'type' => 'grid',
                 'order' => 2,
             ])

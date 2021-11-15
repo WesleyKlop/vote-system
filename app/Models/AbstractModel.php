@@ -2,19 +2,13 @@
 
 namespace App\Models;
 
-use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-/**
- * Class AbstractModel.
- * @mixin Eloquent
- * @property string $id
- */
 abstract class AbstractModel extends Model
 {
     public $timestamps = false;
-    protected $keyType = 'uuid';
+    protected $keyType = 'string';
     public $incrementing = false;
 
     /**

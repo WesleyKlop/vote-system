@@ -5,6 +5,7 @@ namespace App\VoteSystem\Factories;
 use App\Models\Proposition;
 use App\Models\Voter;
 use App\Models\VoterPropositionOption;
+use Exception;
 use Illuminate\Support\Collection;
 
 class VoterPropositionOptionFactory
@@ -27,7 +28,8 @@ class VoterPropositionOptionFactory
                     $proposition->id,
                     $horizontal,
                     $vertical
-                )
+                ),
+                default => throw new Exception("Invalid type \"$proposition->type\"")
             }
         );
     }

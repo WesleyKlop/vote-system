@@ -19,7 +19,6 @@ export default {
             default: 'grid',
         },
         errors: {
-            // Json Encode converts empty dictionaries to arrays
             type: [Object, Array],
             default: () => ({}),
             required: false,
@@ -80,35 +79,33 @@ export default {
 </script>
 
 <template>
-    <div class="w-full sm:w-3/4 mt-6">
-        <div class="col-span-2">
-            <h2 class="sub-title">{{ $t('Options') }}</h2>
-            <input
-                class="radio-input"
-                hidden
-                id="type-list"
-                name="type"
-                type="radio"
-                v-model="type"
-                value="list"
-            />
-            <label class="radio-input-label" for="type-list">
-                <span class="radio-input-text">{{ $t('List') }}</span>
-            </label>
-            <input
-                class="radio-input"
-                hidden
-                id="type-grid"
-                name="type"
-                type="radio"
-                v-model="type"
-                value="grid"
-            />
-            <label class="radio-input-label" for="type-grid">
-                <span class="radio-input-text">{{ $t('Grid') }}</span>
-            </label>
-        </div>
-        <div class="text-failure text-sm col-span-2">
+    <div class="w-full mt-6">
+        <h2 class="sub-title">{{ $t('Options') }}</h2>
+        <input
+            class="radio-input"
+            hidden
+            id="type-list"
+            name="type"
+            type="radio"
+            v-model="type"
+            value="list"
+        />
+        <label class="radio-input-label" for="type-list">
+            <span class="radio-input-text">{{ $t('List') }}</span>
+        </label>
+        <input
+            class="radio-input"
+            hidden
+            id="type-grid"
+            name="type"
+            type="radio"
+            v-model="type"
+            value="grid"
+        />
+        <label class="radio-input-label" for="type-grid">
+            <span class="radio-input-text">{{ $t('Grid') }}</span>
+        </label>
+        <div class="text-failure text-sm">
             <div v-for="error of allErrors">{{ error }}</div>
         </div>
         <component

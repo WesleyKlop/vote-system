@@ -8,7 +8,6 @@ use Illuminate\Support\Collection;
 class AppConfig extends Model
 {
     public $incrementing = false;
-    protected $keyType = 'string';
     protected $primaryKey = 'name';
     public $timestamps = false;
 
@@ -16,7 +15,6 @@ class AppConfig extends Model
 
     public static function getValue(string $name)
     {
-        /** @var AppConfig $entry */
         $entry = static::query()->findOrFail($name);
 
         return $entry->value();

@@ -6,7 +6,7 @@
         "watch": "mix watch",
         "hot": "mix watch --hot",
         "production": "mix --production",
-        "prettier": "prettier \"./**/*.{yml,css,js,vue,json,md}\" ",
+        "prettier": "prettier \"./**/*.{yml,css,js,vue,json,md}\"",
         "lint:check": "npm run prettier -- --check",
         "lint:fix": "npm run prettier -- --write",
         "prepare": "husky install"

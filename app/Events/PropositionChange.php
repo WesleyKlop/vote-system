@@ -15,7 +15,7 @@ class PropositionChange implements ShouldBroadcast
 
     public function __construct(public ?Proposition $proposition)
     {
-        $this->proposition?->loadMissing('options');
+        $this->proposition?->loadMissing(['options']);
     }
 
     /**

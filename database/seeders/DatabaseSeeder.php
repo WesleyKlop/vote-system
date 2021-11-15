@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AppConfigSeeder::class, true);
+        $this->call(AppConfigSeeder::class);
+        if (app()->isLocal()) {
+            $this->call(DevelopmentSeeder::class);
+        }
     }
 }

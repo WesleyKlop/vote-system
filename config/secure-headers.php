@@ -1,6 +1,8 @@
 <?php
 
-$appUri = (new \GuzzleHttp\Psr7\Uri(env('APP_URL')));
+use GuzzleHttp\Psr7\Uri;
+
+$appUri = (new Uri(env('APP_URL')));
 $isHttps = $appUri->getScheme() === 'https';
 
 return [

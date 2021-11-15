@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-source .env
+if [ -f .env ]; then
+    source .env
+fi
 
 if [ -z "$APP_KEY" ]; then
     echo "No application key found, setting and then exiting. Please start again.";

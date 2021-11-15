@@ -2,7 +2,6 @@
 
 namespace App\VoteSystem\Services;
 
-use App\Events\PropositionChange;
 use App\Models\Proposition;
 use App\Models\PropositionOption;
 use App\Models\Voter;
@@ -58,6 +57,7 @@ class PropositionService
         // Create vertical and horizontal options based on given data
         $mapped = collect();
         foreach ($options as $axis => $items) {
+            $sortOrder = 0;
             foreach ($items as $id => $option) {
                 if (is_null($option)) {
                     continue;
@@ -66,6 +66,7 @@ class PropositionService
                     'id' => $this->getValidId($id),
                     'axis' => $axis,
                     'option' => $option,
+                    'sort_order' => $sortOrder++,
                 ];
                 $mapped->push($model);
             }
@@ -107,19 +108,6 @@ class PropositionService
         );
     }
 
-    public function toggleProposition(Proposition $proposition, bool $newState): bool
-    {
-        $isChanged = $this->propositionRepository->update($proposition, [
-            'is_open' => $newState,
-        ]);
-
-        if ($isChanged === true) {
-            PropositionChange::dispatch($proposition);
-        }
-
-        return $isChanged;
-    }
-
     public function updateProposition(Proposition $proposition, array $validated): void
     {
         $options = $this->mapOptions($validated['options']);
@@ -128,6 +116,8 @@ class PropositionService
             'title' => $validated['title'],
             'order' => $validated['order'],
             'type' => $this->getPropositionType($options),
+            'has_abstain' => $validated['has_abstain'],
+            'has_blank' => $validated['has_blank'],
         ]);
 
         $this->syncPropositionOptions($proposition, $options);
@@ -149,7 +139,7 @@ class PropositionService
     private function getValidId(int | string $id): string
     {
         if (is_string($id) && Str::isUuid($id)) {
-            return $id;
+            return (string)$id;
         }
 
         return Str::uuid()->toString();
