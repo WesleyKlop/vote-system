@@ -8744,16 +8744,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.16.0",
+            "version": "2.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "23400e6cc565c9dcae2c53704b4de1c4870c0697"
+                "reference": "29b533f63a3b269aa599d08dd4d22a0d720e295f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/23400e6cc565c9dcae2c53704b4de1c4870c0697",
-                "reference": "23400e6cc565c9dcae2c53704b4de1c4870c0697",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/29b533f63a3b269aa599d08dd4d22a0d720e295f",
+                "reference": "29b533f63a3b269aa599d08dd4d22a0d720e295f",
                 "shasum": ""
             },
             "require": {
@@ -8817,7 +8817,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-10-28T11:47:23+00:00"
+            "time": "2021-11-16T13:09:30+00:00"
         },
         {
             "name": "fakerphp/faker",
