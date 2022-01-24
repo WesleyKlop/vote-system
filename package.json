@@ -17,7 +17,7 @@
         "laravel-mix": "^6.0",
         "lint-staged": ">=12",
         "prettier": "^2.4.1",
-        "resolve-url-loader": "^4.0.0",
+        "resolve-url-loader": "^5.0.0",
         "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.14"
     },
