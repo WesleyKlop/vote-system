@@ -23,7 +23,7 @@
     },
     "dependencies": {
         "laravel-echo": "^1.11.3",
-        "pusher-js": "^7.0.4",
+        "pusher-js": "^7.0.6",
         "tailwindcss": "^3.0.18",
         "v-mask": "^2.3.0",
         "vue": "^2.6.14",
