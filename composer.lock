@@ -64,26 +64,26 @@
         },
         {
             "name": "bepsvpt/secure-headers",
-            "version": "7.1.0",
+            "version": "7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bepsvpt/secure-headers.git",
-                "reference": "c80c5ff1357ab61495f168d560f12cc370d8b25b"
+                "reference": "e02d80065aae06a66220693e9c321787657fb20b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/c80c5ff1357ab61495f168d560f12cc370d8b25b",
-                "reference": "c80c5ff1357ab61495f168d560f12cc370d8b25b",
+                "url": "https://api.github.com/repos/bepsvpt/secure-headers/zipball/e02d80065aae06a66220693e9c321787657fb20b",
+                "reference": "e02d80065aae06a66220693e9c321787657fb20b",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.1 || ~6.0 || ~7.0 || ~8.0",
+                "illuminate/support": "~5.1 || ~6.0 || ~7.0 || ~8.0 || ~9.0",
                 "php": "^7.0 || ^8.0"
             },
             "require-dev": {
                 "ext-json": "*",
                 "ext-xdebug": "*",
-                "orchestra/testbench": "~3.1 || ~4.0 || ~5.0 || ~6.0"
+                "orchestra/testbench": "~3.1 || ~4.0 || ~5.0 || ~6.0 || ~7.0"
             },
             "suggest": {
                 "friendsofphp/php-cs-fixer": "Coding style fixer",
@@ -99,12 +99,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Bepsvpt\\SecureHeaders\\": "src/"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Bepsvpt\\SecureHeaders\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -132,7 +132,7 @@
             ],
             "support": {
                 "issues": "https://github.com/bepsvpt/secure-headers/issues",
-                "source": "https://github.com/bepsvpt/secure-headers/tree/7.1.0"
+                "source": "https://github.com/bepsvpt/secure-headers/tree/7.2.0"
             },
             "funding": [
                 {
@@ -140,7 +140,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-12-12T07:01:56+00:00"
+            "time": "2022-02-10T01:11:21+00:00"
         },
         {
             "name": "beyondcode/laravel-websockets",
