@@ -13,7 +13,7 @@
         "bepsvpt/secure-headers": "^7.0",
         "beyondcode/laravel-websockets": "^2.0@beta",
         "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.6",
