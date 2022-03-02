@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2.4.0
-      - uses: shivammathur/setup-php@2.17.0
+      - uses: shivammathur/setup-php@2.17.1
         with:
           php-version: ${{ env.PHP_VERSION }}
           coverage: xdebug
@@ -86,7 +86,7 @@ jobs:
           - db-data:/var/lib/postgresql/data
     steps:
       - uses: actions/checkout@v2.4.0
-      - uses: shivammathur/setup-php@2.17.0
+      - uses: shivammathur/setup-php@2.17.1
         with:
           php-version: ${{ env.PHP_VERSION }}
           coverage: xdebug
