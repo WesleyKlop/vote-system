@@ -12,7 +12,7 @@
         "prepare": "husky install"
     },
     "devDependencies": {
-        "@babel/plugin-proposal-class-properties": "^7.16.7",
+        "@babel/plugin-proposal-class-properties": "^7.17.12",
         "husky": "^8.0.1",
         "laravel-mix": "^6.0",
         "lint-staged": ">=12",
