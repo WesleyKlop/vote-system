@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b3adce931ab57f1b53c1f75389ddfd5",
+    "content-hash": "b4fbd607063bd09e0ee5f9dd0aab2448",
     "packages": [
         {
             "name": "bepsvpt/secure-headers",
@@ -10130,16 +10130,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.5.4",
+            "version": "1.7.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "bbf68cae24f6dc023c607ea0f87da55dd9d55c2b"
+                "reference": "25e069474cf00215b0f64c60a26230908ef3eefa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/bbf68cae24f6dc023c607ea0f87da55dd9d55c2b",
-                "reference": "bbf68cae24f6dc023c607ea0f87da55dd9d55c2b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/25e069474cf00215b0f64c60a26230908ef3eefa",
+                "reference": "25e069474cf00215b0f64c60a26230908ef3eefa",
                 "shasum": ""
             },
             "require": {
@@ -10165,7 +10165,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.5.4"
+                "source": "https://github.com/phpstan/phpstan/tree/1.7.10"
             },
             "funding": [
                 {
@@ -10185,7 +10185,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-03T12:39:00+00:00"
+            "time": "2022-06-03T14:12:23+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -10732,21 +10732,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.12.20",
+            "version": "0.13.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "cfa8d3e236a6e1a41d69712a84d434dfdf70e560"
+                "reference": "60b4f87a94e7ed17d4494982ba0cfb5a3f2845fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/cfa8d3e236a6e1a41d69712a84d434dfdf70e560",
-                "reference": "cfa8d3e236a6e1a41d69712a84d434dfdf70e560",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/60b4f87a94e7ed17d4494982ba0cfb5a3f2845fd",
+                "reference": "60b4f87a94e7ed17d4494982ba0cfb5a3f2845fd",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.5"
+                "phpstan/phpstan": "^1.7.10"
             },
             "conflict": {
                 "phpstan/phpdoc-parser": "<1.2",
@@ -10765,7 +10765,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "0.12-dev"
+                    "dev-main": "0.13-dev"
                 }
             },
             "autoload": {
@@ -10780,7 +10780,7 @@
             "description": "Instant Upgrade and Automated Refactoring of any PHP code",
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.12.20"
+                "source": "https://github.com/rectorphp/rector/tree/0.13.4"
             },
             "funding": [
                 {
@@ -10788,7 +10788,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-06T12:55:14+00:00"
+            "time": "2022-06-04T08:19:56+00:00"
         },
         {
             "name": "sebastian/cli-parser",
