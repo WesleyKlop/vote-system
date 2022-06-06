@@ -15,7 +15,7 @@
         "@babel/plugin-proposal-class-properties": "^7.17.12",
         "husky": "^8.0.1",
         "laravel-mix": "^6.0",
-        "lint-staged": ">=12",
+        "lint-staged": ">=13",
         "prettier": "^2.4.1",
         "resolve-url-loader": "^5.0.0",
         "vue-loader": "^15.9.8",
