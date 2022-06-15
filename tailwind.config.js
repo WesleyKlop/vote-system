@@ -7,8 +7,7 @@ const getPalette = (color, base = 600) => ({
 })
 
 module.exports = {
-    mode: 'jit',
-    purge: [
+    content: [
         './resources/views/**/*.blade.php',
         './resources/svg/**/*.svg',
         './resources/js/**/*.vue',
@@ -21,7 +20,7 @@ module.exports = {
             black: colors.black,
             primary: `var(--primary-color, ${colors.teal[500]})`,
             accent: `var(--accent-color, ${colors.blue[700]})`,
-            gray: colors.coolGray,
+            gray: colors.gray,
             success: getPalette(colors.green),
             failure: getPalette(colors.red),
             warning: getPalette(colors.yellow),
