@@ -17,9 +17,9 @@ use Illuminate\Http\RedirectResponse;
 class PropositionController extends Controller
 {
     public function __construct(
-        private PropositionService $propositionService,
-        private PropositionRepository $propositionRepository,
-        private VoterRepository $voterRepository
+        private readonly PropositionService $propositionService,
+        private readonly PropositionRepository $propositionRepository,
+        private readonly VoterRepository $voterRepository
     ) {
         parent::__construct();
     }

@@ -11,7 +11,7 @@ class PropositionShowPage extends AbstractPage
 {
     protected string $view = 'views.voter.show';
 
-    public function __construct(private Proposition $proposition)
+    public function __construct(private readonly Proposition $proposition)
     {
     }
 

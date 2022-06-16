@@ -9,7 +9,7 @@ use Illuminate\Contracts\View\View;
 class DashboardController extends Controller
 {
     public function __construct(
-        private PropositionRepository $propositionRepository,
+        private readonly PropositionRepository $propositionRepository,
     ) {
         parent::__construct();
     }

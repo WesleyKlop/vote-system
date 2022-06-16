@@ -116,7 +116,7 @@ return [
     'hsts' => [
         'enable' => $isHttps,
 
-        'max-age' => 31536000,
+        'max-age' => 31_536_000,
 
         'include-sub-domains' => false,
 
@@ -132,7 +132,7 @@ return [
     'expect-ct' => [
         'enable' => false,
 
-        'max-age' => 2147483648,
+        'max-age' => 2_147_483_648,
 
         'enforce' => false,
 

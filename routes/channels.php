@@ -16,14 +16,8 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('propositions', function (?Authenticatable $user) {
-    return $user instanceof Voter;
-}, ['guards' => 'web-voter']);
+Broadcast::channel('propositions', fn(?Authenticatable $user) => $user instanceof Voter, ['guards' => 'web-voter']);
 
-Broadcast::channel('controls', function (?Authenticatable $user) {
-    return $user instanceof User;
-}, ['guards' => 'web-admin']);
+Broadcast::channel('controls', fn(?Authenticatable $user) => $user instanceof User, ['guards' => 'web-admin']);
 
-Broadcast::channel('results', function (?Authenticatable $user) {
-    return $user instanceof User;
-}, ['guards' => 'web-admin']);
+Broadcast::channel('results', fn(?Authenticatable $user) => $user instanceof User, ['guards' => 'web-admin']);

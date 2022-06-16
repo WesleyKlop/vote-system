@@ -11,7 +11,7 @@ use Illuminate\Http\Response;
 
 class PropositionVotesController extends Controller
 {
-    public function __construct(private PropositionService $propositionService)
+    public function __construct(private readonly PropositionService $propositionService)
     {
         parent::__construct();
     }

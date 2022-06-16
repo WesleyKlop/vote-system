@@ -25,8 +25,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Auth::provider('voter', function ($app, array $config) {
-            return new VoterUserProvider();
-        });
+        Auth::provider('voter', fn($app, array $config) => new VoterUserProvider());
     }
 }

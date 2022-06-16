@@ -14,8 +14,8 @@ use Illuminate\Support\Str;
 class PropositionService
 {
     public function __construct(
-        private PropositionRepository $propositionRepository,
-        private VoterPropositionOptionRepository $voterPropositionOptionRepository
+        private readonly PropositionRepository $propositionRepository,
+        private readonly VoterPropositionOptionRepository $voterPropositionOptionRepository
     ) {
     }
 

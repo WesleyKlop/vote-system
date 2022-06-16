@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class PropositionController extends Controller
 {
-    public function __construct(private PropositionService $propositionService)
+    public function __construct(private readonly PropositionService $propositionService)
     {
         parent::__construct();
     }

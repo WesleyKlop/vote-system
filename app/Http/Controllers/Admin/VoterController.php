@@ -33,12 +33,10 @@ class VoterController extends Controller
 
         $tokens = TokenHelper::generateTokens($request->get('amount'));
         $tokens = LazyCollection::make($tokens)
-            ->map(function (string $token) {
-                return [
-                    'token' => $token,
-                    'id' => Str::uuid(),
-                ];
-            })
+            ->map(fn(string $token) => [
+                'token' => $token,
+                'id' => Str::uuid(),
+            ])
             ->all();
 
         Voter::insert($tokens);

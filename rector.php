@@ -7,8 +7,8 @@ use Rector\Set\ValueObject\SetList;
 
 return static function (RectorConfig $config): void {
     $config->sets([
-        SetList::PHP_80,
-        SetList::PHP_81,
+        \Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_81,
+        \Rector\Laravel\Set\LaravelLevelSetList::UP_TO_LARAVEL_80,
     ]);
 
     $config->paths([

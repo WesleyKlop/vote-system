@@ -20,7 +20,7 @@ class PropositionResultExport implements
     WithStrictNullComparison,
     WithHeadings
 {
-    public function __construct(private string $propositionId)
+    public function __construct(private readonly string $propositionId)
     {
     }
 

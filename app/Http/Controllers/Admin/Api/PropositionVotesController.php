@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 
 class PropositionVotesController extends Controller
 {
-    public function __construct(private VoterPropositionOptionRepository $optionRepository)
+    public function __construct(private readonly VoterPropositionOptionRepository $optionRepository)
     {
         parent::__construct();
     }

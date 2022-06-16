@@ -17,8 +17,8 @@ class PropositionIndexPage extends AbstractPage
      * @param Collection<int, Proposition> $propositions
      */
     public function __construct(
-        private Collection $propositions,
-        private VoterStatistics $voterStatistics,
+        private readonly Collection $propositions,
+        private readonly VoterStatistics $voterStatistics,
     ) {
     }
 
