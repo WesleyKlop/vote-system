@@ -2,14 +2,10 @@
 
 declare(strict_types=1);
 
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Symplify\EasyCodingStandard\ValueObject\Option;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
-
-    $parameters->set(Option::PATHS, [
+return static function (\Symplify\EasyCodingStandard\Config\ECSConfig $config): void {
+    $config->paths([
         __DIR__ . '/app',
         __DIR__ . '/config',
         __DIR__ . '/database/seeders',
@@ -21,6 +17,5 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         __DIR__ . '/rector.php',
     ]);
 
-    $containerConfigurator->import(SetList::PSR_12);
-    $containerConfigurator->import(SetList::CLEAN_CODE);
+    $config->sets([SetList::PSR_12, SetList::CLEAN_CODE]);
 };

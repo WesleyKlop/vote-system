@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 
-use Rector\Core\Configuration\Option;
-use Rector\Core\ValueObject\PhpVersion;
+use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\SetList;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $parameters = $containerConfigurator->parameters();
-    $containerConfigurator->import(SetList::PHP_80);
+return static function (RectorConfig $config): void {
+    $config->sets([
+        SetList::PHP_80,
+        SetList::PHP_81,
+    ]);
 
-    // paths to refactor; solid alternative to CLI arguments
-    $parameters->set(Option::PATHS, [
+    $config->paths([
         __DIR__ . '/app',
         __DIR__ . '/bootstrap/app.php',
         __DIR__ . '/config',
@@ -25,16 +24,4 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         __DIR__ . '/ecs.php',
         __DIR__ . '/rector.php',
     ]);
-
-    // is your PHP version different from the one your refactor to? [default: your PHP version], uses PHP_VERSION_ID format
-    $parameters->set(Option::PHP_VERSION_FEATURES, PhpVersion::PHP_80);
-
-    // auto import fully qualified class names? [default: false]
-    $parameters->set(Option::AUTO_IMPORT_NAMES, false);
-
-    // skip root namespace classes, like \DateTime or \Exception [default: true]
-    $parameters->set(Option::IMPORT_SHORT_CLASSES, false);
-
-    // skip classes used in PHP DocBlocks, like in /** @var \Some\Class */ [default: true]
-    $parameters->set(Option::IMPORT_DOC_BLOCKS, true);
 };
