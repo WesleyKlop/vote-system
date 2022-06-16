@@ -17,6 +17,8 @@
                         :row="rowOption"
                         :columns="horizontal"
                         :results="results"
+                        :abstain-id="abstainId"
+                        :blank-id="blankId"
                     />
                 </tbody>
             </table>
@@ -38,6 +40,8 @@ export default {
             type: Object,
             required: true,
         },
+        blankId: { type: String, required: false, default: null },
+        abstainId: { type: String, required: false, default: null },
     },
     computed: {
         vertical() {

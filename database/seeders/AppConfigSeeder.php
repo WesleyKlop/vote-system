@@ -28,7 +28,7 @@ HTML],
             ['name' => 'logo_url', 'default' => null],
             ['name' => 'primary_color', 'default' => null],
             ['name' => 'accent_color', 'default' => null],
-            ['name' => 'language', 'default' => null],
+            ['name' => 'language', 'default' => config('app.locale')],
         ]);
     }
 

@@ -1,14 +1,6 @@
 <template>
     <div
-        class="
-            w-3/4
-            relative
-            h-8
-            rounded
-            border-2 border-gray-300
-            overflow-hidden
-            my-2
-        "
+        class="w-3/4 relative h-8 rounded border-2 border-gray-300 overflow-hidden my-2"
         :class="{ 'font-bold': isWinning }"
     >
         <div

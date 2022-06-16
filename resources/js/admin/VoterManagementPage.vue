@@ -27,14 +27,7 @@
                     />
                 </label>
                 <input
-                    class="
-                        submit-button
-                        py-1
-                        align-bottom
-                        my-0
-                        -ml-1
-                        rounded-l-none
-                    "
+                    class="submit-button py-1 align-bottom my-0 -ml-1 rounded-l-none"
                     type="submit"
                     value="Generate"
                 />
@@ -53,15 +46,7 @@
         <hr />
 
         <div
-            class="
-                grid grid-cols-1
-                sm:grid-cols-2
-                md:grid-cols-3
-                lg:grid-cols-4
-                xl:grid-cols-5
-                gap-6
-                py-6
-            "
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 py-6"
         >
             <token-card
                 :delete-route="deleteRouteFor(voter.id)"

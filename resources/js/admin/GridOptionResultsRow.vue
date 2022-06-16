@@ -1,8 +1,8 @@
 <template>
     <tr>
-        <th>{{ rowOption.option }}</th>
-        <td v-for="colOption of horizontal" :key="colOption.id">
-            {{ votes(colOption, rowOption) }}
+        <th>{{ row.option }}</th>
+        <td v-for="col of columns" :key="col.id">
+            {{ votes(col) }}
         </td>
     </tr>
 </template>
@@ -25,6 +25,8 @@ export default {
             type: Object,
             required: true,
         },
+        blankId: { type: String, required: false, default: null },
+        abstainId: { type: String, required: false, default: null },
     },
     computed: {
         choices() {
@@ -40,10 +42,10 @@ export default {
             return this.choices.find((o) => o.id === this.abstainId)
         },
         totalVotes() {
-            if (!this.results[this.question.id]) {
+            if (!this.results[this.row.id]) {
                 return 0
             }
-            return Object.values(this.results[this.question.id]).reduce(
+            return Object.values(this.results[this.row.id]).reduce(
                 (total, curr) => total + curr,
                 0,
             )
@@ -61,7 +63,7 @@ export default {
     },
     methods: {
         votes(option) {
-            return this.results[this.question.id]?.[option.id] ?? 0
+            return this.results[option.id]?.[this.row.id] ?? 0
         },
         isWinning(option) {
             if ([this.blankId, this.abstainId].includes(option.id)) {

@@ -6,7 +6,7 @@
 }
 
 .input {
-    @apply h-8 rounded border-2 border-gray-300 px-1 text-base;
+    @apply h-8 rounded border-2 border-gray-300 px-1 text-base font-normal;
 }
 
 .input--token {
