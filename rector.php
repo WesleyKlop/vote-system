@@ -3,12 +3,10 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\Set\ValueObject\SetList;
 
 return static function (RectorConfig $config): void {
     $config->sets([
         \Rector\Set\ValueObject\LevelSetList::UP_TO_PHP_81,
-        \Rector\Laravel\Set\LaravelLevelSetList::UP_TO_LARAVEL_80,
     ]);
 
     $config->paths([

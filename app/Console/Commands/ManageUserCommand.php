@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class ManageUserCommand extends Command
 {
-    public final const DEFAULT_ADMIN_NAME = 'admin';
-    public final const DEFAULT_ADMIN_PASSWORD = 'password';
+    final public const DEFAULT_ADMIN_NAME = 'admin';
+    final public const DEFAULT_ADMIN_PASSWORD = 'password';
     /**
      * The name and signature of the console command.
      *

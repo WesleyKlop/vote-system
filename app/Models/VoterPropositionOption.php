@@ -4,7 +4,7 @@ namespace App\Models;
 
 class VoterPropositionOption extends AbstractModel
 {
-    public final const UPDATED_AT = null;
+    final public const UPDATED_AT = null;
     public $timestamps = true;
 
     protected $fillable = [
