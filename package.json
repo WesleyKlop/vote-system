@@ -16,7 +16,7 @@
         "husky": "^8.0.1",
         "laravel-mix": "^6.0",
         "lint-staged": ">=13",
-        "prettier": "^2.4.1",
+        "prettier": "^2.8.2",
         "resolve-url-loader": "^5.0.0",
         "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.14"
